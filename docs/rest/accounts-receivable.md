@@ -1,0 +1,9637 @@
+# Accounts Receivable
+
+## GET /objects/accounts-receivable/account-label
+_List account labels_
+
+**Response 200 — List account labels:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "9",
+      "id": "Retail Sales",
+      "href": "/objects/accounts-receivable/account-label/9"
+    },
+    {
+      "key": "41",
+      "id": "Retail Sales 2",
+      "href": "/objects/accounts-receivable/account-label/41"
+    },
+    {
+      "key": "10",
+      "id": "Sales",
+      "href": "/objects/accounts-receivable/account-label/10"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/accounts-receivable/account-label
+_Create an account label_
+
+**Request example — Create an account label:**
+```json
+{
+  "id": "Wholesale Sales",
+  "description": "Wholesale sales north america",
+  "glAccount": {
+    "id": "2050"
+  },
+  "status": "active",
+  "offsetGLAccount": {
+    "id": "1200.01"
+  }
+}
+```
+**Response 201 — Create an account label:**
+```json
+{
+  "ia::result": {
+    "key": "110",
+    "id": "Wholesale Sales",
+    "href": "/objects/accounts-receivable/account-label/110"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/accounts-receivable/account-label/{key}
+_Get an account label_
+
+**Response 200 — Get an account label:**
+```json
+{
+  "ia::result": {
+    "key": "68",
+    "id": "Wholesale Sales",
+    "description": "Wholesale Sales north America",
+    "glAccount": {
+      "id": "000007.10.90--Check_Petty Cash",
+      "key": "445",
+      "href": "/objects/general-ledger/account/445"
+    },
+    "status": "active",
+    "offsetGLAccount": {
+      "id": "000007.10.90--Check_Petty Cash",
+      "key": "445",
+      "href": "/objects/general-ledger/account/445"
+    },
+    "isTaxable": false,
+    "isTax": true,
+    "isSubtotal": true,
+    "taxGroup": {
+      "id": "Auto Account Label Tax",
+      "key": "14",
+      "href": "/objects/tax/account-label-tax-group/14"
+    },
+    "taxCode": "CST",
+    "deferredRevenueGLAccount": {
+      "id": "000007.10.90",
+      "key": "445",
+      "href": "/objects/general-ledger/account/445"
+    },
+    "revenueRecognitionTemplate": {
+      "id": "Straight Line",
+      "templateTitle": "Straight Line",
+      "key": "28",
+      "href": "/objects/accounts-receivable/revenue-recognition-template/28"
+    },
+    "audit": {
+      "modifiedDateTime": "2024-08-02T00:00:00Z",
+      "createdDateTime": "2024-08-02T00:00:00Z",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1"
+    },
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "href": "/objects/accounts-receivable/account-label/68"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/account-label/{key}
+_Update an account label_
+
+**Request example — Update a single value:**
+```json
+{
+  "status": "inactive"
+}
+```
+**Response 200 — Updated label:**
+```json
+{
+  "ia::result": {
+    "key": "68",
+    "id": "Wholesale Sales",
+    "href": "/objects/accounts-receivable/account-label/68"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/account-label/{key}
+_Delete an account label_
+
+
+## GET /objects/accounts-receivable/adjustment
+_List adjustments_
+
+**Response 200 — List adjustments:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "259",
+      "id": "259",
+      "href": "/objects/accounts-receivable/adjustment/259"
+    },
+    {
+      "key": "295",
+      "id": "295",
+      "href": "/objects/accounts-receivable/adjustment/295"
+    },
+    {
+      "key": "296",
+      "id": "296",
+      "href": "/objects/accounts-receivable/adjustment/296"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/accounts-receivable/adjustment
+_Create an adjustment_
+
+**Request example — Create an adjustment:**
+```json
+{
+  "customer": {
+    "id": "C-00005"
+  },
+  "createdDate": "2023-06-28",
+  "description": "Lyon USD Adj",
+  "adjustmentSummary": {
+    "id": "AR Summary: 2022/01/01 Batch"
+  },
+  "baseCurrency": {
+    "paidDate": "2022-11-15",
+    "currency": "USD"
+  },
+  "txnCurrency": {
+    "currency": "USD"
+  },
+  "lines": [
+    {
+      "txnCurrency": {
+        "amount": "120.03",
+        "currency": "USD"
+      },
+      "glAccount": {
+        "id": "2990"
+      },
+      "dimensions": {
+        "location": {
+          "id": "CA"
+        }
+      }
+    }
+  ]
+}
+```
+**Response 201 — Reference to new adjustment:**
+```json
+{
+  "ia::result": {
+    "id": "270",
+    "key": "270",
+    "href": "/objects/accounts-receivable/adjustment/270"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/adjustment-line
+_List adjustment lines_
+
+**Response 200 — Get adjustments:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "2651",
+      "id": "2651",
+      "href": "/objects/accounts-receivable/adjustment-line/2651"
+    },
+    {
+      "key": "2563",
+      "id": "2563",
+      "href": "/objects/accounts-receivable/adjustment-line/2563"
+    },
+    {
+      "key": "3481",
+      "id": "3481",
+      "href": "/objects/accounts-receivable/adjustment-line/3481"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "ageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/accounts-receivable/adjustment-line
+_Create an adjustment line_
+
+**Request example — Create an adjustment line:**
+```json
+{
+  "arAdjustment": {
+    "key": "350"
+  },
+  "txnCurrency": {
+    "amount": "50"
+  },
+  "glAccount": {
+    "id": "4000"
+  },
+  "dimensions": {
+    "location": {
+      "key": "1"
+    },
+    "department": {
+      "id": "4"
+    },
+    "project": {
+      "key": "9"
+    },
+    "customer": {
+      "key": "42"
+    },
+    "item": {
+      "key": "1"
+    },
+    "employee": {
+      "key": "11"
+    },
+    "class": {
+      "key": "3"
+    }
+  },
+  "memo": "Created memo for adjustment line charges"
+}
+```
+**Response 201 — Reference to new adjustment line:**
+```json
+{
+  "ia::result": {
+    "key": "1088",
+    "id": "1088",
+    "href": "/objects/accounts-receivable/adjustment-line/1088",
+    "ia::meta": {
+      "totalCount": 1
+    }
+  }
+}
+```
+
+## GET /objects/accounts-receivable/adjustment-line/{key}
+_Get an adjustment line_
+
+**Response 200 — Get an adjustment line:**
+```json
+{
+  "ia::result": {
+    "id": "2686",
+    "key": "2686",
+    "arAdjustment": {
+      "id": "288",
+      "key": "288",
+      "href": "/objects/accounts-receivable/adjustment/288"
+    },
+    "glAccount": {
+      "key": "254",
+      "id": "6103",
+      "name": "Bonuses",
+      "href": "/objects/general-ledger/account/254"
+    },
+    "accountLabel": {
+      "key": "35",
+      "id": "Bonuses",
+      "href": "/objects/accounts-receivable/account-label/35"
+    },
+    "baseCurrency": {
+      "amount": "-125.00",
+      "currency": "AUD"
+    },
+    "txnCurrency": {
+      "amount": "-125.00",
+      "currency": "AUD"
+    },
+    "dimensions": {
+      "department": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "location": {
+        "key": "4",
+        "id": "4",
+        "name": "Australia",
+        "href": "/objects/company-config/location/4"
+      },
+      "project": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "customer": {
+        "key": "1",
+        "id": "1",
+        "name": "Power Aerospace Materials",
+        "href": "/objects/accounts-receivable/customer/1"
+      },
+      "vendor": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "employee": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "item": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "class": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "warehouse": {
+        "key": null,
+        "id": null,
+        "name": null
+      }
+    },
+    "memo": "adjustment one",
+    "exchangeRate": {
+      "date": "2024-09-24",
+      "typeId": "Intacct Daily Rate",
+      "rate": "1"
+    },
+    "lineNumber": "1",
+    "adjustmentType": "ra",
+    "isTax": false,
+    "audit": {
+      "createdDateTime": "2024-09-24T13:19:27Z",
+      "modifiedDateTime": "2024-09-24T14:01:12Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "taxEntries": [
+      {
+        "id": "2688",
+        "key": "2688",
+        "adjustmentLine": {
+          "id": "2686",
+          "key": "2686",
+          "href": "/objects/accounts-receivable/adjustment-line/2686"
+        },
+        "baseTaxAmount": "-25.00",
+        "txnTaxAmount": "-25.00",
+        "taxRate": 20,
+        "orderEntryTaxDetail": {
+          "id": "AUS Standard1",
+          "key": "89",
+          "href": "/objects/tax/order-entry-tax-detail/89"
+        },
+        "href": "/objects/accounts-receivable/adjustment-tax-entry/2688"
+      }
+    ],
+    "href": "/objects/accounts-receivable/adjustment-line/2686"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/adjustment-line/{key}
+_Update an adjustment line_
+
+**Request example — Update adjustment line with multiple fields:**
+```json
+{
+  "txnCurrency": {
+    "amount": "10"
+  },
+  "glAccount": {
+    "id": "1003"
+  },
+  "dimensions": {
+    "department": {
+      "id": "3"
+    },
+    "location": {
+      "key": "2"
+    }
+  },
+  "memo": "Updated memo for adjustment-line"
+}
+```
+**Response 200 — Reference to updated adjustment line:**
+```json
+{
+  "ia::result": {
+    "key": "315783",
+    "id": "315783",
+    "href": "/objects/accounts-receivable/adjustment-line/315783"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/adjustment-line/{key}
+_Delete an adjustment line._
+
+
+## GET /objects/accounts-receivable/adjustment-tax-entry
+_List adjustment tax entries_
+
+**Response 200 — List adjustment tax entries:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "8",
+      "id": "8",
+      "href": "/objects/accounts-receivable/adjustment-tax-entry/8"
+    },
+    {
+      "key": "9",
+      "id": "9",
+      "href": "/objects/accounts-receivable/adjustment-tax-entry/9"
+    },
+    {
+      "key": "10",
+      "id": "10",
+      "href": "/objects/accounts-receivable/adjustment-tax-entry/10"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/accounts-receivable/adjustment-tax-entry/{key}
+_Get an adjustment tax entry_
+
+**Response 200 — Get an adjustment tax entry:**
+```json
+{
+  "ia::result": {
+    "id": "2688",
+    "key": "2688",
+    "adjustmentLine": {
+      "id": "2686",
+      "key": "2686",
+      "href": "/objects/accounts-receivable/adjustment-line/2686"
+    },
+    "baseTaxAmount": "-25.00",
+    "txnTaxAmount": "-25.00",
+    "taxRate": 20,
+    "orderEntryTaxDetail": {
+      "id": "AUS Standard1",
+      "key": "89",
+      "href": "/objects/tax/order-entry-tax-detail/89"
+    },
+    "href": "/objects/accounts-receivable/adjustment-tax-entry/2688"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/adjustment/{key}
+_Get an adjustment_
+
+**Response 200 — Get an adjustment:**
+```json
+{
+  "ia::result": {
+    "id": "288",
+    "key": "288",
+    "txnType": "ra",
+    "adjustmentNumber": "adj-1",
+    "state": "posted",
+    "customer": {
+      "id": "1",
+      "key": "1",
+      "name": "Power Aerospace Materials",
+      "totalDue": "-17909.55",
+      "href": "/objects/accounts-receivable/customer/1"
+    },
+    "documentNumber": "ADJ008567",
+    "description": "Adjustment 3",
+    "createdDate": "2024-09-24",
+    "invoiceType": "invoice",
+    "invoiceMode": "b1",
+    "eInvoiceStatus": "paymentReceived",
+    "entity": {
+      "key": "1",
+      "id": "1",
+      "name": "United States of America",
+      "href": "/objects/company-config/entity/1"
+    },
+    "glPostingDate": "2024-09-24",
+    "adjustmentSummary": {
+      "id": "AR Summary: 2022/01/01 Batch",
+      "key": 280,
+      "href": "/objects/accounts-receivable/summary/280"
+    },
+    "baseCurrency": {
+      "paidDate": "2024-07-19",
+      "currency": "AUD",
+      "totalAmountEntered": "-150.00",
+      "totalSelected": "0.00",
+      "totalPaid": "0.00",
+      "totalDue": "-150.00"
+    },
+    "txnCurrency": {
+      "currency": "AUD",
+      "totalEntered": "-150.00",
+      "totalSelected": "0.00",
+      "totalPaid": "0.00",
+      "totalDue": "-150.00"
+    },
+    "exchangeRate": {
+      "date": "2024-07-17",
+      "typeId": "Intacct Daily Rate",
+      "rate": "1"
+    },
+    "contacts": {
+      "billTo": {
+        "id": "Power Aerospace Materials(C1)",
+        "key": "152",
+        "href": "/objects/company-config/contact/152"
+      },
+      "shipTo": {
+        "id": "Power Aerospace Materials(C1)",
+        "key": "152",
+        "tax": {
+          "group": {
+            "id": null,
+            "key": null
+          },
+          "taxId": null
+        },
+        "href": "/objects/company-config/contact/152"
+      }
+    },
+    "moduleKey": "4.AR",
+    "audit": {
+      "createdDateTime": "2024-09-24T13:19:27Z",
+      "modifiedDateTime": "2024-09-24T14:01:12Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "taxSolution": {
+      "key": "1",
+      "id": "Australia - GST",
+      "href": "/objects/tax/tax-solution/1"
+    },
+    "attachment": {
+      "id": "atch1",
+      "key": "1",
+      "href": "/objects/company-config/attachment/1"
+    },
+    "lines": [
+      {
+        "id": "2686",
+        "key": "2686",
+        "arAdjustment": {
+          "id": "288",
+          "key": "288",
+          "href": "/objects/accounts-receivable/adjustment/288"
+        },
+        "glAccount": {
+          "key": "254",
+          "id": "6103",
+          "name": "Bonuses",
+          "href": "/objects/general-ledger/account/254"
+        },
+        "accountLabel": {
+          "key": "35",
+          "id": "Bonuses",
+          "href": "/objects/accounts-receivable/account-label/35"
+        },
+        "baseCurrency": {
+          "amount": "-125",
+          "currency": "AUD"
+        },
+        "txnCurrency": {
+          "amount": "-125",
+          "currency": "AUD"
+        },
+        "dimensions": {
+          "department": {
+            "key": "9",
+            "id": "11",
+            "name": "Accounting",
+            "href": "/objects/company-config/department/9"
+          },
+          "location": {
+            "key": "4",
+            "id": "4",
+            "name": "Australia",
+            "href": "/objects/company-config/location/4"
+          },
+          "project": {
+            "key": "8",
+            "id": "8",
+            "name": "Client Services - Power Aerospace Materials",
+            "href": "/objects/projects/project/8"
+          },
+          "customer": {
+            "key": "1",
+            "id": "1",
+            "name": "Power Aerospace Materials",
+            "href": "/objects/accounts-receivable/customer/1"
+          },
+          "vendor": {
+            "key": "43",
+            "id": "1099 Int",
+            "name": "1099 Int",
+            "href": "/objects/accounts-payable/vendor/43"
+          },
+          "employee": {
+            "key": "1",
+            "id": "1",
+            "name": "Reser",
+            "href": "/objects/company-config/employee/1"
+          },
+          "item": {
+            "key": "1",
+            "id": "1",
+            "name": "PC Computer",
+            "href": "/objects/inventory-control/item/1"
+          },
+          "class": {
+            "key": "1",
+            "id": "3",
+            "name": "Health Care",
+            "href": "/objects/company-config/class/1"
+          },
+          "warehouse": {
+            "key": null,
+            "id": null,
+            "name": null
+          }
+        },
+        "memo": "adjustment memo",
+        "exchangeRate": {
+          "date": "2025-06-19",
+          "typeId": "Intacct Daily Rate",
+          "rate": "1"
+        },
+        "lineNumber": "1",
+        "adjustmentType": "ra",
+        "isTax": false,
+        "audit": {
+          "createdDateTime": "2024-09-24T13:19:27Z",
+          "modifiedDateTime": "2024-09-24T14:01:12Z",
+          "createdByUser": {
+            "key": "1",
+            "id": "Admin",
+            "href": "/objects/company-config/user/1"
+          },
+          "createdBy": "1",
+          "modifiedByUser": {
+            "key": "1",
+            "id": "Admin",
+            "href": "/objects/company-config/user/1"
+          },
+          "modifiedBy": "1"
+        },
+        "taxEntries": [
+          {
+            "txnTaxAmount": "-25.00",
+            "baseTaxAmount": "-25.00",
+            "orderEntryTaxDetail": {
+              "id": "AUS Standard1",
+              "key": "89",
+              "href": "/objects/tax/order-entry-tax-detail/89"
+            },
+            "id": "2688",
+            "key": "2688",
+            "taxRate": 20,
+            "adjustmentLine": {
+              "id": "2686",
+              "key": "2686",
+              "href": "/objects/accounts-receivable/adjustment-line/2686"
+            },
+            "href": "/objects/accounts-receivable/adjustment-tax-entry/2688"
+          }
+        ],
+        "href": "/objects/accounts-receivable/adjustment-line/2686"
+      }
+    ],
+    "href": "/objects/accounts-receivable/adjustment/288"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/adjustment/{key}
+_Update an adjustment_
+
+**Request example — Update an adjustment:**
+```json
+{
+  "description": "May 2023 Refund"
+}
+```
+**Response 200 — Reference to updated adjustment:**
+```json
+{
+  "ia::result": {
+    "id": "16855",
+    "key": "16855",
+    "href": "/objects/accounts-receivable/adjustment/16855"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/adjustment/{key}
+_Delete an adjustment_
+
+
+## GET /objects/accounts-receivable/advance
+_List advances_
+
+**Response 200 — List advances:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "621",
+      "id": "621",
+      "href": "/objects/accounts-receivable/advance/621"
+    },
+    {
+      "key": "777",
+      "id": "777",
+      "href": "/objects/accounts-receivable/advance-line/777"
+    },
+    {
+      "key": "802",
+      "id": "802",
+      "href": "/objects/accounts-receivable/advance-line/802"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/accounts-receivable/advance
+_Create an advance_
+
+**Request example — Create an advance:**
+```json
+{
+  "customer": {
+    "id": "C-00019"
+  },
+  "paymentInformation": {
+    "paymentDate": "2024-06-13",
+    "receiptDate": "2024-06-13",
+    "paymentMethod": "printedCheck",
+    "financialEntity": {
+      "id": "BOA"
+    }
+  },
+  "advanceSummary": {
+    "id": "511"
+  },
+  "items": [
+    {
+      "glAccount": {
+        "id": "2200"
+      },
+      "accountLabel": {
+        "id": "Travel",
+        "key": "14",
+        "href": "/objects/accounts-receivable/account-label/14"
+      },
+      "txnAmount": "500",
+      "dimensions": {
+        "location": {
+          "id": "CA"
+        }
+      }
+    }
+  ]
+}
+```
+**Response 201 — Reference to new advance:**
+```json
+{
+  "ia::result": {
+    "key": "799",
+    "id": "799",
+    "href": "/objects/accounts-receivable/advance/799",
+    "ia::meta": {
+      "totalCount": 1,
+      "totalSuccess": 1,
+      "totalError": 0
+    }
+  }
+}
+```
+
+## GET /objects/accounts-receivable/advance-line
+_List advance lines_
+
+**Response 200 — List advance lines:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "2031",
+      "id": "2031",
+      "href": "/objects/accounts-receivable/advance-line/2031"
+    },
+    {
+      "key": "2067",
+      "id": "2067",
+      "href": "/objects/accounts-receivable/advance-line/2067"
+    },
+    {
+      "key": "856",
+      "id": "856",
+      "href": "/objects/accounts-receivable/advance-line/856"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/accounts-receivable/advance-line
+_Create an advance line_
+
+**Request example — Create an advance line:**
+```json
+{
+  "arAdvance": {
+    "key": "89"
+  },
+  "glAccount": {
+    "id": "2200"
+  },
+  "txnAmount": "2500.00",
+  "accountLabel": {
+    "id": "Bank Fees"
+  },
+  "dimensions": {
+    "location": {
+      "key": "1"
+    },
+    "department": {
+      "key": "4"
+    },
+    "project": {
+      "key": "8"
+    },
+    "employee": {
+      "key": "24"
+    },
+    "item": {
+      "key": "1"
+    },
+    "class": {
+      "key": "1"
+    }
+  },
+  "memo": "Created memo for advance line charges"
+}
+```
+**Response 201 — Reference to new advance line:**
+```json
+{
+  "ia::result": {
+    "key": "795",
+    "id": "795",
+    "href": "/objects/accounts-receivable/advance-line/795",
+    "ia::meta": {
+      "totalCount": 1
+    }
+  }
+}
+```
+
+## GET /objects/accounts-receivable/advance-line/{key}
+_Get an advance line_
+
+**Response 200 — Get an advance line:**
+```json
+{
+  "ia::result": {
+    "key": "2067",
+    "id": "2067",
+    "advance": {
+      "id": "799",
+      "key": "799",
+      "recordType": "rr",
+      "href": "/objects/accounts-receivable/advance/799"
+    },
+    "bank": {
+      "amount": "100.00",
+      "txnAmount": "100.00",
+      "txnCurrency": "USD",
+      "baseCurrency": "USD",
+      "bankExchangeRate": {
+        "date": "2025-01-23",
+        "rate": 1,
+        "typeId": "-1"
+      }
+    },
+    "glAccount": {
+      "key": "156",
+      "id": "2200",
+      "name": "Customer Advances",
+      "href": "/objects/general-ledger/account/156"
+    },
+    "accountLabel": {
+      "key": "14",
+      "id": "westsa",
+      "href": "/objects/accounts-receivable/account-label/14"
+    },
+    "baseAmount": "100.00",
+    "txnAmount": "100.00",
+    "dimensions": {
+      "department": {
+        "key": "9",
+        "id": "11",
+        "name": "Accounting",
+        "href": "/objects/company-config/department/9"
+      },
+      "location": {
+        "key": "1",
+        "id": "1",
+        "name": "United States of America",
+        "href": "/objects/company-config/location/1"
+      },
+      "project": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "contract": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "customer": {
+        "key": "36",
+        "id": "C-00045",
+        "name": "Metro Artic, Inc.",
+        "href": "/objects/accounts-receivable/customer/36"
+      },
+      "vendor": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "employee": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "item": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "class": {
+        "key": null,
+        "id": null,
+        "name": null
+      }
+    },
+    "baseLocation": {
+      "id": "United States of America",
+      "key": "1",
+      "href": "/objects/company-config/location/1"
+    },
+    "memo": "New contract down payment",
+    "currency": {
+      "exchangeRate": {
+        "date": "2024-04-25",
+        "typeId": "-1",
+        "rate": 0.04937
+      },
+      "baseCurrency": "USD",
+      "txnCurrency": "USD"
+    },
+    "lineNumber": 1,
+    "paymentInformation": {
+      "totalPaid": "100.00",
+      "txnTotalPaid": "100.00",
+      "totalSelected": "100.00",
+      "txnTotalSelected": "100.00"
+    },
+    "audit": {
+      "createdDateTime": "2024-06-13T06:42:36Z",
+      "modifiedDateTime": "2024-06-13T07:31:51Z",
+      "createdByUser": {
+        "key": "1",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "href": "/objects/accounts-receivable/advance-line/2067"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/advance-line/{key}
+_Update an advance line_
+
+**Request example — Update a single advance line:**
+```json
+{
+  "txnAmount": "1300.00"
+}
+```
+**Request example — Update advance lines:**
+```json
+{
+  "txnAmount": "1300.00",
+  "glAccount": {
+    "id": "2200"
+  },
+  "accountLabel": {
+    "id": "Bank Interest Earned"
+  },
+  "dimensions": {
+    "department": {
+      "key": "9"
+    },
+    "location": {
+      "key": "1"
+    },
+    "project": {
+      "key": "8"
+    },
+    "customer": {
+      "key": "1"
+    },
+    "vendor": {
+      "key": "43"
+    },
+    "employee": {
+      "key": "24"
+    },
+    "item": {
+      "key": "1"
+    },
+    "class": {
+      "key": "1"
+    }
+  },
+  "memo": "Updated memo for advance-line"
+}
+```
+**Response 200 — Updated advance line:**
+```json
+{
+  "ia::result": {
+    "key": "5",
+    "id": "5",
+    "href": "/objects/accounts-receivable/advance-line/5",
+    "ia::meta": {
+      "totalCount": 1
+    }
+  }
+}
+```
+
+## GET /objects/accounts-receivable/advance/{key}
+_Get an advance_
+
+**Response 200 — Get an advance:**
+```json
+{
+  "ia::result": {
+    "id": "1169",
+    "key": "1169",
+    "advanceSummary": {
+      "id": "300",
+      "key": "300",
+      "href": "/objects/accounts-receivable/summary/300"
+    },
+    "paymentInformation": {
+      "financialEntity": {
+        "currency": "USD",
+        "txnAmount": "10.00",
+        "baseAmount": "10.00",
+        "baseCurrency": "USD",
+        "id": "SBME",
+        "key": "13",
+        "href": "/objects/cash-management/bank-account/13"
+      },
+      "paymentMethod": "cash",
+      "currency": {
+        "baseCurrency": "USD",
+        "txnCurrency": "USD",
+        "exchangeRateDate": "2024-01-10",
+        "exchangeRateTypeId": "Standard rate",
+        "exchangeRate": 1
+      },
+      "receiptDate": "2024-06-13",
+      "paymentDate": "2024-06-13",
+      "totalSelected": "0.00",
+      "txnTotalSelected": "0.00",
+      "totalPaid": "0.00",
+      "txnTotalPaid": "0.00",
+      "totalDue": "10.00",
+      "totalTxnAmountDue": "10.00"
+    },
+    "glAccount": {
+      "undepositedGLAccountNumber": "1070"
+    },
+    "customer": {
+      "id": "Cust_ForInvoice_0021",
+      "name": "Cust_ForInvoice_0021"
+    },
+    "referenceNumber": "Number10",
+    "description": "Advance 10",
+    "advanceNumber": "Advance-001",
+    "recordType": "rr",
+    "state": "posted",
+    "totalEntered": "10.00",
+    "txnTotalEntered": "10.00",
+    "audit": {
+      "createdDateTime": "2024-06-13T00:00:00Z",
+      "modifiedDateTime": "2024-06-26T05:51:05Z",
+      "createdByUser": {
+        "key": "1",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "createdDate": "2024-06-13",
+    "reconciliationGroup": {
+      "cleared": "false",
+      "clearingDate": "2024-06-13"
+    },
+    "isSystemGenerated": false,
+    "attachment": {
+      "id": "10"
+    },
+    "deposit": {
+      "id": "234",
+      "key": "234"
+    },
+    "items": [
+      {
+        "id": "2596",
+        "key": "2596",
+        "arAdvance": {
+          "id": "1169",
+          "key": "1169",
+          "recordType": "rr",
+          "href": "/objects/accounts-receivable/advance/1169"
+        },
+        "glAccount": {
+          "key": "259",
+          "id": "6254",
+          "name": "Travel",
+          "href": "/objects/general-ledger/account/259"
+        },
+        "accountLabel": {
+          "id": "10",
+          "key": "10",
+          "href": "/objects/accounts-receivable/account-label/10"
+        },
+        "baseAmount": "10.00",
+        "txnAmount": "10.00",
+        "dimensions": {
+          "department": {
+            "key": "14",
+            "id": "77",
+            "name": "Quality Assurance",
+            "href": "/objects/company-config/department/14"
+          },
+          "location": {
+            "key": "42",
+            "id": "WDH",
+            "name": "West Delhi",
+            "href": "/objects/company-config/location/42"
+          },
+          "project": {
+            "key": null,
+            "id": null,
+            "name": "null"
+          },
+          "nsp::jurisdiction": {
+            "key": null
+          }
+        },
+        "baseLocation": {
+          "name": "West Delhi",
+          "key": "42",
+          "href": "/objects/company-config/location/42"
+        },
+        "memo": "null",
+        "currency": {
+          "exchangeRate": {
+            "date": "2024-06-13",
+            "typeId": "null",
+            "rate": 1
+          },
+          "baseCurrency": "USD",
+          "txnCurrency": "USD"
+        },
+        "lineNumber": 1,
+        "paymentInformation": {
+          "totalPaid": "0.00",
+          "txnTotalPaid": "0.00",
+          "totalSelected": "0.00",
+          "txnTotalSelected": "0.00"
+        },
+        "audit": {
+          "createdDateTime": "2024-06-26T05:51:05Z",
+          "modifiedDateTime": "2024-06-26T05:51:05Z",
+          "createdBy": "1",
+          "modifiedBy": "1"
+        },
+        "href": "/objects/accounts-receivable/advance-line/2596\""
+      }
+    ],
+    "href": "/objects/accounts-receivable/advance/1169"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/advance/{key}
+_Update an advance_
+
+**Request example — Update an advance:**
+```json
+{
+  "referenceNumber": "DOC1234"
+}
+```
+**Response 200 — Reference to updated advance:**
+```json
+{
+  "ia::result": {
+    "key": "799",
+    "id": "799",
+    "href": "/objects/accounts-receivable/advance/799",
+    "ia::meta": {
+      "totalCount": 1,
+      "totalSuccess": 1,
+      "totalError": 0
+    }
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/advance/{key}
+_Delete an advance_
+
+
+## GET /objects/accounts-receivable/billback-template
+_List bill back templates_
+
+**Response 200 — List bill back templates:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "11",
+      "id": "BBT-AU2I",
+      "href": "/objects/accounts-receivable/billback-template/11"
+    },
+    {
+      "key": "14",
+      "id": "BBT-AU2US",
+      "href": "/objects/accounts-receivable/billback-template/14"
+    },
+    {
+      "key": "25",
+      "id": "BBT-FR2US",
+      "href": "/objects/accounts-receivable/billback-template/25"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/accounts-receivable/billback-template
+_Create a bill back template_
+
+**Request example — Create a bill back template:**
+```json
+{
+  "id": "BBT-FR2US",
+  "description": "BBT France to US",
+  "enableInterEntityPostings": true,
+  "lines": [
+    {
+      "invoiceGLAccount": {
+        "key": "194"
+      },
+      "billGLAccount": {
+        "key": "109"
+      },
+      "department": {
+        "key": "9"
+      },
+      "memo": "For France"
+    }
+  ]
+}
+```
+**Response 201 — Reference to new bill back template:**
+```json
+{
+  "ia::result": {
+    "key": "26",
+    "id": "BBT-FR2US",
+    "href": "/objects/accounts-receivable/billback-template/26"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/billback-template-line
+_List bill back template lines_
+
+**Response 200 — List bill back template lines:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "1",
+      "href": "/objects/accounts-receivable/billback-template-line/1"
+    },
+    {
+      "key": "8",
+      "id": "8",
+      "href": "/objects/accounts-receivable/billback-template-line/8"
+    },
+    {
+      "key": "9",
+      "id": "9",
+      "href": "/objects/accounts-receivable/billback-template-line/9"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/accounts-receivable/billback-template-line
+_Create a billback template line_
+
+**Request example — Create a billback template line:**
+```json
+{
+  "billbackTemplate": {
+    "key": "1"
+  },
+  "invoiceGLAccount": {
+    "key": "194"
+  },
+  "billGLAccount": {
+    "key": "207"
+  },
+  "department": {
+    "id": "11"
+  },
+  "memo": "Created memo for billback template line"
+}
+```
+**Response 201 — Reference to new billback template line:**
+```json
+{
+  "ia::result": {
+    "key": "1",
+    "id": "1",
+    "href": "/objects/accounts-receivable/billback-template-line/1",
+    "ia::meta": {
+      "totalCount": 1
+    }
+  }
+}
+```
+
+## GET /objects/accounts-receivable/billback-template-line/{key}
+_Get a bill back template line_
+
+**Response 200 — Get a bill back template line:**
+```json
+{
+  "ia::result": {
+    "key": "5",
+    "id": "5",
+    "billbackTemplate": {
+      "id": "1",
+      "key": "1",
+      "href": "/objects/accounts-receivable/billback-template/1"
+    },
+    "lineNumber": "0",
+    "invoiceGLAccount": {
+      "key": "194",
+      "id": "4000",
+      "name": "Sales",
+      "href": "/objects/general-ledger/account/194"
+    },
+    "billGLAccount": {
+      "key": "207",
+      "id": "5001",
+      "name": "Construction",
+      "href": "/objects/general-ledger/account/207"
+    },
+    "department": {
+      "key": "9",
+      "id": "11",
+      "name": "Accounting",
+      "href": "/objects/company-config/department/9"
+    },
+    "memo": "line 1",
+    "href": "/objects/accounts-receivable/billback-template-line/5"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/billback-template-line/{key}
+_Update a billback template line_
+
+**Request example — Update a billback template line:**
+```json
+{
+  "invoiceGLAccount": {
+    "id": "4000"
+  },
+  "billGLAccount": {
+    "id": "1003"
+  },
+  "department": {
+    "id": "3"
+  },
+  "memo": "Updated memo for billback template line"
+}
+```
+**Response 200 — Reference to updated billback template line:**
+```json
+{
+  "ia::result": {
+    "key": "8",
+    "id": "8",
+    "href": "/objects/accounts-receivable/billback-template-line/8"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/billback-template-line/{key}
+_Delete a billback template line_
+
+
+## GET /objects/accounts-receivable/billback-template/{key}
+_Get a bill back template_
+
+**Response 200 — Get a bill back template:**
+```json
+{
+  "ia::result": {
+    "key": "26",
+    "id": "BBT-FR2US",
+    "description": "BBT France to US",
+    "status": "active",
+    "enableInterEntityPostings": true,
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "lines": [
+      {
+        "key": "1",
+        "id": "1",
+        "billbackTemplate": {
+          "id": "BBT-FR2US",
+          "key": "26",
+          "href": "/objects/accounts-receivable/billback-template/26"
+        },
+        "lineNumber": "1",
+        "invoiceGLAccount": {
+          "key": "194",
+          "id": "4000",
+          "name": "Sales",
+          "href": "/objects/general-ledger/account/194"
+        },
+        "billGLAccount": {
+          "key": "207",
+          "id": "5001",
+          "name": "Construction",
+          "href": "/objects/general-ledger/account/207"
+        },
+        "department": {
+          "key": "9",
+          "id": "11",
+          "name": "Accounting",
+          "href": "/objects/company-config/department/9"
+        },
+        "memo": "line 1",
+        "href": "/objects/accounts-receivable/billback-template-line/1"
+      }
+    ],
+    "href": "/objects/accounts-receivable/billback-template/26"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/billback-template/{key}
+_Update a bill back template_
+
+**Request example — Update a bill back template:**
+```json
+{
+  "status": "active",
+  "lines": [
+    {
+      "invoiceGLAccount": {
+        "key": "194"
+      },
+      "billGLAccount": {
+        "key": "109"
+      },
+      "department": {
+        "key": "9"
+      },
+      "memo": "line 1-1"
+    },
+    {
+      "invoiceGLAccount": {
+        "key": "194"
+      },
+      "billGLAccount": {
+        "key": "109"
+      },
+      "department": {
+        "key": "9"
+      },
+      "memo": "line 1-2"
+    }
+  ]
+}
+```
+**Response 200 — Reference to updated bill back template:**
+```json
+{
+  "ia::result": {
+    "key": "5",
+    "id": "BBT-AU2IN",
+    "href": "/objects/accounts-receivable/billback-template/5"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/billback-template/{key}
+_Delete a bill back template_
+
+
+## GET /objects/accounts-receivable/customer
+_List customers_
+
+**Response 200 — List customers:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "68",
+      "id": "CUST-100",
+      "href": "/objects/accounts-receivable/customer/68"
+    },
+    {
+      "key": "69",
+      "id": "CUST-200",
+      "href": "/objects/accounts-receivable/customer/69"
+    },
+    {
+      "key": "73",
+      "id": "CUST-300",
+      "href": "/objects/accounts-receivable/customer/73"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## POST /objects/accounts-receivable/customer
+_Create a customer_
+
+**Request example — Create a customer:**
+```json
+{
+  "id": "CUST-002",
+  "name": "Starluck",
+  "taxId": "12-3456789",
+  "creditLimit": 50000,
+  "status": "active"
+}
+```
+**Response 201 — Create a customer:**
+```json
+{
+  "ia::result": {
+    "key": "32",
+    "id": "CUST-200",
+    "href": "/objects/accounts-receivable/customer/32"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/customer-contact
+_List customer contacts_
+
+**Response 200 — List customer contacts:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "17",
+      "id": "17",
+      "href": "/objects/accounts-receivable/customer-contact/17"
+    },
+    {
+      "key": "18",
+      "id": "18",
+      "href": "/objects/accounts-receivable/customer-contact/18"
+    },
+    {
+      "key": "19",
+      "id": "19",
+      "href": "/objects/accounts-receivable/customer-contact/19"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/accounts-receivable/customer-contact/{key}
+_Get a customer contact_
+
+**Response 200 — Get a customer contact:**
+```json
+{
+  "ia::result": {
+    "key": "6",
+    "id": "6",
+    "categoryName": "Main Office",
+    "contact": {
+      "key": "197",
+      "id": "Jeffrey Palms",
+      "href": "/objects/company-config/contact/197"
+    },
+    "audit": {
+      "createdDateTime": "2025-04-20T16:20:00Z",
+      "modifiedDateTime": "2025-04-20T16:20:00Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "95",
+        "id": "Sanjay",
+        "href": "/objects/company-config/user/95"
+      },
+      "modifiedBy": "95"
+    },
+    "customer": {
+      "key": "15",
+      "id": "CPACBELL",
+      "href": "/objects/accounts-receivable/customer/15"
+    },
+    "href": "/objects/accounts-receivable/customer-contact/6"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/accounts-receivable/customer-electronic-payment
+_List customer electronic payments_
+
+**Response 200 — List customer electronic payments:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "25",
+      "id": "25",
+      "href": "/objects/accounts-receivable/customer-electronic-payment/25"
+    },
+    {
+      "key": "26",
+      "id": "26",
+      "href": "/objects/accounts-receivable/customer-electronic-payment/26"
+    },
+    {
+      "key": "5",
+      "id": "5",
+      "href": "/objects/accounts-receivable/customer-electronic-payment/5"
+    },
+    {
+      "key": "6",
+      "id": "6",
+      "href": "/objects/accounts-receivable/customer-electronic-payment/6"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 4,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## GET /objects/accounts-receivable/customer-electronic-payment/{key}
+_Get a customer electronic payment_
+
+**Response 200 — Get a customer electronic payment:**
+```json
+{
+  "ia::result": {
+    "id": "26",
+    "key": "26",
+    "customer": {
+      "key": "15",
+      "id": "Customer003",
+      "name": "Pacific Electronics",
+      "href": "/objects/accounts-receivable/customer/15"
+    },
+    "arPayment": {
+      "id": "2750",
+      "key": "2750",
+      "href": "/objects/accounts-receivable/payment/2750",
+      "bankReconciliationStatus": "inTransit",
+      "bankReconciliationDate": null,
+      "paymentSummary": "Receipts(Bank-AccountDiscrepancies): 2026/03/29 Batch",
+      "totalPaid": "10.00",
+      "state": "completed"
+    },
+    "accountCardName": "SBI--6011000000000010",
+    "paymentAmount": "10.00",
+    "paymentMethod": "onlineAchDebit",
+    "paymentDate": "2026-03-29",
+    "paymentProcessor": "authorizeDotNet",
+    "paymentState": "success",
+    "paymentFailureDescription": null,
+    "txnId": "80016488910",
+    "txnCurrency": "USD",
+    "entity": {
+      "key": "1",
+      "id": "1",
+      "name": "United States of America",
+      "href": "/objects/company-config/entity/1"
+    },
+    "href": "/objects/accounts-receivable/customer-electronic-payment/26"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+**Response 200 — Get a customer electronic payment - charge card:**
+```json
+{
+  "ia::result": {
+    "id": "25",
+    "key": "25",
+    "customer": {
+      "id": "Customer003",
+      "key": "15",
+      "name": "Pacific Electronics",
+      "href": "/objects/accounts-receivable/customer/15"
+    },
+    "arPayment": {
+      "id": "2749",
+      "key": "2749",
+      "href": "/objects/accounts-receivable/payment/2749",
+      "bankReconciliationStatus": "inTransit",
+      "bankReconciliationDate": null,
+      "state": "completed",
+      "totalPaid": "100.20",
+      "paymentSummary": "Receipts(Bank-AUDAccount2): 2026/03/29 Batch"
+    },
+    "accountCardName": "Visa...1111",
+    "paymentAmount": "100.20",
+    "paymentMethod": "onlineChargeCard",
+    "paymentDate": "2026-03-29",
+    "paymentProcessor": "authorizeDotNet",
+    "paymentState": "success",
+    "paymentFailureDescription": null,
+    "txnId": "80016488892",
+    "txnCurrency": "USD",
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "href": "/objects/accounts-receivable/customer-electronic-payment/25"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/customer-email-template
+_List customer email templates_
+
+**Response 200 — List customer email templates:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "1",
+      "href": "/objects/accounts-receivable/customer-email-template/1"
+    },
+    {
+      "key": "6",
+      "id": "6",
+      "href": "/objects/accounts-receivable/customer-email-template/6"
+    },
+    {
+      "key": "8",
+      "id": "8",
+      "href": "/objects/accounts-receivable/customer-email-template/8"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/accounts-receivable/customer-email-template
+_Create a customer email template_
+
+**Request example — Example 1:**
+```json
+{
+  "customer": {
+    "key": "127"
+  },
+  "emailTemplate": {
+    "key": "4"
+  }
+}
+```
+**Response 201 — Create a customer email template:**
+```json
+{
+  "ia::result": {
+    "key": "10",
+    "id": "10",
+    "href": "/objects/accounts-receivable/customer-email-template/10"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/customer-email-template/{key}
+_Get a customer email template_
+
+**Response 200 — Get a customer email template:**
+```json
+{
+  "ia::result": {
+    "key": "10",
+    "id": "10",
+    "customer": {
+      "key": "127",
+      "id": "Cust_Dif_Con_PnEtmp",
+      "href": "/objects/accounts-receivable/customer/127"
+    },
+    "txnDefinitionName": "Customer Sales Invoice",
+    "emailTemplate": {
+      "id": "4",
+      "key": "4",
+      "name": "SimpleARInvTemp",
+      "templateType": "arInvoice",
+      "href": "/objects/company-config/email-template/4"
+    },
+    "href": "/objects/accounts-receivable/customer-email-template/2"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/customer-email-template/{key}
+_Update a customer email template_
+
+**Request example — Change email template:**
+```json
+{
+  "emailTemplate": {
+    "key": "10"
+  }
+}
+```
+**Response 200 — Update a customer email template:**
+```json
+{
+  "ia::result": {
+    "key": "10",
+    "id": "10",
+    "href": "/objects/accounts-receivable/customer-email-template/10"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/customer-email-template/{key}
+_Delete a customer email template_
+
+
+## GET /objects/accounts-receivable/customer-group
+_List customer groups_
+
+**Response 200 — List customer groups:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "Active Customers",
+      "href": "/objects/accounts-receivable/customer-group/1"
+    },
+    {
+      "key": "2",
+      "id": "Inactive Customers",
+      "href": "/objects/accounts-receivable/customer-group/2"
+    },
+    {
+      "key": "3",
+      "id": "Customers Balance",
+      "href": "/objects/accounts-receivable/customer-group/3"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## POST /objects/accounts-receivable/customer-group
+_Create a customer group_
+
+**Request example — Create a customer group (type all):**
+```json
+{
+  "id": "CustGroup4",
+  "name": "Customer Group 4",
+  "description": "Charity service customers",
+  "groupType": "all",
+  "memberFilter": {
+    "object": "accounts-receivable/customer",
+    "filterExpression": "and",
+    "filters": [
+      {
+        "$contains": {
+          "id": "Cust"
+        }
+      }
+    ],
+    "orderBy": [
+      {
+        "id": "asc"
+      }
+    ]
+  }
+}
+```
+**Request example — Create a customer group (type specific):**
+```json
+{
+  "id": "CustGrp5",
+  "name": "Customer Group 5",
+  "description": "RC service customers",
+  "groupType": "specific",
+  "groupMembers": [
+    {
+      "id": "21"
+    },
+    {
+      "id": "22"
+    }
+  ]
+}
+```
+**Response 201 — Reference to new customer group (type all):**
+```json
+{
+  "ia::result": {
+    "id": "CustGroup4"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+**Response 201 — Reference to new customer group (type specific):**
+```json
+{
+  "ia::result": {
+    "id": "CustGrp5"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/customer-group/{key}
+_Get a customer group_
+
+**Response 200 — Get a customer group:**
+```json
+{
+  "ia::result": {
+    "key": "15",
+    "id": "CustGroup8",
+    "name": "Customer Group 8",
+    "description": "JV service customers",
+    "groupType": "specific",
+    "memberFilter": {
+      "object": "accounts-receivable/customer",
+      "filterExpression": "and",
+      "orderBy": [
+        {
+          "id": "asc"
+        }
+      ]
+    },
+    "audit": {
+      "createdDateTime": "2025-03-16T13:26:56Z",
+      "modifiedDateTime": "2025-03-16T13:26:56Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "groupMembers": [
+      {
+        "key": "6",
+        "id": "MR12",
+        "sortOrder": "0",
+        "href": "/objects/accounts-receivable/customer/6"
+      },
+      {
+        "key": "10",
+        "id": "ITEC",
+        "sortOrder": "1",
+        "href": "/objects/accounts-receivable/customer/10"
+      }
+    ],
+    "isDimensionStructure": true,
+    "href": "/objects/accounts-receivable/customer-group/15"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/customer-group/{key}
+_Update a customer group_
+
+**Request example — Update a customer group:**
+```json
+{
+  "description": "Revised JV service customers",
+  "groupMembers": [
+    {
+      "id": "1"
+    },
+    {
+      "id": "2"
+    }
+  ]
+}
+```
+**Response 200 — Reference to updated customer group:**
+```json
+{
+  "ia::result": {
+    "key": "6",
+    "id": "CustGroup4",
+    "href": "/objects/accounts-receivable/customer-group/6"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/customer-group/{key}
+_Delete a customer group_
+
+
+## GET /objects/accounts-receivable/customer-item-cross-reference
+_List customer item cross references_
+
+**Response 200 — List customer item cross references:**
+```json
+{}
+```
+
+## POST /objects/accounts-receivable/customer-item-cross-reference
+_Create a customer item cross reference_
+
+**Request example — Create a customer item cross reference:**
+```json
+{}
+```
+**Response 201 — New customer item cross reference:**
+```json
+{}
+```
+
+## GET /objects/accounts-receivable/customer-item-cross-reference/{key}
+_Get a customer item cross reference_
+
+**Response 200 — Get a customer item cross reference:**
+```json
+{}
+```
+
+## PATCH /objects/accounts-receivable/customer-item-cross-reference/{key}
+_Update a customer item cross reference_
+
+**Request example — Update a customer item cross reference:**
+```json
+{}
+```
+**Response 200 — Updated customer item cross reference:**
+```json
+{}
+```
+
+## DELETE /objects/accounts-receivable/customer-item-cross-reference/{key}
+_Delete a customer item cross reference_
+
+
+## GET /objects/accounts-receivable/customer-message
+_List customer messages_
+
+**Response 200 — List customer messages:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "Active Message",
+      "href": "/objects/accounts-receivable/customer-message/1"
+    },
+    {
+      "key": "2",
+      "id": "Inactive Message",
+      "href": "/objects/accounts-receivable/customer-message/2"
+    },
+    {
+      "key": "3",
+      "id": "Message Balance",
+      "href": "/objects/accounts-receivable/customer-message/3"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## POST /objects/accounts-receivable/customer-message
+_Create a customer message_
+
+**Request example — Create a customer message:**
+```json
+{
+  "id": "New Customer Message",
+  "message": "We look forward to doing business with you!",
+  "status": "active"
+}
+```
+**Response 201 — Reference to new customer message:**
+```json
+{
+  "ia::result": {
+    "key": "1",
+    "id": "New Customer Message",
+    "href": "/objects/accounts-receivable/customer-message/1"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/customer-message/{key}
+_Get a customer message_
+
+**Response 200 — Get a customer message:**
+```json
+{
+  "ia::result": {
+    "key": "15",
+    "id": "Welcome Message",
+    "message": "Welcome to the company!",
+    "status": "active",
+    "audit": {
+      "createdDateTime": "2024-08-16T13:26:56Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedDateTime": "2024-08-16T13:26:56Z",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "href": "/objects/accounts-receivable/customer-message/15"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/customer-message/{key}
+_Update a customer message_
+
+**Request example — Update a customer message:**
+```json
+{
+  "message": "Hello and welcome!"
+}
+```
+**Response 200 — Reference to updated customer message:**
+```json
+{
+  "ia::result": {
+    "key": "15",
+    "id": "Welcome Message",
+    "href": "/objects/accounts-receivable/customer-message/15"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/customer-refund
+_List customer refunds_
+
+**Response 200 — List customer refunds:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "3",
+      "id": "REF1-01",
+      "href": "/objects/accounts-receivable/customer-refund/3"
+    },
+    {
+      "key": "5",
+      "id": "REF1-02",
+      "href": "/objects/accounts-receivable/customer-refund/5"
+    },
+    {
+      "key": "6",
+      "id": "REF1-03",
+      "href": "/objects/accounts-receivable/customer-refund/6"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## POST /objects/accounts-receivable/customer-refund
+_Create a customer refund_
+
+**Request example — Create a customer refund:**
+```json
+{
+  "financialEntity": {
+    "id": "BOA"
+  },
+  "paymentMethod": "eft",
+  "customer": {
+    "id": "1"
+  },
+  "payTo": {
+    "key": "746"
+  },
+  "refundDate": "2024-12-18",
+  "baseCurrency": {
+    "refundAmount": "150"
+  },
+  "refundDetails": [
+    {
+      "negativeInvoice": {
+        "key": "68"
+      },
+      "txnRefundAmount": "50"
+    },
+    {
+      "negativeInvoice": {
+        "key": "69"
+      },
+      "txnRefundAmount": "100"
+    }
+  ]
+}
+```
+**Response 201 — Reference to new customer refund:**
+```json
+{
+  "ia::result": {
+    "key": "70",
+    "href": "/objects/accounts-receivable/customer-refund/70"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/customer-refund-detail
+_List customer refund details_
+
+**Response 200 — List customer refund details:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "1",
+      "href": "/objects/accounts-receivable/customer-refund-detail/1"
+    },
+    {
+      "key": "2",
+      "id": "2",
+      "href": "/objects/accounts-receivable/customer-refund-detail/2"
+    },
+    {
+      "key": "3",
+      "id": "3",
+      "href": "/objects/accounts-receivable/customer-refund-detail/3"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## GET /objects/accounts-receivable/customer-refund-detail/{key}
+_Get customer refund details_
+
+**Response 200 — Get a customer refund detail object:**
+```json
+{
+  "ia::result": {
+    "id": "773",
+    "key": "773",
+    "arPayment": {
+      "id": "2346",
+      "key": "2346",
+      "href": "/objects/accounts-receivable/payment/2346"
+    },
+    "customerRefund": {
+      "id": "2346",
+      "key": "2346",
+      "href": "/objects/accounts-receivable/customer-refund/2346"
+    },
+    "customerRefundLine": {
+      "id": "5741",
+      "key": "5741",
+      "href": "/objects/accounts-receivable/customer-refund-line/5741"
+    },
+    "paymentDate": "2025-03-31",
+    "baseRefundAmount": "222.00",
+    "txnRefundAmount": "222.00",
+    "arAdjustment": {
+      "id": null,
+      "key": null
+    },
+    "arAdjustmentLine": {
+      "id": null,
+      "key": null
+    },
+    "negativeInvoice": {
+      "id": "2345",
+      "key": "2345",
+      "href": "/objects/accounts-receivable/invoice/2345"
+    },
+    "negativeInvoiceLine": {
+      "id": "5739",
+      "key": "5739",
+      "href": "/objects/accounts-receivable/invoice-line/5739"
+    },
+    "arAdvance": {
+      "id": null,
+      "key": null
+    },
+    "arAdvanceLine": {
+      "id": null,
+      "key": null
+    },
+    "overPayment": {
+      "id": null,
+      "key": null
+    },
+    "overPaymentLine": {
+      "id": null,
+      "key": null
+    },
+    "bankCurrency": "USD",
+    "state": "complete",
+    "audit": {
+      "createdDateTime": "2025-04-01T05:16:17Z",
+      "modifiedDateTime": "2025-04-01T05:16:17Z",
+      "createdByUser": {
+        "key": "1",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "href": "/objects/company-config/user/1"
+      }
+    },
+    "href": "/objects/accounts-receivable/customer-refund-detail/773"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/customer-refund-line
+_List customer refund lines_
+
+**Response 200 — List customer refund lines:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "5",
+      "id": "5",
+      "href": "/objects/accounts-receivable/customer-refund-line/5"
+    },
+    {
+      "key": "6",
+      "id": "6",
+      "href": "/objects/accounts-receivable/customer-refund-line/6"
+    },
+    {
+      "key": "7",
+      "id": "7",
+      "href": "/objects/accounts-receivable/customer-refund-line/7"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## GET /objects/accounts-receivable/customer-refund-line/{key}
+_Get a customer refund line_
+
+**Response 200 — Get a customer refund line:**
+```json
+{
+  "ia::result": {
+    "id": "375",
+    "key": "375",
+    "customerRefund": {
+      "id": "70",
+      "key": "70",
+      "href": "/objects/accounts-receivable/customer-refund/70"
+    },
+    "glAccount": {
+      "key": "36",
+      "id": "1200",
+      "name": "Accounts Receivable",
+      "href": "/objects/general-ledger/account/36"
+    },
+    "baseCurrency": {
+      "amount": "50.00",
+      "currency": "USD",
+      "totalPaid": "50.00",
+      "totalSelected": "0.00"
+    },
+    "txnCurrency": {
+      "amount": "50.00",
+      "currency": "USD",
+      "totalPaid": "50.00",
+      "totalSelected": "0.00"
+    },
+    "dimensions": {
+      "location": {
+        "key": "1",
+        "id": "1",
+        "name": "United States of America",
+        "href": "/objects/company-config/location/1"
+      },
+      "customer": {
+        "key": "1",
+        "id": "1",
+        "name": "Power Aerospace Materials",
+        "href": "/objects/accounts-receivable/customer/1"
+      }
+    },
+    "memo": "Refund for overpayment",
+    "exchangeRate": {
+      "date": "2024-12-18",
+      "typeId": null,
+      "rate": 1
+    },
+    "lineNumber": 1,
+    "audit": {
+      "createdDateTime": "2025-03-20T09:01:11Z",
+      "modifiedDateTime": "2025-03-20T09:11:49Z",
+      "createdByUser": {
+        "key": "1",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "href": "/objects/company-config/user/1"
+      }
+    },
+    "href": "/objects/accounts-receivable/customer-refund-line/375"
+  }
+}
+```
+
+## GET /objects/accounts-receivable/customer-refund/{key}
+_Get a customer refund_
+
+**Response 200 — Get a customer refund:**
+```json
+{
+  "ia::result": {
+    "key": "2346",
+    "refundSummary": {
+      "id": "222",
+      "key": "222",
+      "name": "Refunds(Bank-BOA): 2025/03/31 Batch",
+      "href": "/objects/accounts-receivable/summary/222"
+    },
+    "financialEntity": {
+      "id": "BOA",
+      "key": "BOA",
+      "href": "/objects/cash-management/bank-account/BOA"
+    },
+    "state": "voided",
+    "paymentMethod": "eft",
+    "customer": {
+      "key": "1",
+      "id": "1",
+      "name": "Power Aerospace Materials",
+      "href": "/objects/accounts-receivable/customer/1"
+    },
+    "payTo": {
+      "id": "AkashP",
+      "key": "779"
+    },
+    "id": "Adj:0109:DB",
+    "documentNumber": null,
+    "description": null,
+    "refundDate": "2025-03-31",
+    "paymentDate": "2025-03-31",
+    "baseCurrency": {
+      "currency": "USD",
+      "refundAmount": "333.00",
+      "totalPaid": "333.00",
+      "totalDue": "0.00",
+      "totalSelected": "0.00"
+    },
+    "txnCurrency": {
+      "currency": "USD",
+      "refundAmount": "333.00",
+      "totalPaid": "333.00",
+      "totalDue": "0.00",
+      "totalSelected": "0.00"
+    },
+    "exchangeRate": {
+      "date": null,
+      "typeId": null,
+      "rate": null
+    },
+    "bankReconciliationStatus": "inTransit",
+    "bankReconciliationDate": null,
+    "apBill": {
+      "id": "23",
+      "key": "23",
+      "href": "/objects/accounts-payable/bill/23"
+    },
+    "audit": {
+      "createdDateTime": "2025-04-01T05:16:17Z",
+      "modifiedDateTime": "2025-08-06T06:53:17Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      }
+    },
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "lines": [
+      {
+        "id": "5741",
+        "key": "5741",
+        "customerRefund": {
+          "id": "2346",
+          "key": "2346",
+          "href": "/objects/accounts-receivable/customer-refund/2346"
+        },
+        "glAccount": {
+          "key": "36",
+          "id": "1200",
+          "name": "Accounts Receivable",
+          "href": "/objects/general-ledger/account/36"
+        },
+        "baseCurrency": {
+          "amount": "222.00",
+          "currency": "USD",
+          "totalPaid": "222.00",
+          "totalSelected": "0.00"
+        },
+        "txnCurrency": {
+          "amount": "222.00",
+          "currency": "USD",
+          "totalPaid": "222.00",
+          "totalSelected": "0.00"
+        },
+        "dimensions": {
+          "department": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "location": {
+            "key": "1",
+            "id": "1",
+            "name": "United States of America",
+            "href": "/objects/company-config/location/1"
+          },
+          "project": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "customer": {
+            "key": "1",
+            "id": "1",
+            "name": "Power Aerospace Materials",
+            "href": "/objects/accounts-receivable/customer/1"
+          },
+          "vendor": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "employee": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "item": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "class": {
+            "key": null,
+            "id": null,
+            "name": null
+          }
+        },
+        "memo": null,
+        "exchangeRate": {
+          "date": "2025-03-31",
+          "typeId": null,
+          "rate": 1
+        },
+        "lineNumber": 1,
+        "audit": {
+          "createdDateTime": "2025-04-01T05:16:17Z",
+          "modifiedDateTime": "2025-04-10T05:21:48Z",
+          "createdByUser": {
+            "key": "1",
+            "href": "/objects/company-config/user/1"
+          },
+          "modifiedByUser": {
+            "key": "1",
+            "href": "/objects/company-config/user/1"
+          }
+        },
+        "href": "/objects/accounts-receivable/customer-refund-line/5741"
+      },
+      {
+        "id": "5742",
+        "key": "5742",
+        "customerRefund": {
+          "id": "2346",
+          "key": "2346",
+          "href": "/objects/accounts-receivable/customer-refund/2346"
+        },
+        "glAccount": {
+          "key": "156",
+          "id": "2200",
+          "name": "Customer Advances",
+          "href": "/objects/general-ledger/account/156"
+        },
+        "baseCurrency": {
+          "amount": "111.00",
+          "currency": "USD",
+          "totalPaid": "111.00",
+          "totalSelected": "0.00"
+        },
+        "txnCurrency": {
+          "amount": "111.00",
+          "currency": "USD",
+          "totalPaid": "111.00",
+          "totalSelected": "0.00"
+        },
+        "dimensions": {
+          "department": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "location": {
+            "key": "1",
+            "id": "1",
+            "name": "United States of America",
+            "href": "/objects/company-config/location/1"
+          },
+          "project": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "customer": {
+            "key": "1",
+            "id": "1",
+            "name": "Power Aerospace Materials",
+            "href": "/objects/accounts-receivable/customer/1"
+          },
+          "vendor": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "employee": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "item": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "class": {
+            "key": null,
+            "id": null,
+            "name": null
+          }
+        },
+        "memo": null,
+        "exchangeRate": {
+          "date": "2025-03-31",
+          "typeId": null,
+          "rate": 1
+        },
+        "lineNumber": 2,
+        "audit": {
+          "createdDateTime": "2025-04-01T05:16:17Z",
+          "modifiedDateTime": "2025-04-10T05:21:48Z",
+          "createdByUser": {
+            "key": "1",
+            "href": "/objects/company-config/user/1"
+          },
+          "modifiedByUser": {
+            "key": "1",
+            "href": "/objects/company-config/user/1"
+          }
+        },
+        "href": "/objects/accounts-receivable/customer-refund-line/5742"
+      }
+    ],
+    "refundDetails": [
+      {
+        "id": "773",
+        "key": "773",
+        "arPayment": {
+          "id": "2346",
+          "key": "2346",
+          "href": "/objects/accounts-receivable/payment/2346"
+        },
+        "customerRefund": {
+          "id": "2346",
+          "key": "2346",
+          "href": "/objects/accounts-receivable/customer-refund/2346"
+        },
+        "customerRefundLine": {
+          "id": "5741",
+          "key": "5741",
+          "href": "/objects/accounts-receivable/customer-refund-line/5741"
+        },
+        "paymentDate": "2025-03-31",
+        "baseRefundAmount": "222.00",
+        "txnRefundAmount": "222.00",
+        "arAdjustment": {
+          "id": null,
+          "key": null
+        },
+        "arAdjustmentLine": {
+          "id": null,
+          "key": null
+        },
+        "negativeInvoice": {
+          "id": "2345",
+          "key": "2345",
+          "href": "/objects/accounts-receivable/invoice/2345"
+        },
+        "negativeInvoiceLine": {
+          "id": "5739",
+          "key": "5739",
+          "href": "/objects/accounts-receivable/invoice-line/5739"
+        },
+        "arAdvance": {
+          "id": null,
+          "key": null
+        },
+        "arAdvanceLine": {
+          "id": null,
+          "key": null
+        },
+        "overPayment": {
+          "id": null,
+          "key": null
+        },
+        "overPaymentLine": {
+          "id": null,
+          "key": null
+        },
+        "bankCurrency": "USD",
+        "state": "complete",
+        "audit": {
+          "createdDateTime": "2025-04-01T05:16:17Z",
+          "modifiedDateTime": "2025-04-01T05:16:17Z",
+          "createdByUser": {
+            "key": "1",
+            "href": "/objects/company-config/user/1"
+          },
+          "modifiedByUser": {
+            "key": "1",
+            "href": "/objects/company-config/user/1"
+          }
+        },
+        "href": "/objects/accounts-receivable/customer-refund-detail/773"
+      },
+      {
+        "id": "774",
+        "key": "774",
+        "arPayment": {
+          "id": "2346",
+          "key": "2346",
+          "href": "/objects/accounts-receivable/payment/2346"
+        },
+        "customerRefund": {
+          "id": "2346",
+          "key": "2346",
+          "href": "/objects/accounts-receivable/customer-refund/2346"
+        },
+        "customerRefundLine": {
+          "id": "5742",
+          "key": "5742",
+          "href": "/objects/accounts-receivable/customer-refund-line/5742"
+        },
+        "paymentDate": "2025-03-31",
+        "baseRefundAmount": "111.00",
+        "txnRefundAmount": "111.00",
+        "arAdjustment": {
+          "id": null,
+          "key": null
+        },
+        "arAdjustmentLine": {
+          "id": null,
+          "key": null
+        },
+        "negativeInvoice": {
+          "id": null,
+          "key": null
+        },
+        "negativeInvoiceLine": {
+          "id": null,
+          "key": null
+        },
+        "arAdvance": {
+          "id": "2341",
+          "key": "2341",
+          "href": "/objects/accounts-receivable/advance/2341"
+        },
+        "arAdvanceLine": {
+          "id": "5731",
+          "key": "5731",
+          "href": "/objects/accounts-receivable/advance-line/5731"
+        },
+        "overPayment": {
+          "id": null,
+          "key": null
+        },
+        "overPaymentLine": {
+          "id": null,
+          "key": null
+        },
+        "bankCurrency": "USD",
+        "state": "complete",
+        "audit": {
+          "createdDateTime": "2025-04-01T05:16:17Z",
+          "modifiedDateTime": "2025-04-01T05:16:17Z",
+          "createdByUser": {
+            "key": "1",
+            "href": "/objects/company-config/user/1"
+          },
+          "modifiedByUser": {
+            "key": "1",
+            "href": "/objects/company-config/user/1"
+          }
+        },
+        "href": "/objects/accounts-receivable/customer-refund-detail/774"
+      }
+    ],
+    "href": "/objects/accounts-receivable/customer-refund/2346"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/customer-refund/{key}
+_Update a customer refund_
+
+**Request example — Update a customer refund:**
+```json
+{
+  "financialEntity": {
+    "id": "BOA"
+  },
+  "paymentMethod": "eft",
+  "customer": {
+    "id": "1"
+  },
+  "payTo": {
+    "id": "Harpreet"
+  },
+  "refundDate": "2024-12-18",
+  "baseCurrency": {
+    "refundAmount": "10"
+  },
+  "refundDetails": [
+    {
+      "negativeInvoice": {
+        "key": "65"
+      },
+      "txnRefundAmount": "5"
+    },
+    {
+      "negativeInvoice": {
+        "key": "66"
+      },
+      "txnRefundAmount": "5"
+    }
+  ]
+}
+```
+**Response 200 — Reference to updated customer refund:**
+```json
+{
+  "ia::result": {
+    "key": "67",
+    "href": "/objects/accounts-receivable/customer-refund/67"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/customer-refund/{key}
+_Delete a customer refund_
+
+
+## GET /objects/accounts-receivable/customer-restricted-department
+_List customer restricted departments_
+
+**Response 200 — List customer restricted departments:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "76",
+      "id": "76",
+      "href": "/objects/accounts-receivable/customer-restricted-department/76"
+    },
+    {
+      "key": "77",
+      "id": "77",
+      "href": "/objects/accounts-receivable/customer-restricted-department/77"
+    },
+    {
+      "key": "78",
+      "id": "78",
+      "href": "/objects/accounts-receivable/customer-restricted-department/78"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## GET /objects/accounts-receivable/customer-restricted-department/{key}
+_Get a customer restricted department_
+
+**Response 200 — Get a customer restricted department:**
+```json
+{
+  "ia::result": {
+    "key": "77",
+    "id": "77",
+    "department": {
+      "key": "24",
+      "id": "DES",
+      "href": "/objects/company-config/department/24"
+    },
+    "departmentGroup": {
+      "key": null,
+      "id": null
+    },
+    "customer": {
+      "key": "330",
+      "id": "D10",
+      "href": "/objects/accounts-receivable/customer/330"
+    },
+    "href": "/objects/accounts-receivable/customer-restricted-department/77"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/customer-restricted-location
+_List customer restricted locations_
+
+**Response 200 — List customer restricted locations:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "44",
+      "id": "44",
+      "href": "/objects/accounts-receivable/customer-restricted-location/44"
+    },
+    {
+      "key": "40",
+      "id": "40",
+      "href": "/objects/accounts-receivable/customer-restricted-location/40"
+    },
+    {
+      "key": "41",
+      "id": "41",
+      "href": "/objects/accounts-receivable/customer-restricted-location/41"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## GET /objects/accounts-receivable/customer-restricted-location/{key}
+_Get a customer restricted location_
+
+**Response 200 — Get a customer restricted location:**
+```json
+{
+  "ia::result": {
+    "key": "40",
+    "id": "40",
+    "location": {
+      "key": "3",
+      "id": "3",
+      "href": "/objects/company-config/location/3"
+    },
+    "locationGroup": {
+      "key": null,
+      "id": null
+    },
+    "customer": {
+      "key": "2",
+      "id": "LSM01",
+      "href": "/objects/accounts-receivable/customer/2"
+    },
+    "href": "/objects/accounts-receivable/customer-restricted-location/40"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/customer-total
+_List customer totals_
+
+**Response 200 — List customer totals:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "41",
+      "id": "15",
+      "href": "/objects/accounts-receivable/customer-total/41"
+    },
+    {
+      "key": "44",
+      "id": "6",
+      "href": "/objects/accounts-receivable/customer-total/44"
+    },
+    {
+      "key": "46",
+      "id": "3",
+      "href": "/objects/accounts-receivable/customer-total/46"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/accounts-receivable/customer-total/{key}
+_Get a customer total_
+
+**Response 200 — Get a customer total:**
+```json
+{
+  "ia::result": {
+    "key": "43",
+    "customer": {
+      "id": "DS",
+      "name": "Decal Solutions",
+      "key": "5",
+      "href": "/objects/accounts-receivable/customer/5"
+    },
+    "entity": {
+      "id": "NYC",
+      "name": "New York City"
+    },
+    "totalDue": "123.11",
+    "id": "5",
+    "href": "/objects/accounts-receivable/customer-total/43"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/customer-type
+_List customer types_
+
+**Response 200 — List customer types:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "Account Manager",
+      "href": "/objects/accounts-receivable/customer-type/1"
+    },
+    {
+      "key": "2",
+      "id": "Auto ACH",
+      "href": "/objects/accounts-receivable/customer-type/2"
+    },
+    {
+      "key": "3",
+      "id": "Auto CC Payment",
+      "href": "/objects/accounts-receivable/customer-type/3"
+    },
+    {
+      "key": "4",
+      "id": "Credit Card",
+      "href": "/objects/accounts-receivable/customer-type/4"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 4,
+    "start": 1,
+    "pageSize": 100,
+    "next": 0,
+    "previous": 0
+  }
+}
+```
+
+## POST /objects/accounts-receivable/customer-type
+_Create a customer type_
+
+**Request example — Create a customer type:**
+```json
+{
+  "id": "Top Level Customer",
+  "status": "active"
+}
+```
+**Response 201 — Create a customer type:**
+```json
+{
+  "ia::result": {
+    "key": "9",
+    "id": "Client Start Trial",
+    "href": "/objects/accounts-receivable/customer-type/9"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/accounts-receivable/customer-type/{key}
+_Get a customer type_
+
+**Response 200 — Get a customer type:**
+```json
+{
+  "ia::result": {
+    "id": "Client Start Trial",
+    "parent": {
+      "key": "1",
+      "id": "Account Manager"
+    },
+    "status": "active",
+    "key": "9",
+    "audit": {
+      "createdDateTime": "2022-01-07T06:18:51Z",
+      "modifiedDateTime": "2022-01-07T06:18:51Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "href": "/objects/accounts-receivable/customer-type/9"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/customer-type/{key}
+_Update a customer type_
+
+**Request example — Update a customer type:**
+```json
+{
+  "status": "inactive"
+}
+```
+**Request example — Update a parent customer type:**
+```json
+{
+  "parent": {
+    "id": "Top Level Customer"
+  },
+  "status": "inactive"
+}
+```
+**Response 200 — Update a customer type:**
+```json
+{
+  "ia::result": {
+    "key": "2",
+    "id": "Auto ACH",
+    "href": "/objects/accounts-receivable/customer-type/2"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/customer-type/{key}
+_Delete a customer type_
+
+
+## GET /objects/accounts-receivable/customer/{key}
+_Get a customer_
+
+**Response 200 — Get a customer:**
+```json
+{
+  "ia::result": {
+    "key": "1",
+    "id": "PAMats",
+    "name": "Power Aerospace Materials",
+    "parent": {
+      "key": "2055",
+      "id": "12",
+      "name": "12",
+      "href": "/objects/accounts-receivable/customer/2055"
+    },
+    "contacts": {
+      "default": {
+        "mailingAddress": {
+          "addressLine1": "1120 Harbor Bay Pkwy",
+          "addressLine2": "St John's street",
+          "addressLine3": "Double cross road",
+          "city": "Sacramento",
+          "country": "United States",
+          "postCode": "95119-1208",
+          "state": "CA"
+        },
+        "tax": {
+          "group": {
+            "key": "7",
+            "id": "Auto Contact Tax",
+            "href": "/objects/tax/contact-tax-group/7"
+          },
+          "solution": {
+            "key": "7",
+            "id": "Australia - GST",
+            "href": "/objects/tax/tax-solution/7"
+          },
+          "isTaxable": true
+        },
+        "URL1": "www.google.com",
+        "URL2": "www.google.com",
+        "companyName": "Logic Solutions",
+        "email1": "user@domain.com",
+        "email2": "user2@domain.com",
+        "fax": "(925) 123-4567",
+        "firstName": "Sandy",
+        "id": "Customer 1(CCust1)",
+        "lastName": "Tieber",
+        "middleName": "E",
+        "mobile": "(925) 123-4567",
+        "pager": "(925) 123-4567",
+        "phone1": "(408) 395-2539",
+        "phone2": "(408) 395-2540",
+        "printAs": "Mr. Sandy Tieber",
+        "key": "394",
+        "showInContactList": true,
+        "href": "/objects/company-config/contact/394"
+      },
+      "primary": {
+        "id": "Aron",
+        "key": "106",
+        "href": "/objects/company-config/contact/106"
+      },
+      "shipTo": {
+        "id": "Alex",
+        "key": "107",
+        "href": "/objects/company-config/contact/107"
+      },
+      "billTo": {
+        "id": "Ben",
+        "key": "108",
+        "href": "/objects/company-config/contact/108"
+      }
+    },
+    "term": {
+      "id": "15DaysExtToEOM",
+      "key": "26",
+      "href": "/objects/accounts-receivable/term/26"
+    },
+    "salesRepresentative": {
+      "id": "EM M",
+      "name": "Aaron",
+      "key": "89",
+      "href": "/objects/company-config/employee/89"
+    },
+    "customerResaleNumber": "123456789",
+    "taxId": "123456803",
+    "creditLimit": 20000,
+    "totalDue": "99999.99",
+    "notes": "Sample Notes",
+    "accountLabel": {
+      "id": "Pledges",
+      "key": "9"
+    },
+    "defaultRevenueGLAccount": {
+      "id": "2080.06",
+      "name": "Germany(France) - Inter Entity Payable",
+      "key": "136",
+      "href": "/objects/general-ledger/account/136"
+    },
+    "lastInvoiceCreatedDate": "2021-10-12",
+    "lastStatementGeneratedDate": "2023-02-28",
+    "deliveryOptions": "print",
+    "territory": {
+      "id": "23456",
+      "name": "North East",
+      "key": "23",
+      "href": "/objects/accounts-receivable/territory/23"
+    },
+    "shippingMethod": {
+      "id": "Fedex",
+      "key": "3",
+      "href": "/objects/accounts-receivable/shipping-method/3"
+    },
+    "customerType": {
+      "id": "DOCS",
+      "key": "13",
+      "href": "/objects/accounts-receivable/customer-type/13"
+    },
+    "accountGroup": {
+      "key": "10",
+      "id": "Auto CGL Group",
+      "href": "/objects/order-entry/customer-gl-group/10"
+    },
+    "priceSchedule": {
+      "id": "101",
+      "key": "101",
+      "href": "/objects/purchasing/price-schedule/101"
+    },
+    "discountPercent": "10",
+    "priceList": {
+      "id": "Base Price List",
+      "key": "1",
+      "href": "/objects/order-entry/price-list/1"
+    },
+    "currency": "USD",
+    "status": "active",
+    "isOneTimeUse": false,
+    "customerMessage": {
+      "key": "10",
+      "id": "welcome message",
+      "message": "Welcome to Power Aerospace Materials",
+      "href": "/objects/accounts-receivable/customer-message/10"
+    },
+    "isOnHold": false,
+    "overridePriceList": "customer",
+    "enableOnlineCardPayment": true,
+    "enableOnlineACHPayment": true,
+    "audit": {
+      "modifiedDateTime": "2023-12-14T11:31:06Z",
+      "createdDateTime": "2018-07-28T19:22:31Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "customerRestriction": "restricted",
+    "overrideOffsetGLAccount": {
+      "id": "1120",
+      "name": "Pledges Receivable"
+    },
+    "emailOptIn": false,
+    "customerAccountHealth": {
+      "healthScore": 99,
+      "healthStatus": "healthy",
+      "churnRisk": false
+    },
+    "webURL": "https://intacct.com/acct/ur.phtml?.r=ijVqUVXUX3TzexR2EcQNU3U7RuBoTavvJ5Pvp9qZZG0",
+    "contactList": [
+      {
+        "id": "150",
+        "key": "150",
+        "categoryName": "ship",
+        "audit": {
+          "modifiedDateTime": "2023-12-14T11:31:06Z",
+          "createdDateTime": "2022-06-07T12:37:37Z",
+          "createdByUser": {
+            "key": "1",
+            "id": "Admin",
+            "href": "/objects/company-config/user/1"
+          },
+          "createdBy": "1",
+          "modifiedByUser": {
+            "key": "1",
+            "id": "Admin",
+            "href": "/objects/company-config/user/1"
+          },
+          "modifiedBy": "1"
+        },
+        "customer": {
+          "key": "1",
+          "id": "1",
+          "href": "/objects/accounts-receivable/customer/1"
+        },
+        "contact": {
+          "key": "106",
+          "id": "Aron",
+          "href": "/objects/company-config/contact/106"
+        },
+        "href": "/objects/accounts-receivable/customer-contact/150"
+      }
+    ],
+    "customerEmailTemplates": [
+      {
+        "id": "8",
+        "key": "8",
+        "customer": {
+          "key": "1",
+          "id": "1",
+          "href": "/objects/accounts-receivable/customer/1"
+        },
+        "txnDefinitionName": "Sales Quote",
+        "emailTemplate": {
+          "id": "4",
+          "key": "4",
+          "name": "OETemplate",
+          "href": "/objects/company-config/email-template/4"
+        },
+        "templateType": "soDocument",
+        "href": "/objects/accounts-receivable/customer-email-template/8"
+      }
+    ],
+    "restrictedDepartments": [
+      {
+        "key": "1",
+        "id": "Eng",
+        "objectType": "CUSTOMER",
+        "department": {
+          "key": "13",
+          "id": "3",
+          "href": "/objects/company-config/department/3"
+        },
+        "departmentGroup": {
+          "key": null,
+          "id": null
+        },
+        "href": "/objects/accounts-receivable/customer-restricted-department/1"
+      }
+    ],
+    "restrictedLocations": [
+      {
+        "key": "142",
+        "id": "Nov7-02",
+        "objectType": "CUSTOMER",
+        "location": {
+          "key": "3",
+          "id": "3",
+          "href": "/objects/company-config/location/3"
+        },
+        "locationGroup": {
+          "key": null,
+          "id": null
+        },
+        "href": "/objects/accounts-receivable/customer-restricted-location/142"
+      }
+    ],
+    "href": "/objects/accounts-receivable/customer/1"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+**Response 200 — Get a customer with country set to France for the primary contact:**
+```json
+{
+  "ia::result": {
+    "key": "1",
+    "id": "1",
+    "name": "Power Aerospace Materials France",
+    "parent": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "contacts": {
+      "default": {
+        "electronicInvoiceDetails": {
+          "legalCategory": "24 Fiduciary",
+          "mainActivity": "10.3 Transformation and conservation of fruits and vegetables",
+          "registeredCapital": "37 000",
+          "typeOfCompany": "03 Intermediate sized enterprises",
+          "valueAddedTaxRegime": "Monthly"
+        },
+        "mailingAddress": {
+          "addressLine1": "1120 Harbor Bay Pkwy",
+          "addressLine2": "St John's street",
+          "addressLine3": "Double cross road",
+          "city": "Paris",
+          "country": "France",
+          "postCode": "95119-1208",
+          "state": null
+        },
+        "tax": {
+          "group": {
+            "key": "7",
+            "id": "Auto Contact Tax",
+            "href": "/objects/tax/contact-tax-group/7"
+          },
+          "solution": {
+            "key": null,
+            "id": null,
+            "href": null
+          },
+          "isTaxable": true
+        },
+        "URL1": "www.google.com",
+        "URL2": "www.google.com",
+        "companyName": "Logic Solutions",
+        "email1": "user@domain.com",
+        "email2": "user2@domain.com",
+        "fax": "(925) 123-4567",
+        "firstName": "Sandy",
+        "id": "Customer 1(CCust1)",
+        "internationalTaxId": "123",
+        "lastName": "Tieber",
+        "middleName": "E",
+        "mobile": "(925) 123-4567",
+        "pager": "(925) 123-4567",
+        "phone1": "(408) 395-2539",
+        "phone2": "(408) 395-2540",
+        "printAs": "Mr. Sandy Tieber",
+        "key": "394",
+        "showInContactList": true,
+        "href": "/objects/company-config/contact/394"
+      },
+      "primary": {
+        "id": "Aron",
+        "key": "106",
+        "href": "/objects/company-config/contact/106"
+      },
+      "shipTo": {
+        "id": "Alex",
+        "key": "107",
+        "href": "/objects/company-config/contact/107"
+      },
+      "billTo": {
+        "id": "Ben",
+        "key": "108",
+        "href": "/objects/company-config/contact/108"
+      }
+    },
+    "term": {
+      "id": "15DaysExtToEOM",
+      "key": "26",
+      "href": "/objects/accounts-receivable/term/26"
+    },
+    "salesRepresentative": {
+      "id": "EM M",
+      "name": "Aaron",
+      "key": "89",
+      "href": "/objects/company-config/employee/89"
+    },
+    "customerResaleNumber": "123456789",
+    "taxId": "123456803",
+    "creditLimit": 20000,
+    "totalDue": "99999.99",
+    "notes": "Sample Notes",
+    "accountLabel": {
+      "id": "Pledges",
+      "key": "9"
+    },
+    "defaultRevenueGLAccount": {
+      "id": "2080.06",
+      "name": "Germany(France) - Inter Entity Payable",
+      "key": "136",
+      "href": "/objects/general-ledger/account/136"
+    },
+    "lastInvoiceCreatedDate": "2021-10-12",
+    "lastStatementGeneratedDate": "2023-02-28",
+    "deliveryOptions": "print",
+    "territory": {
+      "id": "23456",
+      "name": "North East",
+      "key": "23",
+      "href": "/objects/accounts-receivable/territory/23"
+    },
+    "shippingMethod": {
+      "id": "Fedex",
+      "key": "3",
+      "href": "/objects/accounts-receivable/shipping-method/3"
+    },
+    "customerType": {
+      "id": "DOCS",
+      "key": "13",
+      "href": "/objects/accounts-receivable/customer-type/13"
+    },
+    "accountGroup": {
+      "key": "10",
+      "id": "Auto CGL Group",
+      "href": "/objects/order-entry/customer-gl-group/10"
+    },
+    "priceSchedule": {
+      "id": "101",
+      "key": "101",
+      "href": "/objects/purchasing/price-schedule/101"
+    },
+    "discountPercent": "10",
+    "priceList": {
+      "id": "Base Price List",
+      "key": "1",
+      "href": "/objects/order-entry/price-list/1"
+    },
+    "currency": "USD",
+    "status": "active",
+    "isOneTimeUse": false,
+    "customerMessage": {
+      "key": "10",
+      "id": "welcome message",
+      "message": "Welcome to Power Aerospace Materials",
+      "href": "/objects/accounts-receivable/customer-message/10"
+    },
+    "isOnHold": false,
+    "overridePriceList": "Customer",
+    "enableOnlineCardPayment": true,
+    "enableOnlineACHPayment": true,
+    "audit": {
+      "modifiedDateTime": "2023-12-14T11:31:06Z",
+      "createdDateTime": "2018-07-28T19:22:31Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "restrictions": {
+      "restrictionType": "restricted",
+      "locations": [
+        "North America--North America",
+        "GM--Gulf of Mexico",
+        "BG--Bangalore",
+        "NY--New York"
+      ],
+      "departments": [
+        "1st Level Depts--Level 1 Departments",
+        "2nd Level Depts--Level 2 Departments"
+      ]
+    },
+    "overrideOffsetGLAccount": {
+      "id": "1120",
+      "name": "Pledges Receivable"
+    },
+    "emailOptIn": false,
+    "customerAccountHealth": {
+      "healthScore": 99,
+      "healthStatus": "healthy",
+      "churnRisk": false
+    },
+    "webURL": "https://intacct.com/acct/ur.phtml?.r=ijVqUVXUX3TzexR2EcQNU3U7RuBoTavvJ5Pvp9qZZG0",
+    "contactList": [
+      {
+        "id": "150",
+        "key": "150",
+        "categoryName": "ship",
+        "audit": {
+          "modifiedDateTime": "2023-12-14T11:31:06Z",
+          "createdDateTime": "2022-06-07T12:37:37Z",
+          "createdByUser": {
+            "key": "1",
+            "id": "Admin",
+            "href": "/objects/company-config/user/1"
+          },
+          "createdBy": "1",
+          "modifiedByUser": {
+            "key": "1",
+            "id": "Admin",
+            "href": "/objects/company-config/user/1"
+          },
+          "modifiedBy": "1"
+        },
+        "customer": {
+          "key": "1",
+          "id": "1",
+          "href": "/objects/accounts-receivable/customer/1"
+        },
+        "contact": {
+          "key": "106",
+          "id": "Aron",
+          "href": "/objects/company-config/contact/106"
+        },
+        "href": "/objects/accounts-receivable/customer-contact/150"
+      }
+    ],
+    "customerEmailTemplates": [
+      {
+        "id": "8",
+        "key": "8",
+        "customer": {
+          "key": "1",
+          "id": "1",
+          "href": "/objects/accounts-receivable/customer/1"
+        },
+        "txnDefinitionName": "Sales Quote",
+        "emailTemplate": {
+          "id": "4",
+          "key": "4",
+          "name": "OETemplate",
+          "href": "/objects/company-config/email-template/4"
+        },
+        "templateType": "soDocument",
+        "href": "/objects/accounts-receivable/customer-email-template/8"
+      }
+    ],
+    "href": "/objects/accounts-receivable/customer/1"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/customer/{key}
+_Update a customer_
+
+**Request example — Update a single value:**
+```json
+{
+  "creditLimit": 10000
+}
+```
+**Response 200 — Updated customer:**
+```json
+{
+  "ia::result": {
+    "key": "34",
+    "id": "CUST-100",
+    "href": "/objects/accounts-receivable/payment/34"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/customer/{key}
+_Delete a customer_
+
+
+## GET /objects/accounts-receivable/delivery-history
+_List delivery histories_
+
+**Response 200 — List delivery histories:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "1",
+      "href": "/objects/accounts-receivable/delivery-history/1"
+    },
+    {
+      "key": "2",
+      "id": "2",
+      "href": "/objects/accounts-receivable/delivery-history/2"
+    },
+    {
+      "key": "3",
+      "id": "3",
+      "href": "/objects/accounts-receivable/delivery-history/3"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 3,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/accounts-receivable/delivery-history/{key}
+_Get a delivery history_
+
+**Response 200 — Get a delivery history:**
+```json
+{
+  "ia::result": {
+    "key": "4",
+    "id": "4",
+    "object": "invoice",
+    "entity": "CBTI",
+    "module": "OE",
+    "documentDate": "2025-01-31",
+    "deliveryDate": "2025-02-10",
+    "deliveryMethod": "print",
+    "data": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<fo:root xmlns:fo=\"http://www.w3.org/1999/XSL/Format\" xmlns:svg=\"http://www.w3.org/2000/svg\"><fo:layout-master-set><fo:simple-page-master margin-right=\"0.60in\" margin-left=\"0.60in\" margin-bottom=\"0in\" margin-top=\"0.3in\" page-width=\"8.5in\" page-height=\"11.0in\" master-name=\"page\"><fo:region-before extent=\"2.5in\"/><fo:region-body overflow=\"auto\" margin-top=\"2.9in\" margin-bottom=\"5.47in\"/><fo:region-after extent=\"5.47in\"/></fo:simple-page-master></fo:layout-master-set><fo:page-sequence master-reference=\"page\"><fo:static-content flow-name=\"xsl-region-before\"><fo:block-container height=\"0.6in\" width=\"2.75in\" top=\"0in\" left=\"0in\" position=\"absolute\"><fo:block/></fo:block-container><fo:block-container height=\"0.7in\" width=\"4.5in\" top=\"0.75in\" left=\"0in\" position=\"absolute\"><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\" font-weight=\"bold\">QA Std Co.,INC. -- Jul 28 2018,</fo:block><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\">125, S Market Street</fo:block><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\">125, S Market Street</fo:block><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\">San Jose, CA<fo:inline color=\"#ffffff\">0</fo:inline>95113</fo:block><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\"/></fo:block-container><fo:block-container height=\"0.3in\" width=\"2.0in\" top=\"1.50in\" left=\"0in\" position=\"absolute\"><fo:block text-align=\"start\" padding=\"5pt\" space-after.optimum=\"3pt\" line-height=\"11pt\" font-family=\"Helvetica\" font-weight=\"bold\" font-size=\"10pt\">Bill to:</fo:block></fo:block-container><fo:block-container height=\"0.9in\" width=\"3.5in\" top=\"1.56in\" left=\"0.52in\" position=\"absolute\"><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\">Berkeley Technology Inc</fo:block><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\">Attn: Mr. Dennis Ahern</fo:block><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\">13112 Christy St</fo:block><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\">Ste 325</fo:block><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\">San Francisco, CA<fo:inline color=\"#ffffff\">0</fo:inline>94945-5000</fo:block><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\">United States</fo:block></fo:block-container><fo:block-container height=\"0.6in\" width=\"6.5in\" top=\"2.42in\" left=\"0in\" position=\"absolute\"><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\">Intacct. A Better Way to Run Your Business</fo:block></fo:block-container><fo:block-container height=\"1.2in\" width=\"2.0in\" top=\"0.8in\" left=\"5.05in\" position=\"absolute\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"8pt\"><fo:table table-layout=\"fixed\"><fo:table-column column-width=\"65pt\"/><fo:table-column column-width=\"3pt\"/><fo:table-column column-width=\"60pt\"/><fo:table-body><fo:table-row><fo:table-cell><fo:block text-align=\"start\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tINVOICE #\n                                                        </fo:block></fo:table-cell><fo:table-cell><fo:block>:</fo:block></fo:table-cell><fo:table-cell><fo:block text-align=\"end\">In-10</fo:block></fo:table-cell></fo:table-row><fo:table-row/><fo:table-row><fo:table-cell><fo:block text-align=\"start\">DATE</fo:block></fo:table-cell><fo:table-cell><fo:block>:</fo:block></fo:table-cell><fo:table-cell><fo:block text-align=\"end\">01/31/2020</fo:block></fo:table-cell></fo:table-row><fo:table-row><fo:table-cell><fo:block text-align=\"start\" font-weight=\"bold\">DUE DATE</fo:block></fo:table-cell><fo:table-cell><fo:block>:</fo:block></fo:table-cell><fo:table-cell><fo:block text-align=\"end\" font-weight=\"bold\">02/11/2020</fo:block></fo:table-cell></fo:table-row><fo:table-row><fo:table-cell><fo:block text-align=\"start\" font-weight=\"bold\" color=\"white\">00</fo:block></fo:table-cell><fo:table-cell><fo:block color=\"white\">:</fo:block></fo:table-cell><fo:table-cell><fo:block text-align=\"end\" font-weight=\"bold\" color=\"white\">00</fo:block></fo:table-cell></fo:table-row><fo:table-row><fo:table-cell><fo:block text-align=\"start\">TOTAL AMOUNT</fo:block></fo:table-cell><fo:table-cell><fo:block>:</fo:block></fo:table-cell><fo:table-cell><fo:block text-align=\"end\">$300.00</fo:block></fo:table-cell></fo:table-row><fo:table-row><fo:table-cell><fo:block text-align=\"start\" font-weight=\"bold\">TOTAL DUE</fo:block></fo:table-cell><fo:table-cell><fo:block>:</fo:block></fo:table-cell><fo:table-cell><fo:block text-align=\"end\" font-weight=\"bold\">$300.00</fo:block></fo:table-cell></fo:table-row></fo:table-body></fo:table></fo:block-container><fo:block-container height=\"0.61in\" width=\"2.6in\" top=\"0.2in\" left=\"4.60in\" position=\"absolute\"><fo:block><fo:instream-foreign-object><svg:svg width=\"2.6in\" height=\"0.61in\"><svg:rect x=\"0.15in\" y=\"0in\" width=\"2.3in\" height=\"0.3in\" style=\"fill: #000000\"/><svg:circle cx=\"0.15in\" cy=\"0.15in\" r=\"0.15in\" style=\"fill: #000000\"/><svg:circle cx=\"2.45in\" cy=\"0.15in\" r=\"0.15in\" style=\"fill: #000000\"/></svg:svg></fo:instream-foreign-object></fo:block></fo:block-container><fo:block-container height=\"0.61in\" width=\"2.3in\" top=\".28in\" left=\"4.8in\" position=\"absolute\"><fo:block text-align=\"center\" color=\"#ffffff\" line-height=\"16pt\" font-family=\"Helvetica\" font-size=\"11pt\" font-weight=\"bold\">I N V O I C E</fo:block></fo:block-container><fo:block-container height=\"0.2in\" width=\"1.61in\" top=\"2.61in\" left=\"0.19in\" position=\"absolute\"><fo:block><fo:instream-foreign-object><svg:svg width=\"1.61in\" height=\"0.2in\"><svg:circle cx=\"0.08in\" cy=\"0.08in\" r=\"0.08in\" style=\"fill: #000000\"/><svg:rect x=\"0.08in\" y=\"0in\" width=\"1.44in\" height=\"0.16in\" style=\"fill: #000000\"/><svg:circle cx=\"1.52in\" cy=\"0.08in\" r=\"0.08in\" style=\"fill: #000000\"/></svg:svg></fo:instream-foreign-object></fo:block></fo:block-container><fo:block-container height=\"0.2in\" width=\"1.3in\" top=\"2.61in\" left=\"0.28in\" position=\"absolute\"><fo:block text-align=\"start\" color=\"#ffffff\" line-height=\"14pt\" font-family=\"Helvetica\" font-size=\"7pt\" font-weight=\"bold\">\n\t\t\t\t\t\t\tDESCRIPTION / MEMO\n                                </fo:block></fo:block-container><fo:block-container height=\"0.2in\" width=\"1.61in\" top=\"2.61in\" left=\"6.35in\" position=\"absolute\"><fo:block><fo:instream-foreign-object><svg:svg width=\"1.61in\" height=\"0.2in\"><svg:circle cx=\"0.08in\" cy=\"0.08in\" r=\"0.08in\" style=\"fill: #000000\"/><svg:rect x=\"0.08in\" y=\"0in\" width=\"0.64in\" height=\"0.16in\" style=\"fill: #000000\"/><svg:circle cx=\"0.72in\" cy=\"0.08in\" r=\"0.08in\" style=\"fill: #000000\"/></svg:svg></fo:instream-foreign-object></fo:block></fo:block-container><fo:block-container height=\"0.2in\" width=\"1.3in\" top=\"2.63in\" left=\"6.55in\" position=\"absolute\"><fo:block text-align=\"start\" color=\"#ffffff\" line-height=\"13pt\" font-family=\"Helvetica\" font-size=\"7pt\" font-weight=\"bold\">\n\t\t\t\t\t\t\tAMOUNT\n                                </fo:block></fo:block-container><fo:block-container height=\"0.4in\" width=\"0.001in\" top=\"2.7in\" left=\"0in\" position=\"absolute\"><fo:block><fo:instream-foreign-object><svg:svg width=\"0.001in\" height=\"0.4in\"><svg:rect x=\"0in\" y=\"0in\" width=\"0.001in\" height=\"0.18in\"/></svg:svg></fo:instream-foreign-object></fo:block></fo:block-container><fo:block-container height=\"0.4in\" width=\"0.001in\" top=\"2.7in\" left=\"7.197in\" position=\"absolute\"><fo:block><fo:instream-foreign-object><svg:svg width=\"0.001in\" height=\"0.4in\"><svg:rect x=\"0in\" y=\"0in\" width=\"0.001in\" height=\"0.18in\"/></svg:svg></fo:instream-foreign-object></fo:block></fo:block-container><fo:block-container height=\"0.4in\" width=\"0.001in\" top=\"2.7in\" left=\"6.297in\" position=\"absolute\"><fo:block><fo:instream-foreign-object><svg:svg width=\"0.001in\" height=\"0.4in\"><svg:rect x=\"0in\" y=\"0in\" width=\"0.001in\" height=\"0.18in\"/></svg:svg></fo:instream-foreign-object></fo:block></fo:block-container><fo:block-container height=\"0.2in\" width=\"0.2in\" top=\"2.58in\" left=\"0in\" position=\"absolute\"><fo:block><fo:leader leader-pattern=\"rule\" rule-thickness=\"0.003in\"/></fo:block></fo:block-container><fo:block-container height=\"0.2in\" width=\"4.54in\" top=\"2.58in\" left=\"1.81in\" position=\"absolute\"><fo:block><fo:leader leader-pattern=\"rule\" rule-thickness=\"0.003in\"/></fo:block></fo:block-container><fo:block-container height=\"0.2in\" width=\"0.05in\" top=\"2.58in\" left=\"7.15in\" position=\"absolute\"><fo:block><fo:leader leader-pattern=\"rule\" rule-thickness=\"0.003in\"/></fo:block></fo:block-container></fo:static-content><fo:static-content flow-name=\"xsl-region-after\"><fo:block-container height=\"0.7in\" width=\"4.5in\" top=\"1.44in\" left=\"0.15in\" position=\"absolute\"><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\" font-weight=\"bold\">QA Std Co.,INC. -- Jul 28 2018,</fo:block><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\">125, S Market Street</fo:block><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\">125, S Market Street</fo:block><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\">San Jose, CA<fo:inline color=\"#ffffff\">0</fo:inline>95113</fo:block><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\">United States</fo:block></fo:block-container><fo:block-container height=\"0.6in\" width=\"2.0in\" top=\"2.3in\" left=\"0.15in\" position=\"absolute\"><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\">Customer Id:<fo:inline color=\"#ffffff\">0</fo:inline>BTI</fo:block><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\">Invoice #:In-10</fo:block></fo:block-container><fo:block-container height=\"0.3in\" width=\"2.0in\" top=\"2.75in\" left=\"0.15in\" position=\"absolute\"><fo:block text-align=\"start\" padding=\"5pt\" space-after.optimum=\"3pt\" line-height=\"11pt\" font-family=\"Helvetica\" font-weight=\"bold\" font-size=\"10pt\">Bill to:</fo:block></fo:block-container><fo:block-container height=\"0.3in\" width=\"2.0in\" top=\"3.20in\" left=\"4.0in\" position=\"absolute\"><fo:block text-align=\"start\" padding=\"5pt\" space-after.optimum=\"3pt\" line-height=\"11pt\" font-family=\"Helvetica\" font-weight=\"bold\" font-size=\"10pt\">\n\t\t\t\t\t\t\t\t\tRemit to:\n                                        </fo:block></fo:block-container><fo:block-container height=\"1.3in\" width=\"3.5in\" top=\"2.75in\" left=\"0.80in\" position=\"absolute\"><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\">Berkeley Technology Inc</fo:block><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\">Attn: Mr. Dennis Ahern</fo:block><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\">13112 Christy St</fo:block><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\">Ste 325</fo:block><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\">San Francisco, CA<fo:inline color=\"#ffffff\">0</fo:inline>94945-5000</fo:block><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\">United States</fo:block></fo:block-container><fo:block-container height=\"0.9in\" width=\"4.5in\" top=\"3.14in\" left=\"4.7in\" position=\"absolute\"><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\" font-weight=\"bold\">QA Std Co.,INC. -- Jul 28 2018,</fo:block><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\"/><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\"/><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\"><fo:inline color=\"#ffffff\">0</fo:inline></fo:block><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\">United States</fo:block></fo:block-container><fo:block text-align=\"start\" font-weight=\"normal\" start-indent=\"0.10cm\" white-space-collapse=\"false\" font-size=\"9pt\"/><fo:block-container height=\"0.90in\" width=\"7.2in\" top=\"0.00in\" left=\"0.001in\" position=\"absolute\" inline-progression-dimension=\"4.20in\"><fo:table table-layout=\"fixed\"><fo:table-column column-width=\"4.20in\" border-style=\"solid\" border-left-width=\"0.001in\" border-bottom-width=\"0.0001in\" border-top-width=\"0.000in\" border-right-width=\"0.000in\"/><fo:table-column column-width=\"2.091in\" border-style=\"solid\" border-left-width=\"0.001in\" border-bottom-width=\"0.0001in\" border-top-width=\"0.000in\" border-right-width=\"0.0001in\"/><fo:table-column column-width=\"0.91in\" border-style=\"solid\" border-left-width=\"0.000in\" border-bottom-width=\"0.0001in\" border-top-width=\"0.000in\" border-right-width=\"0.001in\"/><fo:table-body font-family=\"Helvetica\" font-weight=\"bold\" font-size=\"8pt\"><fo:table-row line-height=\"60pt\"><fo:table-cell/><fo:table-cell><fo:block text-align=\"center\">TOTAL AMOUNT:</fo:block></fo:table-cell><fo:table-cell><fo:block text-align=\"center\">$300.00</fo:block></fo:table-cell></fo:table-row></fo:table-body></fo:table></fo:block-container><fo:block-container height=\"0.30in\" width=\"2.8in\" top=\"2.01in\" left=\"4.5in\" position=\"absolute\"><fo:block><fo:table table-layout=\"fixed\"><fo:table-column column-width=\"1.4in\"/><fo:table-column column-width=\"1.4in\"/><fo:table-body font-family=\"Helvetica\" font-weight=\"normal\" font-size=\"8pt\"><fo:table-row line-height=\"11pt\"><fo:table-cell><fo:block text-align=\"start\">TOTAL DUE:</fo:block></fo:table-cell><fo:table-cell><fo:block text-align=\"end\" font-family=\"Helvetica\" font-weight=\"bold\" font-size=\"11pt\">$300.00</fo:block></fo:table-cell></fo:table-row></fo:table-body></fo:table></fo:block></fo:block-container><fo:block-container height=\"0.25in\" width=\"2.8in\" top=\"2.3in\" left=\"4.5in\" position=\"absolute\"><fo:block><fo:table table-layout=\"fixed\"><fo:table-column column-width=\"1.4in\"/><fo:table-column column-width=\"1.4in\"/><fo:table-body font-family=\"Helvetica\" font-weight=\"normal\" font-size=\"8pt\"><fo:table-row line-height=\"11pt\"><fo:table-cell><fo:block text-align=\"start\">AMOUNT ENCLOSED:</fo:block></fo:table-cell><fo:table-cell><fo:block border-bottom-width=\"0.01pt\" color=\"white\">00</fo:block></fo:table-cell></fo:table-row></fo:table-body></fo:table></fo:block></fo:block-container><fo:block-container height=\"0.2in\" width=\"2.8in\" top=\"2.08in\" left=\"4.5in\" position=\"absolute\"><fo:block><fo:leader leader-pattern=\"rule\" rule-thickness=\"0.003in\"/></fo:block></fo:block-container><fo:block-container height=\"0.6in\" width=\"7.3in\" top=\"4.1in\" left=\"0in\" position=\"absolute\"><fo:block text-align=\"start\" line-height=\"11pt\" font-family=\"Helvetica\" font-size=\"10pt\" hyphenate=\"true\">Superior financial Applications. Real-time business visibility. Open, on-demand platform.</fo:block></fo:block-container><fo:block-container height=\"0.2in\" width=\"7.3in\" top=\"4.56in\" left=\"0in\" position=\"absolute\"><fo:block><fo:leader leader-pattern=\"rule\" rule-thickness=\"0.003in\"/></fo:block></fo:block-container><fo:block-container height=\"0.25in\" width=\"8.1in\" top=\"4.8in\" left=\"0in\" position=\"absolute\"><fo:table table-layout=\"fixed\" height=\"0.25in\"><fo:table-column column-width=\"0.9in\"/><fo:table-column column-width=\"1.0in\"/><fo:table-column column-width=\"0.5in\"/><fo:table-column column-width=\"2.7in\"/><fo:table-column column-width=\"0.8in\"/><fo:table-column column-width=\"0.8in\"/><fo:table-column column-width=\"0.8in\"/><fo:table-body font-family=\"Helvetica\" font-weight=\"normal\" font-size=\"8pt\"><fo:table-row line-height=\"11pt\"><fo:table-cell><fo:block text-align=\"start\">DATE:</fo:block></fo:table-cell><fo:table-cell><fo:block text-align=\"start\">01/31/2020</fo:block></fo:table-cell><fo:table-cell><fo:block text-align=\"start\">TERMS:</fo:block></fo:table-cell><fo:table-cell><fo:block text-align=\"start\"/></fo:table-cell><fo:table-cell><fo:block text-align=\"start\">DUE DATE:</fo:block></fo:table-cell><fo:table-cell><fo:block text-align=\"start\">02/11/2020</fo:block></fo:table-cell><fo:table-cell><fo:block text-align=\"center\">PAGE\n                                                            <fo:page-number/></fo:block></fo:table-cell></fo:table-row></fo:table-body></fo:table></fo:block-container></fo:static-content><fo:flow flow-name=\"xsl-region-body\"><fo:table table-layout=\"fixed\" height=\"4.47in\" border-top-width=\"0.001in\" border-color=\"white\"><fo:table-column column-width=\"6.3in\" border-style=\"solid\" border-left-width=\"0.001in\" border-bottom-width=\"0.001in\" border-top-width=\"0.000in\" border-right-width=\"0.000in\"/><fo:table-column column-width=\"0.9in\" border-style=\"solid\" border-left-width=\"0.001in\" border-right-width=\"0.001in\" border-bottom-width=\"0.001in\" border-top-width=\"0.000in\"/><fo:table-body font-family=\"Helvetica\" font-weight=\"normal\" font-size=\"8pt\"><fo:table-row><fo:table-cell padding=\"2pt\"><fo:block text-align=\"start\" border-top-width=\"0.00002in\" border-color=\"white\" white-space-collapse=\"false\"/></fo:table-cell><fo:table-cell padding=\"2pt\"><fo:block text-align=\"end\" border-top-width=\"0.00002in\" border-color=\"white\">$300.00</fo:block></fo:table-cell></fo:table-row></fo:table-body></fo:table></fo:flow></fo:page-sequence></fo:root>\n",
+    "attachment": {
+      "key": "14",
+      "id": "14",
+      "href": "/objects/company-config/attachment/14"
+    },
+    "href": "/objects/accounts-receivable/delivery-history/5"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/dunning-customer
+_List dunning customers_
+
+**Response 200 — List dunning customers:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "DN-2",
+      "href": "/objects/accounts-receivable/dunning-customer/1"
+    },
+    {
+      "key": "2",
+      "id": "DN-3",
+      "href": "/objects/accounts-receivable/dunning-customer/2"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## GET /objects/accounts-receivable/dunning-customer/{key}
+_Get a dunning customer_
+
+**Response 200 — Get a dunning customer:**
+```json
+{
+  "ia::result": {
+    "id": "12",
+    "key": "12",
+    "dunningNoticeCustomerId": "DN-2",
+    "dunningNotice": {
+      "id": "14",
+      "key": "14",
+      "audit": {
+        "modifiedDateTime": "2025-06-02T00:00:00Z",
+        "createdDateTime": "2025-06-02T00:00:00Z",
+        "modifiedBy": "1",
+        "createdBy": "1"
+      },
+      "href": "/objects/accounts-receivable/dunning-notice/14"
+    },
+    "customer": {
+      "key": "11",
+      "id": "11",
+      "name": "Power Aerospace Materials",
+      "href": "/objects/accounts-receivable/customer/11"
+    },
+    "invoiceCount": 2,
+    "totalAmountOverdue": "499.00",
+    "totalTxnAmountOverdue": "499.00",
+    "noticeEmail": {
+      "date": "2025-07-27T19:45:17Z",
+      "to": null,
+      "cc": null,
+      "bcc": null
+    },
+    "dunningLevel": {
+      "id": "L1",
+      "key": "5",
+      "href": "/objects/accounts-receivable/dunning-level/5"
+    },
+    "emailTemplate": {
+      "key": "null,",
+      "id": null
+    },
+    "dunningNoticeAttachment": "PDF data",
+    "deliveryMethod": "printed",
+    "invoices": [
+      {
+        "id": "4009",
+        "key": "4009",
+        "dunningCustomer": {
+          "id": "119",
+          "key": "119",
+          "href": "/objects/accounts-receivable/dunning-customer/119"
+        },
+        "arInvoice": {
+          "id": "1966",
+          "key": "1966",
+          "invoiceNumber": "inv213",
+          "invoiceDate": "2025-12-26",
+          "dueDate": "2025-12-31",
+          "totalBaseAmount": "400.00",
+          "totalTxnAmount": "400.00",
+          "totalBaseAmountDue": "400.00",
+          "referenceNumber": null,
+          "totalTxnAmountDue": "499.00",
+          "href": "/objects/accounts-receivable/invoice/1966"
+        },
+        "href": "/objects/accounts-receivable/dunning-invoice/4009"
+      },
+      {
+        "id": "4462",
+        "key": "4462",
+        "dunningCustomer": {
+          "id": "129",
+          "key": "129",
+          "href": "/objects/accounts-receivable/dunning-customer/129"
+        },
+        "arInvoice": {
+          "id": "127",
+          "key": "127",
+          "invoiceNumber": "Inv-1-Doc",
+          "invoiceDate": "2025-12-27",
+          "dueDate": "2025-12-31",
+          "totalBaseAmount": "100.00",
+          "totalTxnAmount": "100.00",
+          "totalBaseAmountDue": "99.00",
+          "referenceNumber": null,
+          "totalTxnAmountDue": "499.00",
+          "href": "/objects/accounts-receivable/invoice/127"
+        },
+        "href": "/objects/accounts-receivable/dunning-invoice/4462"
+      }
+    ],
+    "href": "/objects/accounts-receivable/dunning-customer/12"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/dunning-invoice
+_List dunning invoices_
+
+**Response 200 — List dunning invoices:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "96",
+      "id": "96",
+      "href": "/objects/accounts-receivable/dunning-invoice/96"
+    },
+    {
+      "key": "97",
+      "id": "97",
+      "href": "/objects/accounts-receivable/dunning-invoice/97"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## GET /objects/accounts-receivable/dunning-invoice/{key}
+_Get a dunning invoice_
+
+**Response 200 — Get a dunning invoice:**
+```json
+{
+  "ia::result": {
+    "id": "4009",
+    "key": "4009",
+    "dunningCustomer": {
+      "id": "119",
+      "key": "119",
+      "href": "/objects/accounts-receivable/dunning-customer/119"
+    },
+    "arInvoice": {
+      "id": "1966",
+      "key": "1966",
+      "invoiceNumber": "inv213",
+      "invoiceDate": "2025-03-27",
+      "dueDate": "2025-03-31",
+      "totalBaseAmount": "100.00",
+      "totalTxnAmount": "100.00",
+      "totalBaseAmountDue": "100.00",
+      "referenceNumber": null,
+      "totalTxnAmountDue": "200.00",
+      "href": "/objects/accounts-receivable/invoice/1966"
+    },
+    "href": "/objects/accounts-receivable/dunning-invoice/4009"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/dunning-level
+_List dunning levels_
+
+**Response 200 — List dunning levels:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "2",
+      "id": "DL1",
+      "href": "/objects/accounts-receivable/dunning-level/2"
+    },
+    {
+      "key": "5",
+      "id": "Dunning level",
+      "href": "/objects/accounts-receivable/dunning-level/5"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/accounts-receivable/dunning-level
+_Create a dunning level_
+
+**Request example — Create a dunning level:**
+```json
+{
+  "id": "L1 Dunning level",
+  "dunningThreshold": {
+    "minDays": 0,
+    "maxDays": 100,
+    "txnCurrency": "USD"
+  },
+  "printTemplateName": "L1 Dunning Notice",
+  "noticeSequenceName": "Ar-Rec"
+}
+```
+**Response 201 — Reference to new dunning level:**
+```json
+{
+  "ia::result": {
+    "key": "4",
+    "id": "L1 Dunning level",
+    "href": "/objects/accounts-receivable/dunning-level/4"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/dunning-level/{key}
+_Get a dunning level_
+
+**Response 200 — Get a dunning level:**
+```json
+{
+  "ia::result": {
+    "key": "6",
+    "id": "DL1",
+    "dunningThreshold": {
+      "minDays": 0,
+      "maxDays": 100,
+      "minAmount": "1000",
+      "maxAmount": "10000",
+      "baseCurrency": "USD",
+      "txnCurrency": "USD"
+    },
+    "printTemplateName": "L1 Dunning Notice",
+    "emailTemplate": {
+      "key": "3",
+      "id": "DL1 PWD template",
+      "href": "/objects/company-config/email-template/3"
+    },
+    "noticeSequenceName": "Ar-Rec",
+    "status": "active",
+    "audit": {
+      "createdDateTime": "2025-05-21T09:05:50Z",
+      "modifiedDateTime": "2025-05-21T09:05:50Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "href": "/objects/accounts-receivable/dunning-level/6"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/dunning-level/{key}
+_Update a dunning level_
+
+**Request example — Update a dunning level:**
+```json
+{
+  "minDays": 10
+}
+```
+**Response 200 — Reference to updated dunning level:**
+```json
+{
+  "ia::result": {
+    "key": "4",
+    "id": "L2 Dunning level",
+    "href": "/objects/accounts-receivable/dunning-level/4"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/dunning-level/{key}
+_Delete a dunning level_
+
+
+## GET /objects/accounts-receivable/dunning-notice
+_List dunning notices_
+
+**Response 200 — List dunning notices:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "1",
+      "href": "/objects/accounts-receivable/dunning-notice/1"
+    },
+    {
+      "key": "4",
+      "id": "4",
+      "href": "/objects/accounts-receivable/dunning-notice/4"
+    },
+    {
+      "key": "2",
+      "id": "2",
+      "href": "/objects/accounts-receivable/dunning-notice/2"
+    },
+    {
+      "key": "3",
+      "id": "3",
+      "href": "/objects/accounts-receivable/dunning-notice/3"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 4,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/accounts-receivable/dunning-notice
+_Create a dunning notice_
+
+**Request example — Create a printed dunning notice:**
+```json
+{
+  "basedOn": "dueDate",
+  "asOfDate": "2025-04-18",
+  "dunningLevel": {
+    "id": "L1"
+  },
+  "printTemplateName": "L1 DL Doc Template",
+  "dunningCustomers": [
+    {
+      "customer": {
+        "id": "1"
+      },
+      "noticeEmail": {
+        "bcc": null,
+        "cc": null,
+        "to": "accounts@mycompany.com"
+      },
+      "sendPrintedNotice": false,
+      "sendEmailNotice": false
+    },
+    {
+      "customer": {
+        "id": "BTI"
+      },
+      "noticeEmail": {
+        "bcc": null,
+        "cc": null,
+        "to": "accounts@mycompany.com"
+      },
+      "sendPrintedNotice": false,
+      "sendEmailNotice": false
+    }
+  ],
+  "sender": {
+    "email": "bblank@mycompany.com"
+  }
+}
+```
+**Response 201 — Reference to new dunning notice:**
+```json
+{
+  "ia::result": {
+    "id": "11",
+    "key": "11",
+    "href": "/objects/accounts-receivable/dunning-notice/11"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/dunning-notice/{key}
+_Get a dunning notice_
+
+**Response 200 — Get a dunning notice:**
+```json
+{
+  "ia::result": {
+    "id": "48",
+    "key": "48",
+    "dunningLevel": {
+      "key": "12",
+      "id": "L1",
+      "href": "/objects/accounts-receivable/dunning-level/12"
+    },
+    "basedOn": "dueDate",
+    "currency": "USD",
+    "baseCurrency": "USD",
+    "asOfDate": "2025-04-18",
+    "printTemplateName": "L1 DL Doc Template",
+    "emailTemplate": {
+      "key": null,
+      "id": null
+    },
+    "attachInvoice": false,
+    "sender": {
+      "email": "bblank@mycompany.com",
+      "name": "Bill Blank",
+      "phone": "123-456-7890"
+    },
+    "audit": {
+      "createdDateTime": "2025-05-09T10:14:21Z",
+      "modifiedDateTime": "2025-05-09T10:14:21Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "dunningCustomers": [
+      {
+        "id": "129",
+        "key": "129",
+        "dunningNoticeCustomerId": "DN-116",
+        "dunningNotice": {
+          "id": "48",
+          "key": "48",
+          "href": "/objects/accounts-receivable/dunning-notice/48"
+        },
+        "customer": {
+          "key": "1",
+          "id": "1",
+          "name": "Power Aerospace Materials",
+          "href": "/objects/accounts-receivable/customer/1"
+        },
+        "invoiceCount": 3,
+        "totalAmountOverdue": "2307.00",
+        "totalTxnAmountOverdue": "2307.00",
+        "noticeEmail": {
+          "date": "2025-05-09",
+          "to": "jdoe@mycompany.com",
+          "cc": null,
+          "bcc": null
+        },
+        "dunningNoticeAttachment": null,
+        "deliveryMethod": "printed",
+        "invoices": [
+          {
+            "id": "4462",
+            "key": "4462",
+            "dunningCustomer": {
+              "id": "129",
+              "key": "129",
+              "href": "/objects/accounts-receivable/dunning-customer/129"
+            },
+            "arInvoice": {
+              "id": "164",
+              "key": "164",
+              "invoiceNumber": "inv-2",
+              "invoiceDate": "2025-02-25",
+              "dueDate": "2025-02-30",
+              "totalBaseAmount": "100.00",
+              "totalTxnAmount": "100.00",
+              "totalBaseAmountDue": "100.00",
+              "referenceNumber": "new_document",
+              "totalTxnAmountDue": "2307.00",
+              "href": "/objects/accounts-receivable/invoice/164"
+            },
+            "href": "/objects/accounts-receivable/dunning-invoice/4462"
+          },
+          {
+            "id": "4464",
+            "key": "4464",
+            "dunningCustomer": {
+              "id": "129",
+              "key": "129",
+              "href": "/objects/accounts-receivable/dunning-customer/129"
+            },
+            "arInvoice": {
+              "id": "310",
+              "key": "310",
+              "invoiceNumber": "inv-2",
+              "invoiceDate": "2025-03-25",
+              "dueDate": "2025-03-30",
+              "totalBaseAmount": "100.00",
+              "totalTxnAmount": "100.00",
+              "totalBaseAmountDue": "100.00",
+              "referenceNumber": "new_document",
+              "totalTxnAmountDue": "2307.00",
+              "href": "/objects/accounts-receivable/invoice/310"
+            },
+            "href": "/objects/accounts-receivable/dunning-invoice/4464"
+          }
+        ]
+      }
+    ],
+    "href": "/objects/accounts-receivable/dunning-notice/48"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/invoice
+_List invoices_
+
+**Response 200 — List invoices:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "498",
+      "id": "498",
+      "href": "/objects/accounts-receivable/invoice/498"
+    },
+    {
+      "key": "501",
+      "id": "501",
+      "href": "/objects/accounts-receivable/invoice/501"
+    },
+    {
+      "key": "978",
+      "id": "978",
+      "href": "/objects/accounts-receivable/invoice/978"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## POST /objects/accounts-receivable/invoice
+_Create an invoice_
+
+**Request example — Create an invoice:**
+```json
+{
+  "invoiceNumber": "SI-0034",
+  "customer": {
+    "id": "C-00019"
+  },
+  "customerMessage": {
+    "id": "welcome message"
+  },
+  "referenceNumber": "B9R456",
+  "description": "Regular invoice",
+  "term": {
+    "id": "N15"
+  },
+  "invoiceDate": "2022-12-06",
+  "dueDate": "2022-12-31",
+  "currency": {
+    "txnCurrency": "USD",
+    "exchangeRate": {
+      "date": "2022-12-06",
+      "typeId": "Intacct Daily Rate",
+      "rate": 0.05112
+    }
+  },
+  "contacts": {
+    "payTo": {
+      "id": "Power Aerospace Materials(C1)"
+    },
+    "returnTo": {
+      "id": "Power Aerospace Materials(C1)"
+    }
+  },
+  "lines": [
+    {
+      "txnAmount": "100.40",
+      "glAccount": {
+        "id": "5004"
+      },
+      "accountLabel": {
+        "id": "SWL001"
+      },
+      "dimensions": {
+        "department": {
+          "id": "SA"
+        },
+        "location": {
+          "id": "CA"
+        },
+        "customer": {
+          "id": "1652"
+        }
+      }
+    },
+    {
+      "txnAmount": "-10",
+      "glAccount": {
+        "id": "5004"
+      },
+      "accountLabel": {
+        "id": "SWL001"
+      },
+      "dimensions": {
+        "department": {
+          "id": "SA"
+        },
+        "location": {
+          "id": "CA"
+        },
+        "customer": {
+          "id": "1652"
+        }
+      }
+    }
+  ]
+}
+```
+**Response 201 — New invoice:**
+```json
+{
+  "ia::result": {
+    "id": "2091",
+    "key": "2091",
+    "href": "/objects/accounts-receivable/invoice/2091"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/invoice-line
+_List invoice lines_
+
+**Response 200 — List invoice lines:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "1",
+      "href": "/objects/accounts-receivable/invoice-line/1"
+    },
+    {
+      "key": "3",
+      "id": "3",
+      "href": "/objects/accounts-receivable/invoice-line/3"
+    },
+    {
+      "key": "19",
+      "id": "19",
+      "href": "/objects/accounts-receivable/invoice-line/19"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## POST /objects/accounts-receivable/invoice-line
+_Create an invoice line_
+
+**Request example — Create an invoice line:**
+```json
+{
+  "invoice": {
+    "key": "350"
+  },
+  "txnAmount": "70.00",
+  "glAccount": {
+    "id": "4000"
+  },
+  "dimensions": {
+    "location": {
+      "key": "1"
+    },
+    "department": {
+      "key": "4"
+    },
+    "project": {
+      "key": "9"
+    },
+    "customer": {
+      "key": "42"
+    },
+    "item": {
+      "key": "1"
+    },
+    "employee": {
+      "key": "11"
+    },
+    "class": {
+      "key": "3"
+    }
+  },
+  "memo": "Created memo for invoice line charges"
+}
+```
+**Response 201 — Reference to new invoice line:**
+```json
+{
+  "ia::result": {
+    "key": "806",
+    "id": "806",
+    "href": "/objects/accounts-receivable/invoice-line/806",
+    "ia::meta": {
+      "totalCount": 1
+    }
+  }
+}
+```
+
+## GET /objects/accounts-receivable/invoice-line/{key}
+_Get an invoice line_
+
+**Response 200 — Get an invoice line:**
+```json
+{
+  "ia::result": {
+    "id": "2702",
+    "key": "2702",
+    "invoice": {
+      "id": "292",
+      "key": "292",
+      "href": "/objects/accounts-receivable/invoice/292"
+    },
+    "glAccount": {
+      "key": "254",
+      "id": "6103",
+      "name": "Bonuses",
+      "href": "/objects/general-ledger/account/254"
+    },
+    "overrideOffsetGLAccount": {
+      "key": "36",
+      "id": "1200",
+      "name": "Accounts Receivable",
+      "href": "/objects/general-ledger/account/36"
+    },
+    "accountLabel": {
+      "name": "Bonuses",
+      "key": "35",
+      "id": "Bonuses",
+      "href": "/objects/accounts-receivable/account-label/35"
+    },
+    "createdDate": "2024-09-24",
+    "baseAmount": "400.00",
+    "txnAmount": "400.00",
+    "dimensions": {
+      "department": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "location": {
+        "key": "4",
+        "id": "4",
+        "name": "Australia",
+        "href": "/objects/company-config/location/4"
+      },
+      "project": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "customer": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "vendor": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "employee": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "item": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "class": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "warehouse": {
+        "key": null,
+        "id": null,
+        "name": null
+      }
+    },
+    "baseLocation": {
+      "name": "Australia",
+      "key": "4",
+      "href": "/objects/company-config/location/4"
+    },
+    "memo": "line 1",
+    "currency": {
+      "exchangeRate": {
+        "date": null,
+        "typeId": null,
+        "rate": 1
+      },
+      "txnCurrency": "AUD",
+      "baseCurrency": "AUD"
+    },
+    "allocation": {
+      "key": null,
+      "id": null
+    },
+    "lineNumber": 1,
+    "paymentInformation": {
+      "totalBaseAmountPaid": "0.00",
+      "totalTxnAmountPaid": "0.00",
+      "totalBaseAmountSelectedForPayment": "0.00",
+      "totalTxnAmountSelectedForPayment": "0.00"
+    },
+    "isSubtotal": null,
+    "audit": {
+      "createdDateTime": "2024-09-24T14:18:20Z",
+      "modifiedDateTime": "2024-09-24T14:18:20Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "retainage": {
+      "percentage": "2.00",
+      "txnAmountRetained": "20.00",
+      "baseAmountRetained": "20.00",
+      "hasRetainage": true,
+      "txnAmountReleased": "10.00",
+      "isReleased": true,
+      "offsetGLAccount": {
+        "key": "263",
+        "id": "1103",
+        "name": "Accounts Receivable - Microcomputer",
+        "href": "/objects/general-ledger/account/263"
+      },
+      "isReleaseLine": true
+    },
+    "projectContract": {
+      "id": "BTI-01",
+      "key": "1",
+      "name": "Berkeley Technology Inc - Contract 01",
+      "href": "/objects/construction/project-contract/1"
+    },
+    "projectContractLine": {
+      "id": "Project-Contract-Line-04",
+      "key": "4",
+      "name": "Project contract line 04",
+      "href": "/objects/construction/project-contract-line/4"
+    },
+    "isSummarized": false,
+    "taxEntries": [
+      {
+        "id": "2704",
+        "key": "2704",
+        "invoiceLine": {
+          "id": "2702",
+          "key": "2702",
+          "href": "/objects/accounts-receivable/invoice-line/2702"
+        },
+        "baseTaxAmount": "40.00",
+        "txnTaxAmount": "40.00",
+        "taxRate": 10,
+        "orderEntryTaxDetail": {
+          "id": "G1 Goods and Services Tax",
+          "key": "20",
+          "href": "/objects/tax/order-entry-tax-detail/20"
+        },
+        "href": "/objects/accounts-receivable/invoice-tax-entry/2704"
+      }
+    ],
+    "href": "/objects/accounts-receivable/invoice-line/2702"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/invoice-line/{key}
+_Update an invoice line_
+
+**Request example — Reference to updated invoice line:**
+```json
+{
+  "txnAmount": "-10",
+  "glAccount": {
+    "id": "1003"
+  },
+  "dimensions": {
+    "location": {
+      "id": "1"
+    },
+    "department": {
+      "id": "4"
+    },
+    "project": {
+      "key": "9"
+    },
+    "customer": {
+      "key": "42"
+    },
+    "item": {
+      "key": "1"
+    },
+    "employee": {
+      "key": "11"
+    },
+    "class": {
+      "key": "3"
+    }
+  },
+  "memo": "Updated memo for invoice-line"
+}
+```
+**Response 200 — Reference to updated invoice line:**
+```json
+{
+  "ia::result": {
+    "key": "806",
+    "id": "806",
+    "href": "/objects/accounts-payable/invoice-line/806"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/invoice-line/{key}
+_Delete an invoice line._
+
+
+## GET /objects/accounts-receivable/invoice-summary
+_List invoice summaries_
+
+**Response 200 — List invoice summaries:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "9",
+      "id": "9",
+      "href": "/objects/accounts-receivable/invoice-summary/9"
+    },
+    {
+      "key": "13",
+      "id": "13",
+      "href": "/objects/accounts-receivable/invoice-summary/13"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/accounts-receivable/invoice-summary/{key}
+_Get an invoice summary_
+
+**Response 200 — Get an invoice summary:**
+```json
+{
+  "ia::result": {
+    "key": "13",
+    "id": "13",
+    "name": "Invoices: 2019/12/01 Batch",
+    "glPostingDate": "2019-12-01",
+    "status": "active",
+    "recordType": "invoice",
+    "totalAmount": "0.00",
+    "state": "open",
+    "parent": {
+      "key": "13",
+      "id": "13"
+    },
+    "preventGLPosting": false,
+    "summaryCreationType": "manual",
+    "isQuickPaymentSummary": false,
+    "audit": {
+      "createdDateTime": "2025-05-28T08:12:41Z",
+      "modifiedDateTime": "2025-06-02T05:31:24Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      }
+    },
+    "href": "/objects/accounts-receivable/invoice-summary/13"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/invoice-tax-entry
+_List invoice tax entries_
+
+**Response 200 — List invoice tax entries:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "8",
+      "id": "8",
+      "href": "/objects/accounts-receivable/invoice-tax-entry/8"
+    },
+    {
+      "key": "9",
+      "id": "9",
+      "href": "/objects/accounts-receivable/invoice-tax-entry/9"
+    },
+    {
+      "key": "10",
+      "id": "10",
+      "href": "/objects/accounts-receivable/invoice-tax-entry/10"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/accounts-receivable/invoice-tax-entry/{key}
+_Get an invoice tax entry_
+
+**Response 200 — Get an invoice tax entry:**
+```json
+{
+  "ia::result": {
+    "id": "2704",
+    "key": "2704",
+    "invoiceLine": {
+      "id": "2702",
+      "key": "2702",
+      "href": "/objects/accounts-receivable/invoice-line/2702"
+    },
+    "baseTaxAmount": "40.00",
+    "txnTaxAmount": "40.00",
+    "taxRate": 10,
+    "orderEntryTaxDetail": {
+      "id": "G1 Goods and Services Tax",
+      "key": "20",
+      "href": "/objects/tax/order-entry-tax-detail/20"
+    },
+    "href": "/objects/accounts-receivable/invoice-tax-entry/2704"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/invoice/{key}
+_Get an invoice_
+
+**Response 200 — Get an invoice:**
+```json
+{
+  "ia::result": {
+    "id": "292",
+    "key": "292",
+    "recordType": "ri",
+    "invoiceNumber": "ADJDEC0002",
+    "state": "posted",
+    "customer": {
+      "id": "1",
+      "key": "1",
+      "name": "Power Aerospace Materials",
+      "emailOption": false,
+      "customerDue": "-17909.55",
+      "deliveryOptions": "print",
+      "href": "/objects/accounts-receivable/customer/1"
+    },
+    "customerMessage": {
+      "key": "10",
+      "id": "welcome message",
+      "message": "welcome to the company"
+    },
+    "referenceNumber": "PO6917",
+    "description": "nextGen Recurr",
+    "documentId": null,
+    "salesDocument": {
+      "key": null,
+      "id": null
+    },
+    "term": {
+      "id": "Due upon pay",
+      "key": "15",
+      "href": "/objects/accounts-receivable/term/15"
+    },
+    "invoiceDate": "2024-09-24",
+    "invoiceSummary": {
+      "glPostingDate": "2024-09-24",
+      "id": "Invoices: 2024/09/24 Batch",
+      "key": "199",
+      "isSummaryOpen": "open",
+      "isSummaryPosted": "false",
+      "href": "/objects/accounts-receivable/summary/199"
+    },
+    "discountCutOffDate": "2024-09-24",
+    "dueDate": "2024-09-24",
+    "paymentInformation": {
+      "fullyPaidDate": null,
+      "totalBaseAmountSelectedForPayment": "0.00",
+      "totalBaseAmountPaid": "0.00",
+      "totalTxnAmountSelectedForPayment": "0.00",
+      "totalTxnAmountPaid": "0.00"
+    },
+    "currency": {
+      "baseCurrency": "AUD",
+      "txnCurrency": "AUD",
+      "exchangeRate": {
+        "date": "2021-01-23",
+        "typeId": "Intacct Daily Rate",
+        "rate": 1
+      }
+    },
+    "totalBaseAmount": "440.00",
+    "totalBaseAmountDue": "440.00",
+    "totalTxnAmount": "440.00",
+    "totalTxnAmountDue": "440.00",
+    "contacts": {
+      "payTo": {
+        "id": "Power Aerospace Materials(C1)",
+        "key": "152",
+        "href": "/objects/company-config/contact-version/152"
+      },
+      "returnTo": {
+        "id": "Power Aerospace Materials(C1)",
+        "key": "152",
+        "tax": {
+          "group": {
+            "id": null,
+            "key": null
+          },
+          "taxId": null
+        },
+        "href": "/objects/company-config/contact-version/152"
+      }
+    },
+    "moduleKey": "accountsReceivable",
+    "recurringSchedule": {
+      "key": "24"
+    },
+    "isSystemGeneratedDocument": false,
+    "billbackTemplate": {
+      "id": "18",
+      "key": "BBT-error5"
+    },
+    "audit": {
+      "createdDateTime": "2024-09-24T14:18:20Z",
+      "modifiedDateTime": "2024-09-24T14:18:20Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "dueInDays": 3,
+    "taxSolution": {
+      "key": "1",
+      "id": "Australia - GST",
+      "href": "/objects/tax/tax-solution/1"
+    },
+    "retainage": {
+      "defaultPercentage": "5.00",
+      "totalTxnAmountRetained": "200.00",
+      "totalTxnAmountReleased": "100.00",
+      "totalBaseAmountRetained": "100.00",
+      "isReleased": true
+    },
+    "attachment": {
+      "id": "atch1",
+      "key": "6",
+      "href": "/objects/company-config/attachment/6"
+    },
+    "projectContract": {
+      "key": "1",
+      "id": "BTI-01",
+      "name": "Berkeley Technology Inc - Contract",
+      "href": "/objects/construction/project-contract/1"
+    },
+    "dunningCount": 0,
+    "projectContractBilling": {
+      "externalReferenceNumber": "HGS-1024",
+      "description": "Construction of club house and offices",
+      "contractDate": "2026-01-08",
+      "billingThroughDate": "2026-01-30",
+      "billingApplicationNumber": "IA-89115"
+    },
+    "architect": {
+      "key": "12",
+      "id": "Eberhardt",
+      "href": "/objects/company-config/contact/12"
+    },
+    "projectContractBillingInvoiceSummary": {
+      "changesApprovedPriorMonth": {
+        "additionsAmount": "1000.0000000000",
+        "deductionsAmount": "1000.0000000000"
+      },
+      "changesApprovedThisMonth": {
+        "additionsAmount": "1000.0000000000",
+        "deductionsAmount": "1000.0000000000"
+      },
+      "retainage": {
+        "amountRetained": "1000.0000000000",
+        "balanceToDateAmount": "1000.0000000000",
+        "billedAmount": "1000.0000000000",
+        "billedToDateAmount": "1000.0000000000",
+        "heldToDateAmount": "1000.0000000000",
+        "netChangeHeldAmount": "1000.0000000000",
+        "previousBalanceAmount": "1000.0000000000",
+        "totalEarnedLessAmount": "1000.0000000000"
+      },
+      "accountsReceivableInvoiceNumber": "INV1",
+      "balanceToFinishAmount": "1000.0000000000",
+      "chargeAmount": "1000.0000000000",
+      "completedFromPriorApplicationAmount": "1000.0000000000",
+      "completedToDateAmount": "1000.0000000000",
+      "currentDueAmount": "1000.0000000000",
+      "discountAmount": "1000.0000000000",
+      "lessPreviousBillingAmount": "1000.0000000000",
+      "netApprovedChangesAmount": "1000.0000000000",
+      "orderEntryDocumentId": "SO-AIA-Invoice01-Ord#0011#doc",
+      "originalContractAmount": "1000.0000000000",
+      "projectId": "DIM - HCS",
+      "projectName": "Dimensions - Hands Computer Systems",
+      "revisedContractAmount": "1000.0000000000",
+      "taxAmount": "1000.0000000000"
+    },
+    "invoiceType": "invoice",
+    "invoiceMode": "b1",
+    "eInvoiceStatus": "paymentReceived",
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "webURL": "https://intacct.com/acct/ur.phtml?.r=ijVqUVXUX3TzexR2EcQNU3U7RuBoTavvJ5Pvp9qZZG0",
+    "lines": [
+      {
+        "id": "2702",
+        "key": "2702",
+        "invoice": {
+          "id": "292",
+          "key": "292",
+          "href": "/objects/accounts-receivable/invoice/292"
+        },
+        "glAccount": {
+          "key": "254",
+          "id": "6103",
+          "name": "Bonuses",
+          "href": "/objects/general-ledger/account/254"
+        },
+        "overrideOffsetGLAccount": {
+          "key": "36",
+          "id": "1200",
+          "name": "Accounts Receivable",
+          "href": "/objects/general-ledger/account/36"
+        },
+        "accountLabel": {
+          "name": "Bonuses",
+          "key": "35",
+          "id": "Bonuses",
+          "href": "/objects/accounts-receivable/account-label/35"
+        },
+        "createdDate": "2024-09-24",
+        "baseAmount": "400.00",
+        "txnAmount": "400.00",
+        "dimensions": {
+          "department": {
+            "key": "11",
+            "id": "DEP-11",
+            "name": "Sales and Marketing"
+          },
+          "location": {
+            "key": "4",
+            "id": "4",
+            "name": "Australia",
+            "href": "/objects/company-config/location/4"
+          },
+          "project": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "customer": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "vendor": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "employee": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "item": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "class": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "warehouse": {
+            "key": null,
+            "id": null,
+            "name": null
+          }
+        },
+        "baseLocation": {
+          "name": "Australia",
+          "key": "4",
+          "href": "/objects/company-config/location/4"
+        },
+        "memo": "line 1",
+        "currency": {
+          "exchangeRate": {
+            "date": "2021-01-23",
+            "typeId": "Intacct Daily Rate",
+            "rate": 1
+          },
+          "txnCurrency": "AUD",
+          "baseCurrency": "AUD"
+        },
+        "allocation": {
+          "key": null,
+          "id": null
+        },
+        "lineNumber": 1,
+        "paymentInformation": {
+          "totalBaseAmountPaid": "0.00",
+          "totalTxnAmountPaid": "0.00",
+          "totalBaseAmountSelectedForPayment": "0.00",
+          "totalTxnAmountSelectedForPayment": "0.00"
+        },
+        "isSubtotal": null,
+        "audit": {
+          "createdDateTime": "2024-09-24T14:18:20Z",
+          "modifiedDateTime": "2024-09-24T14:18:20Z",
+          "createdByUser": {
+            "key": "1",
+            "id": "Admin",
+            "href": "/objects/company-config/user/1"
+          },
+          "createdBy": "1",
+          "modifiedByUser": {
+            "key": "1",
+            "id": "Admin",
+            "href": "/objects/company-config/user/1"
+          },
+          "modifiedBy": "1"
+        },
+        "retainage": {
+          "percentage": "2.00",
+          "txnAmountRetained": "20.00",
+          "baseAmountRetained": "20.00",
+          "hasRetainage": true,
+          "txnAmountReleased": "10.00",
+          "isReleased": true,
+          "offsetGLAccount": {
+            "key": "263",
+            "id": "1103",
+            "name": "Accounts Receivable - Microcomputer",
+            "href": "/objects/general-ledger/account/263"
+          },
+          "isReleaseLine": true
+        },
+        "projectContract": {
+          "id": "BTI-01",
+          "key": "1",
+          "name": "Berkeley Technology Inc - Contract 01",
+          "href": "/objects/construction/project-contract/1"
+        },
+        "projectContractLine": {
+          "id": "Project-Contract-Line-04",
+          "key": "4",
+          "name": "Project contract line 04",
+          "href": "/objects/construction/project-contract-line/4"
+        },
+        "isSummarized": false,
+        "taxEntries": [
+          {
+            "txnTaxAmount": "40.00",
+            "baseTaxAmount": "40.00",
+            "orderEntryTaxDetail": {
+              "id": "G1 Goods and Services Tax",
+              "key": "20",
+              "href": "/objects/tax/order-entry-tax-detail/20"
+            },
+            "id": "2704",
+            "key": "2704",
+            "taxRate": 10,
+            "invoiceLine": {
+              "id": "2702",
+              "key": "2702",
+              "href": "/objects/accounts-receivable/invoice-line/2702"
+            },
+            "href": "/objects/accounts-receivable/invoice-tax-entry/2704"
+          }
+        ],
+        "href": "/objects/accounts-receivable/invoice-line/2702"
+      }
+    ],
+    "href": "/objects/accounts-receivable/invoice/292"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+**Response 200 — Get an invoice enabled for online payment:**
+```json
+{
+  "ia::result": {
+    "id": "22484",
+    "key": "22484",
+    "recordType": "ri",
+    "invoiceNumber": "ADJDEC0002",
+    "state": "posted",
+    "customer": {
+      "id": "1",
+      "key": "1",
+      "name": "Power Aerospace Materials",
+      "emailOption": false,
+      "customerDue": "-17909.55",
+      "deliveryOptions": "print",
+      "href": "/objects/accounts-receivable/customer/1"
+    },
+    "customerMessage": {
+      "key": null,
+      "id": null,
+      "message": null
+    },
+    "referenceNumber": null,
+    "description": "nextGen Recurr",
+    "documentId": null,
+    "salesDocument": {
+      "key": null,
+      "id": null
+    },
+    "term": {
+      "id": "Due upon pay",
+      "key": "15",
+      "href": "/objects/accounts-receivable/term/15"
+    },
+    "invoiceDate": "2024-09-24",
+    "invoiceSummary": {
+      "glPostingDate": "2024-09-24",
+      "id": "Invoices: 2024/09/24 Batch",
+      "key": "199",
+      "isSummaryOpen": "open",
+      "isSummaryPosted": "false",
+      "href": "/objects/accounts-receivable/summary/199"
+    },
+    "discountCutOffDate": "2024-09-24",
+    "dueDate": "2024-09-24",
+    "paymentInformation": {
+      "fullyPaidDate": null,
+      "totalBaseAmountSelectedForPayment": "0.00",
+      "totalBaseAmountPaid": "0.00",
+      "totalTxnAmountSelectedForPayment": "0.00",
+      "totalTxnAmountPaid": "0.00"
+    },
+    "currency": {
+      "baseCurrency": "AUD",
+      "txnCurrency": "AUD",
+      "exchangeRate": {
+        "date": null,
+        "typeId": null,
+        "rate": null
+      }
+    },
+    "totalBaseAmount": "440.00",
+    "totalBaseAmountDue": "440.00",
+    "totalTxnAmount": "440.00",
+    "totalTxnAmountDue": "440.00",
+    "contacts": {
+      "payTo": {
+        "id": "Power Aerospace Materials(C1)",
+        "key": "152"
+      },
+      "returnTo": {
+        "id": "Power Aerospace Materials(C1)",
+        "key": "152",
+        "tax": {
+          "group": {
+            "id": null,
+            "key": null
+          },
+          "taxId": null
+        }
+      }
+    },
+    "moduleKey": "accountsReceivable",
+    "recurringSchedule": {
+      "key": "24"
+    },
+    "isSystemGeneratedDocument": false,
+    "billbackTemplate": {
+      "id": null,
+      "key": null
+    },
+    "audit": {
+      "createdDateTime": "2024-09-24T14:18:20Z",
+      "modifiedDateTime": "2024-09-24T14:18:20Z",
+      "createdBy": "1",
+      "modifiedBy": "1"
+    },
+    "dueInDays": 3,
+    "taxSolution": {
+      "key": "1",
+      "id": "Australia - GST",
+      "href": "/objects/tax/tax-solution/1"
+    },
+    "attachment": {
+      "id": "atch1",
+      "key": "6",
+      "href": "/objects/company-config/attachment/6"
+    },
+    "dunningCount": 0,
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "allowOnlinePayment": true,
+    "providerPayment": {
+      "key": "3",
+      "id": "3",
+      "state": "paid",
+      "href": "/objects/accounts-receivable/provider-payment/3"
+    },
+    "lines": [
+      {
+        "id": "2702",
+        "key": "2702",
+        "invoice": {
+          "id": "22484",
+          "key": "22484",
+          "href": "/objects/accounts-receivable/invoice/22484"
+        },
+        "glAccount": {
+          "key": "254",
+          "id": "6103",
+          "name": "Bonuses",
+          "href": "/objects/general-ledger/account/254"
+        },
+        "overrideOffsetGLAccount": {
+          "key": "36",
+          "id": "1200",
+          "name": "Accounts Receivable",
+          "href": "/objects/general-ledger/account/36"
+        },
+        "accountLabel": {
+          "name": "Bonuses",
+          "key": "35",
+          "id": "Bonuses",
+          "href": "/objects/accounts-receivable/account-label/35"
+        },
+        "createdDate": "2024-09-24",
+        "baseAmount": "400.00",
+        "txnAmount": "400.00",
+        "dimensions": {
+          "department": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "location": {
+            "key": "4",
+            "id": "4",
+            "name": "Australia",
+            "href": "/objects/company-config/location/4"
+          },
+          "project": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "customer": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "vendor": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "employee": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "item": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "class": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "warehouse": {
+            "key": null,
+            "id": null,
+            "name": null
+          }
+        },
+        "baseLocation": {
+          "name": "Australia",
+          "key": "4",
+          "href": "/objects/company-config/location/4"
+        },
+        "memo": "line 1",
+        "currency": {
+          "exchangeRate": {
+            "date": null,
+            "typeId": null,
+            "rate": 1
+          },
+          "txnCurrency": "AUD",
+          "baseCurrency": "AUD"
+        },
+        "allocation": {
+          "key": null,
+          "id": null
+        },
+        "lineNumber": 1,
+        "paymentInformation": {
+          "totalBaseAmountPaid": "0.00",
+          "totalTxnAmountPaid": "0.00",
+          "totalBaseAmountSelectedForPayment": "0.00",
+          "totalTxnAmountSelectedForPayment": "0.00"
+        },
+        "isSubtotal": null,
+        "audit": {
+          "createdDateTime": "2024-09-24T14:18:20Z",
+          "modifiedDateTime": "2024-09-24T14:18:20Z",
+          "createdBy": "1",
+          "modifiedBy": "1"
+        },
+        "taxEntries": [
+          {
+            "txnTaxAmount": "40.00",
+            "baseTaxAmount": "40.00",
+            "orderEntryTaxDetail": {
+              "id": "G1 Goods and Services Tax",
+              "key": "20",
+              "href": "/objects/tax/order-entry-tax-detail/20"
+            },
+            "id": "2704",
+            "key": "2704",
+            "taxRate": 10,
+            "invoiceLine": {
+              "id": "2702",
+              "key": "2702",
+              "href": "/objects/accounts-receivable/invoice-line/2702"
+            },
+            "href": "/objects/accounts-receivable/invoice-tax-entry/2704"
+          }
+        ],
+        "href": "/objects/accounts-receivable/invoice-line/2702"
+      }
+    ],
+    "href": "/objects/accounts-receivable/invoice/22484"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/invoice/{key}
+_Update an invoice_
+
+**Request example — Update a single value:**
+```json
+{
+  "description": "Special off-cycle order"
+}
+```
+**Response 200 — Update a single value:**
+```json
+{
+  "ia::result": {
+    "id": "2091",
+    "key": "2091",
+    "href": "/objects/accounts-receivable/invoice/2091"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/invoice/{key}
+_Delete an invoice_
+
+
+## GET /objects/accounts-receivable/manual-deposit
+_List manual deposits_
+
+**Response 200 — List manual deposits:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "20",
+      "id": "20",
+      "href": "/objects/accounts-receivable/manual-deposit/20"
+    },
+    {
+      "key": "44",
+      "id": "44",
+      "href": "/objects/accounts-receivable/manual-deposit/44"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/accounts-receivable/manual-deposit
+_Create a manual deposit_
+
+**Request example — Create a manual deposit:**
+```json
+{
+  "customer": {
+    "id": "CNXT"
+  },
+  "financialEntity": {
+    "id": "CITI"
+  },
+  "createdDate": "2025-06-03",
+  "manualDepositSummary": {
+    "id": "2226"
+  },
+  "lines": [
+    {
+      "paymentInformation": {
+        "txnAmount": "150"
+      },
+      "glAccount": {
+        "id": "1200"
+      },
+      "accountLabel": {
+        "id": "sale01"
+      },
+      "dimensions": {
+        "location": {
+          "id": "1"
+        }
+      }
+    }
+  ]
+}
+```
+**Response 201 — Reference to new manual deposit:**
+```json
+{
+  "ia::result": {
+    "id": "20",
+    "key": "20",
+    "href": "/objects/accounts-receivable/manual-deposit/20"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/manual-deposit-line
+_List manual deposit lines_
+
+**Response 200 — List manual deposit lines:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "282",
+      "id": "282",
+      "href": "/objects/accounts-receivable/manual-deposit-line/282"
+    },
+    {
+      "key": "286",
+      "id": "286",
+      "href": "/objects/accounts-receivable/manual-deposit-line/286"
+    },
+    {
+      "key": "300",
+      "id": "300",
+      "href": "/objects/accounts-receivable/manual-deposit-line/300"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "ageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/accounts-receivable/manual-deposit-line/{key}
+_Get a manual deposit line_
+
+**Response 200 — Get a manual deposit line:**
+```json
+{
+  "ia::result": {
+    "id": "300",
+    "key": "300",
+    "manualDeposit": {
+      "id": "148",
+      "key": "148",
+      "href": "/objects/accounts-receivable/manual-deposit/148"
+    },
+    "glAccount": {
+      "key": "36",
+      "id": "1200",
+      "name": "Accounts Receivable",
+      "href": "/objects/general-ledger/account/36"
+    },
+    "accountLabel": {
+      "id": "Accounts Receivable - Manual",
+      "key": "11",
+      "href": "/objects/accounts-receivable/account-label/11"
+    },
+    "currency": {
+      "baseCurrency": "USD",
+      "txnCurrency": "USD"
+    },
+    "paymentInformation": {
+      "baseAmount": "110.00",
+      "txnAmount": "110.00"
+    },
+    "dimensions": {
+      "department": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "location": {
+        "key": "1",
+        "id": "1",
+        "href": "/objects/company-config/location/1"
+      },
+      "project": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "customer": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "vendor": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "employee": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "item": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "class": {
+        "key": null,
+        "id": null,
+        "name": null
+      }
+    },
+    "memo": null,
+    "lineNumber": 1,
+    "audit": {
+      "createdDateTime": "2025-06-05T11:48:59Z",
+      "modifiedDateTime": "2025-06-05T11:54:14Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "href": "/objects/accounts-receivable/manual-deposit-line/300"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/manual-deposit-summary
+_List manual deposit summaries_
+
+**Response 200 — List manual deposit summaries:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "11",
+      "id": "11",
+      "href": "/objects/accounts-receivable/manual-deposit-summary/11"
+    },
+    {
+      "key": "10",
+      "id": "10",
+      "href": "/objects/accounts-receivable/manual-deposit-summary/10"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/accounts-receivable/manual-deposit-summary/{key}
+_Get a manual deposit summary_
+
+**Response 200 — Get a manual deposit summary:**
+```json
+{
+  "ia::result": {
+    "key": "11",
+    "id": "11",
+    "name": "Invoices: 2025/06/01 Batch",
+    "glPostingDate": "2025/06/01",
+    "status": "active",
+    "recordType": "invoice",
+    "totalAmount": "1100.00",
+    "state": "open",
+    "parent": {
+      "key": "8",
+      "id": "8",
+      "href": "/objects/accounts-receivable/summary/8"
+    },
+    "preventGLPosting": true,
+    "summaryCreationType": "manual",
+    "isQuickPaymentSummary": true,
+    "audit": {
+      "createdDateTime": "2025-04-21T06:50:10Z",
+      "modifiedDateTime": "2025-06-02T05:31:24Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      }
+    },
+    "href": "/objects/accounts-receivable/manual-deposit-summary/11"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/manual-deposit/{key}
+_Get a manual deposit_
+
+**Response 200 — Get a manual deposit:**
+```json
+{
+  "ia::result": {
+    "id": "20",
+    "key": "20",
+    "recordType": "rp",
+    "createdDate": "2025-07-08",
+    "audit": {
+      "createdDateTime": "2025-07-08T00:00:00Z",
+      "modifiedDateTime": "2025-07-08T12:19:07Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "customer": {
+      "id": "CNXT",
+      "key": "12",
+      "name": "CNXT",
+      "href": "/objects/accounts-receivable/customer/12"
+    },
+    "financialEntity": {
+      "id": "BOA",
+      "key": "18",
+      "name": "Bank of America",
+      "href": "/objects/cash-management/bank-account/18"
+    },
+    "documentNumber": "INV-1602",
+    "depositId": "BOA-0001",
+    "description": null,
+    "contacts": {
+      "billTo": {
+        "id": "cnxt(Ccnxt)",
+        "key": "661",
+        "href": "/objects/company-config/contact/661"
+      },
+      "shipTo": {
+        "id": "cnxt(Ccnxt)",
+        "key": "661",
+        "href": "/objects/company-config/contact/661"
+      }
+    },
+    "currency": {
+      "baseCurrency": "USD",
+      "txnCurrency": "USD"
+    },
+    "paymentInformation": {
+      "totalAmountEntered": "100.00",
+      "totalPaid": "100.00",
+      "paidDate": "2025-07-08",
+      "totalEntered": "100.00",
+      "txnTotalPaid": "100.00"
+    },
+    "state": "confirmed",
+    "manualDepositSummary": {
+      "id": "2226",
+      "key": "19",
+      "href": "/objects/accounts-receivable/manual-deposit-summary/19"
+    },
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "lines": [
+      {
+        "id": "46",
+        "key": "46",
+        "manualDeposit": {
+          "id": "46",
+          "key": "20",
+          "href": "/objects/accounts-receivable/manual-deposit/20"
+        },
+        "glAccount": {
+          "key": "36",
+          "id": "1200",
+          "name": "Accounts Receivable",
+          "href": "/objects/general-ledger/account/36"
+        },
+        "accountLabel": {
+          "id": "Accounts Receivable - Manual",
+          "key": "11",
+          "href": "/objects/accounts-receivable/account-label/11"
+        },
+        "currency": {
+          "baseCurrency": "USD",
+          "txnCurrency": "USD"
+        },
+        "paymentInformation": {
+          "baseAmount": "100.00",
+          "txnAmount": "100.00"
+        },
+        "dimensions": {
+          "department": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "location": {
+            "key": "1",
+            "id": "1",
+            "href": "/objects/company-config/location/1"
+          },
+          "project": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "customer": {
+            "key": "12",
+            "id": "cnxt",
+            "name": "cnxt",
+            "href": "/objects/accounts-receivable/customer/12"
+          },
+          "vendor": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "employee": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "item": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "class": {
+            "key": null,
+            "id": null,
+            "name": null
+          }
+        },
+        "memo": null,
+        "lineNumber": 1,
+        "audit": {
+          "createdDateTime": "2025-07-08T12:19:07Z",
+          "modifiedDateTime": "2025-07-08T12:19:07Z",
+          "createdByUser": {
+            "key": "1",
+            "id": "Admin",
+            "href": "/objects/company-config/user/1"
+          },
+          "createdBy": "1",
+          "modifiedByUser": {
+            "key": "1",
+            "id": "Admin",
+            "href": "/objects/company-config/user/1"
+          },
+          "modifiedBy": "1"
+        },
+        "href": "/objects/accounts-receivable/manual-deposit-line/46"
+      }
+    ],
+    "href": "/objects/accounts-receivable/manual-deposit/20"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/payment
+_List payments_
+
+**Response 200 — List payments:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "212",
+      "id": "212",
+      "href": "/objects/accounts-receivable/payment/212"
+    },
+    {
+      "key": "201",
+      "id": "201",
+      "href": "/objects/accounts-receivable/payment/201"
+    },
+    {
+      "key": "289",
+      "id": "289",
+      "href": "/objects/accounts-receivable/payment/289"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": 101,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/accounts-receivable/payment
+_Create a payment_
+
+**Request example — Create a payment:**
+```json
+{
+  "financialEntity": {
+    "entityId": "BOA"
+  },
+  "paymentMethod": "cash",
+  "customer": {
+    "id": "Cust-00064"
+  },
+  "documentNumber": "1567",
+  "paymentSummary": {
+    "receiptDate": "2024-03-23"
+  },
+  "txnCurrency": {
+    "currency": "USD"
+  },
+  "baseCurrency": {
+    "currency": "USD"
+  },
+  "paymentDetails": [
+    {
+      "arInvoice": {
+        "id": "2085"
+      },
+      "txnCurrency": {
+        "paymentAmount": "60.00"
+      }
+    }
+  ]
+}
+```
+**Response 201 — Reference to new payment:**
+```json
+{
+  "ia::result": {
+    "id": "2096",
+    "key": "2096",
+    "href": "/objects/accounts-receivable/payment/2096"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/payment-detail
+_List payment details_
+
+**Response 200 — List payment details:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "117",
+      "id": "117",
+      "href": "/objects/accounts-receivable/payment-detail/117"
+    },
+    {
+      "key": "118",
+      "id": "118",
+      "href": "/objects/accounts-receivable/payment-detail/118"
+    },
+    {
+      "key": "119",
+      "id": "119",
+      "href": "/objects/accounts-receivable/payment-detail/119"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": 101,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/accounts-receivable/payment-detail/{key}
+_Get payment details_
+
+**Response 200 — Get payment details:**
+```json
+{
+  "ia::result": {
+    "id": "117",
+    "key": "117",
+    "arInvoice": {
+      "id": "426",
+      "key": "426",
+      "href": "/objects/accounts-receivable/invoice/426"
+    },
+    "arInvoiceLine": {
+      "id": "929",
+      "key": "929",
+      "href": "/objects/accounts-receivable/invoice-line/929"
+    },
+    "positiveAdjustment": {
+      "key": null,
+      "id": null
+    },
+    "positiveAdjustmentLine": {
+      "id": null,
+      "key": null
+    },
+    "inlineTxn": {
+      "key": "428",
+      "id": "428",
+      "href": "/objects/accounts-receivable/invoice/428"
+    },
+    "inlineTxnLine": {
+      "id": "933",
+      "key": "933",
+      "href": "/objects/accounts-receivable/invoice-line/933"
+    },
+    "arAdvance": {
+      "key": null,
+      "id": null
+    },
+    "arAdvanceLine": {
+      "id": null,
+      "key": null
+    },
+    "postedAdvance": {
+      "key": null,
+      "id": null
+    },
+    "postedAdvanceLine": {
+      "id": null,
+      "key": null
+    },
+    "arPostedOverPayment": {
+      "key": null,
+      "id": null
+    },
+    "arPostedOverPaymentLine": {
+      "id": null,
+      "key": null
+    },
+    "postedOverPayment": {
+      "key": null,
+      "id": null
+    },
+    "postedOverPaymentLine": {
+      "id": null,
+      "key": null
+    },
+    "negativeInvoice": {
+      "key": null,
+      "id": null
+    },
+    "negativeInvoiceLine": {
+      "id": null,
+      "key": null
+    },
+    "arAdjustment": {
+      "key": null,
+      "id": null
+    },
+    "arAdjustmentLine": {
+      "id": null,
+      "key": null
+    },
+    "arPayment": {
+      "id": "433",
+      "key": "433",
+      "href": "/objects/accounts-receivable/payment/433"
+    },
+    "arPaymentLine": {
+      "id": "1011",
+      "key": "1011",
+      "href": "/objects/accounts-receivable/payment-line/1011"
+    },
+    "paymentDate": "2024-11-25",
+    "baseCurrency": {
+      "paymentAmount": "5.00",
+      "inlineAmount": "10.00",
+      "postedAdvanceAmount": null,
+      "postedOverPaymentAmount": null,
+      "negativeInvoiceAmount": null,
+      "adjustmentAmount": null
+    },
+    "txnCurrency": {
+      "inlineAmount": "10.00",
+      "postedAdvanceAmount": null,
+      "postedOverPaymentAmount": null,
+      "negativeInvoiceAmount": null,
+      "adjustmentAmount": null,
+      "paymentAmount": "50.00",
+      "currency": "USD"
+    },
+    "discountDate": null,
+    "audit": {
+      "createdDateTime": "2024-11-25T07:09:13Z",
+      "modifiedDateTime": "2024-11-25T07:09:13Z",
+      "createdByUser": {
+        "key": "39",
+        "href": "/objects/company-config/user/39"
+      },
+      "createdBy": "39",
+      "modifiedByUser": {
+        "key": "39",
+        "href": "/objects/company-config/user/39"
+      },
+      "modifiedBy": "39"
+    },
+    "href": "/objects/accounts-receivable/payment-detail/117"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/payment-line
+_List payment lines_
+
+**Response 200 — List payment lines:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "7",
+      "id": "7",
+      "href": "/objects/accounts-receivable/payment-line/7"
+    },
+    {
+      "key": "13",
+      "id": "13",
+      "href": "/objects/accounts-receivable/payment-line/13"
+    },
+    {
+      "key": "28",
+      "id": "28",
+      "href": "/objects/accounts-receivable/payment-line/28"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": 101,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/accounts-receivable/payment-line/{key}
+_Get a payment line_
+
+**Response 200 — Get a payment line:**
+```json
+{
+  "ia::result": {
+    "id": "1369",
+    "key": "1369",
+    "arPayment": {
+      "key": "121",
+      "id": "121",
+      "href": "/objects/accounts-receivable/payment/121"
+    },
+    "bank": {
+      "amount": "10",
+      "txnAmount": "10",
+      "txnCurrency": "USD",
+      "baseCurrency": "USD",
+      "bankExchangeRate": {
+        "date": "2025-01-23",
+        "rate": 1.0789,
+        "typeId": "-1"
+      }
+    },
+    "glAccount": {
+      "key": "263",
+      "id": "1103",
+      "name": "Accounts Receivable - Microcomputer",
+      "href": "/objects/general-ledger/account/263"
+    },
+    "dimensions": {
+      "department": {
+        "key": "9",
+        "id": "11",
+        "name": "Accounting",
+        "href": "/objects/company-config/department/9"
+      },
+      "location": {
+        "key": "1",
+        "id": "1",
+        "name": "United States of America",
+        "href": "/objects/company-config/location/1"
+      },
+      "customer": {
+        "key": "13",
+        "id": "C-00019",
+        "name": "sForce",
+        "href": "/objects/accounts-receivable/customer/13"
+      },
+      "vendor": {
+        "key": "512",
+        "id": "V-00008",
+        "name": "SF Seals",
+        "href": "/objects/accounts-payable/vendor/512"
+      },
+      "item": {
+        "key": "6",
+        "id": "LIC02-06",
+        "name": "License 6 month contract",
+        "href": "/objects/inventory-control/item/6"
+      },
+      "employee": {
+        "key": "3",
+        "id": "Admin",
+        "name": "Automation Test Admin",
+        "href": "/objects/company-config/employee/3"
+      },
+      "contract": {
+        "key": "7",
+        "id": "CONTRACTAUG16MEA",
+        "name": "CONTRACTAUG16MEA",
+        "href": "/objects/contracts/contract/7"
+      },
+      "project": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "class": {
+        "key": "6",
+        "id": "4",
+        "name": "Professional services",
+        "href": "/objects/company-config/class/6"
+      }
+    },
+    "memo": "null,",
+    "exchangeRate": {
+      "date": "2024-04-15",
+      "typeId": "-1",
+      "rate": 1
+    },
+    "baseCurrency": {
+      "amount": "100",
+      "currency": "USD",
+      "totalPaid": "0",
+      "totalSelected": "100"
+    },
+    "txnCurrency": {
+      "amount": "100",
+      "currency": "USD",
+      "totalPaid": "0",
+      "totalSelected": "100"
+    },
+    "lineNumber": 1,
+    "offsetGLAccount": {
+      "key": "9",
+      "href": "/objects/general-ledger/account/9"
+    },
+    "audit": {
+      "createdDateTime": "2024-04-21T12:34:02Z",
+      "modifiedDateTime": "2024-07-04T08:18:29Z",
+      "createdByUser": {
+        "key": "39",
+        "href": "/objects/company-config/user/39"
+      },
+      "createdBy": "39",
+      "modifiedByUser": {
+        "key": "39",
+        "href": "/objects/company-config/user/39"
+      },
+      "modifiedBy": "39"
+    },
+    "href": "/objects/accounts-receivable/payment-line/1369"
+  }
+}
+```
+
+## GET /objects/accounts-receivable/payment-summary
+_List payment summaries_
+
+**Response 200 — List payment summaries:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "110",
+      "id": "110",
+      "href": "/objects/accounts-receivable/payment-summary/110"
+    },
+    {
+      "key": "112",
+      "id": "112",
+      "href": "/objects/accounts-receivable/payment-summary/112"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/accounts-receivable/payment-summary
+_Create a payment summary_
+
+**Request example — Create a payment summary:**
+```json
+{
+  "name": "Reversed Receipts (Bank-BOA): 2025/04/12 Batch",
+  "glPostingDate": "2025-04-18",
+  "status": "active",
+  "state": "open",
+  "preventGLPosting": false,
+  "bankAccount": {
+    "id": "BOA"
+  }
+}
+```
+**Response 201 — Reference to new payment summary:**
+```json
+{
+  "ia::result": {
+    "key": "110",
+    "id": "110",
+    "href": "/objects/accounts-receivable/payment-summary/110"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/payment-summary/{key}
+_Get a payment summary_
+
+**Response 200 — Get a payment summary:**
+```json
+{
+  "ia::result": {
+    "key": "110",
+    "id": "110",
+    "name": "Reversed Receipts (Bank-BOA): 2025/04/12 Batch",
+    "glPostingDate": "2025-04-12",
+    "status": "active",
+    "recordType": "payment",
+    "totalAmount": "200",
+    "state": "open",
+    "parent": {
+      "key": null,
+      "id": null
+    },
+    "preventGLPosting": false,
+    "bankAccount": {
+      "key": "1",
+      "id": "BOA",
+      "currency": "USD",
+      "href": "/objects/cash-management/bank-account/1"
+    },
+    "undepositedGLAccount": {
+      "id": "1070",
+      "key": "33",
+      "href": "/objects/general-ledger/account/33"
+    },
+    "summaryCreationType": "manual",
+    "isQuickPaymentSummary": false,
+    "entity": {
+      "key": "1",
+      "id": "1",
+      "name": "United States of America",
+      "href": "/objects/company-config/entity/1"
+    },
+    "audit": {
+      "createdDateTime": "2024-09-09T06:35:58Z",
+      "modifiedDateTime": "2024-09-09T06:35:58Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "href": "/objects/accounts-receivable/payment-summary/110"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/payment-summary/{key}
+_Update a payment summary_
+
+**Request example — Update a manual payment summary:**
+```json
+{
+  "status": "inactive",
+  "state": "closed",
+  "preventGLPosting": true
+}
+```
+**Response 200 — Reference to updated payment summary:**
+```json
+{
+  "ia::result": {
+    "key": "110",
+    "id": "110",
+    "href": "/objects/accounts-receivable/payment-summary/110"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/payment-summary/{key}
+_Delete a payment summary_
+
+
+## GET /objects/accounts-receivable/payment/{key}
+_Get a payment_
+
+**Response 200 — Get a payment:**
+```json
+{
+  "ia::result": {
+    "id": "464",
+    "key": "464",
+    "paymentSummary": {
+      "key": "281",
+      "id": "281",
+      "title": "Receipts(Bank-BOA): 2024/10/10 Batch",
+      "receiptDate": "2024-10-10",
+      "name": "Receipts(Bank-BOA): 2024/10/10 Batch",
+      "href": "/objects/accounts-receivable/summary/281"
+    },
+    "undepositedGLAccount": {
+      "key": null,
+      "id": null
+    },
+    "recordType": "rp",
+    "financialEntity": {
+      "entityId": "BOA",
+      "entityType": "ba",
+      "name": "Bank of America",
+      "currency": "USD",
+      "txnAmount": "10.00",
+      "baseAmount": "10.00",
+      "baseCurrency": "USD"
+    },
+    "state": "complete",
+    "paymentMethod": "cash",
+    "customer": {
+      "key": "8",
+      "id": "C-000012",
+      "name": "Gomez Manufacturers",
+      "href": "objects/accounts-receivable/customer/8"
+    },
+    "payerName": null,
+    "documentNumber": "1567",
+    "description": "Regular payment for services",
+    "audit": {
+      "createdDateTime": "2024-10-10T00:00:00Z",
+      "modifiedDateTime": "2024-12-12T06:51:22Z",
+      "createdByUser": {
+        "key": "39",
+        "href": "/objects/company-config/user/39"
+      },
+      "createdBy": "39",
+      "modifiedByUser": {
+        "key": "39",
+        "href": "/objects/company-config/user/39"
+      },
+      "modifiedBy": "39"
+    },
+    "paidDate": "2024-11-20",
+    "baseCurrency": {
+      "currency": "USD",
+      "totalAmount": "250",
+      "totalSelected": "0",
+      "totalPaid": "250",
+      "totalDue": "0"
+    },
+    "txnCurrency": {
+      "currency": "GBP",
+      "totalAmount": "250",
+      "totalSelected": "0",
+      "totalPaid": "250",
+      "totalDue": "0"
+    },
+    "exchangeRate": {
+      "date": "2024-08-01",
+      "typeId": "GBP-Rate",
+      "rate": 3
+    },
+    "contacts": {
+      "payTo": {
+        "id": "Klay Vanderbilt",
+        "key": "8"
+      }
+    },
+    "bankReconciliationStatus": "uncleared",
+    "bankReconciliationDate": null,
+    "referenceNumber": null,
+    "attachment": {
+      "id": "123",
+      "key": "123",
+      "href": "/objects/company-config/attachment/123"
+    },
+    "webURL": "https://intacct.com/acct/ur.phtml?.r=ijVqUVXUX3TzexR2EcQNU3U7RuBoTavvJ5Pvp9qZZG0",
+    "entity": {
+      "key": "1",
+      "id": "1",
+      "name": "United States of America",
+      "href": "/objects/company-config/entity/1"
+    },
+    "multiEntityPayment": {
+      "key": "1077",
+      "id": "PAY-00136",
+      "href": "/objects/accounts-receivable/payment/1077"
+    },
+    "lines": [
+      {
+        "id": "1011",
+        "key": "1011",
+        "arPayment": {
+          "key": "464",
+          "id": "464",
+          "href": "/objects/accounts-receivable/payment/464"
+        },
+        "glAccount": {
+          "key": "36",
+          "id": "1200",
+          "name": "Accounts Receivable",
+          "href": "/objects/general-ledger/account/36"
+        },
+        "baseCurrency": {
+          "amount": "10",
+          "currency": "USD",
+          "totalPaid": "10",
+          "totalSelected": "0"
+        },
+        "txnCurrency": {
+          "amount": "10",
+          "currency": "GBP",
+          "totalPaid": "10",
+          "totalSelected": "0"
+        },
+        "dimensions": {
+          "department": {
+            "key": "2",
+            "id": "9",
+            "name": "Engineering"
+          },
+          "location": {
+            "key": "1",
+            "id": "1",
+            "name": "United States of America",
+            "href": "/objects/company-config/location/1"
+          },
+          "customer": {
+            "key": "20",
+            "id": "C-00013",
+            "href": "/objects/accounts-receivable/customer/20"
+          },
+          "vendor": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "employee": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "item": {
+            "key": "227",
+            "id": "API3.0",
+            "name": "API Usage",
+            "href": "/objects/inventory-control/item/227"
+          },
+          "contract": {
+            "key": "61",
+            "id": "62176",
+            "name": "62176",
+            "href": "/objects/contracts/contract/61"
+          },
+          "project": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "class": {
+            "key": null,
+            "id": null,
+            "name": null
+          }
+        },
+        "memo": "Regular payment for services",
+        "exchangeRate": {
+          "date": "2024-10-10",
+          "typeId": "3",
+          "rate": 3
+        },
+        "lineNumber": 1,
+        "recordType": "rp",
+        "offsetGLAccount": {
+          "key": "9",
+          "id": "4000",
+          "href": "/objects/general-ledger/account/9"
+        },
+        "audit": {
+          "createdDateTime": "2024-12-12T06:51:21Z",
+          "modifiedDateTime": "2024-12-12T06:51:22Z",
+          "createdByUser": {
+            "key": "38",
+            "href": "/objects/company-config/user/38"
+          },
+          "createdBy": "38",
+          "modifiedByUser": {
+            "key": "38",
+            "href": "/objects/company-config/user/38"
+          },
+          "modifiedBy": "38"
+        },
+        "href": "/objects/accounts-receivable/payment-line/1011"
+      }
+    ],
+    "paymentDetails": [
+      {
+        "id": "127",
+        "key": "127",
+        "baseCurrency": {
+          "paymentAmount": "10",
+          "inlineAmount": null,
+          "postedAdvanceAmount": null,
+          "postedOverPaymentAmount": null,
+          "negativeInvoiceAmount": null,
+          "adjustmentAmount": null
+        },
+        "txnCurrency": {
+          "inlineAmount": null,
+          "postedAdvanceAmount": null,
+          "postedOverPaymentAmount": null,
+          "negativeInvoiceAmount": null,
+          "adjustmentAmount": null,
+          "paymentAmount": "10.00",
+          "currency": "GBP"
+        },
+        "arInvoice": {
+          "id": "406",
+          "key": "406",
+          "href": "/objects/accounts-receivable/invoice/406"
+        },
+        "arInvoiceLine": {
+          "id": "886",
+          "key": "886",
+          "href": "/objects/accounts-receivable/invoice-line/886"
+        },
+        "positiveAdjustment": {
+          "key": null,
+          "id": null
+        },
+        "positiveAdjustmentLine": {
+          "id": null,
+          "key": null
+        },
+        "inlineTxn": {
+          "key": null,
+          "id": null
+        },
+        "inlineTxnLine": {
+          "id": null,
+          "key": null
+        },
+        "postedAdvance": {
+          "key": null,
+          "id": null
+        },
+        "postedAdvanceLine": {
+          "id": null,
+          "key": null
+        },
+        "arPostedOverPayment": {
+          "key": null,
+          "id": null
+        },
+        "arPostedOverPaymentLine": {
+          "id": null,
+          "key": null
+        },
+        "postedOverPayment": {
+          "key": null,
+          "id": null
+        },
+        "postedOverPaymentLine": {
+          "id": null,
+          "key": null
+        },
+        "negativeInvoice": {
+          "key": null,
+          "id": null
+        },
+        "negativeInvoiceLine": {
+          "id": null,
+          "key": null
+        },
+        "arAdjustment": {
+          "key": null,
+          "id": null
+        },
+        "arAdjustmentLine": {
+          "id": null,
+          "key": null
+        },
+        "arAdvance": {
+          "key": null,
+          "id": null
+        },
+        "arAdvanceLine": {
+          "id": null,
+          "key": null
+        },
+        "arPayment": {
+          "id": "464",
+          "key": "464",
+          "href": "/objects/accounts-receivable/payment/464"
+        },
+        "arPaymentLine": {
+          "id": "1011",
+          "key": "1011",
+          "href": "/objects/accounts-receivable/payment-line/1011\""
+        },
+        "paymentDate": "2024-03-20",
+        "audit": {
+          "createdDateTime": "2024-12-12T06:51:21Z",
+          "modifiedDateTime": "2024-12-12T06:51:21Z",
+          "createdByUser": {
+            "key": "1",
+            "href": "/objects/company-config/user/1"
+          },
+          "createdBy": "1",
+          "modifiedByUser": {
+            "key": "1",
+            "href": "/objects/company-config/user/1"
+          },
+          "modifiedBy": "1"
+        },
+        "href": "/objects/accounts-receivable/payment-detail/127"
+      }
+    ],
+    "href": "/objects/accounts-receivable/payment/464"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/payment/{key}
+_Delete a draft payment_
+
+
+## GET /objects/accounts-receivable/recurring-invoice
+_List recurring invoices_
+
+**Response 200 — List recurring invoices:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "3",
+      "id": "3",
+      "href": "/objects/accounts-receivable/recurring-invoice/3"
+    },
+    {
+      "key": "4",
+      "id": "4",
+      "href": "/objects/accounts-receivable/recurring-invoice/4"
+    },
+    {
+      "key": "7",
+      "id": "7",
+      "href": "/objects/accounts-receivable/recurring-invoice/7"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/accounts-receivable/recurring-invoice
+_Create a recurring invoice_
+
+**Request example — Create a recurring invoice:**
+```json
+{
+  "description": "Monthly premium subscription",
+  "term": {
+    "key": "25"
+  },
+  "invoiceNumber": "AR-INV",
+  "referenceNumber": "PO1223",
+  "customer": {
+    "key": "10"
+  },
+  "currency": {
+    "txnCurrency": "USD",
+    "baseCurrency": "USD"
+  },
+  "payment": {
+    "paymentMethod": "onlineChargeCard",
+    "payInFull": true,
+    "accountType": "bank",
+    "bankAccountId": "BOA"
+  },
+  "schedule": {
+    "startDate": "2024-03-11",
+    "repeatBy": "month",
+    "repeatInterval": "2",
+    "emailNotifications": "joe.smith@mycompany.com"
+  },
+  "lines": [
+    {
+      "description": "line 1",
+      "glAccount": {
+        "key": "194"
+      },
+      "txnAmount": "250.00"
+    }
+  ]
+}
+```
+**Response 201 — Reference to new recurring invoice:**
+```json
+{
+  "ia::result": {
+    "id": "4",
+    "key": "4",
+    "href": "/objects/accounts-receivable/recurring-invoice/4"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/recurring-invoice-line
+_List recurring invoice lines_
+
+**Response 200 — List recurring invoice lines:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "9",
+      "id": "9",
+      "href": "/objects/accounts-receivable/recurring-invoice-line/9"
+    },
+    {
+      "key": "10",
+      "id": "10",
+      "href": "/objects/accounts-receivable/recurring-invoice-line/10"
+    },
+    {
+      "key": "13",
+      "id": "13",
+      "href": "/objects/accounts-receivable/recurring-invoice-line/13"
+    },
+    {
+      "key": "14",
+      "id": "14",
+      "href": "/objects/accounts-receivable/recurring-invoice-line/14"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 4,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/accounts-receivable/recurring-invoice-line
+_Create a recurring invoice line_
+
+**Request example — Create a recurring invoice line:**
+```json
+{
+  "recurringInvoice": {
+    "key": "3"
+  },
+  "txnAmount": "50.00",
+  "glAccount": {
+    "id": "4000"
+  },
+  "dimensions": {
+    "location": {
+      "key": "1"
+    },
+    "vendor": {
+      "key": "209"
+    },
+    "department": {
+      "key": "77"
+    },
+    "project": {
+      "key": "27"
+    },
+    "customer": {
+      "key": "HC"
+    }
+  },
+  "memo": "server charges bill",
+  "accountLabel": {
+    "key": "28"
+  }
+}
+```
+**Response 201 — Reference to new recurring invoice line:**
+```json
+{
+  "ia::result": {
+    "key": "5",
+    "id": "5",
+    "href": "/objects/accounts-receivable/recurring-invoice-line/5",
+    "ia::meta": {
+      "totalCount": 1
+    }
+  }
+}
+```
+
+## GET /objects/accounts-receivable/recurring-invoice-line/{key}
+_Get a recurring invoice line_
+
+**Response 200 — Get a recurring invoice line:**
+```json
+{
+  "ia::result": {
+    "id": "51",
+    "key": "51",
+    "recurringInvoice": {
+      "id": "24",
+      "key": "24",
+      "href": "/objects/accounts-receivable/recurring-invoice/24"
+    },
+    "offsetGLAccount": {
+      "key": null
+    },
+    "description": "line 1",
+    "glAccount": {
+      "key": "254",
+      "id": "6103",
+      "name": "Bonuses",
+      "href": "/objects/general-ledger/account/254"
+    },
+    "amount": "400.00",
+    "dimensions": {
+      "location": {
+        "id": "4",
+        "name": "Australia"
+      },
+      "department": {
+        "id": null,
+        "name": null
+      },
+      "project": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "customer": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "vendor": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "employee": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "item": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "class": {
+        "key": null,
+        "id": null,
+        "name": null
+      }
+    },
+    "lineNumber": 0,
+    "accountLabel": {
+      "id": "Bonuses",
+      "key": "35",
+      "href": "/objects/accounts-receivable/account-label/35"
+    },
+    "currency": {
+      "txnCurrency": "AUD",
+      "baseCurrency": "AUD",
+      "exchangeRateDate": null,
+      "exchangeRateTypeId": null,
+      "exchangeRate": 1
+    },
+    "txnAmount": "400.00",
+    "allocation": {
+      "key": null,
+      "id": null
+    },
+    "isBillable": null,
+    "audit": {
+      "createdDateTime": "2024-09-24T14:18:18Z",
+      "modifiedDateTime": "2024-09-24T14:18:18Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "deferredRevenueGLAccount": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "startDate": null,
+    "endDate": null,
+    "taxDetail": {
+      "taxPercent": null,
+      "id": null,
+      "key": null
+    },
+    "isTax": false,
+    "isSubTotal": null,
+    "taxEntries": [
+      {
+        "id": "52",
+        "key": "52",
+        "recurringInvoiceLine": {
+          "id": "51",
+          "key": "51",
+          "href": "/objects/accounts-receivable/recurring-invoice-line/51"
+        },
+        "baseTaxAmount": "40.00",
+        "txnTaxAmount": "40.00",
+        "taxRate": 10,
+        "orderEntryTaxDetail": {
+          "id": "G1 Goods and Services Tax",
+          "key": "20",
+          "href": "/objects/tax/order-entry-tax-detail/20"
+        },
+        "href": "/objects/accounts-receivable/recurring-invoice-tax-entry/52"
+      }
+    ],
+    "href": "/objects/accounts-receivable/recurring-invoice-line/51"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/recurring-invoice-line/{key}
+_Update a recurring invoice line_
+
+**Request example — Update a recurring invoice line:**
+```json
+{
+  "glAccount": {
+    "id": "1003"
+  },
+  "dimensions": {
+    "location": {
+      "key": "2"
+    }
+  },
+  "description": "Updated memo for recurring invoice line"
+}
+```
+**Response 200 — Reference to updated recurring invoice line:**
+```json
+{
+  "ia::result": {
+    "key": "64",
+    "id": "64",
+    "href": "/objects/accounts-receivable/recurring-invoice-line/64"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/recurring-invoice-line/{key}
+_Delete a recurring invoice line._
+
+
+## GET /objects/accounts-receivable/recurring-invoice-tax-entry
+_List recurring invoice tax entries_
+
+**Response 200 — List recurring invoice tax entries:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "8",
+      "id": "8",
+      "href": "/objects/accounts-receivable/recurring-invoice-tax-entry/8"
+    },
+    {
+      "key": "9",
+      "id": "9",
+      "href": "/objects/accounts-receivable/recurring-invoice-tax-entry/9"
+    },
+    {
+      "key": "10",
+      "id": "10",
+      "href": "/objects/accounts-receivable/recurring-invoice-tax-entry/10"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/accounts-receivable/recurring-invoice-tax-entry/{key}
+_Get a recurring invoice tax entry_
+
+**Response 200 — Get a recurring invoice tax entry:**
+```json
+{
+  "ia::result": {
+    "id": "52",
+    "key": "52",
+    "recurringInvoiceLine": {
+      "id": "51",
+      "key": "51",
+      "href": "/objects/accounts-receivable/recurring-invoice-line/51"
+    },
+    "baseTaxAmount": "40.00",
+    "txnTaxAmount": "40.00",
+    "taxRate": 10,
+    "orderEntryTaxDetail": {
+      "id": "G1 Goods and Services Tax",
+      "key": "20",
+      "href": "/objects/tax/order-entry-tax-detail/20"
+    },
+    "href": "/objects/accounts-receivable/recurring-invoice-tax-entry/52"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/recurring-invoice/{key}
+_Get a recurring invoice_
+
+**Response 200 — Get a recurring invoice:**
+```json
+{
+  "ia::result": {
+    "id": "24",
+    "key": "24",
+    "description": "nextGen Recurr",
+    "audit": {
+      "createdDateTime": "2024-09-24T00:00:00Z",
+      "modifiedDateTime": "2024-09-24T14:18:18Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "term": {
+      "key": "15",
+      "id": "Due upon pay",
+      "href": "/objects/accounts-receivable/term/15"
+    },
+    "invoiceNumber": "Adjustment Decrease",
+    "totalEntered": "440.00",
+    "referenceNumber": "INVREFNO",
+    "status": "active",
+    "customer": {
+      "name": "Power Aerospace Materials",
+      "key": "1",
+      "id": "1",
+      "href": "/objects/accounts-receivable/customer/1"
+    },
+    "scheduledOperation": {
+      "id": "7",
+      "key": "7",
+      "href": "/objects/core/scheduled-operation/7"
+    },
+    "contract": {
+      "id": null,
+      "description": null
+    },
+    "contacts": {
+      "billTo": {
+        "key": "128",
+        "id": "Power Aerospace Materials(C1)",
+        "href": "/objects/company-config/contact/128"
+      },
+      "shipTo": {
+        "key": "128",
+        "id": "Power Aerospace Materials(C1)",
+        "tax": {
+          "group": {
+            "id": null,
+            "key": null
+          },
+          "taxId": null
+        },
+        "href": "/objects/company-config/contact/128"
+      }
+    },
+    "currency": {
+      "txnCurrency": "AUD",
+      "baseCurrency": "AUD",
+      "exchangeRateTypeId": "",
+      "exchangeRate": 1
+    },
+    "txnTotalEntered": "440.00",
+    "customerMessage": {
+      "key": "1",
+      "id": "welcome message",
+      "message": "Welcome to the company!",
+      "href": "/objects/accounts-receivable/customer-message/1"
+    },
+    "payment": {
+      "paymentMethod": "none",
+      "payInFull": true,
+      "paymentAmount": null,
+      "customerCreditCard": {
+        "key": null,
+        "id": null
+      },
+      "creditCardType": null,
+      "accountType": null,
+      "bankAccountId": null,
+      "undepositedFundsAccountId": null
+    },
+    "schedule": {
+      "txnCount": 5,
+      "startDate": "2024-09-24",
+      "endDate": null,
+      "nextExecutionDate": "2024-09-25",
+      "lastExecutionDate": "2024-09-24",
+      "repeatCount": "3",
+      "repeatBy": "day",
+      "repeatInterval": "1",
+      "emailNotifications": "joe.smith@mycompany.com"
+    },
+    "taxSolution": {
+      "key": "1",
+      "id": "Australia - GST",
+      "href": "/objects/tax/tax-solution/1"
+    },
+    "attachment": {
+      "id": "atch1",
+      "key": "1"
+    },
+    "lines": [
+      {
+        "id": "51",
+        "key": "51",
+        "recurringInvoice": {
+          "id": "24",
+          "key": "24",
+          "href": "/objects/accounts-receivable/recurring-invoice/24"
+        },
+        "offsetGLAccount": {
+          "key": null
+        },
+        "description": "line 1",
+        "glAccount": {
+          "key": "254",
+          "id": "6103",
+          "name": "Bonuses",
+          "href": "/objects/general-ledger/account/254"
+        },
+        "amount": "400.00",
+        "dimensions": {
+          "location": {
+            "id": "4",
+            "name": "Australia"
+          },
+          "department": {
+            "key": "9",
+            "id": "11",
+            "name": "Accounting",
+            "href": "/objects/company-config/department/9"
+          },
+          "project": {
+            "key": "8",
+            "id": "8",
+            "name": "Client Services - Power Aerospace Materials",
+            "href": "/objects/projects/project/8"
+          },
+          "customer": {
+            "key": "1",
+            "id": "1",
+            "name": "Power Aerospace Materials",
+            "href": "/objects/accounts-receivable/customer/1"
+          },
+          "vendor": {
+            "key": "43",
+            "id": "1099 Int",
+            "name": "1099 Int",
+            "href": "/objects/accounts-payable/vendor/43"
+          },
+          "employee": {
+            "key": "1",
+            "id": "1",
+            "name": "Reser",
+            "href": "/objects/company-config/employee/1"
+          },
+          "item": {
+            "key": "1",
+            "id": "1",
+            "name": "PC Computer",
+            "href": "/objects/inventory-control/item/1"
+          },
+          "class": {
+            "key": "1",
+            "id": "3",
+            "name": "Health Care",
+            "href": "/objects/company-config/class/1"
+          }
+        },
+        "lineNumber": 0,
+        "accountLabel": {
+          "id": "Bonuses",
+          "key": "35",
+          "href": "/objects/accounts-receivable/account-label/35"
+        },
+        "currency": {
+          "txnCurrency": "AUD",
+          "baseCurrency": "AUD",
+          "exchangeRateDate": "2025-06-19",
+          "exchangeRateTypeId": "Intacct Daily Rate",
+          "exchangeRate": 1
+        },
+        "txnAmount": "400.00",
+        "allocation": {
+          "key": null,
+          "id": null
+        },
+        "isBillable": true,
+        "audit": {
+          "createdDateTime": "2024-09-24T14:18:18Z",
+          "modifiedDateTime": "2024-09-24T14:18:18Z",
+          "createdByUser": {
+            "key": "1",
+            "id": "Admin",
+            "href": "/objects/company-config/user/1"
+          },
+          "createdBy": "1",
+          "modifiedByUser": {
+            "key": "1",
+            "id": "Admin",
+            "href": "/objects/company-config/user/1"
+          },
+          "modifiedBy": "1"
+        },
+        "deferredRevenueGLAccount": {
+          "key": "411",
+          "id": "1501.04",
+          "name": "Expense Account",
+          "href": "/objects/general-ledger/account/411"
+        },
+        "startDate": null,
+        "endDate": null,
+        "taxDetail": {
+          "taxRate": null,
+          "id": null,
+          "key": null
+        },
+        "isTax": false,
+        "isSubTotal": false,
+        "taxEntries": [
+          {
+            "txnTaxAmount": "40.00",
+            "baseTaxAmount": "40.00",
+            "orderEntryTaxDetail": {
+              "id": "G1 Goods and Services Tax",
+              "key": "20",
+              "href": "/objects/tax/order-entry-tax-detail/20"
+            },
+            "id": "52",
+            "key": "52",
+            "taxRate": 10,
+            "href": "/objects/accounts-receivable/recurring-invoice-tax-entry/52"
+          }
+        ],
+        "totalTxnAmount": "440.00",
+        "href": "/objects/accounts-receivable/recurring-invoice-line/51"
+      }
+    ],
+    "href": "/objects/accounts-receivable/recurring-invoice/24",
+    "entity": {
+      "key": "1",
+      "id": "1",
+      "name": "United States of America",
+      "href": "/objects/company-config/entity/1"
+    }
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/recurring-invoice/{key}
+_Update a recurring invoice_
+
+**Request example — Update a recurring invoice:**
+```json
+{
+  "description": "Renewed subscription for 2024",
+  "status": "active"
+}
+```
+**Response 200 — Reference to updated recurring invoice:**
+```json
+{
+  "ia::result": {
+    "id": "4",
+    "key": "4",
+    "href": "/objects/accounts-receivable/recurring-invoice/4"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/recurring-invoice/{key}
+_Delete a recurring invoice_
+
+
+## GET /objects/accounts-receivable/revenue-recognition-template
+_List revenue recognition templates_
+
+**Response 200 — List revenue recognition templates:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "299",
+      "id": "299",
+      "href": "/objects/accounts-receivable/revenue-recognition-template/299"
+    },
+    {
+      "key": "294",
+      "id": "294",
+      "href": "/objects/accounts-receivable/revenue-recognition-template/294"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## POST /objects/accounts-receivable/revenue-recognition-template
+_Create a revenue recognition template_
+
+**Request example — Create a revenue recognition template:**
+```json
+{
+  "id": "Project Task Estimated Hours",
+  "description": "Project-Task Rev Rec based on Estimated Hours",
+  "useStandard": false,
+  "schedulePeriod": "monthly",
+  "postingDay": "11",
+  "recognitionMethod": "percentCompleted",
+  "recognitionStartDate": "transactionDate",
+  "postingMethod": "manual",
+  "status": "active",
+  "recognitionTerm": "project"
+}
+```
+**Response 201 — Reference to new revenue recognition template:**
+```json
+{
+  "ia::result": {
+    "key": "19",
+    "href": "/objects/accounts-receivable/revenue-recognition-template/19"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/revenue-recognition-template/{key}
+_Get a revenue recognition template_
+
+**Response 200 — Get a revenue recognition template:**
+```json
+{
+  "ia::result": {
+    "key": "14",
+    "id": "MilestoneObservedPercentComp",
+    "description": "Milestone Rev Rec based on Observed % Completed",
+    "useStandard": false,
+    "schedulePeriod": "monthly",
+    "postingDay": "endOfPeriod",
+    "totalPeriods": null,
+    "recognitionMethod": "milestone",
+    "recognitionStartDate": "transactionDate",
+    "postingMethod": "automatic",
+    "status": "active",
+    "latestVersion": null,
+    "recognitionTerm": "project",
+    "resumeOption": "walkforward",
+    "milestoneSource": "project",
+    "calculation": {
+      "source": "task",
+      "basedOn": "observed%Completed"
+    },
+    "audit": {
+      "createdDateTime": "2016-05-04T19:23:33Z",
+      "modifiedDateTime": "2016-05-04T19:23:33Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "href": "/objects/accounts-receivable/revenue-recognition-template/14"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/revenue-recognition-template/{key}
+_Update a revenue recognition template_
+
+**Request example — Update a revenue recognition template:**
+```json
+{
+  "description": "Milestone Rev Rec based on Observed percent completed",
+  "postingMethod": "manual"
+}
+```
+**Response 200 — Reference to updated revenue recognition template:**
+```json
+{
+  "ia::result": {
+    "key": "19",
+    "id": "OETEMPLATE",
+    "href": "/objects/accounts-receivable/revenue-recognition-template/19"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/revenue-recognition-template/{key}
+_Delete a revenue recognition template_
+
+
+## GET /objects/accounts-receivable/shipping-method
+_List shipping methods_
+
+**Response 200 — List shipping methods:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "Ground",
+      "href": "/objects/accounts-receivable/shipping-method/1"
+    },
+    {
+      "key": "2",
+      "id": "Air",
+      "href": "/objects/accounts-receivable/shipping-method/2"
+    },
+    {
+      "key": "3",
+      "id": "Fedex",
+      "href": "/objects/accounts-receivable/shipping-method/3"
+    },
+    {
+      "key": "4",
+      "id": "Sea Route",
+      "href": "/objects/accounts-receivable/shipping-method/4"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 4,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/accounts-receivable/shipping-method
+_Create a shipping method_
+
+**Request example — Create a new shipping method:**
+```json
+{
+  "id": "Air",
+  "daysInTransit": 10
+}
+```
+**Response 201 — Reference to new shipping method:**
+```json
+{
+  "ia::result": {
+    "key": "2",
+    "id": "2",
+    "href": "/objects/accounts-receivable/shipping-method/2"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/shipping-method/{key}
+_Get a shipping method_
+
+**Response 200 — Get a shipping method:**
+```json
+{
+  "ia::result": {
+    "key": "2",
+    "id": "Air",
+    "status": "active",
+    "daysInTransit": 4,
+    "href": "/objects/accounts-receivable/shipping-method/2"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/shipping-method/{key}
+_Update a shipping method_
+
+**Request example — Update a shipping method:**
+```json
+{
+  "daysInTransit": 15
+}
+```
+**Response 200 — Reference to updated shipping method:**
+```json
+{
+  "ia::result": {
+    "key": "2",
+    "id": "2",
+    "href": "/objects/accounts-receivable/shipping-method/2"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/shipping-method/{key}
+_Delete a shipping method_
+
+
+## GET /objects/accounts-receivable/summary
+_List summaries_
+
+**Response 200 — List summaries:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "2",
+      "id": "2",
+      "href": "/objects/accounts-receivable/summary/2"
+    },
+    {
+      "key": "6",
+      "id": "6",
+      "href": "/objects/accounts-receivable/summary/6"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/accounts-receivable/summary
+_Create a summary_
+
+**Request example — Create a summary:**
+```json
+{
+  "name": "Invoices: May 2025",
+  "glPostingDate": "2025-05-10",
+  "status": "active",
+  "recordType": "invoice",
+  "state": "open",
+  "preventGLPosting": false,
+  "isQuickPaymentSummary": false
+}
+```
+**Request example — Create a manual deposit summary:**
+```json
+{
+  "name": "Quick Deposits: April 2025",
+  "glPostingDate": "2025-04-01",
+  "status": "active",
+  "recordType": "invoice",
+  "state": "open",
+  "preventGLPosting": false,
+  "isQuickPaymentSummary": true
+}
+```
+**Response 201 — Reference to new summary:**
+```json
+{
+  "ia::result": {
+    "key": "14",
+    "id": "14",
+    "href": "/objects/accounts-receivable/summary/14"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/summary/{key}
+_Get a summary_
+
+**Response 200 — Get a summary:**
+```json
+{
+  "ia::result": {
+    "key": "14",
+    "id": "14",
+    "name": "Invoices: December 2025",
+    "glPostingDate": "2025-12-01",
+    "status": "active",
+    "recordType": "invoice",
+    "totalAmount": "2609.00",
+    "state": "open",
+    "parent": {
+      "id": "11",
+      "key": "11"
+    },
+    "preventGLPosting": false,
+    "summaryCreationType": "manual",
+    "isQuickPaymentSummary": false,
+    "href": "/objects/accounts-receivable/summary/14",
+    "audit": {
+      "createdDateTime": "2025-07-18T07:25:36Z",
+      "modifiedDateTime": "2025-07-18T07:25:38Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      }
+    },
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    }
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/summary/{key}
+_Update a summary_
+
+**Request example — Update a manual summary:**
+```json
+{
+  "status": "inactive",
+  "state": "closed",
+  "preventGLPosting": true
+}
+```
+**Response 200 — Reference to updated summary:**
+```json
+{
+  "ia::result": {
+    "key": "14",
+    "id": "14",
+    "href": "/objects/accounts-receivable/summary/14"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/summary/{key}
+_Delete a summary_
+
+
+## GET /objects/accounts-receivable/term
+_List terms_
+
+**Response 200 — List terms:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "5",
+      "id": "N15",
+      "href": "/objects/accounts-receivable/term/5"
+    },
+    {
+      "key": "8",
+      "id": "N30",
+      "href": "/objects/accounts-receivable/term/8"
+    },
+    {
+      "key": "9",
+      "id": "NET15",
+      "href": "/objects/accounts-receivable/term/9"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## POST /objects/accounts-receivable/term
+_Create a term_
+
+**Request example — Create a term:**
+```json
+{
+  "id": "2-10 Net 30",
+  "description": "N30 with discount",
+  "due": {
+    "days": 30,
+    "from": "fromInvoiceDate"
+  },
+  "discount": {
+    "days": 4,
+    "amount": 2,
+    "from": "fromInvoiceDate",
+    "calculateOn": "lineItemsTotal",
+    "unit": "percentage",
+    "graceDays": 10
+  },
+  "penalty": {
+    "cycle": "weekly",
+    "amount": 1,
+    "unit": "percentage",
+    "graceDays": 20
+  }
+}
+```
+**Response 201 — Reference to new AR term:**
+```json
+{
+  "ia::result": {
+    "key": "18",
+    "id": "2-10 Net 30",
+    "href": "/objects/accounts-receivable/term/18"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/term/{key}
+_Get a term_
+
+**Response 200 — Get a term:**
+```json
+{
+  "ia::result": {
+    "id": "2-10 Net 30",
+    "description": "N30 with discount",
+    "status": "active",
+    "key": "18",
+    "due": {
+      "days": 30,
+      "from": "fromInvoiceDate"
+    },
+    "discount": {
+      "days": 4,
+      "from": "fromInvoiceDate",
+      "amount": 2,
+      "unit": "percentage",
+      "graceDays": 10,
+      "calculateOn": "lineItemsTotal"
+    },
+    "penalty": {
+      "cycle": "weekly",
+      "amount": 1,
+      "unit": "percentage",
+      "graceDays": 20
+    },
+    "audit": {
+      "modifiedDateTime": "2024-03-06T09:23:41Z",
+      "createdDateTime": "2024-03-06T09:23:41Z",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1"
+    },
+    "href": "/objects/accounts-receivable/term/18"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/term/{key}
+_Update a term_
+
+**Request example — Update a single value:**
+```json
+{
+  "description": "NA customer term"
+}
+```
+**Response 200 — Reference to updated term:**
+```json
+{
+  "ia::result": {
+    "key": "18",
+    "id": "N30",
+    "href": "/objects/accounts-receivable/term/18",
+    "ia::meta": {
+      "totalCount": 1,
+      "totalSuccess": 1,
+      "totalError": 0
+    }
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/term/{key}
+_Delete a term_
+
+
+## GET /objects/accounts-receivable/territory
+_List territories_
+
+**Response 200 — List territories:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "10",
+      "id": "PNW",
+      "href": "/objects/accounts-receivable/territory/10"
+    },
+    {
+      "key": "11",
+      "id": "SW",
+      "href": "/objects/accounts-receivable/territory/11"
+    },
+    {
+      "key": "12",
+      "id": "ESB",
+      "href": "/objects/accounts-receivable/territory/12"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## POST /objects/accounts-receivable/territory
+_Create a territory_
+
+**Request example — Create a territory:**
+```json
+{
+  "id": "T-12",
+  "name": "Territory India",
+  "parent": {
+    "id": "12755"
+  },
+  "manager": {
+    "id": "Raser"
+  },
+  "status": "active"
+}
+```
+**Response 201 — New Territory:**
+```json
+{
+  "ia::result": {
+    "key": "19",
+    "id": "T-12",
+    "href": "/objects/accounts-receivable/territory/19"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/territory-group
+_List territory groups_
+
+**Response 200 — List territory groups:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "8",
+      "id": "TG-1",
+      "href": "/objects/accounts-receivable/territory-group/8"
+    },
+    {
+      "key": "9",
+      "id": "TG-2",
+      "href": "/objects/accounts-receivable/territory-group/9"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/accounts-receivable/territory-group
+_Create a territory group_
+
+**Request example — Create a territory group:**
+```json
+{
+  "id": "TG-1",
+  "name": "Territory Group 1 - SW US",
+  "description": "Territory group southwest region US",
+  "groupMembers": [
+    {
+      "id": "TT-NM1"
+    },
+    {
+      "id": "TT-CO2"
+    }
+  ]
+}
+```
+**Response 201 — New territory group:**
+```json
+{
+  "ia::result": {
+    "key": "8",
+    "id": "TG-1",
+    "href": "/objects/accounts-receivable/territory-group/8"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/accounts-receivable/territory-group/{key}
+_Get a territory group_
+
+**Response 200 — Get a territory group:**
+```json
+{
+  "ia::result": {
+    "key": "8",
+    "id": "TG-1",
+    "name": "Territory Group 1 - SW US",
+    "description": "Territory group southwest region US",
+    "audit": {
+      "createdDateTime": "2025-09-18T10:53:14Z",
+      "modifiedDateTime": "2025-09-18T15:53:36Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      }
+    },
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "groupMembers": [
+      {
+        "id": "11",
+        "key": "6345",
+        "href": "/objects/accounts-receivable/territory/11",
+        "sortOrder": "0"
+      },
+      {
+        "key": "6",
+        "id": "7322",
+        "href": "/objects/accounts-receivable/territory/6",
+        "sortOrder": "1"
+      }
+    ],
+    "href": "/objects/accounts-receivable/territory-group/9"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/territory-group/{key}
+_Update a territory group_
+
+**Request example — Update a territory group:**
+```json
+{
+  "name": "Territory Group NG-3 2026",
+  "description": "Group members for 2026",
+  "groupMembers": [
+    {
+      "territory": {
+        "id": "6345"
+      }
+    }
+  ]
+}
+```
+**Response 200 — Updated territory group:**
+```json
+{
+  "ia::result": {
+    "key": "9",
+    "id": "TG-2",
+    "href": "/objects/accounts-receivable/territory-group/9"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/territory-group/{key}
+_Delete a territory group_
+
+
+## GET /objects/accounts-receivable/territory/{key}
+_Get a territory_
+
+**Response 200 — Get a territory:**
+```json
+{
+  "ia::result": {
+    "key": "17",
+    "id": "TT-SW",
+    "name": "Southwest",
+    "parent": {
+      "id": "TT-US",
+      "name": "Territory United States",
+      "key": "14",
+      "href": "/objects/accounts-receivable/territory/14"
+    },
+    "manager": {
+      "key": "5",
+      "id": "dwilson",
+      "name": "David Wilson",
+      "href": "/objects/company-config/employee/5"
+    },
+    "status": "active",
+    "audit": {
+      "createdDateTime": "2025-07-18T07:25:36Z",
+      "modifiedDateTime": "2025-07-18T07:25:38Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "href": "/objects/accounts-receivable/territory/17"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/accounts-receivable/territory/{key}
+_Update a territory_
+
+**Request example — Update a single value:**
+```json
+{
+  "name": "Southwest United States"
+}
+```
+**Response 200 — Update a single value:**
+```json
+{
+  "ia::result": {
+    "key": "17",
+    "id": "TT-SW",
+    "href": "/objects/accounts-receivable/territory/17"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/accounts-receivable/territory/{key}
+_Delete a territory_
+
+
+## POST /workflows/accounts-receivable/adjustment/reclassify
+_Reclassify an adjustment_
+
+**Request example — Request Example:**
+```json
+{
+  "key": "11",
+  "id": "11",
+  "adjustmentNumber": "ADJ001",
+  "documentNumber": "INV-1602",
+  "description": "Computer Hardware & Software Expenses 03/01/24 - 08/31/25 Subscription charges.",
+  "attachment": {
+    "key": "1",
+    "id": "Sales01"
+  },
+  "lines": [
+    {
+      "memo": "50 USD credit",
+      "txnCurrency": {
+        "currency": "INR",
+        "amount": "145"
+      },
+      "exchangeRate": {
+        "date": "2021-01-23",
+        "rate": "1.0789",
+        "typeId": "1"
+      },
+      "accountLabel": {
+        "key": "1",
+        "id": "1"
+      },
+      "taxEntries": [
+        {
+          "baseTaxAmount": "100.00",
+          "txnTaxAmount": "100.00",
+          "taxRate": 1.0299,
+          "orderEntryTaxDetail": {
+            "key": "1",
+            "id": "Alaska Tax Detail"
+          }
+        }
+      ],
+      "arAdjustment": {
+        "key": "10",
+        "id": "10"
+      },
+      "dimensions": {
+        "location": {
+          "key": "1",
+          "id": "1"
+        },
+        "department": {
+          "key": "1",
+          "id": "1"
+        },
+        "employee": {
+          "key": "10",
+          "id": "EMP-10"
+        },
+        "project": {
+          "key": "2",
+          "id": "NET-XML30-2"
+        },
+        "customer": {
+          "key": "13",
+          "id": "CUST-13"
+        },
+        "vendor": {
+          "key": "357",
+          "id": "1605212096809"
+        },
+        "item": {
+          "key": "13",
+          "id": "Case 13"
+        },
+        "warehouse": {
+          "key": "6",
+          "id": "WH01"
+        },
+        "class": {
+          "key": "731",
+          "id": "REST_CLS_001"
+        },
+        "task": {
+          "id": "1",
+          "key": "1"
+        },
+        "costType": {
+          "id": "2",
+          "key": "2"
+        },
+        "asset": {
+          "id": "A001",
+          "key": "1"
+        },
+        "contract": {
+          "id": "CON-0045-1",
+          "key": "12"
+        },
+        "affiliateEntity": {
+          "key": "23",
+          "id": "AFF-23"
+        },
+        "loanAccount": {
+          "id": "LN001",
+          "key": "852"
+        },
+        "workOrder": {
+          "key": "18",
+          "id": "WO-0017"
+        }
+      },
+      "glAccount": {
+        "key": "144",
+        "id": "1112"
+      }
+    }
+  ]
+}
+```
+**Response 200 — 200 response example:**
+```json
+{
+  "ia::result": {
+    "key": "132",
+    "id": "132",
+    "href": "/objects/accounts-receivable/adjustment/11",
+    "state": "posted"
+  },
+  "ia::meta": {
+    "totalCount": 3,
+    "totalSuccess": 2,
+    "totalError": 1
+  }
+}
+```
+
+## POST /workflows/accounts-receivable/adjustment/reverse
+_Reverse an adjustment_
+
+**Request example — Request Example:**
+```json
+{
+  "key": "23",
+  "reversedDate": "2025-04-15",
+  "memo": "Reversed the adjustment due to duplicate entry"
+}
+```
+**Response 200 — 200 response example:**
+```json
+{
+  "ia::result": {
+    "key": "23",
+    "id": "23",
+    "href": "/objects/accounts-receivable/adjustment/23",
+    "state": "reversal"
+  },
+  "ia::meta": {
+    "totalCount": 3,
+    "totalSuccess": 2,
+    "totalError": 1
+  }
+}
+```
+
+## POST /workflows/accounts-receivable/adjustment/submit
+_Submit an adjustment_
+
+**Request example — Request Example:**
+```json
+{
+  "key": "11"
+}
+```
+**Response 200 — 200 response example:**
+```json
+{
+  "ia::result": {
+    "key": "11",
+    "id": "11",
+    "href": "/objects/accounts-receivable/adjustment/11",
+    "state": "posted"
+  },
+  "ia::meta": {
+    "totalCount": 3,
+    "totalSuccess": 2,
+    "totalError": 1
+  }
+}
+```
+
+## POST /workflows/accounts-receivable/advance/reverse
+_Reverse an advance_
+
+**Request example — Request Example:**
+```json
+{
+  "key": "23",
+  "reversedDate": "2025-04-15",
+  "memo": "Reversed the advance due to duplicate entry"
+}
+```
+**Response 200 — 200 response example:**
+```json
+{
+  "ia::result": {
+    "key": "23",
+    "id": "23",
+    "href": "/objects/accounts-receivable/advance/23",
+    "state": "reversal"
+  },
+  "ia::meta": {
+    "totalCount": 3,
+    "totalSuccess": 2,
+    "totalError": 1
+  }
+}
+```
+
+## POST /workflows/accounts-receivable/advance/submit
+_Submit an advance_
+
+**Request example — Request Example:**
+```json
+{
+  "key": "11"
+}
+```
+**Response 200 — 200 response example:**
+```json
+{
+  "ia::result": {
+    "key": "11",
+    "id": "11",
+    "href": "/objects/accounts-receivable/advance/11",
+    "state": "posted"
+  },
+  "ia::meta": {
+    "totalCount": 3,
+    "totalSuccess": 2,
+    "totalError": 1
+  }
+}
+```
+
+## POST /workflows/accounts-receivable/customer-refund/reverse
+_Reverse a customer refund_
+
+**Request example — Request Example:**
+```json
+{
+  "key": "23",
+  "reversedDate": "2025-04-15",
+  "description": "Reversed the refund due to duplicate entry"
+}
+```
+**Response 200 — 200 response example:**
+```json
+{
+  "ia::result": {
+    "key": "23",
+    "id": "REF-01",
+    "href": "/objects/accounts-receivable/customer-refund/23",
+    "state": "voided"
+  },
+  "ia::meta": {
+    "totalCount": 3,
+    "totalSuccess": 2,
+    "totalError": 1
+  }
+}
+```
+
+## POST /workflows/accounts-receivable/customer-refund/submit
+_Submit a customer refund_
+
+**Request example — Request Example:**
+```json
+{
+  "key": "12"
+}
+```
+**Response 200 — 200 response example:**
+```json
+{
+  "ia::result": {
+    "key": "12",
+    "id": "REF-02",
+    "href": "/objects/accounts-receivable/customer-refund/12",
+    "state": "posted"
+  },
+  "ia::meta": {
+    "totalCount": 3,
+    "totalSuccess": 2,
+    "totalError": 1
+  }
+}
+```
+
+## POST /workflows/accounts-receivable/invoice/generate-pdf
+_Generate a PDF of an invoice_
+
+**Request example — Request Example:**
+```json
+{
+  "key": "132"
+}
+```
+**Response 200 — 200 response example:**
+```json
+{
+  "ia::result": {
+    "key": "132",
+    "id": "132",
+    "href": "/objects/accounts-receivable/invoice/132",
+    "downloadURL": "/services/core/content/download?key=106&resource=objects/accounts-receivable/invoice&field=/downloadURL"
+  },
+  "ia::meta": {
+    "totalCount": 3,
+    "totalSuccess": 2,
+    "totalError": 1
+  }
+}
+```
+
+## POST /workflows/accounts-receivable/invoice/reclassify
+_Reclassify an invoice_
+
+**Request example — Request Example:**
+```json
+{
+  "key": "11",
+  "id": "11",
+  "invoiceNumber": "INV-001",
+  "referenceNumber": "PO6917",
+  "description": "Regular invoice",
+  "term": {
+    "key": "16",
+    "id": "30 Days"
+  },
+  "dueDate": "2025-12-31",
+  "attachment": {
+    "key": "11",
+    "id": "11"
+  },
+  "lines": [
+    {
+      "glAccount": {
+        "key": "163",
+        "id": "4010"
+      },
+      "overrideOffsetGLAccount": {
+        "key": "263",
+        "id": "1103"
+      },
+      "txnAmount": "16740.00",
+      "memo": "Replaces discontinued part",
+      "allocation": {
+        "key": "22",
+        "id": "Premium Allocation"
+      },
+      "accountLabel": {
+        "key": "14",
+        "id": "Accounts Receivable - Microcomputer"
+      },
+      "taxEntries": [
+        {
+          "baseTaxAmount": "100.00",
+          "txnTaxAmount": "100.00",
+          "taxRate": 1.0299,
+          "orderEntryTaxDetail": {
+            "key": "1",
+            "id": "Alaska Tax Detail"
+          }
+        }
+      ],
+      "dimensions": {
+        "location": {
+          "key": "4",
+          "id": "AU"
+        },
+        "department": {
+          "key": "9",
+          "id": "01"
+        },
+        "employee": {
+          "key": "10",
+          "id": "EMP-10"
+        },
+        "project": {
+          "key": "2",
+          "id": "NET-XML30-2"
+        },
+        "customer": {
+          "key": "13",
+          "id": "CUST-13"
+        },
+        "vendor": {
+          "key": "357",
+          "id": "1605212096809"
+        },
+        "item": {
+          "key": "13",
+          "id": "Case 13"
+        },
+        "warehouse": {
+          "key": "6",
+          "id": "WH01"
+        },
+        "class": {
+          "key": "731",
+          "id": "REST_CLS_001"
+        },
+        "task": {
+          "id": "1",
+          "key": "1"
+        },
+        "costType": {
+          "id": "2",
+          "key": "2"
+        },
+        "asset": {
+          "id": "A001",
+          "key": "1"
+        },
+        "contract": {
+          "id": "CON-0045-1",
+          "key": "12"
+        },
+        "affiliateEntity": {
+          "key": "23",
+          "id": "AFF-23"
+        },
+        "loanAccount": {
+          "id": "LN001",
+          "key": "852"
+        },
+        "workOrder": {
+          "key": "18",
+          "id": "WO-0017"
+        }
+      },
+      "invoice": {
+        "key": "6"
+      }
+    }
+  ]
+}
+```
+**Response 200 — 200 response example:**
+```json
+{
+  "ia::result": {
+    "key": "132",
+    "id": "132",
+    "href": "/objects/accounts-receivable/invoice/11",
+    "state": "posted"
+  },
+  "ia::meta": {
+    "totalCount": 3,
+    "totalSuccess": 2,
+    "totalError": 1
+  }
+}
+```
+
+## POST /workflows/accounts-receivable/invoice/reverse
+_Reverse an invoice_
+
+**Request example — Request Example:**
+```json
+{
+  "key": "22",
+  "reversedDate": "2025-04-15",
+  "memo": "Reversed the invoice for duplicate entry"
+}
+```
+**Response 200 — 200 response example:**
+```json
+{
+  "ia::result": {
+    "key": "23",
+    "id": "23",
+    "href": "/objects/accounts-receivable/invoice/23",
+    "state": "reversed"
+  },
+  "ia::meta": {
+    "totalCount": 3,
+    "totalSuccess": 2,
+    "totalError": 1
+  }
+}
+```
+
+## POST /workflows/accounts-receivable/invoice/submit
+_Submit an invoice_
+
+**Request example — Request Example:**
+```json
+{
+  "key": "11"
+}
+```
+**Response 200 — 200 response example:**
+```json
+{
+  "ia::result": {
+    "key": "11",
+    "id": "11",
+    "href": "/objects/accounts-receivable/invoice/11",
+    "state": "posted"
+  },
+  "ia::meta": {
+    "totalCount": 3,
+    "totalSuccess": 2,
+    "totalError": 1
+  }
+}
+```
+
+## POST /workflows/accounts-receivable/payment/reverse
+_Reverse a payment_
+
+**Request example — Request Example:**
+```json
+{
+  "key": "22",
+  "reversedDate": "2025-04-15",
+  "memo": "Reversed the payment for duplicate entry"
+}
+```
+**Response 200 — 200 response example:**
+```json
+{
+  "ia::result": {
+    "key": "23",
+    "id": "23",
+    "href": "/objects/accounts-receivable/payment/23",
+    "state": "reversal"
+  },
+  "ia::meta": {
+    "totalCount": 3,
+    "totalSuccess": 2,
+    "totalError": 1
+  }
+}
+```
+
+## POST /workflows/accounts-receivable/payment/submit
+_Submit an AR payment_
+
+**Request example — Request Example:**
+```json
+{
+  "key": "12"
+}
+```
+**Response 200 — 200 response example:**
+```json
+{
+  "ia::result": {
+    "key": "12",
+    "id": "12",
+    "href": "/objects/accounts-receivable/payment/12",
+    "state": "completed"
+  },
+  "ia::meta": {
+    "totalCount": 3,
+    "totalSuccess": 2,
+    "totalError": 1
+  }
+}
+```

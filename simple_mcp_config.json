@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "intacct": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "C:\\Users\\You\\path\\to\\intacct-mcp",
+        "run",
+        "intacct-mcp"
+      ]
+    }
+  }
+}

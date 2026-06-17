@@ -1,0 +1,8184 @@
+# General Ledger
+
+## GET /objects/general-ledger/account
+_List accounts_
+
+**Response 200 — List accounts:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "406",
+      "id": "9999",
+      "href": "/objects/general-ledger/account/406"
+    },
+    {
+      "key": "407",
+      "id": "1501.06",
+      "href": "/objects/general-ledger/account/407"
+    },
+    {
+      "key": "16",
+      "id": "1007",
+      "href": "/objects/general-ledger/account/16"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/account
+_Create an account_
+
+**Request example — Create an account:**
+```json
+{
+  "id": "1501",
+  "name": "Vehicle Spare parts - Transmission",
+  "accountType": "balanceSheet",
+  "closingType": "nonClosingAccount",
+  "normalBalance": "debit",
+  "alternativeGLAccount": "none",
+  "isGermanTaxAccount": false,
+  "status": "active",
+  "requireDimensions": {
+    "department": false,
+    "location": false
+  },
+  "isTaxable": false,
+  "disallowDirectPosting": true
+}
+```
+**Response 201 — Reference to new account:**
+```json
+{
+  "ia::result": {
+    "key": "356",
+    "id": "1501",
+    "href": "/objects/general-ledger/account/356"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/account-allocation
+_List account allocations_
+
+**Response 200 — List account allocations:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "23",
+      "id": "23",
+      "href": "/objects/general-ledger/account-allocation/23"
+    },
+    {
+      "key": "27",
+      "id": "27",
+      "href": "/objects/general-ledger/account-allocation/27"
+    },
+    {
+      "key": "21",
+      "id": "21",
+      "href": "/objects/general-ledger/account-allocation/21"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/account-allocation
+_Create an account allocation_
+
+**Request example — Create an account allocation:**
+```json
+{
+  "name": "Monthly Expenses RE",
+  "description": "Monthly allocation of expenses",
+  "methodology": "Monthly Expense allocation across revenue earning departments",
+  "status": "active",
+  "activityDelta": false,
+  "autoReversePriorPostedJournalEntry": false,
+  "dimensionTreatment": {
+    "location": "preserveValues",
+    "department": "allocationFocus",
+    "project": "notConsidered",
+    "customer": "notConsidered",
+    "vendor": "notConsidered",
+    "employee": "notConsidered",
+    "item": "notConsidered",
+    "class": "notConsidered",
+    "contract": "notConsidered",
+    "warehouse": "notConsidered"
+  },
+  "latestVersion": null,
+  "allowAllocation": "withinOneEntity",
+  "glAccountAllocationSource": [
+    {
+      "glAccountGroup": {
+        "id": "Benefits"
+      },
+      "percentToAllocate": "100",
+      "timePeriod": {
+        "id": "Current Month"
+      },
+      "reportingBook": "accrual",
+      "useAmountsFrom": "mainReportingBookAndAlternateBooks",
+      "dimensions": {
+        "location": {
+          "id": "1"
+        },
+        "department": {
+          "id": "3"
+        },
+        "employee": {
+          "id": "1"
+        }
+      }
+    }
+  ],
+  "glAccountAllocationBasis": [
+    {
+      "glAccountGroup": {
+        "key": "29"
+      },
+      "accumulation": "activity",
+      "timePeriod": {
+        "id": "Current Month"
+      },
+      "allocationMethod": "dynamicRelativeAccountFinancial",
+      "reportingBook": "accrual",
+      "useAmountsFrom": "mainReportingBookAndAlternateBooks",
+      "skipNegative": false,
+      "dimensions": {
+        "location": {
+          "id": "1"
+        },
+        "employee": {
+          "id": "1"
+        }
+      }
+    }
+  ],
+  "glAccountAllocationTarget": [
+    {
+      "journal": {
+        "id": "Others"
+      },
+      "glAccount": {
+        "id": "1000"
+      },
+      "isBillable": false,
+      "dimensions": {
+        "location": {
+          "id": "AZ"
+        },
+        "customer": {
+          "id": "1"
+        }
+      }
+    }
+  ],
+  "glAccountAllocationReverse": [
+    {
+      "useSourceAccount": true,
+      "dimensions": {
+        "location": {
+          "id": "AZ"
+        },
+        "department": {
+          "id": "6"
+        }
+      }
+    }
+  ]
+}
+```
+**Response 201 — Reference to new account allocation:**
+```json
+{
+  "ia::result": {
+    "id": "29",
+    "key": "29",
+    "href": "/objects/general-ledger/account-allocation/29"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/account-allocation-basis
+_List account allocation basis objects_
+
+**Response 200 — List account allocation basis objects:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "16",
+      "id": "16",
+      "href": "/objects/general-ledger/account-allocation-basis/16"
+    },
+    {
+      "key": "20",
+      "id": "20",
+      "href": "/objects/general-ledger/account-allocation-basis/20"
+    },
+    {
+      "key": "21",
+      "id": "21",
+      "href": "/objects/general-ledger/account-allocation-basis/21"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/general-ledger/account-allocation-basis/{key}
+_Get an account allocation basis_
+
+**Response 200 — Get an account allocation basis:**
+```json
+{
+  "ia::result": {
+    "id": "21",
+    "key": "21",
+    "glAccountAllocation": {
+      "id": "29",
+      "key": "29",
+      "href": "/objects/general-ledger/account-allocation/29"
+    },
+    "glAccountGroup": {
+      "id": "Basis",
+      "key": "623",
+      "href": "/objects/general-ledger/account-group/623"
+    },
+    "accumulation": "activity",
+    "timePeriod": {
+      "id": "Current Month",
+      "key": "395",
+      "href": "/objects/general-ledger/reporting-period/395"
+    },
+    "allocationMethod": "dynamicRelativeAccountFinancial",
+    "reportingBook": "accrual",
+    "useAmountsFrom": "mainReportingBookAndAlternateBooks",
+    "skipNegative": false,
+    "dimensions": {
+      "location": {
+        "key": "1",
+        "id": "1",
+        "name": "United States of America",
+        "href": "/objects/company-config/location/1"
+      },
+      "department": {
+        "key": "3",
+        "id": "3",
+        "name": "Engineering",
+        "href": "/objects/company-config/department/3"
+      },
+      "project": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "customer": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "vendor": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "employee": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "item": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "class": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "contract": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "warehouse": {
+        "key": null,
+        "name": null,
+        "id": null
+      }
+    },
+    "href": "/objects/general-ledger/account-allocation-basis/21"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/account-allocation-basis/{key}
+_Update an account allocation basis_
+
+**Request example — Update an account allocation basis:**
+```json
+{
+  "skipNegative": true,
+  "allocationMethod": "dynamicRelativeAccountFinancial"
+}
+```
+**Response 200 — Reference to updated account allocation basis:**
+```json
+{
+  "ia::result": {
+    "key": "21",
+    "id": "21",
+    "href": "/objects/general-ledger/account-allocation-basis/21"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/account-allocation-group
+_List account allocation groups_
+
+**Response 200 — List account allocation groups:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "1",
+      "href": "/objects/general-ledger/account-allocation-group/1"
+    },
+    {
+      "key": "2",
+      "id": "2",
+      "href": "/objects/general-ledger/account-allocation-group/2"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/account-allocation-group
+_Create an account allocation group_
+
+**Request example — Create an account allocation group:**
+```json
+{
+  "name": "Month end",
+  "description": "All month end allocations for the company.",
+  "errorProcessingMethod": "skipAndContinue",
+  "lines": [
+    {
+      "glAccountAllocation": {
+        "id": "1"
+      }
+    }
+  ]
+}
+```
+**Response 201 — Reference to new account allocation group:**
+```json
+{
+  "ia::result": {
+    "key": "28",
+    "id": "28",
+    "href": "/objects/general-ledger/account-allocation-group/28"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/general-ledger/account-allocation-group-member
+_List account allocation group members_
+
+**Response 200 — List account allocation group members:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "1",
+      "href": "/objects/general-ledger/account-allocation-group-member/1"
+    },
+    {
+      "key": "2",
+      "id": "2",
+      "href": "/objects/general-ledger/account-allocation-group-member/2"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/general-ledger/account-allocation-group-member/{key}
+_Get an account allocation group member_
+
+**Response 200 — Get an account allocation group member:**
+```json
+{
+  "ia::result": {
+    "id": "1",
+    "key": "1",
+    "glAccountAllocationGroup": {
+      "id": "Fringe Group",
+      "key": "1",
+      "href": "/objects/general-ledger/account-allocation-group/1"
+    },
+    "glAccountAllocation": {
+      "name": "Fringe01",
+      "id": "1",
+      "key": "1",
+      "href": "/objects/general-ledger/account-allocation/1"
+    },
+    "status": "active",
+    "audit": {
+      "createdDateTime": "2024-10-08T13:29:18Z",
+      "modifiedDateTime": "2024-10-08T13:29:18Z",
+      "createdByUser": {
+        "key": "34",
+        "id": "Admin",
+        "href": "/objects/company-config/user/34"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Aman",
+        "href": "/objects/company-config/user/1"
+      }
+    },
+    "href": "/objects/general-ledger/account-allocation-group-member/1"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/account-allocation-group/{key}
+_Get an account allocation group_
+
+**Response 200 — Get an account allocation group:**
+```json
+{
+  "ia::result": {
+    "key": "5",
+    "id": "5",
+    "name": "Month end",
+    "description": "All month end allocations for the company.",
+    "status": "active",
+    "errorProcessingMethod": "skipAndContinue",
+    "audit": {
+      "createdDateTime": "2024-10-08T13:29:18Z",
+      "modifiedDateTime": "2024-10-08T13:29:18Z",
+      "createdByUser": {
+        "key": "34",
+        "id": "Admin",
+        "href": "/objects/company-config/user/34"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Aman",
+        "href": "/objects/company-config/user/1"
+      }
+    },
+    "lines": [
+      {
+        "key": "6",
+        "id": "6",
+        "glAccountAllocationGroup": {
+          "id": "Month end",
+          "key": "5",
+          "href": "/objects/general-ledger/account-allocation-group/5"
+        },
+        "glAccountAllocation": {
+          "id": "8",
+          "key": "8",
+          "href": "/objects/general-ledger/account-allocation/8"
+        },
+        "status": "active",
+        "audit": {
+          "createdDateTime": "2024-10-08T13:29:18Z",
+          "modifiedDateTime": "2024-10-08T13:29:18Z",
+          "createdByUser": {
+            "key": "34",
+            "id": "Admin",
+            "href": "/objects/company-config/user/34"
+          },
+          "modifiedByUser": {
+            "key": "1",
+            "id": "Aman",
+            "href": "/objects/company-config/user/1"
+          }
+        },
+        "href": "/objects/general-ledger/account-allocation-group-member/6"
+      }
+    ],
+    "href": "/objects/general-ledger/account-allocation-group/5"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/account-allocation-group/{key}
+_Update an account allocation group_
+
+**Request example — Update an account allocation group:**
+```json
+{
+  "name": "Interest allocation",
+  "description": "Compute interest allocation."
+}
+```
+**Response 200 — Reference to updated account allocation group:**
+```json
+{
+  "ia::result": {
+    "key": "21",
+    "id": "21",
+    "href": "/objects/general-ledger/account-allocation-group/21"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/general-ledger/account-allocation-group/{key}
+_Delete an account allocation group_
+
+
+## GET /objects/general-ledger/account-allocation-reverse
+_List account allocation reversals_
+
+**Response 200 — List account allocation reversals:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "16",
+      "id": "16",
+      "href": "/objects/general-ledger/account-allocation-reverse/16"
+    },
+    {
+      "key": "20",
+      "id": "20",
+      "href": "/objects/general-ledger/account-allocation-reverse/20"
+    },
+    {
+      "key": "21",
+      "id": "21",
+      "href": "/objects/general-ledger/account-allocation-reverse/21"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/general-ledger/account-allocation-reverse/{key}
+_Get an account allocation reversal_
+
+**Response 200 — Get an account allocation reversal:**
+```json
+{
+  "ia::result": {
+    "id": "21",
+    "key": "21",
+    "glAccountAllocation": {
+      "id": "29",
+      "key": "29",
+      "href": "/objects/general-ledger/account-allocation/29"
+    },
+    "glAccount": {
+      "id": null,
+      "key": null,
+      "name": null
+    },
+    "useSourceAccount": true,
+    "audit": {
+      "createdDateTime": "2024-06-25T12:16:48Z",
+      "modifiedDateTime": "2024-06-25T12:58:13Z",
+      "createdBy": "1",
+      "modifiedBy": "1"
+    },
+    "dimensions": {
+      "location": {
+        "key": "72",
+        "id": "AZ",
+        "name": "Arizona",
+        "href": "/objects/company-config/location/72"
+      },
+      "department": {
+        "key": "6",
+        "id": "6",
+        "name": "Marketing",
+        "href": "/objects/company-config/department/6"
+      },
+      "project": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "customer": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "vendor": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "employee": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "item": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "class": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "contract": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "warehouse": {
+        "key": null,
+        "name": null,
+        "id": null
+      }
+    },
+    "href": "/objects/general-ledger/account-allocation-reverse/21"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/account-allocation-reverse/{key}
+_Update an account allocation reversal_
+
+**Request example — Update an account allocation reversal:**
+```json
+{
+  "glAccount": {
+    "id": "1000"
+  },
+  "useSourceAccount": false
+}
+```
+**Response 200 — Reference to updated account allocation reversal:**
+```json
+{
+  "ia::result": {
+    "key": "21",
+    "id": "21",
+    "href": "/objects/general-ledger/account-allocation-reverse/21"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/account-allocation-run
+_List account allocation runs_
+
+**Response 200 — List account allocation runs:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "105",
+      "id": "105",
+      "href": "/objects/general-ledger/account-allocation-run/105"
+    },
+    {
+      "key": "106",
+      "id": "106",
+      "href": "/objects/general-ledger/account-allocation-run/106"
+    },
+    {
+      "key": "108",
+      "id": "108",
+      "href": "/objects/general-ledger/account-allocation-run/108"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/account-allocation-run
+_Create an account allocation run_
+
+**Request example — Create an account allocation run:**
+```json
+{
+  "asOfDate": "2024-08-24",
+  "glPostingDate": "2024-10-25",
+  "email": "angie.kuman@mycompany.com",
+  "accountAllocationGroup": {
+    "id": "5"
+  }
+}
+```
+**Response 201 — Create a new account allocation run:**
+```json
+{
+  "ia::result": {
+    "id": "97",
+    "key": "97",
+    "href": "/objects/general-ledger/account-allocation-run/97"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/account-allocation-run/{key}
+_Get an account allocation run_
+
+**Response 200 — Get an account allocation run:**
+```json
+{
+  "ia::result": {
+    "id": "97",
+    "key": "97",
+    "asOfDate": "2024-08-24",
+    "glPostingDate": "2024-10-25",
+    "email": "angie.kuman@mycompany.com",
+    "accountAllocation": {
+      "id": null,
+      "key": null
+    },
+    "allocationType": null,
+    "accountAllocationGroup": {
+      "name": "Employee allocation group",
+      "id": "5",
+      "key": "5",
+      "href": "/objects/general-ledger/account-allocation-group/5"
+    },
+    "recurringAccountAllocation": {
+      "id": "1",
+      "key": "1"
+    },
+    "parent": {
+      "id": null,
+      "key": null
+    },
+    "state": "partialSuccess",
+    "allocationRunType": "regular",
+    "message": null,
+    "audit": {
+      "createdDateTime": "2024-09-20T05:17:09Z",
+      "modifiedDateTime": "2024-09-20T05:17:58Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "dimensions": {
+      "project": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "employee": {
+        "key": null,
+        "id": null,
+        "name": null
+      }
+    },
+    "href": "/objects/general-ledger/account-allocation-run/97"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/account-allocation-run/{key}
+_Delete an account allocation run_
+
+
+## GET /objects/general-ledger/account-allocation-source
+_List account allocation sources_
+
+**Response 200 — List account allocation sources:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "23",
+      "id": "23",
+      "href": "/objects/general-ledger/account-allocation-source/23"
+    },
+    {
+      "key": "27",
+      "id": "27",
+      "href": "/objects/general-ledger/account-allocation-source/27"
+    },
+    {
+      "key": "28",
+      "id": "28",
+      "href": "/objects/general-ledger/account-allocation-source/28"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/general-ledger/account-allocation-source/{key}
+_Get an account allocation source_
+
+**Response 200 — Get an account allocation source:**
+```json
+{
+  "ia::result": {
+    "id": "28",
+    "key": "28",
+    "glAccountAllocation": {
+      "id": "29",
+      "key": "29",
+      "href": "/objects/general-ledger/account-allocation/29"
+    },
+    "glAccountGroup": {
+      "id": "source",
+      "key": "622",
+      "href": "/objects/general-ledger/account-group/622"
+    },
+    "percentToAllocate": "100",
+    "timePeriod": {
+      "id": "Current Month",
+      "key": "395",
+      "href": "/objects/general-ledger/reporting-period/395"
+    },
+    "reportingBook": "accrual",
+    "useAmountsFrom": "mainReportingBookAndAlternateBooks",
+    "currency": "USD",
+    "audit": {
+      "createdDateTime": "2024-06-25T12:16:47Z",
+      "modifiedDateTime": "2024-06-25T12:34:07Z",
+      "createdBy": "1",
+      "modifiedBy": "1"
+    },
+    "dimensions": {
+      "location": {
+        "key": "1",
+        "id": "1",
+        "name": "United States of America",
+        "href": "/objects/company-config/location/1"
+      },
+      "department": {
+        "key": "3",
+        "id": "3",
+        "name": "Engineering",
+        "href": "/objects/company-config/department/3"
+      },
+      "project": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "customer": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "vendor": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "employee": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "item": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "class": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "contract": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "warehouse": {
+        "key": null,
+        "name": null,
+        "id": null
+      }
+    },
+    "href": "/objects/general-ledger/account-allocation-source/28"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/account-allocation-source/{key}
+_Update an account allocation source_
+
+**Request example — Update an account allocation source:**
+```json
+{
+  "percentToAllocate": "70",
+  "timePeriod": {
+    "key": "400"
+  }
+}
+```
+**Response 200 — Reference to updated account allocation source:**
+```json
+{
+  "ia::result": {
+    "key": "28",
+    "id": "28",
+    "href": "/objects/general-ledger/account-allocation-source/28"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/account-allocation-target
+_List account allocation targets_
+
+**Response 200 — List account allocation targets:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "16",
+      "id": "16",
+      "href": "/objects/general-ledger/account-allocation-target/16"
+    },
+    {
+      "key": "20",
+      "id": "20",
+      "href": "/objects/general-ledger/account-allocation-target/20"
+    },
+    {
+      "key": "21",
+      "id": "21",
+      "href": "/objects/general-ledger/account-allocation-target/21"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/general-ledger/account-allocation-target/{key}
+_Get an account allocation target_
+
+**Response 200 — Get an account allocation target:**
+```json
+{
+  "ia::result": {
+    "id": "21",
+    "key": "21",
+    "glAccountAllocation": {
+      "id": "29",
+      "key": "29",
+      "href": "/objects/general-ledger/account-allocation/29"
+    },
+    "journal": {
+      "key": "39",
+      "title": "Accommodation Expenses",
+      "id": "Others",
+      "href": "/objects/general-ledger/journal/39"
+    },
+    "exchangeRate": {
+      "typeId": "1"
+    },
+    "glAccount": {
+      "id": "1105",
+      "key": "378",
+      "name": "Target",
+      "href": "/objects/general-ledger/account/378"
+    },
+    "isBillable": false,
+    "audit": {
+      "createdDateTime": "2024-06-25T12:16:47Z",
+      "modifiedDateTime": "2024-06-25T12:58:12Z",
+      "createdBy": "1",
+      "modifiedBy": "1"
+    },
+    "dimensions": {
+      "location": {
+        "key": "72",
+        "id": "AZ",
+        "name": "Arizona",
+        "href": "/objects/company-config/location/72"
+      },
+      "department": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "project": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "customer": {
+        "key": "1",
+        "name": "Power Aerospace Materials",
+        "id": "1",
+        "href": "/objects/accounts-receivable/customer/1"
+      },
+      "vendor": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "employee": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "item": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "class": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "contract": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "warehouse": {
+        "key": null,
+        "name": null,
+        "id": null
+      }
+    },
+    "href": "/objects/general-ledger/account-allocation-target/21"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/account-allocation-target/{key}
+_Update an account allocation target_
+
+**Request example — Update an account allocation target:**
+```json
+{
+  "isBillable": true
+}
+```
+**Response 200 — Reference to updated account allocation target:**
+```json
+{
+  "ia::result": {
+    "key": "21",
+    "id": "21",
+    "href": "/objects/general-ledger/account-allocation-target/21"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/account-allocation/{key}
+_Get an account allocation_
+
+**Response 200 — Get an account allocation:**
+```json
+{
+  "ia::result": {
+    "id": "6",
+    "key": "6",
+    "name": "Monthly Expenses RE",
+    "numberPostedJournalEntries": null,
+    "maxPostedJournalEntryDate": null,
+    "description": "Monthly allocation of expenses",
+    "methodology": "Monthly Expense allocation across revenue earning departments",
+    "status": "active",
+    "activityDelta": false,
+    "autoReversePriorPostedJournalEntry": false,
+    "dimensionTreatment": {
+      "location": "preserveValues",
+      "department": "allocationFocus",
+      "project": "notConsidered",
+      "customer": "notConsidered",
+      "vendor": "notConsidered",
+      "employee": "notConsidered",
+      "item": "notConsidered",
+      "class": "notConsidered",
+      "contract": "notConsidered",
+      "warehouse": "notConsidered"
+    },
+    "latestVersion": null,
+    "audit": {
+      "createdDateTime": "2025-08-26T17:20:20Z",
+      "modifiedDateTime": "2025-08-26T17:20:20Z",
+      "createdByUser": {
+        "key": "159",
+        "id": "Admin",
+        "href": "/objects/company-config/user/159"
+      },
+      "modifiedByUser": {
+        "key": "159",
+        "id": "Admin",
+        "href": "/objects/company-config/user/159"
+      },
+      "createdBy": "Admin",
+      "modifiedBy": "Admin"
+    },
+    "journal": {
+      "id": "Others",
+      "key": "39",
+      "href": "/objects/general-ledger/journal/39"
+    },
+    "allowAllocation": "withinOneEntity",
+    "attachment": {
+      "id": null,
+      "key": null
+    },
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "glAccountAllocationSource": [
+      {
+        "id": "3",
+        "key": "3",
+        "glAccountAllocation": {
+          "id": "6",
+          "key": "6",
+          "href": "/objects/general-ledger/account-allocation/6"
+        },
+        "glAccountGroup": {
+          "id": "Benefits",
+          "key": "53",
+          "href": "/objects/general-ledger/account-group/53"
+        },
+        "percentToAllocate": "100",
+        "timePeriod": {
+          "id": "Current Month",
+          "key": "2",
+          "href": "/objects/general-ledger/reporting-period/2"
+        },
+        "reportingBook": "accrual",
+        "useAmountsFrom": "mainReportingBookAndAlternateBooks",
+        "currency": "USD",
+        "audit": {
+          "createdDateTime": "2025-08-26T17:20:20Z",
+          "modifiedDateTime": "2025-08-26T17:20:20Z",
+          "createdByUser": {
+            "key": "159",
+            "id": "Admin",
+            "href": "/objects/company-config/user/159"
+          },
+          "createdBy": "159",
+          "modifiedByUser": {
+            "key": "159",
+            "id": "Admin",
+            "href": "/objects/company-config/user/159"
+          },
+          "modifiedBy": "159"
+        },
+        "dimensions": {
+          "location": {
+            "key": "1",
+            "id": "1",
+            "name": "United States of America",
+            "href": "/objects/company-config/location/1"
+          },
+          "department": {
+            "key": "3",
+            "id": "3",
+            "name": "Engineering",
+            "href": "/objects/company-config/department/3"
+          },
+          "project": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "customer": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "vendor": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "employee": {
+            "key": "1",
+            "name": "John Smith",
+            "id": "1",
+            "href": "/objects/company-config/employee/1"
+          },
+          "item": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "class": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "contract": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "warehouse": {
+            "key": null,
+            "name": null,
+            "id": null
+          }
+        },
+        "href": "/objects/general-ledger/account-allocation-source/3"
+      }
+    ],
+    "glAccountAllocationBasis": [
+      {
+        "id": "3",
+        "key": "3",
+        "glAccountAllocation": {
+          "id": "6",
+          "key": "6",
+          "href": "/objects/general-ledger/account-allocation/6"
+        },
+        "glAccountGroup": {
+          "id": "Accounts Payable",
+          "key": "29",
+          "href": "/objects/general-ledger/account-group/29"
+        },
+        "accumulation": "activity",
+        "timePeriod": {
+          "id": "Current Month",
+          "key": "2",
+          "href": "/objects/general-ledger/reporting-period/2"
+        },
+        "allocationMethod": "dynamicRelativeAccountFinancial",
+        "reportingBook": "accrual",
+        "useAmountsFrom": "mainReportingBookAndAlternateBooks",
+        "skipNegative": false,
+        "audit": {
+          "createdDateTime": "2025-08-26T17:20:21Z",
+          "modifiedDateTime": "2025-08-26T17:20:21Z",
+          "createdByUser": {
+            "key": "159",
+            "id": "Admin",
+            "href": "/objects/company-config/user/159"
+          },
+          "createdBy": "159",
+          "modifiedByUser": {
+            "key": "159",
+            "id": "Admin",
+            "href": "/objects/company-config/user/159"
+          },
+          "modifiedBy": "159"
+        },
+        "dimensions": {
+          "location": {
+            "key": "1",
+            "id": "1",
+            "name": "United States of America",
+            "href": "/objects/company-config/location/1"
+          },
+          "department": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "project": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "customer": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "vendor": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "employee": {
+            "key": "1",
+            "name": "John Smith",
+            "id": "1",
+            "href": "/objects/company-config/employee/1"
+          },
+          "item": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "class": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "contract": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "warehouse": {
+            "key": null,
+            "name": null,
+            "id": null
+          }
+        },
+        "href": "/objects/general-ledger/account-allocation-basis/3"
+      }
+    ],
+    "glAccountAllocationTarget": [
+      {
+        "id": "3",
+        "key": "3",
+        "glAccountAllocation": {
+          "id": "6",
+          "key": "6",
+          "href": "/objects/general-ledger/account-allocation/6"
+        },
+        "journal": {
+          "key": "39",
+          "title": "Accommodation Expenses",
+          "id": "Others",
+          "href": "/objects/general-ledger/journal/39"
+        },
+        "glAccount": {
+          "id": "1000",
+          "key": "9",
+          "name": "Bank of America A/c.",
+          "href": "/objects/general-ledger/account/9"
+        },
+        "isBillable": false,
+        "audit": {
+          "createdDateTime": "2025-08-26T17:20:21Z",
+          "modifiedDateTime": "2025-08-26T17:20:21Z",
+          "createdByUser": {
+            "key": "159",
+            "id": "Admin",
+            "href": "/objects/company-config/user/159"
+          },
+          "createdBy": "159",
+          "modifiedByUser": {
+            "key": "159",
+            "id": "Admin",
+            "href": "/objects/company-config/user/159"
+          },
+          "modifiedBy": "159"
+        },
+        "exchangeRate": {
+          "typeId": null
+        },
+        "dimensions": {
+          "location": {
+            "key": "72",
+            "id": "AZ",
+            "name": "Arizona",
+            "href": "/objects/company-config/location/72"
+          },
+          "department": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "project": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "customer": {
+            "key": "1",
+            "name": "Power Aerospace Materials",
+            "id": "1",
+            "href": "/objects/accounts-receivable/customer/1"
+          },
+          "vendor": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "employee": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "item": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "class": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "contract": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "warehouse": {
+            "key": null,
+            "name": null,
+            "id": null
+          }
+        },
+        "href": "/objects/general-ledger/account-allocation-target/3"
+      }
+    ],
+    "glAccountAllocationReverse": [
+      {
+        "id": "3",
+        "key": "3",
+        "glAccountAllocation": {
+          "id": "6",
+          "key": "6",
+          "href": "/objects/general-ledger/account-allocation/6"
+        },
+        "glAccount": {
+          "id": null,
+          "key": null,
+          "name": null
+        },
+        "useSourceAccount": true,
+        "audit": {
+          "createdDateTime": "2025-08-26T17:20:21Z",
+          "modifiedDateTime": "2025-08-26T17:20:21Z",
+          "createdByUser": {
+            "key": "159",
+            "id": "Admin",
+            "href": "/objects/company-config/user/159"
+          },
+          "createdBy": "159",
+          "modifiedByUser": {
+            "key": "159",
+            "id": "Admin",
+            "href": "/objects/company-config/user/159"
+          },
+          "modifiedBy": "159"
+        },
+        "dimensions": {
+          "location": {
+            "key": "72",
+            "id": "AZ",
+            "name": "Arizona",
+            "href": "/objects/company-config/location/72"
+          },
+          "department": {
+            "key": "6",
+            "id": "6",
+            "name": "Marketing",
+            "href": "/objects/company-config/department/6"
+          },
+          "project": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "customer": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "vendor": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "employee": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "item": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "class": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "contract": {
+            "key": null,
+            "name": null,
+            "id": null
+          },
+          "warehouse": {
+            "key": null,
+            "name": null,
+            "id": null
+          }
+        },
+        "href": "/objects/general-ledger/account-allocation-reverse/3"
+      }
+    ],
+    "href": "/objects/general-ledger/account-allocation/6"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/account-allocation/{key}
+_Update an account allocation_
+
+**Request example — Update an account allocation:**
+```json
+{
+  "description": "Yearly allocation of expenses",
+  "methodology": "Yearly Expense allocation across revenue earning departments",
+  "activityDelta": true
+}
+```
+**Response 200 — Reference to updated account allocation:**
+```json
+{
+  "ia::result": {
+    "id": "29",
+    "key": "29",
+    "href": "/objects/general-ledger/account-allocation/29"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/account-allocation/{key}
+_Delete an account allocation_
+
+
+## GET /objects/general-ledger/account-category
+_List account categories_
+
+**Response 200 — List account categories:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "129",
+      "id": "Patents",
+      "href": "/objects/general-ledger/account-category/129"
+    },
+    {
+      "key": "130",
+      "id": "Trademark",
+      "href": "/objects/general-ledger/account-category/130"
+    },
+    {
+      "key": "131",
+      "id": "Copyrights",
+      "href": "/objects/general-ledger/account-category/131"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": 4,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/general-ledger/account-category/{key}
+_Get an account category_
+
+**Response 200 — Get an account category:**
+```json
+{
+  "ia::result": {
+    "key": "129",
+    "id": "Patents",
+    "accountType": "Intangible Assets",
+    "normalBalance": "debit",
+    "href": "/objects/general-ledger/account-category/129"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/account-group
+_List account groups_
+
+**Response 200 — List account groups:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "647",
+      "id": "Liquidity Ratios",
+      "href": "/objects/general-ledger/account-group/647"
+    },
+    {
+      "key": "621",
+      "id": "Cash and ST Investments",
+      "href": "/objects/general-ledger/account-group/621"
+    },
+    {
+      "key": "629",
+      "id": "Days in Month",
+      "href": "/objects/general-ledger/account-group/629"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/account-group
+_Create an account group_
+
+**Request example — Create an account group:**
+```json
+{
+  "id": "AGG Group",
+  "normalBalance": "debit",
+  "calculationMethod": "period",
+  "includeChildAmount": false,
+  "title": "ReportFilter",
+  "displayTotalLineAs": "Total ReportFilter",
+  "reportFilters": {
+    "debitOrCredit": "both",
+    "department": "noFilter",
+    "location": "noFilter",
+    "vendor": "noFilter",
+    "customer": "noFilter",
+    "project": "noFilter",
+    "employee": "noFilter",
+    "item": "noFilter",
+    "class": "noFilter",
+    "task": "noFilter",
+    "warehouse": "noFilter",
+    "asset": "noFilter",
+    "affiliateEntity": "noFilter",
+    "loanAccount": "noFilter"
+  },
+  "groupType": "accounts",
+  "isKPI": false,
+  "manager": "AG",
+  "accountGroupPurpose": {
+    "id": "21"
+  },
+  "accountRanges": [
+    {
+      "sortOrder": 0,
+      "rangeFrom": "1000",
+      "rangeTo": "2000"
+    },
+    {
+      "sortOrder": 1,
+      "rangeFrom": "3000",
+      "rangeTo": "3000"
+    }
+  ]
+}
+```
+**Response 201 — Reference to new account group:**
+```json
+{
+  "ia::result": {
+    "key": "719",
+    "id": "AGG Group",
+    "href": "/objects/general-ledger/account-group/719"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/account-group-category-member
+_List account group category members_
+
+**Response 200 — List account group category members:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "265",
+      "id": "265",
+      "href": "/objects/general-ledger/account-group-category-member/265"
+    },
+    {
+      "key": "270",
+      "id": "270",
+      "href": "/objects/general-ledger/account-group-category-member/270"
+    },
+    {
+      "key": "271",
+      "id": "271",
+      "href": "/objects/general-ledger/account-group-category-member/271"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": 101,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/general-ledger/account-group-category-member/{key}
+_Get an account group category member_
+
+**Response 200 — Get an account group category member:**
+```json
+{
+  "ia::result": {
+    "id": "270",
+    "key": "270",
+    "glAccountGroup": {
+      "key": "716",
+      "id": "Assets",
+      "href": "/objects/general-ledger/account-group/716"
+    },
+    "sortOrder": 0,
+    "accountCategory": {
+      "key": "962",
+      "id": "Fixed Assets",
+      "href": "/objects/general-ledger/account-category/962"
+    },
+    "categoryName": "Fixed Assets",
+    "audit": {
+      "createdDateTime": "2024-07-04T06:41:30Z",
+      "modifiedDateTime": "2024-07-04T06:41:30Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "href": "/objects/general-ledger/account-group-category-member/270"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/account-group-computation
+_List computation account groups_
+
+**Response 200 — List computation account groups:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "57",
+      "id": "57",
+      "href": "/objects/general-ledger/account-group-computation/57"
+    },
+    {
+      "key": "58",
+      "id": "58",
+      "href": "/objects/general-ledger/account-group-computation/58"
+    },
+    {
+      "key": "59",
+      "id": "59",
+      "href": "/objects/general-ledger/account-group-computation/59"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/general-ledger/account-group-computation/{key}
+_Get a computation account group_
+
+**Response 200 — Get a computation account group:**
+```json
+{
+  "ia::result": {
+    "id": "59",
+    "key": "59",
+    "glAccountGroup": {
+      "id": "AG-Computation-01",
+      "key": "713",
+      "href": "/objects/general-ledger/account-group/713"
+    },
+    "formulaLeft": {
+      "glAccount": {
+        "key": "3",
+        "id": "1000",
+        "name": "Cash in Bank 1",
+        "href": "/objects/general-ledger/account/3"
+      },
+      "glAccountGroup": {
+        "key": null,
+        "id": null
+      },
+      "constant": "100",
+      "asOf": "forPeriod"
+    },
+    "operator": "add",
+    "formulaRight": {
+      "glAccount": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "glAccountGroup": {
+        "key": "709",
+        "id": "AG-Accounts-01",
+        "href": "/objects/general-ledger/account-group/709"
+      },
+      "constant": "100",
+      "asOf": "forPeriod"
+    },
+    "numberOfDecimalPlaces": 2,
+    "displayAs": "number",
+    "unit": "AK",
+    "unitPlacement": "left",
+    "audit": {
+      "createdDateTime": "2024-07-04T06:36:03Z",
+      "modifiedDateTime": "2024-07-04T06:36:03Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "href": "/objects/general-ledger/account-group-computation/59"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/account-group-map
+_List account group maps_
+
+**Response 200 — List account group maps:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "9001",
+      "href": "/objects/general-ledger/account-group-map/1"
+    },
+    {
+      "key": "2",
+      "id": "9002",
+      "href": "/objects/general-ledger/account-group-map/2"
+    },
+    {
+      "key": "3",
+      "id": "9003",
+      "href": "/objects/general-ledger/account-group-map/3"
+    },
+    {
+      "key": "4",
+      "id": "9004",
+      "href": "/objects/general-ledger/account-group-map/4"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 4,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/general-ledger/account-group-map/{key}
+_Get an account group map_
+
+**Response 200 — Get an account group map:**
+```json
+{
+  "ia::result": {
+    "key": "132",
+    "id": "1000",
+    "accountName": "Bank of America A/c",
+    "accountGroupName": "Accounts Receivable",
+    "href": "/objects/general-ledger/account-group-map/132"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/account-group-member
+_List account group members_
+
+**Response 200 — List account group members:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "281",
+      "id": "281",
+      "href": "/objects/general-ledger/account-group-member/281"
+    },
+    {
+      "key": "284",
+      "id": "284",
+      "href": "/objects/general-ledger/account-group-member/284"
+    },
+    {
+      "key": "286",
+      "id": "286",
+      "href": "/objects/general-ledger/account-group-member/286"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/general-ledger/account-group-member/{key}
+_Get an account group member_
+
+**Response 200 — Get an account group member:**
+```json
+{
+  "ia::result": {
+    "id": "287",
+    "key": "287",
+    "glAccountGroup": {
+      "key": "710",
+      "id": "AG-GroupOfAccountGroups-01",
+      "href": "/objects/general-ledger/account-group/710"
+    },
+    "accountGroup": {
+      "key": "528",
+      "id": "1000 cr",
+      "href": "/objects/general-ledger/account-group/528"
+    },
+    "sortOrder": 0,
+    "audit": {
+      "createdDateTime": "2024-07-04T06:29:09Z",
+      "modifiedDateTime": "2024-07-04T06:29:09Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "href": "/objects/general-ledger/account-group-member/287"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/account-group-purpose
+_List account group purposes_
+
+**Response 200 — List account group purposes:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "Budgeted Expenses",
+      "href": "/objects/general-ledger/account-group-purposes/19"
+    },
+    {
+      "key": "2",
+      "id": "Capital Expenses",
+      "href": "/objects/general-ledger/account-group-purposes/21"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/account-group-purpose
+_Create an account group purpose_
+
+**Request example — Create an account group purpose:**
+```json
+{
+  "id": "Budget1",
+  "status": "active"
+}
+```
+**Response 201 — Reference to new account group purpose:**
+```json
+{
+  "ia::result": {
+    "key": "35",
+    "id": "Budget1",
+    "href": "/objects/general-ledger/account-group-purpose/35"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/account-group-purpose/{key}
+_Get an account group purpose_
+
+**Response 200 — Get an account group purpose:**
+```json
+{
+  "ia::result": {
+    "id": "P&L - New",
+    "status": "active",
+    "key": "32",
+    "audit": {
+      "createdDateTime": "2021-02-22T16:30:48Z",
+      "modifiedDateTime": "2021-02-22T16:30:48Z",
+      "createdBy": "1",
+      "modifiedBy": "1"
+    },
+    "href": "/objects/general-ledger/account-group-purpose/32"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/account-group-purpose/{key}
+_Update an account group purpose_
+
+**Request example — Update an account group purpose:**
+```json
+{
+  "id": "Budgeted Expenses"
+}
+```
+**Response 200 — Reference to updated account group purpose:**
+```json
+{
+  "ia::result": {
+    "key": "35",
+    "id": "Budgeted Expenses",
+    "href": "/objects/general-ledger/account-group-purpose/35"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/account-group-purpose/{key}
+_Delete an account group purpose_
+
+
+## GET /objects/general-ledger/account-group/{key}
+_Get an account group_
+
+**Response 200 — Get an account group:**
+```json
+{
+  "ia::result": {
+    "id": "AG-Computation-01",
+    "normalBalance": "debit",
+    "calculationMethod": "period",
+    "includeChildAmount": false,
+    "title": "AG-Computation-01",
+    "displayTotalLineAs": "Total AG-Computation-01",
+    "dimensions": {
+      "location": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "department": {
+        "key": "9",
+        "name": "Partner Sales",
+        "id": "PRS",
+        "href": "/objects/company-config/department/9"
+      },
+      "departmentGroup": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "locationGroup": {
+        "key": "7",
+        "name": "USA Locations",
+        "id": "USA-GRP"
+      },
+      "project": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "customer": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "vendor": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "employee": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "item": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "class": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "task": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "warehouse": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "asset": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "affiliateEntity": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "loanAccount": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "entity": {
+        "key": null,
+        "id": null,
+        "name": null
+      }
+    },
+    "reportFilters": {
+      "debitOrCredit": "both",
+      "department": "specificHierarchy",
+      "location": "specific",
+      "vendor": "noFilter",
+      "customer": "noFilter",
+      "project": "noFilter",
+      "employee": "noFilter",
+      "item": "noFilter",
+      "class": "noFilter",
+      "contract": null,
+      "task": "noFilter",
+      "warehouse": "noFilter",
+      "costType": null,
+      "asset": "noFilter",
+      "affiliateEntity": "noFilter",
+      "loanAccount": "noFilter"
+    },
+    "groupType": "computation",
+    "dimensionsGroup": {
+      "departmentGroup": {
+        "key": null,
+        "name": null,
+        "id": null
+      },
+      "locationGroup": {
+        "key": "7",
+        "name": "USA Locations",
+        "id": "USA-GRP"
+      }
+    },
+    "isKPI": false,
+    "audit": {
+      "createdDateTime": "2024-10-08T13:29:18Z",
+      "modifiedDateTime": "2024-10-08T13:29:18Z",
+      "createdBy": "34",
+      "modifiedBy": "1",
+      "createdByUser": {
+        "key": "34",
+        "id": "Admin",
+        "href": "/objects/company-config/user/34"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Aman",
+        "href": "/objects/company-config/user/1"
+      }
+    },
+    "manager": "John Doe",
+    "accountGroupPurpose": {
+      "key": "10",
+      "id": "P&L",
+      "href": "/objects/general-ledger/account-group-purpose/10"
+    },
+    "accountRanges": [],
+    "accountGroupMembers": [],
+    "accountGroupComputation": [
+      {
+        "id": "59",
+        "key": "59",
+        "glAccountGroup": {
+          "key": "713",
+          "id": "AG-Computation-01",
+          "href": "/objects/general-ledger/account-group/713"
+        },
+        "formulaLeft": {
+          "glAccount": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "glAccountGroup": {
+            "key": "1902",
+            "id": "Acc grp with Dept filter",
+            "href": "/objects/general-ledger/account-group/1902"
+          },
+          "constant": "10",
+          "asOf": "forPeriod"
+        },
+        "operator": "add",
+        "formulaRight": {
+          "glAccount": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "glAccountGroup": {
+            "key": "1044",
+            "id": "990IX Advertising and Promotion",
+            "href": "/objects/general-ledger/account-group/1044"
+          },
+          "constant": "10",
+          "asOf": "forPeriod"
+        },
+        "numberOfDecimalPlaces": 2,
+        "displayAs": "number",
+        "unit": "AK",
+        "unitPlacement": "left",
+        "audit": {
+          "createdDateTime": "2024-06-17T05:00:51Z",
+          "modifiedDateTime": "2024-06-17T05:00:51Z",
+          "createdBy": "1",
+          "modifiedBy": "1"
+        },
+        "href": "/objects/general-ledger/account-group-computation/59"
+      }
+    ],
+    "accountGroupCategoryMembers": [],
+    "statisticalAccountGroupCategoryMembers": [],
+    "statisticalAccountRanges": [],
+    "href": "/objects/general-ledger/account-group/713"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/account-group/{key}
+_Update an account group_
+
+**Request example — Update an account group:**
+```json
+{
+  "accountRanges": [
+    {
+      "sortOrder": 0,
+      "rangeFrom": "1001",
+      "rangeTo": "2000"
+    },
+    {
+      "sortOrder": 1,
+      "rangeFrom": "2001",
+      "rangeTo": "5000"
+    }
+  ]
+}
+```
+**Response 200 — Reference to updated account group:**
+```json
+{
+  "ia::result": {
+    "key": "719",
+    "id": "AGG Group",
+    "href": "/objects/general-ledger/account-group/719"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/account-group/{key}
+_Delete an account group_
+
+
+## GET /objects/general-ledger/account-name-entity-map
+_List account name entity maps_
+
+**Response 200 — List account name entity maps:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "1",
+      "href": "/objects/general-ledger/account-name-entity-map/1"
+    },
+    {
+      "key": "2",
+      "id": "2",
+      "href": "/objects/general-ledger/account-name-entity-map/2"
+    },
+    {
+      "key": "5",
+      "id": "5",
+      "href": "/objects/general-ledger/account-name-entity-map/5"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/account-name-entity-map
+_Create an account name entity map_
+
+**Request example — Creates an account name entity map:**
+```json
+{
+  "name": "Bank of Tanjore (West India)",
+  "location": {
+    "id": "Western Region"
+  },
+  "glAccount": {
+    "id": "1410.01"
+  }
+}
+```
+**Response 201 — Reference to account name entity map:**
+```json
+{
+  "ia::result": {
+    "key": "5",
+    "id": "5",
+    "href": "/objects/general-ledger/account-name-entity-map/5"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/general-ledger/account-name-entity-map/{key}
+_Get an account name entity map_
+
+**Response 200 — Get an account name entity map:**
+```json
+{
+  "ia::result": {
+    "key": "2",
+    "id": "2",
+    "name": "Bank of Tanjore (West India)",
+    "glAccount": {
+      "id": "1410.01",
+      "key": "21",
+      "name": "Corporation Bank of India A/c.",
+      "href": "/objects/general-ledger/account/21"
+    },
+    "location": {
+      "id": "Western Region",
+      "key": "2",
+      "href": "/objects/company-config/location/2"
+    },
+    "href": "/objects/general-ledger/account-name-entity-map/2"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## PATCH /objects/general-ledger/account-name-entity-map/{key}
+_Update an account name entity map_
+
+**Request example — Updates an account name entity map:**
+```json
+{
+  "name": "Bank of Tanjore (West India)",
+  "location": {
+    "id": "Western Region"
+  },
+  "glAccount": {
+    "id": "1003"
+  }
+}
+```
+**Response 200 — Updated account name entity map:**
+```json
+{
+  "ia::result": {
+    "key": "5",
+    "id": "5",
+    "href": "/objects/general-ledger/account-name-entity-map/5"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/general-ledger/account-name-entity-map/{key}
+_Delete an account name entity map_
+
+
+## GET /objects/general-ledger/account-range
+_List account ranges_
+
+**Response 200 — List account ranges:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "57",
+      "id": "57",
+      "href": "/objects/general-ledger/account-range/130"
+    },
+    {
+      "key": "58",
+      "id": "58",
+      "href": "/objects/general-ledger/account-range/132"
+    },
+    {
+      "key": "59",
+      "id": "59",
+      "href": "/objects/general-ledger/account-range/133"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/general-ledger/account-range/{key}
+_Get an account range_
+
+**Response 200 — Get an account range:**
+```json
+{
+  "ia::result": {
+    "id": "130",
+    "key": "130",
+    "glAccountGroup": {
+      "id": "Accounts Payable group",
+      "key": "33",
+      "href": "/objects/general-ledger/account-group/33"
+    },
+    "sortOrder": 0,
+    "rangeFrom": "1000",
+    "rangeTo": "1501",
+    "audit": {
+      "createdDateTime": "2022-03-11T09:21:52Z",
+      "modifiedDateTime": "2022-03-11T09:21:52Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "href": "/objects/general-ledger/account-range/130"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/account/{key}
+_Get an account_
+
+**Response 200 — Get an account:**
+```json
+{
+  "ia::result": {
+    "key": "356",
+    "id": "1501",
+    "name": "Vehicle Spare parts - Transmission",
+    "accountType": "balanceSheet",
+    "normalBalance": "debit",
+    "closingType": "nonClosingAccount",
+    "closeToGLAccount": {
+      "id": null,
+      "key": null
+    },
+    "status": "active",
+    "requireDimensions": {
+      "department": false,
+      "location": false,
+      "project": false,
+      "customer": false,
+      "vendor": false,
+      "employee": false,
+      "item": false,
+      "class": false,
+      "contract": false,
+      "warehouse": false
+    },
+    "isTaxable": false,
+    "category": null,
+    "taxCode": null,
+    "mrcCode": null,
+    "alternativeGLAccount": "none",
+    "automaticAccount": false,
+    "constructionCategory": "cost",
+    "audit": {
+      "createdDateTime": "2022-10-15T00:05:46Z",
+      "modifiedDateTime": "2022-10-15T00:05:46Z",
+      "createdByUser": {
+        "key": "68",
+        "id": "Abhi",
+        "href": "/objects/company-config/user/68"
+      },
+      "createdBy": "68",
+      "modifiedByUser": {
+        "key": "68",
+        "id": "Abhi",
+        "href": "/objects/company-config/user/68"
+      },
+      "modifiedBy": "68"
+    },
+    "disallowDirectPosting": true,
+    "enableGLMatching": false,
+    "reconciliationSequence": null,
+    "href": "/objects/general-ledger/account/356"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/account/{key}
+_Update an account_
+
+**Request example — Update account to enable direct posting:**
+```json
+{
+  "disallowDirectPosting": false
+}
+```
+**Response 200 — Reference to updated account:**
+```json
+{
+  "ia::result": {
+    "key": "356",
+    "id": "1501",
+    "href": "/objects/general-ledger/account/356"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/account/{key}
+_Delete an account_
+
+
+## GET /objects/general-ledger/accounting-sequence
+_List accounting sequences_
+
+**Response 200 — List accounting sequences:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "1",
+      "href": "/objects/general-ledger/accounting-sequence/1"
+    },
+    {
+      "key": "2",
+      "id": "2",
+      "href": "/objects/general-ledger/accounting-sequence/2"
+    },
+    {
+      "key": "3",
+      "id": "3",
+      "href": "/objects/general-ledger/accounting-sequence/3"
+    },
+    {
+      "key": "4",
+      "id": "4",
+      "href": "/objects/general-ledger/accounting-sequence/4"
+    },
+    {
+      "key": "5",
+      "id": "5",
+      "href": "/objects/general-ledger/accounting-sequence/5"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 5,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/accounting-sequence
+_Create an accounting sequence_
+
+**Request example — Create an accounting sequence:**
+```json
+{
+  "startDate": "2026-07-01",
+  "endDate": "2026-08-01",
+  "entity": {
+    "key": "1"
+  },
+  "lines": [
+    {
+      "gljournal": {
+        "key": "101"
+      },
+      "documentSequence": {
+        "key": "20"
+      }
+    }
+  ]
+}
+```
+**Response 201 — Reference to new accounting sequence:**
+```json
+{
+  "ia::result": {
+    "key": "19",
+    "id": "19",
+    "href": "/objects/general-ledger/accounting-sequence/19"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/accounting-sequence-line
+_List accounting sequence lines_
+
+**Response 200 — List accounting sequence lines:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "1",
+      "href": "/objects/general-ledger/accounting-sequence-line/1"
+    },
+    {
+      "key": "2",
+      "id": "2",
+      "href": "/objects/general-ledger/accounting-sequence-line/2"
+    },
+    {
+      "key": "3",
+      "id": "3",
+      "href": "/objects/general-ledger/accounting-sequence-line/3"
+    },
+    {
+      "key": "4",
+      "id": "4",
+      "href": "/objects/general-ledger/accounting-sequence-line/4"
+    },
+    {
+      "key": "5",
+      "id": "5",
+      "href": "/objects/general-ledger/accounting-sequence-line/5"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 5,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/accounting-sequence-line
+_Create an accounting sequence line_
+
+**Request example — Create an accounting sequence line:**
+```json
+{
+  "accountingSequence": {
+    "key": "19"
+  },
+  "gljournal": {
+    "key": "101"
+  },
+  "documentSequence": {
+    "key": "20"
+  }
+}
+```
+**Response 201 — Reference to new accounting sequence line:**
+```json
+{
+  "ia::result": {
+    "key": "27",
+    "id": "27",
+    "href": "/objects/general-ledger/accounting-sequence-line/27"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/accounting-sequence-line/{key}
+_Get an accounting sequence line_
+
+**Response 200 — Get an accounting sequence line:**
+```json
+{
+  "ia::result": {
+    "id": "132",
+    "key": "132",
+    "accountingSequence": {
+      "id": "19",
+      "key": "19",
+      "href": "/objects/general-ledger/accounting-sequence/19"
+    },
+    "documentSequence": {
+      "id": "CONTINVOICE",
+      "key": "21",
+      "nextNumber": "100",
+      "href": "/objects/company-config/document-sequence/21"
+    },
+    "gljournal": {
+      "key": "101",
+      "id": "CRJ",
+      "href": "/objects/general-ledger/journal/101"
+    },
+    "audit": {
+      "createdDateTime": "2026-01-18T12:30:47Z",
+      "modifiedDateTime": "2026-04-07T04:07:21Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      }
+    },
+    "href": "/objects/general-ledger/accounting-sequence-line/132"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/accounting-sequence-line/{key}
+_Update an accounting sequence line_
+
+**Request example — Update an accounting sequence line:**
+```json
+{
+  "accountingSequence": {
+    "key": "19"
+  },
+  "gljournal": {
+    "key": "101"
+  },
+  "documentSequence": {
+    "key": "20"
+  }
+}
+```
+**Response 200 — Reference to updated accounting sequence line:**
+```json
+{
+  "ia::result": {
+    "key": "27",
+    "id": "27",
+    "href": "/objects/general-ledger/accounting-sequence-line/27"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/accounting-sequence-line/{key}
+_Delete an accounting sequence line_
+
+
+## GET /objects/general-ledger/accounting-sequence/{key}
+_Get an accounting sequence_
+
+**Response 200 — Get an accounting sequence:**
+```json
+{
+  "ia::result": {
+    "id": "132",
+    "key": "132",
+    "href": "/objects/general-ledger/accounting-sequence/132",
+    "entity": {
+      "id": "1",
+      "key": "1",
+      "href": "/objects/company-config/entity/1"
+    },
+    "startDate": "2026-07-01",
+    "endDate": "2026-08-01",
+    "lines": [
+      {
+        "key": "24",
+        "id": "24",
+        "href": "/objects/general-ledger/accounting-sequence-line/24",
+        "accountingSequence": {
+          "key": "132",
+          "id": "132",
+          "href": "/objects/general-ledger/accounting-sequence/132"
+        },
+        "documentSequence": {
+          "key": "35",
+          "id": "SSS",
+          "nextNumber": "3",
+          "href": "/objects/company-config/document-sequence/35"
+        },
+        "gljournal": {
+          "key": "101",
+          "id": "CRJ",
+          "href": "/objects/general-ledger/journal/101"
+        },
+        "audit": {
+          "createdDateTime": "2026-01-18T12:30:47Z",
+          "modifiedDateTime": "2026-04-07T04:07:21Z",
+          "createdByUser": {
+            "key": "1",
+            "id": "Admin",
+            "href": "/objects/company-config/user/1"
+          },
+          "modifiedByUser": {
+            "key": "1",
+            "id": "Admin",
+            "href": "/objects/company-config/user/1"
+          }
+        }
+      }
+    ],
+    "audit": {
+      "createdDateTime": "2026-01-18T12:30:47Z",
+      "modifiedDateTime": "2026-04-07T04:07:21Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      }
+    }
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/accounting-sequence/{key}
+_Update an accounting sequence_
+
+**Request example — Update an accounting sequence:**
+```json
+{
+  "startDate": "2026-07-01",
+  "endDate": "2026-08-01",
+  "entity": {
+    "key": "1"
+  },
+  "lines": [
+    {
+      "key": "24",
+      "gljournal": {
+        "key": "101"
+      },
+      "documentSequence": {
+        "key": "20"
+      }
+    }
+  ]
+}
+```
+**Response 200 — Reference to updated accounting sequence:**
+```json
+{
+  "ia::result": {
+    "key": "19",
+    "id": "19",
+    "href": "/objects/general-ledger/accounting-sequence/19"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/accounting-sequence/{key}
+_Delete an accounting sequence_
+
+
+## GET /objects/general-ledger/adjustment-journal
+_List adjustment journals_
+
+**Response 200 — List adjustment journals:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "39",
+      "id": "PERIOD-END-25Q3",
+      "href": "/objects/general-ledger/adjustment-journal/39"
+    },
+    {
+      "key": "26",
+      "id": "PERIOD-END-25Q4",
+      "href": "/objects/general-ledger/adjustment-journal/26"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/adjustment-journal
+_Create an adjustment journal_
+
+**Request example — Create an adjustment journal:**
+```json
+{
+  "id": "PERIOD-END-26Q1",
+  "name": "Period End Adjustment Journal - 26Q1",
+  "status": "active",
+  "isBillable": true,
+  "disallowDirectPosting": false
+}
+```
+**Response 201 — Reference to adjustment journal:**
+```json
+{
+  "ia::result": {
+    "key": "35",
+    "id": "PERIOD-END-26Q1",
+    "href": "/objects/general-ledger/adjustment-journal/35"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/adjustment-journal/{key}
+_Get an adjustment journal_
+
+**Response 200 — Get an adjustment journal:**
+```json
+{
+  "ia::result": {
+    "id": "PERIOD-END-26Q1",
+    "name": "Period End Adjustment Journal - 26Q1",
+    "status": "active",
+    "bookId": "Accrual",
+    "bookType": "accrual",
+    "audit": {
+      "createdDateTime": "2026-03-31T00:21:50Z",
+      "modifiedDateTime": "2026-03-31T00:21:50Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      }
+    },
+    "key": "35",
+    "isBillable": true,
+    "disallowDirectPosting": false,
+    "href": "/objects/general-ledger/adjustment-journal/35"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/adjustment-journal/{key}
+_Update an adjustment journal_
+
+**Request example — Update an adjustment journal:**
+```json
+{
+  "name": "Period End Adjustment Journal - 26Q1",
+  "status": "active",
+  "isBillable": false
+}
+```
+**Response 200 — Reference to adjustment journal:**
+```json
+{
+  "ia::result": {
+    "key": "35",
+    "id": "PERIOD-END-26Q1",
+    "href": "/objects/general-ledger/adjustment-journal/35"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/adjustment-journal/{key}
+_Delete an adjustment journal_
+
+
+## GET /objects/general-ledger/budget
+_List budgets_
+
+**Response 200 — List budgets:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "Std_Budget",
+      "href": "/objects/general-ledger/budget/1"
+    },
+    {
+      "key": "2",
+      "id": "KPI_BUDGET",
+      "href": "/objects/general-ledger/budget/2"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/budget
+_Create a budget_
+
+**Request example — Create a budget:**
+```json
+{
+  "id": "KPI_BUDGET",
+  "description": "KPI Budget",
+  "isDefault": true,
+  "status": "active",
+  "consolidateAmounts": false,
+  "currency": "USD",
+  "postProjectEstimate": false,
+  "lines": [
+    {
+      "glAccount": {
+        "id": "1000"
+      },
+      "dimensions": {
+        "location": {
+          "id": "1"
+        }
+      },
+      "reportingPeriod": {
+        "id": "Q3-2025"
+      },
+      "amount": "1000.00",
+      "budgetGrowth": {
+        "basedOn": "budget",
+        "growBy": "10.00",
+        "perPeriod": "percentage"
+      }
+    },
+    {
+      "glAccount": {
+        "id": "1000"
+      },
+      "dimensions": {
+        "location": {
+          "id": "1"
+        }
+      },
+      "reportingPeriod": {
+        "id": "Q4-2025"
+      },
+      "amount": "1500.00",
+      "budgetGrowth": {
+        "basedOn": "budget",
+        "growBy": "15.00",
+        "perPeriod": "percentage"
+      }
+    }
+  ]
+}
+```
+**Response 201 — Reference to new budget:**
+```json
+{
+  "ia::result": {
+    "key": "41",
+    "id": "KPI_BUDGET",
+    "href": "/objects/general-ledger/budget/41"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/general-ledger/budget-detail
+_List budget details_
+
+**Response 200 — List budget details:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "284",
+      "id": "284",
+      "href": "/objects/general-ledger/budget-detail/284"
+    },
+    {
+      "key": "285",
+      "id": "285",
+      "href": "/objects/general-ledger/budget-detail/285"
+    },
+    {
+      "key": "286",
+      "id": "286",
+      "href": "/objects/general-ledger/budget-detail/286"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/general-ledger/budget-detail/{key}
+_Get budget details_
+
+**Response 200 — Get a budget detail:**
+```json
+{
+  "ia::result": {
+    "id": "13",
+    "key": "13",
+    "budget": {
+      "key": "5",
+      "id": "Employee Expense Budget",
+      "href": "/objects/general-ledger/budget/5"
+    },
+    "currency": {
+      "txnCurrency": "USD"
+    },
+    "reportingPeriod": {
+      "key": "79",
+      "id": "Month End May 2025",
+      "startDate": "2025-05-01",
+      "endDate": "2025-05-31",
+      "href": "/objects/general-ledger/reporting-period/79"
+    },
+    "glAccount": {
+      "key": "9",
+      "id": "REVENUE_4000",
+      "name": "Revenue",
+      "href": "/objects/general-ledger/account/9"
+    },
+    "dimensions": {
+      "department": {
+        "key": "9",
+        "id": "SALES_009",
+        "name": "Sales",
+        "href": "/objects/company-config/department/9"
+      },
+      "location": {
+        "key": "1",
+        "id": "USA",
+        "name": "United States of America",
+        "href": "/objects/company-config/location/1"
+      },
+      "customer": {
+        "key": "1",
+        "id": "1",
+        "name": "Power Aerospace Materials",
+        "href": "/objects/accounts-receivable/customer/1"
+      },
+      "vendor": {
+        "key": "1",
+        "id": "1",
+        "name": "Applied Laboratory Inc",
+        "href": "/objects/accounts-payable/vendor/1"
+      },
+      "employee": {
+        "key": "10",
+        "id": "10",
+        "name": "Jonathan Evans",
+        "href": "/objects/company-config/employee/10"
+      },
+      "item": {
+        "key": "101",
+        "id": "101",
+        "name": "PC Computer",
+        "href": "/objects/inventory-control/item/101"
+      },
+      "contract": {
+        "key": null,
+        "id": null
+      },
+      "project": {
+        "key": "8",
+        "id": "8",
+        "name": "Client Services - Power Aerospace Materials",
+        "href": "/objects/projects/project/8"
+      },
+      "class": {
+        "key": "2",
+        "id": "2",
+        "name": "Operational Services",
+        "href": "/objects/company-config/class/2"
+      }
+    },
+    "amount": "1229.00",
+    "budgetGrowth": {
+      "basedOn": "budget",
+      "growBy": "9.00",
+      "perPeriod": "percentage"
+    },
+    "notes": "Budget amount includes supply of new printers",
+    "audit": {
+      "createdDateTime": "2025-04-24T12:10:25Z",
+      "modifiedDateTime": "2025-04-24T12:10:25Z",
+      "createdByUser": {
+        "key": "159",
+        "id": "John Smith",
+        "href": "/objects/company-config/user/159"
+      },
+      "createdBy": "159",
+      "modifiedByUser": {
+        "key": "159",
+        "id": "John Smith",
+        "href": "/objects/company-config/user/159"
+      },
+      "modifiedBy": "159"
+    },
+    "entity": {
+      "key": "1",
+      "id": "1",
+      "name": "United States of America",
+      "href": "/objects/company-config/entity/1"
+    },
+    "href": "/objects/general-ledger/budget-detail/13"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/budget/{key}
+_Get a budget_
+
+**Response 200 — Get a budget:**
+```json
+{
+  "ia::result": {
+    "key": "5",
+    "id": "Employee Expense Budget",
+    "description": "Employee Expense Budget",
+    "isDefault": false,
+    "submitterName": "John Smith",
+    "status": "active",
+    "audit": {
+      "createdDateTime": "2025-04-24T12:10:25Z",
+      "modifiedDateTime": "2025-04-24T12:10:25Z",
+      "createdByUser": {
+        "key": "159",
+        "href": "/objects/company-config/user/159"
+      },
+      "modifiedByUser": {
+        "key": "159",
+        "href": "/objects/company-config/user/159"
+      },
+      "createdBy": "John Smith",
+      "modifiedBy": "John Smith"
+    },
+    "consolidateAmounts": false,
+    "currency": "USD",
+    "postProjectEstimate": false,
+    "postProjectContract": false,
+    "entity": {
+      "key": null,
+      "id": null
+    },
+    "lines": [
+      {
+        "id": "291",
+        "key": "291",
+        "budget": {
+          "key": "5",
+          "id": "Employee Expense Budget",
+          "href": "/objects/general-ledger/budget/5"
+        },
+        "currency": {
+          "txnCurrency": "USD"
+        },
+        "reportingPeriod": {
+          "key": "79",
+          "id": "Month End May 2025",
+          "startDate": "2025-05-01",
+          "endDate": "2025-05-31",
+          "href": "/objects/general-ledger/reporting-period/79"
+        },
+        "glAccount": {
+          "key": "9",
+          "id": "4000",
+          "name": "Revenue",
+          "href": "/objects/general-ledger/account/9"
+        },
+        "dimensions": {
+          "department": {
+            "key": "9",
+            "id": "SALES",
+            "name": "Sales and Marketing",
+            "href": "/objects/company-config/department/9"
+          },
+          "location": {
+            "key": "1",
+            "id": "USA",
+            "name": "United States of America",
+            "href": "/objects/company-config/location/1"
+          },
+          "customer": {
+            "key": null,
+            "id": null
+          },
+          "vendor": {
+            "key": null,
+            "id": null
+          },
+          "employee": {
+            "key": null,
+            "id": null
+          },
+          "item": {
+            "key": null,
+            "id": null
+          },
+          "contract": {
+            "key": null,
+            "id": null
+          },
+          "project": {
+            "key": null,
+            "id": null
+          },
+          "class": {
+            "key": null,
+            "id": null
+          }
+        },
+        "amount": "1229.00",
+        "budgetGrowth": {
+          "basedOn": "budget",
+          "growBy": "9.00",
+          "perPeriod": "percentage"
+        },
+        "notes": "Projection for May 2025",
+        "audit": {
+          "createdDateTime": "2025-04-24T12:10:25Z",
+          "modifiedDateTime": "2025-04-24T12:10:25Z",
+          "createdByUser": {
+            "key": "159",
+            "id": "John Smith",
+            "href": "/objects/company-config/user/159"
+          },
+          "createdBy": "159",
+          "modifiedByUser": {
+            "key": "159",
+            "id": "John Smith",
+            "href": "/objects/company-config/user/159"
+          },
+          "modifiedBy": "159"
+        },
+        "entity": {
+          "key": "1",
+          "id": "1",
+          "name": "United States of America",
+          "href": "/objects/company-config/entity/1"
+        },
+        "href": "/objects/general-ledger/budget-detail/291"
+      }
+    ],
+    "href": "/objects/general-ledger/budget/5"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/budget/{key}
+_Update a budget_
+
+**Request example — Set a budget to inactive:**
+```json
+{
+  "status": "inactive"
+}
+```
+**Request example — Update the amount in a budget detail object:**
+```json
+{
+  "lines": [
+    {
+      "key": "3402",
+      "amount": "1789.00"
+    }
+  ]
+}
+```
+**Request example — Set a budget as default, update a budget detail and add a new budget detail:**
+```json
+{
+  "isDefault": true,
+  "lines": [
+    {
+      "key": "3402",
+      "budgetGrowth": {
+        "basedOn": "budget",
+        "growBy": "5.00",
+        "perPeriod": "percentage"
+      }
+    },
+    {
+      "glAccount": {
+        "id": "1000"
+      },
+      "dimensions": {
+        "location": {
+          "id": "2"
+        }
+      },
+      "reportingPeriod": {
+        "id": "Q3-2025"
+      },
+      "amount": "1500.00",
+      "budgetGrowth": {
+        "basedOn": "budget",
+        "growBy": "18.00",
+        "perPeriod": "percentage"
+      }
+    }
+  ]
+}
+```
+**Response 200 — Reference to updated budget:**
+```json
+{
+  "ia::result": {
+    "key": "21",
+    "id": "KPI_BUDGET",
+    "href": "/objects/general-ledger/budget/21"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/general-ledger/budget/{key}
+_Delete budget_
+
+
+## GET /objects/general-ledger/financial-graph
+_List financial graphs_
+
+**Response 200 — List financial graphs:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "105",
+      "id": "105",
+      "href": "/objects/general-ledger/financial-graph/105"
+    },
+    {
+      "key": "106",
+      "id": "106",
+      "href": "/objects/general-ledger/financial-graph/106"
+    },
+    {
+      "key": "108",
+      "id": "108",
+      "href": "/objects/general-ledger/financial-graph/108"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/general-ledger/financial-graph/{key}
+_Get a financial graph_
+
+**Response 200 — Get a financial graph:**
+```json
+{
+  "ia::result": {
+    "id": "19",
+    "key": "19",
+    "name": "Monthly Revenue vs Operating Expense",
+    "graphTitle": "Revenue and Operating Expense Trend (Last 12 Months)",
+    "series": "A",
+    "reType": "line.1",
+    "asOfDate": "2026-01-10",
+    "status": "active",
+    "comment": "Tracks monthly revenue against operating expenses to monitor profitability trends.",
+    "href": "/objects/general-ledger/financial-graph/19"
+  }
+}
+```
+
+## DELETE /objects/general-ledger/financial-graph/{key}
+_Delete a financial graph_
+
+
+## GET /objects/general-ledger/gaap-adjustment-journal
+_List GAAP adjustment journals_
+
+**Response 200 — List GAAP adjustment journals:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "Assets GAJ",
+      "href": "/objects/general-ledger/gaap-adjustment-journal/1"
+    },
+    {
+      "key": "2",
+      "id": "Expense GAJ",
+      "href": "/objects/general-ledger/gaap-adjustment-journal/2"
+    },
+    {
+      "key": "3",
+      "id": "Revenue GAJ",
+      "href": "/objects/general-ledger/gaap-adjustment-journal/3"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/gaap-adjustment-journal
+_Create a GAAP adjustment journal_
+
+**Request example — Create a GAAP adjustment journal:**
+```json
+{
+  "id": "Reclassification GAJ",
+  "name": "Reclassification GAAP Adjustment Journal",
+  "status": "active",
+  "bookType": "accrual",
+  "isBillable": true
+}
+```
+**Response 201 — Reference to GAAP adjustment journal:**
+```json
+{
+  "ia::result": {
+    "key": "89",
+    "id": "Reclassification GAJ",
+    "href": "/objects/general-ledger/gaap-adjustment-journal/89"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/gaap-adjustment-journal/{key}
+_Get GAAP adjustment journal_
+
+**Response 200 — Get a GAAP adjustment journal:**
+```json
+{
+  "ia::result": {
+    "id": "Reclassification GAJ",
+    "name": "Reclassification GAAP Adjustment Journal",
+    "status": "active",
+    "bookId": "Accrual",
+    "bookType": "accrual",
+    "disallowDirectPosting": false,
+    "audit": {
+      "createdDateTime": "2026-03-28T23:41:44Z",
+      "modifiedDateTime": "2026-03-29T15:52:18Z",
+      "createdByUser": {
+        "key": "68",
+        "id": "Admin",
+        "href": "/objects/company-config/user/68"
+      },
+      "modifiedByUser": {
+        "key": "68",
+        "id": "Admin",
+        "href": "/objects/company-config/user/68"
+      }
+    },
+    "key": "89",
+    "isBillable": false,
+    "href": "/objects/general-ledger/gaap-adjustment-journal/89"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/gaap-adjustment-journal/{key}
+_Update a GAAP adjustment journal_
+
+**Request example — Update GAAP adjustment journal:**
+```json
+{
+  "name": "Reclassification GAAP Adjustment Journal - Updated",
+  "status": "active",
+  "isBillable": true
+}
+```
+**Response 200 — Reference to GAAP adjustment journal:**
+```json
+{
+  "ia::result": {
+    "key": "89",
+    "id": "Reclassification GAJ",
+    "href": "/objects/general-ledger/gaap-adjustment-journal/89"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/gaap-adjustment-journal/{key}
+_Delete a GAAP adjustment journal_
+
+
+## GET /objects/general-ledger/journal
+_List journals_
+
+**Response 200 — List of GL Journals:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "AR",
+      "href": "/objects/general-ledger/journal/1"
+    },
+    {
+      "key": "2",
+      "id": "AP",
+      "href": "/objects/general-ledger/journal/2"
+    },
+    {
+      "key": "14",
+      "id": "ADJ",
+      "href": "/objects/general-ledger/journal/14"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/journal
+_Create a journal_
+
+**Request example — Create a journal:**
+```json
+{
+  "id": "EJ",
+  "name": "Expense Journal",
+  "bookType": "accrual"
+}
+```
+**Response 201 — Reference to new journal:**
+```json
+{
+  "ia::result": {
+    "key": "3",
+    "id": "EJ",
+    "href": "/objects/general-ledger/journal/3"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/general-ledger/journal-entry
+_List journal entries_
+
+**Response 200 — List journal entries:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "56",
+      "id": "56",
+      "href": "/objects/general-ledger/journal-entry/56"
+    },
+    {
+      "key": "132",
+      "id": "132",
+      "href": "/objects/general-ledger/journal-entry/132"
+    },
+    {
+      "key": "256",
+      "id": "256",
+      "href": "/objects/general-ledger/journal-entry/256"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/journal-entry
+_Create a journal entry_
+
+**Request example — Create a journal entry:**
+```json
+{
+  "glJournal": {
+    "id": "EJ"
+  },
+  "postingDate": "2024-11-01",
+  "description": "October revenue posting",
+  "scheduledOperationKey": "40",
+  "lines": [
+    {
+      "txnType": "credit",
+      "txnAmount": "200",
+      "glAccount": {
+        "id": "1000"
+      },
+      "dimensions": {
+        "department": {
+          "key": "11"
+        },
+        "location": {
+          "key": "1"
+        }
+      },
+      "documentId": "October_revenue_credit_transactions"
+    },
+    {
+      "txnType": "debit",
+      "txnAmount": "200",
+      "glAccount": {
+        "id": "1000"
+      },
+      "dimensions": {
+        "department": {
+          "key": "11"
+        },
+        "location": {
+          "key": "1"
+        }
+      },
+      "documentId": "October_revenue_debit_transactions"
+    }
+  ]
+}
+```
+**Response 201 — Reference to new journal entry:**
+```json
+{
+  "ia::result": {
+    "key": "30565",
+    "id": "30565",
+    "href": "/objects/general-ledger/journal-entry/30565"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/journal-entry-line
+_List journal entry lines_
+
+**Response 200 — List journal entry lines:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "18",
+      "id": "18",
+      "href": "/objects/general-ledger/journal-entry-line/18"
+    },
+    {
+      "key": "21",
+      "id": "21",
+      "href": "/objects/general-ledger/journal-entry-line/21"
+    },
+    {
+      "key": "41",
+      "id": "41",
+      "href": "/objects/general-ledger/journal-entry-line/41"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/general-ledger/journal-entry-line/{key}
+_Get a journal entry line_
+
+**Response 200 — Get a journal entry line:**
+```json
+{
+  "ia::result": {
+    "id": "18",
+    "key": "18",
+    "journalEntry": {
+      "id": "132",
+      "key": "132",
+      "href": "/objects/general-ledger/journal-entry/132"
+    },
+    "lineNumber": 18,
+    "txnType": "credit",
+    "entryDate": "2024-01-14",
+    "baseAmount": "49.31",
+    "txnAmount": "80.00",
+    "glAccount": {
+      "key": "194",
+      "id": "40238561",
+      "name": "Sales",
+      "href": "/objects/general-ledger/account/194"
+    },
+    "dimensions": {
+      "department": {
+        "key": "15",
+        "id": "SEE",
+        "name": "Security Engineering",
+        "href": "/objects/company-config/department/15"
+      },
+      "location": {
+        "key": "26",
+        "id": "CRD",
+        "name": "Croydon",
+        "href": "/objects/company-config/location/26"
+      },
+      "customer": {
+        "key": "9",
+        "id": "JHC",
+        "name": "Jones Hogan Company",
+        "href": "/objects/accounts-receivable/customer/9"
+      },
+      "vendor": {
+        "key": "13",
+        "id": "CAL",
+        "name": "CALOIL Cor Corporation",
+        "href": "/objects/accounts-payable/vendor/13"
+      },
+      "employee": {
+        "key": "29",
+        "id": "234",
+        "name": "John Smith",
+        "href": "/objects/company-config/employee/29"
+      },
+      "item": {
+        "key": "8",
+        "id": "MAS",
+        "name": "Mobile Accessories",
+        "href": "/objects/inventory-control/item/8"
+      },
+      "contract": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "project": {
+        "key": "15",
+        "id": "STS",
+        "name": "Staff Support -  IT - Jones Hogan Company",
+        "href": "/objects/projects/project/15"
+      },
+      "class": {
+        "key": "8",
+        "id": "CON",
+        "name": "Construction",
+        "href": "/objects/company-config/class/8"
+      }
+    },
+    "documentId": "CalOil_Credit_01-24",
+    "description": "CalOil Credit entries January 2024",
+    "numberOfUnits": 2,
+    "currency": {
+      "baseCurrency": "GBP",
+      "txnCurrency": "USD",
+      "exchangeRateDate": "2024-01-14",
+      "exchangeRateTypeId": "Company Daily Rate",
+      "exchangeRate": 0.6164
+    },
+    "reconciliationGroup": {
+      "cleared": "matched",
+      "clearingDate": "2024-01-14",
+      "reconciliationDate": "2024-01-14"
+    },
+    "accountingPeriod": 1,
+    "allocation": {
+      "id": "21",
+      "key": "FA_ALLOC",
+      "href": "/objects/general-ledger/txn-allocation-template/21"
+    },
+    "interEntityTxnType": "p",
+    "parent": {
+      "id": "40",
+      "key": "40",
+      "href": "/objects/general-ledger/journal-entry-line/40"
+    },
+    "audit": {
+      "createdDateTime": "2024-01-14T18:13:29Z",
+      "modifiedDateTime": "2024-01-14T18:13:29Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "state": "posted",
+    "isBillable": false,
+    "isBilled": false,
+    "taxEntries": [],
+    "href": "/objects/general-ledger/journal-entry-line/18"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/journal-entry-line/{key}
+_Delete a Journal entry line_
+
+
+## GET /objects/general-ledger/journal-entry-tax-entry
+_List journal entry tax entries_
+
+**Response 200 — List journal entry tax entries:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "8",
+      "id": "8",
+      "href": "/objects/general-ledger/journal-entry-tax-entry/8"
+    },
+    {
+      "key": "9",
+      "id": "9",
+      "href": "/objects/general-ledger/journal-entry-tax-entry/9"
+    },
+    {
+      "key": "10",
+      "id": "10",
+      "href": "/objects/general-ledger/journal-entry-tax-entry/10"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/general-ledger/journal-entry-tax-entry/{key}
+_Get a journal entry tax entry_
+
+**Response 200 — Get a journal entry tax entry:**
+```json
+{
+  "ia::result": {
+    "key": "300",
+    "id": "300",
+    "baseTaxAmount": "100",
+    "txnTaxAmount": "100",
+    "taxRate": 5.5,
+    "taxDetail": {
+      "id": "UK Export Reduced Rate",
+      "key": "24",
+      "href": "/objects/tax/tax-detail/24"
+    },
+    "journalEntryLine": {
+      "id": "148",
+      "key": "148",
+      "href": "/objects/general-ledger/journal-entry-line/148"
+    },
+    "href": "/objects/general-ledger/journal-entry-tax-entry/300"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/general-ledger/journal-entry-txn-template
+_List journal entry transaction templates_
+
+**Response 200 — List journal entry transaction templates:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "23",
+      "id": "Monthly payroll",
+      "href": "/objects/general-ledger/journal-entry-txn-template/23"
+    },
+    {
+      "key": "11",
+      "id": "Quarterly closing entries",
+      "href": "/objects/general-ledger/journal-entry-txn-template/11"
+    },
+    {
+      "key": "5",
+      "id": "AP Adjustment",
+      "href": "/objects/general-ledger/journal-entry-txn-template/5"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/journal-entry-txn-template
+_Create a journal entry transaction template_
+
+**Request example — Create a journal entry transaction template:**
+```json
+{
+  "id": "Monthly payroll",
+  "status": "active",
+  "journal": {
+    "id": "BAJ"
+  },
+  "offsetGLAccount": {
+    "id": "1000.99"
+  },
+  "description": "Template for baj journal",
+  "lines": [
+    {
+      "glAccount": {
+        "id": "1000.US"
+      },
+      "accountIdentifier": "US account",
+      "dimensions": {
+        "department": {
+          "id": "3"
+        },
+        "location": {
+          "id": "1"
+        }
+      },
+      "departmentSettings": {
+        "isDepartmentEditable": "F",
+        "hideDepartment": "F"
+      },
+      "locationSettings": {
+        "isLocationEditable": "F",
+        "hideLocation": "F"
+      },
+      "dimensionSettings": {
+        "isDimensionEditable": "F",
+        "hideDimension": "F"
+      },
+      "transactionType": "debit"
+    }
+  ]
+}
+```
+**Response 201 — Reference to new journal entry transaction template:**
+```json
+{
+  "ia::result": {
+    "key": "24",
+    "id": "Monthly payroll",
+    "href": "/objects/general-ledger/journal-entry-txn-template/24"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/journal-entry-txn-template-line
+_List journal entry transaction template lines_
+
+**Response 200 — List journal entry transaction template lines:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "22",
+      "id": "22",
+      "href": "/objects/general-ledger/journal-entry-txn-template-line/22"
+    },
+    {
+      "key": "14",
+      "id": "14",
+      "href": "/objects/general-ledger/journal-entry-txn-template-line/14"
+    },
+    {
+      "key": "28",
+      "id": "28",
+      "href": "/objects/general-ledger/journal-entry-txn-template-line/28"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/general-ledger/journal-entry-txn-template-line/{key}
+_Get a journal entry transaction template line_
+
+**Response 200 — Get a journal entry transaction template line:**
+```json
+{
+  "ia::result": {
+    "id": "22",
+    "key": "22",
+    "status": "active",
+    "txnTemplate": {
+      "id": "Monthly Payroll",
+      "key": "11",
+      "href": "/objects/general-ledger/journal-entry-txn-template/11"
+    },
+    "glAccount": {
+      "id": "1007",
+      "name": "State Bank of India",
+      "key": "16",
+      "href": "/objects/general-ledger/account/16"
+    },
+    "accountIdentifier": "Bank of India",
+    "dimensions": {
+      "department": {
+        "id": "100",
+        "name": "Sales",
+        "key": "39",
+        "href": "/objects/company-config/department/39"
+      },
+      "location": {
+        "id": "AZ",
+        "name": "Arizona",
+        "key": "72",
+        "href": "/objects/company-config/location/72"
+      },
+      "project": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "customer": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "vendor": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "employee": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "item": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "class": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "warehouse": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "task": {
+        "key": null,
+        "id": null,
+        "name": null
+      }
+    },
+    "departmentSettings": {
+      "isDepartmentEditable": "F",
+      "hideDepartment": "F"
+    },
+    "locationSettings": {
+      "isLocationEditable": "F",
+      "hideLocation": "F"
+    },
+    "dimensionSettings": {
+      "isDimensionEditable": "F",
+      "hideDimension": "F"
+    },
+    "transactionType": "debit",
+    "isBillable": false,
+    "href": "/objects/general-ledger/journal-entry-txn-template-line/22"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/journal-entry-txn-template-line/{key}
+_Delete a journal entry transaction template line_
+
+
+## GET /objects/general-ledger/journal-entry-txn-template/{key}
+_Get a journal entry transaction template_
+
+**Response 200 — Get a journal entry transaction template:**
+```json
+{
+  "ia::result": {
+    "id": "Monthly payroll",
+    "key": "1",
+    "status": "active",
+    "journal": {
+      "id": "AP ADJ",
+      "name": "AP Adjustment Journal",
+      "key": "18",
+      "isBillable": false,
+      "isAdjustment": false,
+      "href": "/objects/general-ledger/journal/18"
+    },
+    "offsetGLAccount": {
+      "id": "1001",
+      "name": "Citi Bank",
+      "key": "5",
+      "href": "/objects/general-ledger/account/5"
+    },
+    "description": "Transaction Template for AP Adjustment Journal",
+    "version": "1",
+    "audit": {
+      "createdDateTime": "2026-10-08T13:29:18Z",
+      "modifiedDateTime": "2026-10-08T13:29:18Z",
+      "createdBy": "34",
+      "modifiedBy": "1",
+      "createdByUser": {
+        "key": "34",
+        "id": "Admin",
+        "href": "/objects/company-config/user/34"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Aman",
+        "href": "/objects/company-config/user/1"
+      }
+    },
+    "lines": [
+      {
+        "id": "1",
+        "key": "1",
+        "status": "active",
+        "txnTemplate": {
+          "id": "Monthly payroll",
+          "key": "1",
+          "href": "/objects/general-ledger/journal-entry-txn-template/1"
+        },
+        "glAccount": {
+          "id": "1003",
+          "name": "Chase",
+          "key": "12",
+          "href": "/objects/general-ledger/account/12"
+        },
+        "accountIdentifier": "Chase bank account",
+        "dimensions": {
+          "department": {
+            "id": null,
+            "name": null,
+            "key": null
+          },
+          "location": {
+            "id": "1",
+            "name": "United States of America",
+            "key": "1",
+            "href": "/objects/company-config/location/1"
+          },
+          "project": {
+            "id": null,
+            "name": null,
+            "key": null
+          },
+          "customer": {
+            "id": null,
+            "name": null,
+            "key": null
+          },
+          "vendor": {
+            "id": null,
+            "name": null,
+            "key": null
+          },
+          "employee": {
+            "id": null,
+            "name": null,
+            "key": null
+          },
+          "item": {
+            "id": null,
+            "name": null,
+            "key": null
+          },
+          "class": {
+            "id": null,
+            "name": null,
+            "key": null
+          },
+          "warehouse": {
+            "id": null,
+            "name": null,
+            "key": null
+          },
+          "task": {
+            "id": null,
+            "name": null,
+            "key": null
+          }
+        },
+        "departmentSettings": {
+          "isDepartmentEditable": "F",
+          "hideDepartment": "F"
+        },
+        "locationSettings": {
+          "isLocationEditable": "F",
+          "hideLocation": "F"
+        },
+        "dimensionSettings": {
+          "isDimensionEditable": "F",
+          "hideDimension": "F"
+        },
+        "transactionType": "debit",
+        "isBillable": false,
+        "href": "/objects/general-ledger/journal-entry-txn-template-line/1"
+      },
+      {
+        "id": "2",
+        "key": "2",
+        "status": "active",
+        "txnTemplate": {
+          "id": "Monthly payroll",
+          "key": "1",
+          "href": "/objects/general-ledger/journal-entry-txn-template/1"
+        },
+        "glAccount": {
+          "id": "2050.01",
+          "name": "Labor Cost",
+          "key": "114",
+          "href": "/objects/general-ledger/account/114"
+        },
+        "accountIdentifier": "labor cost",
+        "dimensions": {
+          "department": {
+            "id": null,
+            "name": null,
+            "key": null
+          },
+          "location": {
+            "id": "1",
+            "name": "United States of America",
+            "key": "1",
+            "href": "/objects/company-config/location/1"
+          },
+          "project": {
+            "id": null,
+            "name": null,
+            "key": null
+          },
+          "customer": {
+            "id": null,
+            "name": null,
+            "key": null
+          },
+          "vendor": {
+            "id": null,
+            "name": null,
+            "key": null
+          },
+          "employee": {
+            "id": null,
+            "name": null,
+            "key": null
+          },
+          "item": {
+            "id": null,
+            "name": null,
+            "key": null
+          },
+          "class": {
+            "id": null,
+            "name": null,
+            "key": null
+          },
+          "warehouse": {
+            "id": null,
+            "name": null,
+            "key": null
+          },
+          "task": {
+            "id": null,
+            "name": null,
+            "key": null
+          }
+        },
+        "departmentSettings": {
+          "isDepartmentEditable": "F",
+          "hideDepartment": "F"
+        },
+        "locationSettings": {
+          "isLocationEditable": "F",
+          "hideLocation": "F"
+        },
+        "dimensionSettings": {
+          "isDimensionEditable": "F",
+          "hideDimension": "F"
+        },
+        "transactionType": "credit",
+        "isBillable": false,
+        "href": "/objects/general-ledger/journal-entry-txn-template-line/2"
+      }
+    ],
+    "href": "/objects/general-ledger/journal-entry-txn-template/1"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/journal-entry-txn-template/{key}
+_Update a journal entry transaction template_
+
+**Request example — Update a journal entry transaction template:**
+```json
+{
+  "journal": {
+    "id": "CCJ"
+  },
+  "description": "Updated template for CCJ journal"
+}
+```
+**Response 200 — Reference to updated journal entry transaction template:**
+```json
+{
+  "ia::result": {
+    "key": "24",
+    "id": "Monthly payroll",
+    "href": "/objects/general-ledger/journal-entry-txn-template/24"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/journal-entry-txn-template/{key}
+_Delete a journal entry transaction template_
+
+
+## GET /objects/general-ledger/journal-entry/{key}
+_Get journal entry_
+
+**Response 200 — Get a journal entry:**
+```json
+{
+  "ia::result": {
+    "id": "30565",
+    "key": "30565",
+    "txnNumber": 493,
+    "description": "October revenue posting",
+    "glJournal": {
+      "id": "EJ",
+      "key": "4",
+      "isAdjustment": false,
+      "name": "Expense Journal",
+      "href": "/objects/general-ledger/journal/4"
+    },
+    "postingDate": "2024-11-01",
+    "moduleName": "2.GL",
+    "referenceNumber": "Rev_Oct",
+    "reversedBy": {
+      "id": "663",
+      "key": "663",
+      "href": "/objects/general-ledger/journal-entry/663"
+    },
+    "reversedFromDate": null,
+    "txnTemplate": {
+      "id": "Monthly payroll",
+      "key": "1"
+    },
+    "accountAllocationRun": {
+      "id": "87",
+      "key": "87",
+      "href": "/objects/general-ledger/account-allocation-run/87"
+    },
+    "accountAllocation": {
+      "id": "13",
+      "key": "MyMember",
+      "href": "/objects/general-ledger/account-allocation-run/13"
+    },
+    "baseLocation": {
+      "key": "32",
+      "id": "BC",
+      "href": "/objects/company-config/location/32"
+    },
+    "audit": {
+      "createdDateTime": "2022-06-28T23:41:44Z",
+      "modifiedDateTime": "2022-06-29T15:52:18Z",
+      "createdByUser": {
+        "key": "68",
+        "id": "Admin",
+        "href": "/objects/company-config/user/68"
+      },
+      "modifiedByUser": {
+        "key": "68",
+        "id": "Admin",
+        "href": "/objects/company-config/user/68"
+      }
+    },
+    "state": "posted",
+    "sequenceNumber": "1",
+    "tax": {
+      "taxImplication": "none",
+      "taxSolution": {
+        "key": "5",
+        "id": "GST",
+        "href": "/objects/company-config/attachment/5"
+      }
+    },
+    "txnSource": null,
+    "balance": 1.07,
+    "attachment": {
+      "key": "6",
+      "id": "Doc-6331",
+      "href": "/objects/company-config/attachment/6"
+    },
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "webURL": "https://intacct.com/acct/ur.phtml?.r=ijVqUVXUX3TzexR2EcQNU3U7RuBoTavvJ5Pvp9qZZG0",
+    "lines": [
+      {
+        "key": "465744",
+        "id": "465744",
+        "journalEntry": {
+          "key": "30565",
+          "id": "30565",
+          "href": "/objects/general-ledger/journal-entry/30565"
+        },
+        "lineNumber": 1,
+        "txnType": "credit",
+        "entryDate": "2024-11-01",
+        "baseAmount": "200.00",
+        "txnAmount": "200.00",
+        "glAccount": {
+          "key": "9",
+          "id": "35024571",
+          "name": "Bank of America A/c.",
+          "href": "/objects/general-ledger/account/9"
+        },
+        "dimensions": {
+          "department": {
+            "key": "11",
+            "id": "FIN-AP",
+            "name": "Finance - Accounts Payable",
+            "href": "/objects/company-config/department/11"
+          },
+          "location": {
+            "key": "1",
+            "id": "1",
+            "name": "United States of America",
+            "href": "/objects/company-config/location/1"
+          },
+          "customer": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "vendor": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "employee": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "item": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "contract": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "project": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "class": {
+            "key": null,
+            "id": null,
+            "name": null
+          }
+        },
+        "documentId": "October_revenue_credit_transactions",
+        "description": "October revenue credit transactions",
+        "numberOfUnits": 2,
+        "currency": {
+          "baseCurrency": "USD",
+          "txnCurrency": "USD",
+          "exchangeRateDate": "2024-11-01",
+          "exchangeRateTypeId": "Company Daily Rate",
+          "exchangeRate": 0.78
+        },
+        "reconciliationGroup": {
+          "cleared": "matched",
+          "clearingDate": "2024-11-01",
+          "reconciliationDate": "2024-11-01"
+        },
+        "accountingPeriod": 10,
+        "allocation": {
+          "id": "FA_ALLOC",
+          "key": "21",
+          "href": "/objects/general-ledger/txn-allocation-template/21"
+        },
+        "interEntityTxnType": "p",
+        "parent": {
+          "id": "40",
+          "key": "40",
+          "href": "/objects/general-ledger/journal-entry-line/40"
+        },
+        "audit": {
+          "createdDateTime": "2022-06-28T23:41:44Z",
+          "modifiedDateTime": "2022-06-29T15:52:18Z",
+          "createdByUser": {
+            "key": "68",
+            "id": "Admin",
+            "href": "/objects/company-config/user/68"
+          },
+          "modifiedByUser": {
+            "key": "68",
+            "id": "Admin",
+            "href": "/objects/company-config/user/68"
+          }
+        },
+        "state": "posted",
+        "isBillable": false,
+        "isBilled": false,
+        "taxEntries": [],
+        "href": "/objects/general-ledger/journal-entry-line/465744"
+      },
+      {
+        "key": "465745",
+        "id": "465745",
+        "journalEntry": {
+          "key": "30565",
+          "id": "30565",
+          "href": "/objects/general-ledger/journal-entry/30565"
+        },
+        "lineNumber": 2,
+        "txnType": "debit",
+        "entryDate": "2024-11-01",
+        "baseAmount": "200.00",
+        "txnAmount": "200.00",
+        "glAccount": {
+          "key": "9",
+          "id": "35024571",
+          "name": "Bank of America A/c.",
+          "href": "/objects/general-ledger/account/9"
+        },
+        "dimensions": {
+          "department": {
+            "key": "11",
+            "id": "EXPP",
+            "name": "Expense Payable -----> Inactive",
+            "href": "/objects/company-config/department/11"
+          },
+          "location": {
+            "key": "1",
+            "id": "1",
+            "name": "United States of America",
+            "href": "/objects/company-config/location/1"
+          },
+          "customer": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "vendor": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "employee": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "item": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "contract": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "project": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "class": {
+            "key": null,
+            "id": null,
+            "name": null
+          }
+        },
+        "documentId": "October_revenue_debit_transactions",
+        "description": "October revenue debit transactions",
+        "numberOfUnits": 2,
+        "currency": {
+          "baseCurrency": "USD",
+          "txnCurrency": "USD",
+          "exchangeRateDate": "2024-11-01",
+          "exchangeRateTypeId": "Company Daily Rate",
+          "exchangeRate": 0.78
+        },
+        "reconciliationGroup": {
+          "cleared": "matched",
+          "clearingDate": "2024-11-01",
+          "reconciliationDate": "2024-11-01"
+        },
+        "accountingPeriod": 10,
+        "allocation": {
+          "id": "FA_ALLOC",
+          "key": "21",
+          "href": "/objects/general-ledger/txn-allocation-template/21"
+        },
+        "interEntityTxnType": "p",
+        "parent": {
+          "id": "40",
+          "key": "40",
+          "href": "/objects/general-ledger/journal-entry-line/40"
+        },
+        "audit": {
+          "createdDateTime": "2022-06-28T23:41:44Z",
+          "modifiedDateTime": "2022-06-29T15:52:18Z",
+          "createdByUser": {
+            "key": "68",
+            "id": "Admin",
+            "href": "/objects/company-config/user/68"
+          },
+          "modifiedByUser": {
+            "key": "68",
+            "id": "Admin",
+            "href": "/objects/company-config/user/68"
+          }
+        },
+        "state": "posted",
+        "isBillable": false,
+        "isBilled": false,
+        "taxEntries": [],
+        "href": "/objects/general-ledger/journal-entry-line/465745"
+      }
+    ],
+    "href": "/objects/general-ledger/journal-entry/30565"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/journal-entry/{key}
+_Update a journal entry_
+
+**Request example — Update a  journal entry:**
+```json
+{
+  "key": "30565",
+  "postingDate": "2024-12-11",
+  "lines": [
+    {
+      "key": "465744",
+      "txnType": "debit",
+      "txnAmount": "100",
+      "glAccount": {
+        "id": "35024571"
+      },
+      "dimensions": {
+        "department": {
+          "id": "11"
+        },
+        "location": {
+          "id": "1"
+        }
+      },
+      "documentId": "Debit-USD-195",
+      "currency": {
+        "txnCurrency": "USD"
+      }
+    },
+    {
+      "key": "465745",
+      "txnType": "credit",
+      "txnAmount": "100",
+      "glAccount": {
+        "id": "35024571"
+      },
+      "dimensions": {
+        "department": {
+          "id": "11"
+        },
+        "location": {
+          "id": "1"
+        }
+      },
+      "documentId": "Credit-USD-196",
+      "currency": {
+        "txnCurrency": "USD"
+      }
+    }
+  ]
+}
+```
+**Response 200 — Reference to updated journal entry:**
+```json
+{
+  "ia::result": {
+    "key": "30565",
+    "id": "30565",
+    "href": "/objects/general-ledger/journal-entry/30565"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/journal-entry/{key}
+_Delete a journal entry_
+
+
+## GET /objects/general-ledger/journal/{key}
+_Get a journal_
+
+**Response 200 — Single gl-journal:**
+```json
+{
+  "ia::result": {
+    "key": "3",
+    "id": "EJ",
+    "status": "active",
+    "name": "Expense Journal",
+    "isAdjustment": true,
+    "bookId": "Accrual",
+    "bookType": "accrual",
+    "disallowDirectPosting": false,
+    "audit": {
+      "createdDateTime": "2023-01-20T10:25:30Z",
+      "modifiedDateTime": "2023-11-02T08:30:22Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "isBillable": false,
+    "href": "/objects/general-ledger/journal/3"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/journal/{key}
+_Update a journal_
+
+**Request example — Change the name and billable status of a journal:**
+```json
+{
+  "name": "Expense Journal",
+  "isBillable": true
+}
+```
+**Response 200 — Update gl-journal successful:**
+```json
+{
+  "ia::result": {
+    "key": "3",
+    "id": "EJ",
+    "href": "/objects/general-ledger/journal/3"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/journal/{key}
+_Delete a journal_
+
+
+## GET /objects/general-ledger/report-audience
+_List report audiences_
+
+**Response 200 — List report audiences:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "1",
+      "href": "/objects/general-ledger/report-audience/1"
+    },
+    {
+      "key": "2",
+      "id": "2",
+      "href": "/objects/general-ledger/report-audience/2"
+    },
+    {
+      "key": "3",
+      "id": "3",
+      "href": "/objects/general-ledger/report-audience/3"
+    },
+    {
+      "key": "4",
+      "id": "4",
+      "href": "/objects/general-ledger/report-audience/4"
+    },
+    {
+      "key": "5",
+      "id": "5",
+      "href": "/objects/general-ledger/report-audience/5"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 5,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/report-audience
+_Create a report audience_
+
+**Request example — Create a report audience:**
+```json
+{
+  "name": "Executive leadership team",
+  "status": "active"
+}
+```
+**Response 201 — Reference to new report audience:**
+```json
+{
+  "ia::result": {
+    "id": "60",
+    "key": "60",
+    "href": "/objects/general-ledger/report-audience/60"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/report-audience/{key}
+_Get a report audience_
+
+**Response 200 — Get a report audience:**
+```json
+{
+  "ia::result": {
+    "id": "2",
+    "key": "2",
+    "status": "active",
+    "name": "Executive leadership team",
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "audit": {
+      "createdDateTime": "2022-02-15T12:53:47Z",
+      "modifiedDateTime": "2022-02-15T12:53:47Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      }
+    },
+    "href": "/objects/general-ledger/report-audience/2"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/report-audience/{key}
+_Update a report audience_
+
+**Request example — Update a report audience:**
+```json
+{
+  "name": "Executive leadership team"
+}
+```
+**Response 200 — Reference to updated report audience:**
+```json
+{
+  "ia::result": {
+    "id": "60",
+    "key": "60",
+    "href": "/objects/general-ledger/report-audience/60"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/report-audience/{key}
+_Delete a report audience_
+
+
+## GET /objects/general-ledger/report-type
+_List report types_
+
+**Response 200 — List report types:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "1",
+      "href": "/objects/general-ledger/report-type/1"
+    },
+    {
+      "key": "2",
+      "id": "2",
+      "href": "/objects/general-ledger/report-type/2"
+    },
+    {
+      "key": "3",
+      "id": "3",
+      "href": "/objects/general-ledger/report-type/3"
+    },
+    {
+      "key": "4",
+      "id": "4",
+      "href": "/objects/general-ledger/report-type/4"
+    },
+    {
+      "key": "5",
+      "id": "5",
+      "href": "/objects/general-ledger/report-type/5"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 5,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/report-type
+_Create a report type_
+
+**Request example — Create a report type:**
+```json
+{
+  "name": "Monthly balance sheet",
+  "status": "active"
+}
+```
+**Response 201 — Reference to new report type:**
+```json
+{
+  "ia::result": {
+    "id": "60",
+    "key": "60",
+    "href": "/objects/general-ledger/report-type/60"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/report-type/{key}
+_Get a report type_
+
+**Response 200 — Get a report type:**
+```json
+{
+  "ia::result": {
+    "id": "2",
+    "key": "2",
+    "status": "active",
+    "name": "Monthly balance sheet",
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "audit": {
+      "createdDateTime": "2025-07-21T18:08:57Z",
+      "modifiedDateTime": "2025-07-21T18:08:59Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      }
+    },
+    "href": "/objects/general-ledger/report-type/2"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/report-type/{key}
+_Update a report type_
+
+**Request example — Update a report type:**
+```json
+{
+  "name": "Monthly balance sheet"
+}
+```
+**Response 200 — Reference to updated report type:**
+```json
+{
+  "ia::result": {
+    "id": "60",
+    "key": "60",
+    "href": "/objects/general-ledger/report-type/60"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/report-type/{key}
+_Delete a report type_
+
+
+## GET /objects/general-ledger/reporting-account
+_List reporting accounts_
+
+**Response 200 — List reporting accounts:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "391",
+      "id": "391",
+      "href": "/objects/general-ledger/reporting-account/391"
+    },
+    {
+      "key": "392",
+      "id": "392",
+      "href": "/objects/general-ledger/reporting-account/392"
+    },
+    {
+      "key": "515",
+      "id": "515",
+      "href": "/objects/general-ledger/reporting-account/515"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/general-ledger/reporting-account-map
+_List reporting account maps_
+
+**Response 200 — List reporting account maps:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "1",
+      "href": "/objects/general-ledger/reporting-account-map/1"
+    },
+    {
+      "key": "2",
+      "id": "2",
+      "href": "/objects/general-ledger/reporting-account-map/2"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/general-ledger/reporting-account-map/{key}
+_Get a reporting account map_
+
+**Response 200 — Get a reporting account map:**
+```json
+{
+  "ia::result": {
+    "id": "3",
+    "key": "3",
+    "account": {
+      "glAccount": {
+        "key": "23",
+        "id": "1000",
+        "href": "/objects/general-ledger/account/23"
+      }
+    },
+    "reportingAccount": {
+      "id": "392",
+      "key": "392",
+      "href": "/objects/general-ledger/reporting-account/392"
+    },
+    "audit": {
+      "createdDateTime": "2026-01-25T00:00:00Z",
+      "modifiedDateTime": "2026-01-25T00:00:00Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      }
+    },
+    "status": "active",
+    "href": "/objects/general-ledger/reporting-account-map/3"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+**Response 200 — Get a statistical reporting account map:**
+```json
+{
+  "ia::result": {
+    "id": "3",
+    "key": "3",
+    "account": {
+      "statisticalAccount": {
+        "key": "33",
+        "id": "3000",
+        "href": "/objects/general-ledger/statistical-account/33"
+      }
+    },
+    "reportingAccount": {
+      "id": "392",
+      "key": "392",
+      "href": "/objects/general-ledger/reporting-account/392"
+    },
+    "audit": {
+      "createdDateTime": "2026-01-25T00:00:00Z",
+      "modifiedDateTime": "2026-01-25T00:00:00Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      }
+    },
+    "status": "active",
+    "href": "/objects/general-ledger/reporting-account-map/3"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/reporting-account-set
+_List reporting account sets_
+
+**Response 200 — List reporting account sets:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "1",
+      "href": "/objects/general-ledger/reporting-account-set/1"
+    },
+    {
+      "key": "2",
+      "id": "2",
+      "href": "/objects/general-ledger/reporting-account-set/2"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/reporting-account-set
+_Create a reporting account set_
+
+**Request example — Create a reporting account set:**
+```json
+{
+  "name": "Consolidated Revenue Accounts",
+  "description": "Revenue accounts across all entities for consolidated reporting.",
+  "status": "active",
+  "administrator": {
+    "key": "2"
+  },
+  "reportingAccounts": [
+    {
+      "accountNumber": "999900",
+      "name": "Consolidated Revenue Account 1",
+      "accountType": "balancesheet",
+      "statisticalAccountType": "cumulative",
+      "isStatistical": false,
+      "reportingAccountMaps": [
+        {
+          "account": {
+            "glAccount": {
+              "id": "1000"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "permissions": [
+    {
+      "permissionAppliesTo": "everyone",
+      "accessRights": "deny"
+    },
+    {
+      "permissionAppliesTo": "user",
+      "accessRights": "allow",
+      "user": {
+        "key": "1"
+      }
+    }
+  ]
+}
+```
+**Response 201 — Reference to reporting account set:**
+```json
+{
+  "ia::result": {
+    "key": "123",
+    "id": "123",
+    "href": "/objects/general-ledger/reporting-account-set/123"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/reporting-account-set-permission
+_List reporting account set permissions_
+
+**Response 200 — List reporting account set permissions:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "1",
+      "href": "/objects/general-ledger/reporting-account-set-permission/1"
+    },
+    {
+      "key": "2",
+      "id": "2",
+      "href": "/objects/general-ledger/reporting-account-set-permission/2"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/general-ledger/reporting-account-set-permission/{key}
+_Get a reporting account set permission_
+
+**Response 200 — Get a reporting account set permission:**
+```json
+{
+  "ia::result": {
+    "id": "12",
+    "key": "12",
+    "reportingAccountSet": {
+      "id": "5",
+      "key": "5",
+      "href": "/objects/general-ledger/reporting-account-set/5"
+    },
+    "permissionAppliesTo": "user",
+    "user": {
+      "key": "1",
+      "id": "Admin",
+      "href": "/objects/company-config/user/1"
+    },
+    "accessRights": "deny",
+    "audit": {
+      "createdDateTime": "2026-01-25T06:37:44Z",
+      "modifiedDateTime": "2026-01-25T06:37:44Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      }
+    },
+    "href": "/objects/general-ledger/reporting-account-set-permission/12"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/reporting-account-set-permission/{key}
+_Delete a reporting account set permission_
+
+
+## GET /objects/general-ledger/reporting-account-set/{key}
+_Get a reporting account set_
+
+**Response 200 — Get a reporting account set:**
+```json
+{
+  "ia::result": {
+    "id": "1",
+    "key": "1",
+    "name": "Consolidated Revenue Accounts",
+    "description": "Revenue accounts across all entities for consolidated reporting.",
+    "status": "active",
+    "audit": {
+      "createdDateTime": "2025-06-28T23:41:44Z",
+      "modifiedDateTime": "2025-06-29T15:52:18Z",
+      "createdByUser": {
+        "key": "68",
+        "id": "Admin",
+        "href": "/objects/company-config/user/68"
+      },
+      "modifiedByUser": {
+        "key": "68",
+        "id": "Admin",
+        "href": "/objects/company-config/user/68"
+      }
+    },
+    "administrator": {
+      "key": "1",
+      "id": "Admin",
+      "href": "/objects/company-config/user/1"
+    },
+    "reportingAccounts": [
+      {
+        "id": "391",
+        "key": "391",
+        "reportingAccountSet": {
+          "id": "1",
+          "key": "1",
+          "href": "/objects/general-ledger/reporting-account-set/1"
+        },
+        "accountNumber": "999900",
+        "name": "Consolidated Revenue Account 1",
+        "accountType": "balancesheet",
+        "statisticalAccountType": "cumulative",
+        "isStatistical": false,
+        "audit": {
+          "createdDateTime": "2025-09-20T05:17:09Z",
+          "modifiedDateTime": "2025-09-20T05:17:58Z",
+          "createdByUser": {
+            "key": "1",
+            "id": "Admin",
+            "href": "/objects/company-config/user/1"
+          },
+          "modifiedByUser": {
+            "key": "1",
+            "id": "Admin",
+            "href": "/objects/company-config/user/1"
+          }
+        },
+        "reportingAccountMaps": [
+          {
+            "id": "2",
+            "key": "2",
+            "account": {
+              "glAccount": {
+                "key": "45",
+                "id": "1000",
+                "href": "/objects/general-ledger/account/45"
+              }
+            },
+            "audit": {
+              "createdDateTime": "2025-09-20T05:17:09Z",
+              "modifiedDateTime": "2025-09-20T05:17:58Z",
+              "createdByUser": {
+                "key": "1",
+                "id": "Admin",
+                "href": "/objects/company-config/user/1"
+              },
+              "modifiedByUser": {
+                "key": "1",
+                "id": "Admin",
+                "href": "/objects/company-config/user/1"
+              }
+            },
+            "href": "/objects/general-ledger/reporting-account-map/2"
+          }
+        ],
+        "href": "/objects/general-ledger/reporting-account/391"
+      }
+    ],
+    "permissions": [
+      {
+        "id": "1",
+        "key": "1",
+        "reportingAccountSet": {
+          "id": "1",
+          "key": "1",
+          "href": "/objects/general-ledger/reporting-account-set/1"
+        },
+        "permissionAppliesTo": "everyone",
+        "accessRights": "deny",
+        "audit": {
+          "createdDateTime": "2025-09-20T05:17:09Z",
+          "modifiedDateTime": "2025-09-20T05:17:09Z",
+          "createdByUser": {
+            "key": "1",
+            "id": "Admin",
+            "href": "/objects/company-config/user/1"
+          },
+          "modifiedByUser": {
+            "key": "1",
+            "id": "Admin",
+            "href": "/objects/company-config/user/1"
+          }
+        },
+        "href": "/objects/general-ledger/reporting-account-set-permission/1"
+      },
+      {
+        "id": "2",
+        "key": "2",
+        "reportingAccountSet": {
+          "id": "1",
+          "key": "1",
+          "href": "/objects/general-ledger/reporting-account-set/1"
+        },
+        "permissionAppliesTo": "user",
+        "accessRights": "allow",
+        "user": {
+          "key": "1",
+          "id": "Admin",
+          "href": "/objects/company-config/user/1"
+        },
+        "audit": {
+          "createdDateTime": "2025-09-20T05:17:09Z",
+          "modifiedDateTime": "2025-09-20T05:17:09Z",
+          "createdByUser": {
+            "key": "1",
+            "id": "Admin",
+            "href": "/objects/company-config/user/1"
+          },
+          "modifiedByUser": {
+            "key": "1",
+            "id": "Admin",
+            "href": "/objects/company-config/user/1"
+          }
+        },
+        "href": "/objects/general-ledger/reporting-account-set-permission/2"
+      }
+    ],
+    "href": "/objects/general-ledger/reporting-account-set/1"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/reporting-account-set/{key}
+_Update a reporting account set_
+
+**Request example — Update a reporting account set:**
+```json
+{
+  "name": "Consolidated Revenue Accounts",
+  "administrator": {
+    "key": "2"
+  }
+}
+```
+**Response 200 — Reference to reporting account set:**
+```json
+{
+  "ia::result": {
+    "key": "123",
+    "id": "123",
+    "href": "/objects/general-ledger/reporting-account-set/123"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/reporting-account-set/{key}
+_Delete a reporting account set_
+
+
+## GET /objects/general-ledger/reporting-account/{key}
+_Get a reporting account_
+
+**Response 200 — Get a reporting account:**
+```json
+{
+  "ia::result": {
+    "id": "391",
+    "key": "391",
+    "reportingAccountSet": {
+      "id": "1",
+      "key": "1",
+      "href": "/objects/general-ledger/reporting-account-set/1"
+    },
+    "accountNumber": "999900",
+    "name": "Reporting acct 1",
+    "accountType": "balancesheet",
+    "statisticalAccountType": "cumulative",
+    "isStatistical": false,
+    "audit": {
+      "createdDateTime": "2026-01-24T04:48:22Z",
+      "modifiedDateTime": "2026-03-25T09:10:57Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      }
+    },
+    "reportingAccountMaps": [],
+    "href": "/objects/general-ledger/reporting-account/391"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/reporting-account/{key}
+_Delete a reporting account_
+
+
+## GET /objects/general-ledger/reporting-period
+_List reporting periods_
+
+**Response 200 — List reporting periods:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "Current Month",
+      "href": "/objects/general-ledger/reporting-period/1"
+    },
+    {
+      "key": "2",
+      "id": "Next Month",
+      "href": "/objects/general-ledger/reporting-period/2"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/reporting-period
+_Create a reporting period_
+
+**Request example — Create a reporting period:**
+```json
+{
+  "startDate": "2023-01-01",
+  "endDate": "2023-12-31",
+  "id": "Current Year 2023",
+  "columnHeader1": "Current Year",
+  "isBudgetable": false
+}
+```
+**Response 201 — Reference to new reporting period:**
+```json
+{
+  "ia::result": {
+    "key": "1023",
+    "id": "Current Year 2023",
+    "href": "/objects/general-ledger/reporting-period/1023"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/reporting-period/{key}
+_Get a reporting period_
+
+**Response 200 — Get a reporting period:**
+```json
+{
+  "ia::result": {
+    "id": "Current Year 2023",
+    "key": "1023",
+    "href": "/objects/general-ledger/reporting-period/1023",
+    "startDate": "2023-02-01",
+    "endDate": "2023-12-31",
+    "isBudgetable": false,
+    "reportingPeriodType": "custom",
+    "dateType": 99,
+    "columnHeader1": "Current Year",
+    "columnHeader2": null,
+    "status": "active",
+    "audit": {
+      "createdDateTime": "2024-10-08T13:29:18Z",
+      "modifiedDateTime": "2024-10-08T13:29:18Z",
+      "createdByUser": {
+        "key": "34",
+        "id": "Admin",
+        "href": "/objects/company-config/user/34"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Aman",
+        "href": "/objects/company-config/user/1"
+      }
+    }
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/reporting-period/{key}
+_Update a reporting period_
+
+**Request example — Update a reporting period:**
+```json
+{
+  "startDate": "2023-01-01",
+  "endDate": "2023-11-30",
+  "columnHeader1": "Current Year till nov",
+  "isBudgetable": false
+}
+```
+**Response 200 — Reference to updated reporting period:**
+```json
+{
+  "ia::result": {
+    "key": "1023",
+    "id": "Current Year 2023",
+    "href": "/objects/general-ledger/reporting-period/1"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/reporting-period/{key}
+_Delete a reporting period_
+
+
+## GET /objects/general-ledger/statistical-account
+_List statistical accounts_
+
+**Response 200 — List statistical accounts:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "397",
+      "id": "9001",
+      "href": "/objects/general-ledger/statistical-account/397"
+    },
+    {
+      "key": "398",
+      "id": "9002",
+      "href": "/objects/general-ledger/statistical-account/398"
+    },
+    {
+      "key": "399",
+      "id": "9003",
+      "href": "/objects/general-ledger/statistical-account/399"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/statistical-account
+_Create a statistical account_
+
+**Request example — Create a statistical account:**
+```json
+{
+  "id": "9030",
+  "name": "Customer Account",
+  "reportType": "forPeriod",
+  "status": "active",
+  "requireDimensions": {
+    "department": true,
+    "location": true
+  },
+  "isTaxable": false,
+  "category": "Customers"
+}
+```
+**Response 201 — Reference to new statistical account:**
+```json
+{
+  "ia::result": {
+    "key": "439",
+    "id": "9030",
+    "href": "/objects/general-ledger/statistical-account/439"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/statistical-account/{key}
+_Get a statistical account_
+
+**Response 200 — Details of a statistical account:**
+```json
+{
+  "ia::result": {
+    "key": "397",
+    "id": "9001",
+    "name": "Customer Account",
+    "reportType": "forPeriod",
+    "status": "active",
+    "audit": {
+      "modifiedDateTime": "2023-10-21T04:55:32Z",
+      "createdDateTime": "2023-09-20T11:29:30Z",
+      "createdBy": "1",
+      "modifiedBy": "1"
+    },
+    "requireDimensions": {
+      "department": false,
+      "location": false,
+      "project": false,
+      "customer": false,
+      "vendor": false,
+      "employee": false,
+      "item": false,
+      "class": false
+    },
+    "isTaxable": true,
+    "category": "Customers",
+    "href": "/objects/general-ledger/statistical-account/397"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/statistical-account/{key}
+_Update a statistical account_
+
+**Request example — Update a statistical account:**
+```json
+{
+  "name": "Customer Accounts",
+  "isTaxable": true
+}
+```
+**Response 200 — Reference to updated statistical account:**
+```json
+{
+  "ia::result": {
+    "key": "397",
+    "id": "9001",
+    "href": "/objects/general-ledger/statistical-account/397"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/statistical-account/{key}
+_Delete a statistical account_
+
+
+## GET /objects/general-ledger/statistical-adjustment-journal
+_List statistical adjustment journals_
+
+**Response 200 — List statistical adjustment journals:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "36",
+      "id": "STAT-ADJ",
+      "href": "/objects/general-ledger/statistical-adjustment-journal/36"
+    },
+    {
+      "key": "34",
+      "id": "EMP-TIME-ADJ",
+      "href": "/objects/general-ledger/statistical-adjustment-journal/34"
+    },
+    {
+      "key": "35",
+      "id": "EMP-CNT-ADJ",
+      "href": "/objects/general-ledger/statistical-adjustment-journal/35"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/statistical-adjustment-journal
+_Create a statistical adjustment journal_
+
+**Request example — Create a statistical adjustment journal:**
+```json
+{
+  "id": "STAT-ADJ",
+  "name": "Statistical Adjustment Journal",
+  "status": "active"
+}
+```
+**Response 201 — Create a statistical adjustment journal:**
+```json
+{
+  "ia::result": {
+    "key": "36",
+    "id": "STAT-ADJ",
+    "href": "/objects/general-ledger/statistical-adjustment-journal/88"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/general-ledger/statistical-adjustment-journal/{key}
+_Get a statistical adjustment journal_
+
+**Response 200 — Get a statistical adjustment journal:**
+```json
+{
+  "ia::result": {
+    "id": "STAT-ADJ",
+    "name": "Statistical Adjustment Journal",
+    "status": "active",
+    "disallowDirectPosting": false,
+    "audit": {
+      "createdDateTime": "2025-03-27T16:13:03Z",
+      "modifiedDateTime": "2025-03-27T16:13:03Z",
+      "createdByUser": {
+        "key": "159",
+        "id": "Aron",
+        "href": "/objects/company-config/user/159"
+      },
+      "modifiedByUser": {
+        "key": "159",
+        "id": "Aron",
+        "href": "/objects/company-config/user/159"
+      }
+    },
+    "key": "36",
+    "href": "/objects/general-ledger/statistical-adjustment-journal/36"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## PATCH /objects/general-ledger/statistical-adjustment-journal/{key}
+_Update a statistical adjustment journal_
+
+**Request example — Update a statistical adjustment journal:**
+```json
+{
+  "name": "Statistical Adjustment Journal",
+  "status": "active"
+}
+```
+**Response 200 — Update a statistical adjustment journal:**
+```json
+{
+  "ia::result": {
+    "key": "36",
+    "id": "STAT-ADJ",
+    "href": "/objects/general-ledger/statistical-adjustment-journal/36"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/general-ledger/statistical-adjustment-journal/{key}
+_Delete a statistical adjustment journal_
+
+
+## GET /objects/general-ledger/statistical-journal
+_List statistical journals_
+
+**Response 200 — List statistical journals:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "36",
+      "id": "SMAXIMUM",
+      "href": "/objects/general-ledger/statistical-journal/36"
+    },
+    {
+      "key": "34",
+      "id": "TSSJ",
+      "href": "/objects/general-ledger/statistical-journal/34"
+    },
+    {
+      "key": "35",
+      "id": "SINAJ",
+      "href": "/objects/general-ledger/statistical-journal/35"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/statistical-journal
+_Create a statistical journal_
+
+**Request example — Create a new statistical journal:**
+```json
+{
+  "id": "TSSJ",
+  "name": "Timesheet Statistical Journal",
+  "status": "active",
+  "disallowDirectPosting": false
+}
+```
+**Response 201 — Reference to new statistical journal:**
+```json
+{
+  "ia::result": {
+    "key": "88",
+    "id": "TSSJ",
+    "href": "/objects/general-ledger/statistical-journal/88"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/statistical-journal-entry
+_List statistical journal entries_
+
+**Response 200 — list of statistical journal entries:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "66",
+      "id": "66",
+      "href": "/objects/general-ledger/statistical-journal-entry/66"
+    },
+    {
+      "key": "67",
+      "id": "67",
+      "href": "/objects/general-ledger/statistical-journal-entry/67"
+    },
+    {
+      "key": "68",
+      "id": "68",
+      "href": "/objects/general-ledger/statistical-journal-entry/68"
+    },
+    {
+      "key": "70",
+      "id": "70",
+      "href": "/objects/general-ledger/statistical-journal-entry/70"
+    },
+    {
+      "key": "72",
+      "id": "72",
+      "href": "/objects/general-ledger/statistical-journal-entry/72"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 5,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/statistical-journal-entry
+_Create a statistical journal entry_
+
+**Request example — Create a statistical journal entry:**
+```json
+{
+  "description": "TSSJ 5 JE Journal",
+  "statisticalJournal": {
+    "id": "cs"
+  },
+  "postingDate": "2024-03-05",
+  "lines": [
+    {
+      "txnType": "increase",
+      "txnAmount": "15",
+      "dimensions": {
+        "location": {
+          "id": "1"
+        }
+      },
+      "statisticalAccount": {
+        "id": "9001"
+      }
+    }
+  ]
+}
+```
+**Response 201 — Sample POST response:**
+```json
+{
+  "ia::result": {
+    "id": "81",
+    "key": "81",
+    "href": "/objects/general-ledger/statistical-journal-entry/81"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/statistical-journal-entry-line
+_List statistical journal entry lines_
+
+**Response 200 — Get statistical journal entry lines:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "127",
+      "id": "127",
+      "href": "/objects/general-ledger/statistical-journal-entry-line/127"
+    },
+    {
+      "key": "128",
+      "id": "128",
+      "href": "/objects/general-ledger/statistical-journal-entry-line/128"
+    },
+    {
+      "key": "129",
+      "id": "129",
+      "href": "/objects/general-ledger/statistical-journal-entry-line/129"
+    },
+    {
+      "key": "130",
+      "id": "130",
+      "href": "/objects/general-ledger/statistical-journal-entry-line/130"
+    },
+    {
+      "key": "131",
+      "id": "131",
+      "href": "/objects/general-ledger/statistical-journal-entry-line/131"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 5,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/general-ledger/statistical-journal-entry-line/{key}
+_Get a statistical journal entry line item_
+
+**Response 200 — Get statistical journal entry line item:**
+```json
+{
+  "ia::result": {
+    "id": "127",
+    "key": "127",
+    "statisticalJournalEntry": {
+      "id": "66",
+      "key": "66",
+      "href": "/objects/general-ledger/statistical-journal-entry/66"
+    },
+    "lineNumber": 1,
+    "txnType": "increase",
+    "entryDate": "2024-03-05",
+    "statisticalAccount": {
+      "key": "1",
+      "id": "9001",
+      "name": "Root - Billable Utilized Statistical Account",
+      "href": "/objects/general-ledger/statistical-account/1"
+    },
+    "dimensions": {
+      "department": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "location": {
+        "key": "1",
+        "id": "USA",
+        "name": "United States of America",
+        "href": "/objects/location/1"
+      },
+      "project": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "customer": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "vendor": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "employee": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "item": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "class": {
+        "key": null,
+        "id": null,
+        "name": null
+      }
+    },
+    "documentId": "Headcount_Increase_03_24",
+    "description": "Headcount Increase March 2024",
+    "numberOfUnits": 3,
+    "reconciliationGroup": {
+      "cleared": "false",
+      "clearingDate": "2024-03-05",
+      "reconciliationDate": "2024-03-05"
+    },
+    "accountingPeriod": 5,
+    "allocation": {
+      "id": "12",
+      "key": "STAT_ALLOC",
+      "href": "/objects/general-ledger/txn-allocation-template/12"
+    },
+    "audit": {
+      "createdDateTime": "2024-04-24T13:40:31Z",
+      "modifiedDateTime": "2024-04-24T13:40:31Z",
+      "createdBy": "1",
+      "modifiedBy": "1"
+    },
+    "state": "posted",
+    "href": "/objects/general-ledger/statistical-journal-entry-line/127"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/statistical-journal-entry/{key}
+_Get a statistical journal entry_
+
+**Response 200 — Statistical Journal entry details:**
+```json
+{
+  "ia::result": {
+    "id": "81",
+    "key": "81",
+    "txnNumber": 6,
+    "description": "TSSJ 5 JE Journal",
+    "statisticalJournal": {
+      "id": "CS",
+      "key": "107",
+      "href": "/objects/general-ledger/statistical-journal/107"
+    },
+    "postingDate": "2024-03-05",
+    "moduleName": "2.GL",
+    "referenceNumber": "Stat_GL_101",
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "attachment": {
+      "id": "Transaction Notes",
+      "key": "4",
+      "href": "/objects/company-config/attachment/4"
+    },
+    "reversedBy": {
+      "id": null,
+      "key": null
+    },
+    "reversedFromDate": null,
+    "audit": {
+      "createdDateTime": "2024-12-05T08:23:34Z",
+      "modifiedDateTime": "2025-03-21T12:51:08Z",
+      "createdByUser": {
+        "key": "34",
+        "id": "Admin",
+        "href": "/objects/company-config/user/34"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Aman",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "state": "posted",
+    "sequenceNumber": "1221",
+    "lines": [
+      {
+        "id": "140",
+        "key": "140",
+        "statisticalJournalEntry": {
+          "id": "81",
+          "key": "81",
+          "href": "/objects/general-ledger/statistical-journal-entry/81"
+        },
+        "lineNumber": 1,
+        "txnType": "increase",
+        "entryDate": "2024-03-05",
+        "txnAmount": "15.00",
+        "statisticalAccount": {
+          "key": "1",
+          "id": "9001",
+          "name": "Root - Billable Utilized Statistical Account",
+          "href": "/objects/general-ledger/statistical-gl-account/1"
+        },
+        "dimensions": {
+          "department": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "location": {
+            "key": "1",
+            "id": "1",
+            "name": "United States of America",
+            "href": "/objects/location/1"
+          },
+          "project": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "customer": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "vendor": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "employee": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "item": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "class": {
+            "key": null,
+            "id": null,
+            "name": null
+          }
+        },
+        "documentId": null,
+        "description": null,
+        "numberOfUnits": null,
+        "reconciliationGroup": {
+          "cleared": "false",
+          "clearingDate": null,
+          "reconciliationDate": null
+        },
+        "accountingPeriod": null,
+        "allocation": {
+          "id": null,
+          "key": null
+        },
+        "audit": {
+          "createdDateTime": "2024-12-05T08:23:34Z",
+          "modifiedDateTime": "2025-03-21T12:51:08Z",
+          "createdByUser": {
+            "key": "34",
+            "id": "Admin",
+            "href": "/objects/company-config/user/34"
+          },
+          "createdBy": "1",
+          "modifiedByUser": {
+            "key": "1",
+            "id": "Aman",
+            "href": "/objects/company-config/user/1"
+          },
+          "modifiedBy": "1"
+        },
+        "state": "posted",
+        "href": "/objects/general-ledger/statistical-journal-entry-line/140"
+      }
+    ],
+    "href": "/objects/general-ledger/statistical-journal-entry/81"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/statistical-journal-entry/{key}
+_Update a statistical journal entry_
+
+**Request example — Update a statistical journal entry:**
+```json
+{
+  "postingDate": "2023-12-11",
+  "state": "posted",
+  "lines": [
+    {
+      "key": "195",
+      "txnType": "decrease",
+      "txnAmount": "100",
+      "statisticalAccount": {
+        "id": "1000"
+      },
+      "dimensions": {
+        "department": {
+          "id": "11"
+        },
+        "location": {
+          "id": "1"
+        }
+      },
+      "documentId": "Statistical JE reference",
+      "currency": {
+        "txnCurrency": "USD"
+      }
+    }
+  ]
+}
+```
+**Response 200 — Update a single value:**
+```json
+{
+  "ia::result": {
+    "key": "1",
+    "id": "1",
+    "href": "/objects/general-ledger/statistical-journal-entry/1"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/statistical-journal-entry/{key}
+_Delete a statistical journal entry_
+
+
+## GET /objects/general-ledger/statistical-journal/{key}
+_Get a statistical Journal_
+
+**Response 200 — Get a statistical journal:**
+```json
+{
+  "ia::result": {
+    "id": "TSSJ",
+    "name": "Timesheet Statistical Journal",
+    "status": "active",
+    "disallowDirectPosting": false,
+    "bookId": "Accrual",
+    "bookType": "accrual",
+    "audit": {
+      "createdDateTime": "2016-10-05T15:57:34Z",
+      "modifiedDateTime": "2023-04-04T05:43:52Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": null,
+        "id": null
+      },
+      "modifiedBy": null
+    },
+    "key": "52",
+    "href": "/objects/general-ledger/statistical-journal/52"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/statistical-journal/{key}
+_Update a statistical journal_
+
+**Request example — Update a statistical journal:**
+```json
+{
+  "name": "Timesheet Statistical Journal",
+  "status": "active"
+}
+```
+**Response 200 — Reference to updated statistical journal:**
+```json
+{
+  "ia::result": {
+    "key": "88",
+    "id": "TSSJ",
+    "href": "/objects/general-ledger/statistical-journal/88"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/statistical-journal/{key}
+_Delete a statistical journal_
+
+
+## GET /objects/general-ledger/tax-adjustment-journal
+_List tax adjustment journals_
+
+**Response 200 — List tax adjustment journals:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "37",
+      "id": "TAX-ADJ-25Q2",
+      "href": "/objects/general-ledger/tax-adjustment-journal/37"
+    },
+    {
+      "key": "38",
+      "id": "TAX-ADJ-25Q3",
+      "href": "/objects/general-ledger/tax-adjustment-journal/38"
+    },
+    {
+      "key": "39",
+      "id": "TAX-ADJ-25Q4",
+      "href": "/objects/general-ledger/tax-adjustment-journal/39"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/tax-adjustment-journal
+_Create a tax adjustment journal_
+
+**Request example — Create a tax adjustment journal:**
+```json
+{
+  "id": "TAX-ADJ-26Q1",
+  "name": "Tax Adjustment Journal - 26Q1",
+  "status": "active",
+  "isBillable": true,
+  "bookType": "accrual"
+}
+```
+**Response 201 — Create a tax adjustment journal:**
+```json
+{
+  "ia::result": {
+    "key": "44",
+    "id": "TAX-ADJ-26Q1",
+    "href": "/objects/general-ledger/tax-adjustment-journal/44"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/tax-adjustment-journal/{key}
+_Get a tax adjustment journal_
+
+**Response 200 — Get a tax adjustment journal:**
+```json
+{
+  "ia::result": {
+    "id": "TAX-ADJ-26Q1",
+    "name": "Tax Adjustment Journal - 26Q1",
+    "status": "active",
+    "disallowDirectPosting": false,
+    "bookId": "Accrual",
+    "bookType": "accrual",
+    "audit": {
+      "createdDateTime": "2026-01-01T11:31:49Z",
+      "modifiedDateTime": "2026-01-01T11:31:49Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      }
+    },
+    "key": "44",
+    "isBillable": false,
+    "href": "/objects/general-ledger/tax-adjustment-journal/44"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/tax-adjustment-journal/{key}
+_Update a tax adjustment journal_
+
+**Request example — Update a tax adjustment journal:**
+```json
+{
+  "name": "Tax Adjustment Journal - 26Q1",
+  "status": "active",
+  "isBillable": false
+}
+```
+**Response 200 — Update a tax adjustment journal:**
+```json
+{
+  "ia::result": {
+    "key": "44",
+    "id": "TAX-ADJ-26Q1",
+    "href": "/objects/general-ledger/tax-adjustment-journal/44"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/tax-adjustment-journal/{key}
+_Delete a tax adjustment journal_
+
+
+## GET /objects/general-ledger/txn-allocation-template
+_List transaction allocation templates_
+
+**Response 200 — List allocation templates:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "Fixed Amount Allocation",
+      "href": "/objects/general-ledger/txn-allocation-template/1"
+    },
+    {
+      "key": "2",
+      "id": "Percentage Allocation",
+      "href": "/objects/general-ledger/txn-allocation-template/2"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/txn-allocation-template
+_Create a transaction allocation template_
+
+**Request example — Create an allocation template:**
+```json
+{
+  "id": "Fixed amount allocation",
+  "description": "Fixed dollar amount allocation",
+  "status": "active",
+  "allocateBy": "exactAmount",
+  "lines": [
+    {
+      "value": "100",
+      "dimensions": {
+        "department": {
+          "id": "1"
+        },
+        "location": {
+          "id": "1"
+        }
+      }
+    }
+  ]
+}
+```
+**Response 201 — Reference to new allocation template:**
+```json
+{
+  "ia::result": {
+    "key": "4",
+    "id": "Fixed amount allocation",
+    "href": "/objects/general-ledger/txn-allocation-template/4"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/txn-allocation-template-line
+_List transaction allocation template lines_
+
+**Response 200 — List transaction allocation template lines:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "4",
+      "id": "4",
+      "href": "/objects/general-ledger/txn-allocation-template-line/1"
+    },
+    {
+      "key": "8",
+      "id": "8",
+      "href": "/objects/general-ledger/txn-allocation-template-line/1"
+    },
+    {
+      "key": "1",
+      "id": "1",
+      "href": "/objects/general-ledger/txn-allocation-template-line/2"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/general-ledger/txn-allocation-template-line/{key}
+_Get a transaction allocation template line_
+
+**Response 200 — Get a transaction allocation template line:**
+```json
+{
+  "ia::result": {
+    "key": "8",
+    "id": "8",
+    "allocation": {
+      "id": "Fixed amount allocation",
+      "key": "3",
+      "href": "/objects/general-ledger/txn-allocation-template/3"
+    },
+    "valueType": "amount",
+    "value": "100",
+    "dimensions": {
+      "location": {
+        "id": "1",
+        "name": "United States of America",
+        "key": "1",
+        "href": "/objects/company-config/location/1"
+      },
+      "department": {
+        "id": "11",
+        "name": "Accounting",
+        "key": "9",
+        "href": "/objects/company-config/department/9"
+      },
+      "project": {
+        "key": "13",
+        "id": "CO",
+        "name": "Contract -  Platinum - Modulus Industries",
+        "href": "/objects/projects/project/13"
+      },
+      "customer": {
+        "key": "3",
+        "id": "MI",
+        "name": "Modulus Industries",
+        "href": "/objects/accounts-receivable/customer/3"
+      },
+      "vendor": {
+        "key": "47",
+        "id": "201",
+        "name": "PG & E",
+        "href": "/objects/accounts-payable/vendor/47"
+      },
+      "employee": {
+        "key": "2",
+        "id": "2",
+        "name": "Hatcher",
+        "href": "/objects/company-config/employee/2"
+      },
+      "item": {
+        "key": "29",
+        "id": "A001",
+        "name": "Desktop-HP",
+        "href": "/objects/inventory-control/item/29"
+      },
+      "class": {
+        "key": "6",
+        "id": "4",
+        "name": "Professional Services",
+        "href": "/objects/company-config/class/6"
+      },
+      "task": {
+        "key": "1",
+        "id": "T-001",
+        "name": "Task-1",
+        "href": "/objects/projects/task/1"
+      },
+      "warehouse": {
+        "key": "19",
+        "id": "WareHouse10004",
+        "name": "Warehouse Name 10004 (CN)",
+        "href": "/objects/inventory-control/warehouse/19"
+      }
+    },
+    "audit": {
+      "createdDateTime": "2022-06-23T12:25:09Z",
+      "modifiedDateTime": "2022-06-23T12:25:09Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      }
+    },
+    "lineNumber": 1,
+    "href": "/objects/general-ledger/txn-allocation-template-line/8"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/txn-allocation-template/{key}
+_Get a transaction allocation template_
+
+**Response 200 — Allocation template details:**
+```json
+{
+  "ia::result": {
+    "key": "3",
+    "id": "Fixed amount allocation",
+    "description": "Fixed dollar amount allocation",
+    "allocateBy": "exactAmount",
+    "documentNumber": "REJCAL",
+    "status": "active",
+    "audit": {
+      "createdDateTime": "2023-06-23T11:32:17Z",
+      "modifiedDateTime": "2023-06-23T12:25:08Z",
+      "createdBy": "1",
+      "modifiedBy": "1"
+    },
+    "lines": [
+      {
+        "key": "8",
+        "id": "Fixed Amount Allocation",
+        "txnAllocationTemplate": {
+          "id": "Fixed amount allocation",
+          "key": "3",
+          "href": "/objects/general-ledger/txn-allocation-template/3"
+        },
+        "valueType": "amount",
+        "value": "100",
+        "dimensions": {
+          "location": {
+            "id": "1",
+            "name": "United States of America",
+            "key": "1",
+            "href": "/objects/company-config/location/1"
+          },
+          "department": {
+            "id": "11",
+            "name": "Accounting",
+            "key": "9",
+            "href": "/objects/company-config/department/9"
+          },
+          "project": {
+            "key": "13",
+            "id": "CO",
+            "name": "Contract -  Platinum - Modulus Industries",
+            "href": "/objects/projects/project/13"
+          },
+          "customer": {
+            "key": "3",
+            "id": "MI",
+            "name": "Modulus Industries",
+            "href": "/objects/accounts-receivable/customer/3"
+          },
+          "vendor": {
+            "key": "47",
+            "id": "201",
+            "name": "PG & E",
+            "href": "/objects/accounts-payable/vendor/47"
+          },
+          "employee": {
+            "key": "2",
+            "id": "2",
+            "name": "Hatcher",
+            "href": "/objects/company-config/employee/2"
+          },
+          "item": {
+            "key": "29",
+            "id": "A001",
+            "name": "Desktop-HP",
+            "href": "/objects/inventory-control/item/29"
+          },
+          "class": {
+            "key": "6",
+            "id": "4",
+            "name": "Professional Services",
+            "href": "/objects/company-config/class/6"
+          },
+          "task": {
+            "key": "1",
+            "id": "T-001",
+            "name": "Task-1",
+            "href": "/objects/projects/task/1"
+          },
+          "warehouse": {
+            "key": "19",
+            "id": "WareHouse10004",
+            "name": "Warehouse Name 10004 (CN)",
+            "href": "/objects/inventory-control/warehouse/19"
+          },
+          "audit": {
+            "createdDateTime": "2024-10-08T13:29:18Z",
+            "modifiedDateTime": "2024-10-08T13:29:18Z",
+            "createdBy": "34",
+            "modifiedBy": "1",
+            "createdByUser": {
+              "key": "34",
+              "id": "Admin",
+              "href": "/objects/company-config/user/34"
+            },
+            "modifiedByUser": {
+              "key": "1",
+              "id": "Aman",
+              "href": "/objects/company-config/user/1"
+            },
+            "entity": {
+              "key": null,
+              "id": null,
+              "name": null
+            }
+          }
+        },
+        "lineNumber": 1,
+        "href": "/objects/general-ledger/txn-allocation-template-line/8"
+      }
+    ],
+    "href": "/objects/general-ledger/txn-allocation-template/3"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/txn-allocation-template/{key}
+_Update a transaction allocation template_
+
+**Request example — Updates an allocation template description and one existing line:**
+```json
+{
+  "description": "All Shop Allocation",
+  "lines": [
+    {
+      "key": "3",
+      "valueType": "amount",
+      "value": "95"
+    }
+  ]
+}
+```
+**Response 200 — Reference to updated allocation template:**
+```json
+{
+  "ia::result": {
+    "key": "3",
+    "id": "Fixed amount allocation",
+    "href": "/objects/general-ledger/txn-allocation-template/3"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/txn-allocation-template/{key}
+_Delete a transaction allocation template_
+
+
+## GET /objects/general-ledger/user-defined-book
+_List user-defined books_
+
+**Response 200 — List user-defined books:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "Allocation",
+      "href": "/objects/general-ledger/user-defined-book/1"
+    },
+    {
+      "key": "2",
+      "id": "PreAcq",
+      "href": "/objects/general-ledger/user-defined-book/2"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/user-defined-book
+_Create a user-defined book_
+
+**Request example — Create a user-defined book:**
+```json
+{
+  "id": "IFRS9",
+  "description": "IFRS 9 Adjustments Book",
+  "isManagementReporting": true,
+  "status": "active"
+}
+```
+**Response 201 — Reference to user-defined book:**
+```json
+{
+  "ia::result": {
+    "key": "23",
+    "id": "IFRS9",
+    "href": "/objects/general-ledger/user-defined-book/23"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/user-defined-book/{key}
+_Get a user-defined book_
+
+**Response 200 — Get a user-defined book:**
+```json
+{
+  "ia::result": {
+    "key": "23",
+    "id": "IFRS9",
+    "description": "IFRS 9 Adjustments Book",
+    "isManagementReporting": true,
+    "status": "active",
+    "audit": {
+      "createdDateTime": "2026-02-26T17:53:21Z",
+      "modifiedDateTime": "2026-02-26T17:53:21Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      }
+    },
+    "href": "/objects/general-ledger/user-defined-book/23"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/user-defined-book/{key}
+_Update a user-defined book_
+
+**Request example — Update user-defined book:**
+```json
+{
+  "description": "IFRS 9 Adjustments Book for Q1",
+  "isManagementReporting": true
+}
+```
+**Response 200 — Reference to user-defined book:**
+```json
+{
+  "ia::result": {
+    "key": "23",
+    "id": "IFRS9",
+    "href": "/objects/general-ledger/user-defined-book/23"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/user-defined-book/{key}
+_Delete a user-defined book_
+
+
+## GET /objects/general-ledger/user-defined-journal
+_List user-defined journals_
+
+**Response 200 — List user-defined journals:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "39",
+      "id": "UDJ-PAJ",
+      "href": "/objects/general-ledger/user-defined-journal/39"
+    },
+    {
+      "key": "26",
+      "id": "UDJ-ALLOC",
+      "href": "/objects/general-ledger/user-defined-journal/26"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/general-ledger/user-defined-journal
+_Create a user-defined journal_
+
+**Request example — Create a user-defined journal:**
+```json
+{
+  "id": "UDJ-INTERCO",
+  "name": "Intercompany Adjustment Journal",
+  "status": "active",
+  "isBillable": true,
+  "bookType": "accrual",
+  "userDefinedBook": {
+    "key": "1"
+  }
+}
+```
+**Response 201 — Create a user-defined journal:**
+```json
+{
+  "ia::result": {
+    "key": "46",
+    "id": "UDJ-INTERCO",
+    "href": "/objects/general-ledger/user-defined-journal/46"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/general-ledger/user-defined-journal/{key}
+_Get a user-defined journal_
+
+**Response 200 — Get a user-defined journal:**
+```json
+{
+  "ia::result": {
+    "id": "UDJ-INTERCO",
+    "name": "Intercompany Adjustment Journal",
+    "status": "active",
+    "audit": {
+      "createdDateTime": "2026-03-31T11:35:15Z",
+      "modifiedDateTime": "2026-03-31T11:35:15Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      }
+    },
+    "key": "46",
+    "isBillable": true,
+    "disallowDirectPosting": false,
+    "bookType": "accrual",
+    "userDefinedBook": {
+      "key": "1",
+      "id": "UDB-INTERCO",
+      "href": "/objects/general-ledger/user-defined-book/1"
+    },
+    "href": "/objects/general-ledger/user-defined-journal/46"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/general-ledger/user-defined-journal/{key}
+_Update a user-defined journal_
+
+**Request example — Update a user-defined journal:**
+```json
+{
+  "name": "Intercompany Adjustment Journal",
+  "status": "active",
+  "isBillable": false
+}
+```
+**Response 200 — Reference to user-defined journal:**
+```json
+{
+  "ia::result": {
+    "key": "46",
+    "id": "UDJ-INTERCO",
+    "href": "/objects/general-ledger/user-defined-journal/46"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/general-ledger/user-defined-journal/{key}
+_Delete a user-defined journal_
+
+
+## POST /services/reports/general-ledger/account-balance
+_Submit the account balance report_
+
+**Request example — Submit the account balance report:**
+```json
+{
+  "title1": "General Ledger Account Balances - March 2026",
+  "title2": "NexCom Corporation | Reporting Book - Accrual | USD",
+  "reportName": "GL Account Balance Report - March 2026 (Accrual)",
+  "outputType": "html",
+  "outputLocation": "intacct",
+  "parameters": {
+    "timePeriod": {
+      "periodToDate": {
+        "reportingPeriod": {
+          "id": "March 2026"
+        },
+        "asOfDate": "2026-03-31"
+      }
+    },
+    "dimensions": {
+      "location": {
+        "id": "US"
+      }
+    },
+    "reportingBook": "ACCRUAL",
+    "includeReportingBook": true
+  }
+}
+```
+**Response 202 — Reference to the account balance report:**
+```json
+{
+  "ia::result": {
+    "reportId": "120",
+    "status": "submitted",
+    "outputType": "html",
+    "name": "GL Account Balances Report - March 2026 (Accrual)",
+    "href": "/services/reports/status?reportId=120&outputType=html&outputLocation=intacct"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## POST /services/reports/general-ledger/account-balance-by-dimension
+_Submit the account balance by dimension report_
+
+**Request example — Submit the account balance by dimension report:**
+```json
+{
+  "title1": "General Ledger Account Balances by Dimension - March 2026",
+  "title2": "NexCom Corporation | Location, Department, Project | Reporting Book - Accrual | USD",
+  "reportName": "GL Account Balance by Dimension Report - March 2026 (Accrual)",
+  "outputType": "html",
+  "outputLocation": "intacct",
+  "parameters": {
+    "timePeriod": {
+      "periodToDate": {
+        "reportingPeriod": {
+          "id": "March 2026"
+        },
+        "asOfDate": "2026-03-31"
+      }
+    },
+    "dimensions": {
+      "location": {
+        "id": "1"
+      }
+    },
+    "accountSelection": "range",
+    "glAccountRange": [
+      {
+        "startingAccount": {
+          "id": "00___007"
+        },
+        "endingAccount": {
+          "id": "00___007"
+        }
+      }
+    ],
+    "showDimensionValues": {
+      "location": {
+        "includeId": true
+      },
+      "account": {
+        "includeId": true
+      }
+    },
+    "contentSelection": "actual",
+    "reportingBook": "ACCRUAL",
+    "includeReportingBook": true,
+    "showGrandTotals": true
+  }
+}
+```
+**Response 202 — Reference to the account balance by dimension report:**
+```json
+{
+  "ia::result": {
+    "reportId": "120",
+    "status": "submitted",
+    "outputType": "html",
+    "name": "GL Account Balance by Dimension Report - March 2026 (Accrual)",
+    "href": "/services/reports/status?reportId=120&outputType=html&outputLocation=intacct"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## POST /services/reports/general-ledger/account-group-hierarchy
+_Submit the account group hierarchy report_
+
+**Request example — Submit account group hierarchy report:**
+```json
+{
+  "title1": "General Ledger (GL) Account Group Hierarchy Report",
+  "title2": "Financial statement hierarchy as of March 2026",
+  "reportName": "Account Group Hierarchy Report - March 2026",
+  "outputType": "html",
+  "outputLocation": "intacct",
+  "parameters": {
+    "reportingAccountLabel": {
+      "includeReportingAccountLabel": true,
+      "reportingAccountSet": {
+        "key": "1"
+      }
+    },
+    "accountGroupSource": "userDefinedAccountGroups",
+    "accountGroupType": "accounts",
+    "glAccountGroupRange": {
+      "startingAccountGroup": {
+        "key": "100"
+      },
+      "endingAccountGroup": {
+        "key": "129"
+      }
+    },
+    "glAccountCategoryRange": {
+      "startingAccountCategory": {
+        "key": "905"
+      },
+      "endingAccountCategory": {
+        "key": "910"
+      }
+    },
+    "glReportingAccountRange": {
+      "startingReportingAccount": {
+        "key": "516"
+      },
+      "endingReportingAccount": {
+        "key": "525"
+      }
+    },
+    "reportOrientation": "landscape"
+  }
+}
+```
+**Response 202 — Reference to the account group hierarchy report:**
+```json
+{
+  "ia::result": {
+    "reportId": "120",
+    "status": "submitted",
+    "outputType": "html",
+    "name": "Account Group Hierarchy Report - March 2026",
+    "href": "/services/reports/status?reportId=120&outputType=html&outputLocation=intacct"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## POST /services/reports/general-ledger/details
+_Submit the GL details report_
+
+**Request example — Submit the GL details report:**
+```json
+{
+  "title1": "General Ledger Detail Report - March 2026",
+  "title2": "March 2026 | North America Region | Reporting Book - Accrual",
+  "reportName": "General Ledger Detail Report - North America - March 2026",
+  "outputType": "html",
+  "outputLocation": "intacct",
+  "parameters": {
+    "timePeriod": {
+      "periodToDate": {
+        "reportingPeriod": {
+          "id": "March 2026"
+        },
+        "asOfDate": "2026-03-31"
+      }
+    },
+    "dimensions": {
+      "location": {
+        "id": "1"
+      }
+    },
+    "reportingBook": "ACCRUAL",
+    "includeReportingBook": true
+  }
+}
+```
+**Response 202 — Reference to the GL details report:**
+```json
+{
+  "ia::result": {
+    "reportId": "120",
+    "status": "submitted",
+    "outputType": "html",
+    "name": "General Ledger Detail Report - North America - March 2026",
+    "href": "/services/reports/status?reportId=120&outputType=html&outputLocation=intacct"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## POST /services/reports/general-ledger/trial-balance
+_Submit the trial balance report_
+
+**Request example — Submit the trial balance report:**
+```json
+{
+  "title1": "General Ledger Trial Balance Report - March 2026",
+  "title2": "NexCom Corporation | Reporting Book - Accrual | USD",
+  "reportName": "GL Trial Balance Report - March 2026 (Accrual)",
+  "outputType": "html",
+  "outputLocation": "intacct",
+  "parameters": {
+    "timePeriod": {
+      "periodToDate": {
+        "reportingPeriod": {
+          "id": "March 2026"
+        },
+        "asOfDate": "2026-03-31"
+      }
+    },
+    "dimensions": {
+      "location": {
+        "id": "US"
+      }
+    },
+    "reportingBook": "ACCRUAL",
+    "includeReportingBook": true
+  }
+}
+```
+**Response 202 — Reference to the trial balance report:**
+```json
+{
+  "ia::result": {
+    "reportId": "120",
+    "status": "submitted",
+    "outputType": "html",
+    "name": "GL Trial Balance Report - March 2026 (Accrual)",
+    "href": "/services/reports/status?reportId=120&outputType=html&outputLocation=intacct"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## POST /workflows/general-ledger/account-allocation-run/restart
+_Restart an account allocation run_
+
+**Request example — Restart an account allocation run:**
+```json
+{
+  "key": "23"
+}
+```
+**Response 200 — Restart an account allocation run:**
+```json
+{
+  "ia::result": {
+    "key": "23",
+    "id": "23",
+    "state": "queued",
+    "href": "/objects/general-ledger/account-allocation-run/23"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```

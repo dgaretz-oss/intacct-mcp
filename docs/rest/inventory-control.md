@@ -1,0 +1,9828 @@
+# Inventory Control
+
+## GET /objects/inventory-control/aisle
+_List aisles_
+
+**Response 200 — List aisles:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "145",
+      "id": "A12",
+      "href": "/objects/inventory-control/aisle/145"
+    },
+    {
+      "key": "146",
+      "id": "A14",
+      "href": "/objects/inventory-control/aisle/146"
+    },
+    {
+      "key": "147",
+      "id": "A16",
+      "href": "/objects/inventory-control/aisle/147"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## POST /objects/inventory-control/aisle
+_Create an aisle_
+
+**Request example — Create an aisle:**
+```json
+{
+  "id": "A12",
+  "description": "Aisle 12 Dishwashers"
+}
+```
+**Response 201 — Create an aisle:**
+```json
+{
+  "ia::result": {
+    "key": "145",
+    "id": "AD12",
+    "href": "/objects/inventory-control/aisle/145"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/aisle/{key}
+_Get an aisle_
+
+**Response 200 — Get an aisle:**
+```json
+{
+  "ia::result": {
+    "key": "145",
+    "id": "A12",
+    "description": "Aisle 12 of dishwashers",
+    "audit": {
+      "createdDateTime": "2021-05-07T01:15:23Z",
+      "modifiedDateTime": "2021-05-07T01:15:23Z",
+      "createdBy": "13",
+      "modifiedBy": "13"
+    },
+    "href": "/objects/inventory-control/aisle/145"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## PATCH /objects/inventory-control/aisle/{key}
+_Update an aisle_
+
+**Request example — Update a single value:**
+```json
+{
+  "description": "Aisle 1 dishwashers"
+}
+```
+**Response 200 — Updated aisle:**
+```json
+{
+  "ia::result": {
+    "key": "145",
+    "id": "A12",
+    "href": "/objects/inventory-control/aisle/145"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/inventory-control/aisle/{key}
+_Delete an aisle_
+
+
+## GET /objects/inventory-control/bin
+_List bins_
+
+**Response 200 — List bins:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "12",
+      "id": "Z4-A2-R3a-BF2-B10",
+      "href": "/objects/inventory-control/bin/122"
+    },
+    {
+      "key": "32",
+      "id": "Z4-A2-R3a-BF2-B11",
+      "href": "/objects/inventory-control/bin/132"
+    },
+    {
+      "key": "44",
+      "id": "Z4-A2-R3a-BF2-B12",
+      "href": "/objects/inventory-control/bin/44"
+    },
+    {
+      "key": "13",
+      "id": "Z4-A2-R3a-BF2-B13",
+      "href": "/objects/inventory-control/bin/13"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 4,
+    "start": 1,
+    "pageSize": 100,
+    "next": 2,
+    "previous": 0
+  }
+}
+```
+
+## POST /objects/inventory-control/bin
+_Create a bin_
+
+**Request example — Create a bin:**
+```json
+{
+  "id": "Z4-A2-R3a-BF2-B10",
+  "description": "Bin Adapters 2",
+  "sequenceNumber": "4432",
+  "isPortable": true,
+  "warehouse": {
+    "id": "WA2"
+  }
+}
+```
+**Response 201 — New bin:**
+```json
+{
+  "ia::result": {
+    "key": "111",
+    "id": "Z4-A2-R3a-BF2-B10",
+    "href": "/objects/inventory-control/bin/111"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/bin-face
+_List bin faces_
+
+**Response 200 — List bin faces:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "12",
+      "id": "BF11",
+      "href": "/objects/inventory-control/bin-face/12"
+    },
+    {
+      "key": "14",
+      "id": "BF22",
+      "href": "/objects/inventory-control/bin-face/14"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## POST /objects/inventory-control/bin-face
+_Create a bin face_
+
+**Request example — Create a bin face:**
+```json
+{
+  "id": "BF2",
+  "description": "Bin Face 2"
+}
+```
+**Response 201 — Create a bin face:**
+```json
+{
+  "ia::result": {
+    "key": "22",
+    "id": "BF2",
+    "href": "/objects/inventory-control/bin-face/22"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/bin-face/{key}
+_Get a bin face_
+
+**Response 200 — Get a bin face:**
+```json
+{
+  "ia::result": {
+    "key": "1232",
+    "id": "BF123",
+    "description": "Bin Face 123",
+    "audit": {
+      "createdDateTime": "2021-05-07T01:15:23Z",
+      "modifiedDateTime": "2021-05-07T01:15:23Z",
+      "createdBy": "13",
+      "modifiedBy": "13"
+    },
+    "href": "/objects/inventory-control/bin-face/1232"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## PATCH /objects/inventory-control/bin-face/{key}
+_Update a bin face_
+
+**Request example — Update a single value:**
+```json
+{
+  "description": "W1 G1 Bestsellers"
+}
+```
+**Response 200 — Updated bin face:**
+```json
+{
+  "ia::result": {
+    "key": "1232",
+    "id": "BF123",
+    "href": "/objects/inventory-control/bin-face/1232"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/inventory-control/bin-face/{key}
+_Delete a bin face_
+
+
+## GET /objects/inventory-control/bin-size
+_List all bin sizes_
+
+**Response 200 — List bin sizes:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1322",
+      "id": "BS14",
+      "href": "/objects/inventory-control/bin-size/1322"
+    },
+    {
+      "key": "1323",
+      "id": "BS13",
+      "href": "/objects/inventory-control/bin-size/1323"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## POST /objects/inventory-control/bin-size
+_Create a bin size_
+
+**Request example — Create a bin size:**
+```json
+{
+  "id": "BS12",
+  "description": "Bin size 12"
+}
+```
+**Response 201 — New bin size:**
+```json
+{
+  "ia::result": {
+    "key": "1323",
+    "id": "BS12",
+    "href": "/objects/inventory-control/bin-size/1323"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/bin-size/{key}
+_Get a bin size_
+
+**Response 200 — Get a bin size:**
+```json
+{
+  "ia::result": {
+    "key": "1324",
+    "id": "BS132",
+    "description": "Bin size 132",
+    "audit": {
+      "createdDateTime": "2021-05-07T01:15:23Z",
+      "modifiedDateTime": "2021-05-07T01:15:23Z",
+      "createdBy": "13",
+      "modifiedBy": "13"
+    },
+    "href": "/objects/inventory-control/bin-size/1324"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## PATCH /objects/inventory-control/bin-size/{key}
+_Update a bin size_
+
+**Request example — Update a single value:**
+```json
+{
+  "description": "Size 1 2024 dimensions"
+}
+```
+**Response 200 — Updated bin size:**
+```json
+{
+  "ia::result": {
+    "key": "1324",
+    "id": "BS132",
+    "href": "/objects/inventory-control/bin-size/1324"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/inventory-control/bin-size/{key}
+_Delete a bin size_
+
+
+## GET /objects/inventory-control/bin/{key}
+_Get a bin_
+
+**Response 200 — Get a bin:**
+```json
+{
+  "ia::result": {
+    "key": "111",
+    "id": "Z4-A2-R3a-BF2-B10",
+    "description": "Bin of adapters 2",
+    "warehouse": {
+      "key": "2",
+      "id": "WA2",
+      "href": "/objects/inventory-control/warehouse/2"
+    },
+    "aisle": {
+      "key": "13",
+      "id": "A2",
+      "href": "/objects/inventory-control/aisle/13"
+    },
+    "row": {
+      "key": "23",
+      "id": "R3a",
+      "href": "/objects/inventory-control/row/23"
+    },
+    "zone": {
+      "key": "12",
+      "id": "Z4",
+      "href": "/objects/inventory-control/zone/12"
+    },
+    "binFace": {
+      "key": "3",
+      "id": "BF2",
+      "href": "/objects/inventory-control/bin-face/3"
+    },
+    "binSize": {
+      "key": "5",
+      "id": "B10",
+      "href": "/objects/inventory-control/bin-size/5"
+    },
+    "href": "/objects/inventory-control/bin/111",
+    "sequenceNumber": "1221",
+    "status": "active",
+    "isPortable": false,
+    "audit": {
+      "createdDateTime": "2021-05-07T21:30:03Z",
+      "modifiedDateTime": "2021-05-07T21:30:03Z",
+      "createdBy": "13",
+      "modifiedBy": "13"
+    }
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## PATCH /objects/inventory-control/bin/{key}
+_Update a bin_
+
+**Request example — Update a single value:**
+```json
+{
+  "description": "Bin of adapters 3"
+}
+```
+**Response 200 — Updated bin:**
+```json
+{
+  "ia::result": {
+    "key": "2",
+    "id": "Z4-A2-R3a-BF2-B10",
+    "href": "/objects/inventory-control/bin/2"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/inventory-control/bin/{key}
+_Delete a bin_
+
+**Response 400 — Request Example:**
+```json
+{
+  "ia::result": {
+    "ia::error": {
+      "code": "invalidRequest",
+      "message": "A POST request requires a payload",
+      "errorId": "REST-1028",
+      "additionalInfo": {
+        "messageId": "IA.REQUEST_REQUIRES_A_PAYLOAD",
+        "placeholders": {
+          "OPERATION": "POST"
+        },
+        "propertySet": {}
+      },
+      "supportId": "Kxi78%7EZuyXBDEGVHD2UmO1phYXDQAAAAo"
+    }
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 0,
+    "totalError": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/cycle
+_List inventory cycles_
+
+**Response 200 — List inventory cycles:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "145",
+      "id": "A12",
+      "href": "/objects/inventory-control/cycle/45"
+    },
+    {
+      "key": "146",
+      "id": "A14",
+      "href": "/objects/inventory-control/cycle/46"
+    },
+    {
+      "key": "147",
+      "id": "A16",
+      "href": "/objects/inventory-control/cycle/47"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## POST /objects/inventory-control/cycle
+_Create an inventory cycle_
+
+**Request example — Create an inventory cycle:**
+```json
+{
+  "id": "Monthly Cycle",
+  "description": "Monthwise inventory cycle",
+  "status": "active"
+}
+```
+**Response 201 — Reference to new inventory cycle:**
+```json
+{
+  "ia::result": {
+    "key": "48",
+    "id": "Monthly Cycle",
+    "href": "/objects/inventory-control/cycle/48"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/cycle-count
+_List inventory control cycle counts_
+
+**Response 200 — List cycle counts:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "21",
+      "id": "21",
+      "href": "/objects/inventory-control/cycle-count/21"
+    },
+    {
+      "key": "22",
+      "id": "22",
+      "href": "/objects/inventory-control/cycle-count/21"
+    },
+    {
+      "key": "23",
+      "id": "23",
+      "href": "/objects/inventory-control/cycle-count/23"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## POST /objects/inventory-control/cycle-count
+_Create an inventory control cycle count_
+
+**Request example — Create a cycle count:**
+```json
+{
+  "documentNumber": "ICCC-0000002",
+  "description": "Inventory count for in-house laptops",
+  "warehouse": {
+    "id": "WH10001"
+  },
+  "assignedTo": {
+    "id": "KIMMI"
+  },
+  "quantity": {
+    "excludedAllocatedQuantity": true,
+    "showQuantityOnHand": false
+  },
+  "lines": [
+    {
+      "item": {
+        "id": "14 Inch laptop 32gb"
+      },
+      "tracking": {
+        "bin": {
+          "id": "B-12"
+        },
+        "lotNumber": "L0012"
+      }
+    }
+  ]
+}
+```
+**Response 201 — Reference to new cycle count:**
+```json
+{
+  "ia::result": {
+    "id": "207",
+    "key": "207",
+    "href": "/objects/inventory-control/cycle-count/207"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/cycle-count-line
+_List inventory control cycle count lines_
+
+**Response 200 — List cycle count lines:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "21",
+      "id": "21",
+      "href": "/objects/inventory-control/cycle-count-line/21"
+    },
+    {
+      "key": "22",
+      "id": "22",
+      "href": "/objects/inventory-control/cycle-count-line/22"
+    },
+    {
+      "key": "23",
+      "id": "23",
+      "href": "/objects/inventory-control/cycle-count-line/23"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## GET /objects/inventory-control/cycle-count-line/{key}
+_Get an inventory control cycle count line_
+
+**Response 200 — Get a cycle count line:**
+```json
+{
+  "ia::result": {
+    "id": "72075",
+    "key": "72075",
+    "cycleCount": {
+      "id": "213",
+      "key": "213",
+      "href": "/objects/inventory-control/cycle-count/213"
+    },
+    "item": {
+      "key": "1064",
+      "id": "#1776-CANDLE",
+      "name": "Candle 1776",
+      "costMethod": "FIFO",
+      "href": "/objects/inventory-control/item/1064"
+    },
+    "tracking": {
+      "bin": {
+        "key": "33",
+        "id": "B132",
+        "href": "/objects/inventory-control/bin/33"
+      },
+      "aisle": {
+        "key": null,
+        "id": null
+      },
+      "zone": {
+        "key": null,
+        "id": null
+      },
+      "row": {
+        "key": null,
+        "id": null
+      },
+      "serialNumber": null,
+      "lotNumber": "L10",
+      "expirationDate": null
+    },
+    "unitOfMeasure": {
+      "id": "Each",
+      "key": "79",
+      "href": "/objects/inventory-control/unit-of-measure/79"
+    },
+    "quantity": {
+      "counted": "10.00",
+      "damaged": "1.00",
+      "onHand": "10.00",
+      "actualAdjustment": "1.00",
+      "actualDamagedQuantityAdjustment": 1,
+      "onHandAtEnd": "10.00"
+    },
+    "adjustmentReason": "sitting on shelf but was damaged.",
+    "countedBy": {
+      "key": "50",
+      "id": "KIMMI",
+      "href": "/objects/company-config/employee/50"
+    },
+    "lineCountStatus": "counted",
+    "cycle": {
+      "id": "IMPORTED",
+      "key": "10",
+      "href": "/objects/inventory-control/cycle/10"
+    },
+    "productLine": {
+      "id": null,
+      "key": null
+    },
+    "audit": {
+      "createdDateTime": "2025-05-30T06:23:40Z",
+      "modifiedDateTime": "2025-05-30T06:23:40Z",
+      "createdBy": "1",
+      "modifiedBy": "1"
+    },
+    "unitCost": "12.32",
+    "reviewComment": "sitting on shelf but was damaged.",
+    "inventoryDocument": {
+      "key": "6879",
+      "id": "SYS-CC Adjustment Increase-ADJ-ICCC-0000002",
+      "href": "/objects/inventory-control/document/6879"
+    },
+    "inventoryDocumentLine": {
+      "id": "60541",
+      "key": "60541",
+      "href": "/objects/inventory-control/document-line/60541"
+    },
+    "dimensions": {
+      "nsp::product_line1": {
+        "key": null
+      }
+    },
+    "href": "/objects/inventory-control/cycle-count-line/72075"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/inventory-control/cycle-count-line/{key}
+_Delete an inventory control cycle count line_
+
+
+## GET /objects/inventory-control/cycle-count/{key}
+_Get an inventory control cycle count_
+
+**Response 200 — Get a cycle count:**
+```json
+{
+  "ia::result": {
+    "id": "213",
+    "key": "213",
+    "documentNumber": "ICC-000000079",
+    "description": "Inventory count for in-house laptops",
+    "warehouse": {
+      "key": "3",
+      "id": "WH10001",
+      "href": "/objects/inventory-control/warehouse/3"
+    },
+    "assignedTo": {
+      "key": "50",
+      "id": "KIMMI",
+      "href": "/objects/company-config/employee/50"
+    },
+    "state": "reconciled",
+    "startDate": "2025-08-01",
+    "endDate": "2025-08-29",
+    "quantity": {
+      "showQuantityOnHand": false,
+      "adjustmentCount": 1,
+      "damageAdjustmentCount": 1,
+      "linesInCount": 1,
+      "linesSkipped": 0,
+      "excludedAllocatedQuantity": false
+    },
+    "audit": {
+      "createdDateTime": "2025-08-29T23:06:25Z",
+      "modifiedDateTime": "2025-08-29T23:06:25Z",
+      "createdBy": "1",
+      "modifiedBy": "1"
+    },
+    "adjustmentDate": "2025-08-29",
+    "adjustmentPostDate": "2025-08-29",
+    "quantityOnHandLastUpdateDate": null,
+    "entity": {
+      "key": "1",
+      "id": "1",
+      "name": "United States of America",
+      "href": "/objects/company-config/entity/1"
+    },
+    "lines": [
+      {
+        "id": "72075",
+        "key": "72075",
+        "cycleCount": {
+          "id": "213",
+          "key": "213",
+          "href": "/objects/inventory-control/cycle-count/213"
+        },
+        "item": {
+          "key": "1064",
+          "id": "#1776-CANDLE",
+          "name": "Candle 1776",
+          "costMethod": "FIFO",
+          "href": "/objects/inventory-control/item/1064"
+        },
+        "tracking": {
+          "bin": {
+            "key": "33",
+            "id": "B132",
+            "href": "/objects/inventory-control/bin/33"
+          },
+          "aisle": {
+            "key": null,
+            "id": null
+          },
+          "zone": {
+            "key": null,
+            "id": null
+          },
+          "row": {
+            "key": null,
+            "id": null
+          },
+          "serialNumber": null,
+          "lotNumber": "L10",
+          "expirationDate": null
+        },
+        "unitOfMeasure": {
+          "id": "Each",
+          "key": "79",
+          "href": "/objects/inventory-control/unit-of-measure/79"
+        },
+        "quantity": {
+          "counted": "11.00",
+          "damaged": "1.00",
+          "onHand": "10.00",
+          "actualAdjustment": "1.00",
+          "actualDamagedQuantityAdjustment": 1,
+          "onHandAtEnd": "10.00"
+        },
+        "adjustmentReason": "sitting on shelf but was damaged.",
+        "countedBy": {
+          "key": "50",
+          "id": "KIMMI",
+          "href": "/objects/company-config/employee/50"
+        },
+        "lineCountStatus": "counted",
+        "cycle": {
+          "id": "IMPORTED",
+          "key": "10",
+          "href": "/objects/inventory-control/cycle/10"
+        },
+        "productLine": {
+          "id": null,
+          "key": null
+        },
+        "audit": {
+          "createdDateTime": "2025-05-30T06:23:40Z",
+          "modifiedDateTime": "2025-05-30T06:23:40Z",
+          "createdBy": "1",
+          "modifiedBy": "1"
+        },
+        "unitCost": "12.32",
+        "reviewComment": "sitting on shelf but was damaged.",
+        "inventoryDocument": {
+          "key": "6879",
+          "id": "SYS-CC Adjustment Increase-ADJ-ICCC-0000002",
+          "href": "/objects/inventory-control/document/6879"
+        },
+        "inventoryDocumentLine": {
+          "id": "60541",
+          "key": "60541",
+          "href": "/objects/inventory-control/document-line/60541"
+        },
+        "dimensions": {
+          "nsp::product_line1": {
+            "key": null
+          }
+        },
+        "href": "/objects/inventory-control/cycle-count-line/72075"
+      }
+    ],
+    "href": "/objects/inventory-control/cycle-count/213"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/inventory-control/cycle-count/{key}
+_Update an inventory control cycle count_
+
+**Request example — Update a cycle count:**
+```json
+{
+  "key": "207",
+  "lines": [
+    {
+      "key": "72075",
+      "quantity": {
+        "counted": "11.00",
+        "damaged": "1.00"
+      },
+      "adjustmentReason": "sitting on shelf but was damaged"
+    }
+  ]
+}
+```
+**Response 200 — Reference to updated cycle count:**
+```json
+{
+  "ia::result": {
+    "id": "207",
+    "key": "207",
+    "href": "/objects/inventory-control/cycle-count/207"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/inventory-control/cycle-count/{key}
+_Delete an inventory control cycle count_
+
+
+## GET /objects/inventory-control/cycle/{key}
+_Get an inventory cycle_
+
+**Response 200 — Get an inventory cycle:**
+```json
+{
+  "ia::result": {
+    "key": "45",
+    "id": "Weekly Cycle",
+    "description": "Weekly inventory cycle",
+    "status": "active",
+    "audit": {
+      "createdDateTime": "2024-05-07T01:15:23Z",
+      "modifiedDateTime": "2024-05-07T01:15:23Z",
+      "createdBy": "13",
+      "modifiedBy": "13"
+    },
+    "href": "/objects/inventory-control/cycle/45"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## PATCH /objects/inventory-control/cycle/{key}
+_Update an inventory cycle_
+
+**Request example — Update an inventory cycle:**
+```json
+{
+  "description": "Monthly inventory cycle",
+  "status": "inactive"
+}
+```
+**Response 200 — Reference to updated inventory cycle:**
+```json
+{
+  "ia::result": {
+    "key": "48",
+    "id": "Monthly Cycle",
+    "href": "/objects/inventory-control/cycle/48"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/inventory-control/cycle/{key}
+_Delete an inventory cycle_
+
+
+## GET /objects/inventory-control/document
+_List inventory documents_
+
+**Response 200 — List inventory documents:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1477",
+      "id": "SYS-Warehouse Transfer Out-WHXFER-000009-doc-Out",
+      "href": "/objects/inventory-control/document::SYS-Warehouse%20Transfer%20Out/1477"
+    },
+    {
+      "key": "1478",
+      "id": "SYS-Warehouse Transfer In-WHXFER-000009-doc-In",
+      "href": "/objects/inventory-control/document::SYS-Warehouse%20Transfer%20In/1478"
+    },
+    {
+      "key": "298",
+      "id": "Adjustment Decrease-007",
+      "href": "/objects/inventory-control/document::Adjustment%20Decrease/298"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/inventory-control/document-history
+_List inventory document histories_
+
+**Response 200 — List inventory document histories:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "339",
+      "id": "339",
+      "href": "/objects/inventory-control/document-history/339"
+    },
+    {
+      "key": "359",
+      "id": "359",
+      "href": "/objects/inventory-control/document-history/359"
+    },
+    {
+      "key": "1343",
+      "id": "1343",
+      "href": "/objects/inventory-control/document-history/1343"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## GET /objects/inventory-control/document-history/{key}
+_Get an inventory document history_
+
+**Response 200 — Get an inventory document history:**
+```json
+{
+  "ia::result": {
+    "id": "740",
+    "key": "740",
+    "convertedTo": {
+      "id": "SYS-Warehouse Transfer In-WHXFER-000002-doc-In",
+      "key": "811",
+      "documentType": "SYS-Warehouse Transfer In",
+      "href": "/objects/inventory-control/document::SYS-Warehouse%20Transfer%20In/811"
+    },
+    "convertedFrom": {
+      "id": "SYS-Warehouse Transfer Out-WHXFER-000002-doc-Out",
+      "key": "892",
+      "documentType": "SYS-Warehouse Transfer Out",
+      "href": "/objects/inventory-control/document::SYS-Warehouse%20Transfer%20Out/892"
+    },
+    "inventoryDocument": {
+      "id": "SYS-Warehouse Transfer Out-WHXFER-000002-doc-Out",
+      "key": "892",
+      "documentType": "SYS-Warehouse Transfer Out",
+      "href": "/objects/inventory-control/document::SYS-Warehouse%20Transfer%20Out/892"
+    },
+    "href": "/objects/inventory-control/document-history/740"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/document-line
+_List inventory document lines_
+
+**Response 200 — List inventory document lines:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "2905",
+      "id": "2905",
+      "href": "/objects/inventory-control/document-line::Beginning%20Balance/2905"
+    },
+    {
+      "key": "3703",
+      "id": "3703",
+      "href": "/objects/inventory-control/document-line::Adjustment%20Increase%20Value/3703"
+    },
+    {
+      "key": "2751",
+      "id": "2751",
+      "href": "/objects/inventory-control/document-line::SYS-Warehouse%20Transfer%20Out/2751"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/inventory-control/document-line-detail
+_List inventory document line details_
+
+**Response 200 — List inventory document line detail objects:**
+```json
+{
+  "value": {
+    "ia::result": [
+      {
+        "key": "3",
+        "id": "3",
+        "href": "/objects/inventory-control/document-line-detail/3"
+      },
+      {
+        "key": "4",
+        "id": "4",
+        "href": "/objects/inventory-control/document-line-detail/4"
+      },
+      {
+        "key": "196",
+        "id": "196",
+        "href": "/objects/inventory-control/document-line-detail/196"
+      }
+    ],
+    "ia::meta": {
+      "totalCount": 3,
+      "start": 1
+    }
+  }
+}
+```
+
+## GET /objects/inventory-control/document-line-detail/{key}
+_Get an inventory document line detail object_
+
+**Response 200 — Get an inventory document line detail object:**
+```json
+{
+  "ia::result": {
+    "id": "3676",
+    "key": "3676",
+    "inventoryDocumentLine": {
+      "id": "3327",
+      "key": "3327",
+      "documentType": "Beginning Balance",
+      "href": "/objects/inventory-control-document-line::Beginning%20Balance/3327"
+    },
+    "item": {
+      "key": "10",
+      "id": "KN95 Masks",
+      "href": "/objects/inventory-control/item/10"
+    },
+    "quantity": "20",
+    "serialNumber": "S1001",
+    "lotNumber": "Lot#ESC15883522-001",
+    "aisle": {
+      "key": "12",
+      "id": "AISLE12",
+      "href": "/objects/inventory-control/aisle/12"
+    },
+    "row": {
+      "key": "15",
+      "id": "ROW11",
+      "href": "/objects/inventory-control/row/15"
+    },
+    "bin": {
+      "key": "20",
+      "id": "BIN60",
+      "href": "/objects/inventory-control/bin/20"
+    },
+    "expirationDate": "2026-12-31",
+    "audit": {
+      "createdDateTime": "2025-03-22T01:20:22Z",
+      "modifiedDateTime": "2025-03-22T01:20:22Z",
+      "createdByUser": {
+        "key": "37",
+        "id": "Admin",
+        "href": "/objects/company-config/user/37"
+      },
+      "createdBy": "37",
+      "modifiedByUser": {
+        "key": "37",
+        "id": "Admin",
+        "href": "/objects/company-config/user/37"
+      },
+      "modifiedBy": "37"
+    },
+    "href": "/objects/inventory-control/document-line-detail/3676"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/document-line-supplies-detail
+_List document line supplies details_
+
+**Response 200 — List document line supplies details:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1586",
+      "id": "1586",
+      "href": "/objects/inventory-control/document-line-supplies-detail/1586"
+    },
+    {
+      "key": "1587",
+      "id": "1587",
+      "href": "/objects/inventory-control/document-line-supplies-detail/1587"
+    },
+    {
+      "key": "1588",
+      "id": "1588",
+      "href": "/objects/inventory-control/document-line-supplies-detail/1588"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## GET /objects/inventory-control/document-line-supplies-detail/{key}
+_Get a document line supplies detail_
+
+**Response 200 — Get document line supplies detail:**
+```json
+{
+  "ia::result": {
+    "key": "101",
+    "id": "101",
+    "state": "issue",
+    "quantity": "10.00",
+    "date": "2026-01-01",
+    "audit": {
+      "createdDateTime": "2025-12-20T00:22:23Z",
+      "createdByUser": {
+        "key": "1",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1"
+    },
+    "inventoryDocumentLine": {
+      "key": "23",
+      "id": "23",
+      "href": "/objects/inventory-control/document-line/23"
+    },
+    "suppliesRequisitionDocument": {
+      "key": "88",
+      "id": "88",
+      "href": "/objects/inventory-control/supplies-document/88"
+    }
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/document-line/{key}
+_Get an inventory document line_
+
+**Response 200 — Get an inventory document line:**
+```json
+{
+  "ia::result": {
+    "id": "3705",
+    "key": "3705",
+    "documentHeader": {
+      "documentNumber": "3902",
+      "key": "3902",
+      "id": "SYS-Warehouse Transfer Out-WHXFER-000033",
+      "documentType": "SYS-Warehouse Transfer Out",
+      "href": "/objects/inventory-control/document::SYS-Warehouse%20Transfer%20Out/3902"
+    },
+    "documentType": "SYS-Warehouse Transfer Out",
+    "lineNumber": 0,
+    "dimensions": {
+      "item": {
+        "key": "907",
+        "id": "HAMMER16",
+        "name": "16oz framing claw hammer",
+        "href": "/objects/inventory-control/item/907"
+      },
+      "warehouse": {
+        "id": "WareHouse10004",
+        "key": "4",
+        "href": "/objects/inventory-control/warehouse/4"
+      },
+      "location": {
+        "id": "1",
+        "key": "6",
+        "href": "/objects/company-config/location/6"
+      },
+      "department": {
+        "id": null,
+        "key": null
+      },
+      "project": {
+        "key": null,
+        "id": null
+      },
+      "task": {
+        "key": null,
+        "id": null
+      }
+    },
+    "item": {
+      "key": "907",
+      "id": "HAMMER16",
+      "href": "/objects/inventory-control/item/907"
+    },
+    "unitOfMeasure": {
+      "id": "Each",
+      "key": "13",
+      "href": "/objects/inventory-control/unit-of-measure/13"
+    },
+    "memo": "CA to AZ transfer",
+    "quantity": "25.0000000000",
+    "quantityConverted": "25.0000000000",
+    "cost": "0.0000000000",
+    "totalCost": "0",
+    "audit": {
+      "modifiedDateTime": "2024-02-14T21:43:07Z",
+      "createdDateTime": "2024-02-14T21:43:06Z",
+      "createdBy": "1",
+      "modifiedBy": "1"
+    },
+    "status": "active",
+    "costMethod": "standard",
+    "unitQuantity": "25.0000000000",
+    "multiplier": "1",
+    "unitCost": "0.0000000000",
+    "extendedCost": "0",
+    "sourceDocument": {
+      "key": null,
+      "id": null,
+      "documentType": null
+    },
+    "sourceDocumentLine": {
+      "id": null,
+      "key": null,
+      "documentType": "SYS-Warehouse Transfer Out"
+    },
+    "txnCurrency": "USD",
+    "baseCurrency": "USD",
+    "conversionType": "quantity",
+    "convertedPrice": "100.0000000000",
+    "quantityRemaining": "0.0000000000",
+    "suppliesDetail": [],
+    "trackingDetail": [
+      {
+        "id": "3771",
+        "key": "3771",
+        "inventoryDocumentLine": {
+          "id": "3705",
+          "key": "3705",
+          "documentType": "SYS-Warehouse Transfer Out",
+          "href": "/objects/inventory-control/document-line::SYS-Warehouse%20Transfer%20Out/3705"
+        },
+        "item": {
+          "id": "HAMMER16",
+          "key": "907",
+          "href": "/objects/inventory-control/item/907"
+        },
+        "quantity": "25.0000000000",
+        "serialNumber": "",
+        "lotNumber": "",
+        "aisle": {
+          "key": "",
+          "id": ""
+        },
+        "row": {
+          "key": "",
+          "id": ""
+        },
+        "bin": {
+          "key": "4",
+          "id": "B1004-001",
+          "href": "/objects/inventory-control/bin/4"
+        },
+        "expirationDate": "",
+        "audit": {
+          "createdDateTime": "2024-02-14T21:43:06Z",
+          "modifiedDateTime": "2024-02-14T21:43:06Z",
+          "createdBy": "1",
+          "modifiedBy": "1"
+        },
+        "href": "/objects/inventory-control/document-line-detail/3771"
+      }
+    ],
+    "href": "/objects/inventory-control/document-line::SYS-Warehouse%20Transfer%20Out/3705"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/document-line::{documentName}
+_List lines for named inventory documents_
+
+**Response 200 — List lines for named inventory documents:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "624",
+      "id": "624",
+      "href": "/objects/inventory-control/document-line::Inventory%20Receipt/624"
+    },
+    {
+      "key": "3605",
+      "id": "3605",
+      "href": "/objects/inventory-control/document-line::Inventory%20Receipt/3605"
+    },
+    {
+      "key": "3628",
+      "id": "3628",
+      "href": "/objects/inventory-control/document-line::Inventory%20Receipt/3628"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/inventory-control/document-line::{documentName}/{key}
+_Get a line in a named inventory document_
+
+**Response 200 — Get an inventory document line:**
+```json
+{
+  "ia::result": {
+    "id": "1339",
+    "key": "1339",
+    "documentHeader": {
+      "documentNumber": "841",
+      "key": "841",
+      "id": "Inventory Transfer In-ADJINC0001",
+      "documentType": "Inventory Transfer In",
+      "href": "/objects/inventory-control/document::Inventory%20Transfer%20In/841"
+    },
+    "documentType": "Inventory Transfer In",
+    "lineNumber": 0,
+    "dimensions": {
+      "item": {
+        "key": "14",
+        "id": "abcd",
+        "name": "Widget 01",
+        "href": "/objects/inventory-control/item/14"
+      },
+      "warehouse": {
+        "id": "Test",
+        "key": "1",
+        "href": "/objects/inventory-control/warehouse/1"
+      },
+      "location": {
+        "id": null,
+        "key": null
+      },
+      "department": {
+        "id": null,
+        "key": null
+      },
+      "project": {
+        "key": null,
+        "id": null
+      },
+      "task": {
+        "key": null,
+        "id": null
+      }
+    },
+    "lineDescription": "Widget 01",
+    "unitOfMeasure": {
+      "id": "Each",
+      "key": "13",
+      "href": "/objects/inventory-control/unit-of-measure/13"
+    },
+    "memo": null,
+    "quantity": "10.0000000000",
+    "quantityConverted": "0.0000000000",
+    "cost": "150.0000000000",
+    "totalCost": "1500.0000000000",
+    "audit": {
+      "modifiedDateTime": "2015-04-22T22:59:28Z",
+      "createdDateTime": null,
+      "createdBy": null,
+      "modifiedBy": null
+    },
+    "status": "active",
+    "costMethod": "standard",
+    "unitQuantity": "10.0000000000",
+    "unitCost": "150.0000000000",
+    "extendedCost": "1500.0000000000",
+    "sourceDocument": {
+      "key": null,
+      "id": null,
+      "documentType": null
+    },
+    "sourceDocumentLine": {
+      "id": null,
+      "key": null,
+      "documentType": "Inventory Transfer In"
+    },
+    "txnCurrency": "USD",
+    "baseCurrency": "USD",
+    "convertedPrice": "0.0000000000",
+    "conversionType": "quantity",
+    "quantityRemaining": "10.0000000000",
+    "trackingDetail": [
+      {
+        "id": "5",
+        "key": "5",
+        "inventoryDocumentLine": {
+          "id": "1339",
+          "key": "1339",
+          "documentType": "Inventory Transfer In",
+          "href": "/objects/inventory-control/document-line::Inventory%20Transfer%20In/1339"
+        },
+        "item": {
+          "id": "abcd",
+          "key": "14",
+          "href": "/objects/inventory-control/item/14"
+        },
+        "componentItem": {
+          "id": null,
+          "key": null
+        },
+        "quantity": "10.0000000000",
+        "serialNumber": null,
+        "lotNumber": "Lot1",
+        "aisle": {
+          "key": null,
+          "id": null
+        },
+        "row": {
+          "key": null,
+          "id": null
+        },
+        "bin": {
+          "key": null,
+          "id": null
+        },
+        "expirationDate": null,
+        "audit": {
+          "createdDateTime": null,
+          "modifiedDateTime": null,
+          "createdBy": null,
+          "modifiedBy": null
+        },
+        "href": "/objects/inventory-control/document-line-detail/5"
+      }
+    ],
+    "href": "/objects/inventory-control/document-line::Inventory%20Transfer%20In/1339"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/document-subtotal
+_List inventory document subtotals_
+
+**Response 200 — List inventory document subtotals:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "13",
+      "id": "13",
+      "href": "/objects/inventory-control/document-subtotal/13"
+    },
+    {
+      "key": "14",
+      "id": "14",
+      "href": "/objects/inventory-control/document-subtotal/14"
+    },
+    {
+      "key": "15",
+      "id": "15",
+      "href": "/objects/inventory-control/document-subtotal/15"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## GET /objects/inventory-control/document-subtotal/{key}
+_Get an inventory document subtotal_
+
+**Response 200 — Get an inventory document subtotal:**
+```json
+{
+  "ia::result": {
+    "id": "7902",
+    "key": "7902",
+    "documentHeader": {
+      "key": "7808",
+      "id": "Inventory Receipt-IR-000253",
+      "documentType": "Inventory Receipt",
+      "href": "/objects/inventory-control/document::Inventory%20Receipt/7808"
+    },
+    "description": "Freight",
+    "absoluteValue": "1.20",
+    "percentValue": "5.0000000000",
+    "total": "1.20000000000000",
+    "isValueEditable": false,
+    "isPercentEditable": true,
+    "dimensions": {
+      "location": {
+        "key": "1",
+        "id": "1",
+        "href": "/objects/company-config/location/1"
+      },
+      "department": {
+        "key": "9",
+        "id": "9",
+        "href": "/objects/company-config/department/9"
+      },
+      "project": {
+        "key": "",
+        "id": "",
+        "name": ""
+      },
+      "customer": {
+        "key": "",
+        "id": "",
+        "name": ""
+      },
+      "vendor": {
+        "key": "",
+        "id": "",
+        "name": ""
+      },
+      "employee": {
+        "key": "",
+        "id": "",
+        "name": ""
+      },
+      "class": {
+        "key": "",
+        "id": "",
+        "name": ""
+      },
+      "contract": {
+        "key": "",
+        "id": "",
+        "name": ""
+      },
+      "warehouse": {
+        "key": "3",
+        "id": "WH10001",
+        "name": "US AZ Warehouse 10001",
+        "href": "/objects/inventory-control/warehouse/3"
+      },
+      "item": {
+        "key": "749",
+        "id": "FFSTD",
+        "name": "FF Samples",
+        "href": "/objects/inventory-control/item/749"
+      }
+    },
+    "txnAbsoluteValue": "1.20",
+    "txnTotal": "1.20000000000000",
+    "documentLine": {
+      "id": "62991",
+      "key": "62991",
+      "documentType": "Inventory Receipt",
+      "href": "/objects/inventory-control/document-line::Inventory%20Receipt/62991"
+    },
+    "audit": {
+      "createdDateTime": "2025-02-23T19:42:47Z",
+      "modifiedDateTime": "2025-02-23T19:42:47Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "href": "/objects/inventory-control/document-subtotal/7902"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/document/{key}
+_Get an inventory document_
+
+**Response 200 — Get an inventory document:**
+```json
+{
+  "ia::result": {
+    "key": "3903",
+    "documentNumber": "WHXFER-000033-doc-In",
+    "id": "SYS-Warehouse Transfer In-WHXFER-000033-doc-In",
+    "sourceDocument": {
+      "id": "SYS-Warehouse Transfer Out-WHXFER-000033-doc-Out"
+    },
+    "state": "closed",
+    "transactionDate": "2024-02-14",
+    "status": "active",
+    "audit": {
+      "createdDateTime": "2024-02-14T21:43:07Z",
+      "createdBy": "1",
+      "modifiedBy": "1",
+      "modifiedDateTime": "2024-02-14T21:43:08Z"
+    },
+    "referenceNumber": "HAMMER16 weekly transfer",
+    "documentType": "SYS-Warehouse Transfer In",
+    "txnDefinition": {
+      "documentType": "SYS-Warehouse Transfer In",
+      "id": "SYS-Warehouse Transfer In",
+      "key": "78",
+      "txnDefinitionTemplateClass": "INVOICE",
+      "updatesInventory": "quantityAndValue",
+      "increaseOrDecreaseInventory": "increase",
+      "href": "/objects/inventory-control/txn-definition::SYS-Warehouse%20Transfer%20In/78"
+    },
+    "warehouse": {
+      "defaultWarehouse": null
+    },
+    "memo": "CA to AZ transfer",
+    "inventoryBatch": {
+      "id": "791",
+      "key": "791",
+      "journalEntryKey": "1276",
+      "href": "/objects/inventory-control/batch/791"
+    },
+    "isPrinted": false,
+    "subTotal": "0.00",
+    "total": "0.00",
+    "txnCurrency": "USD",
+    "exchangeRate": {
+      "date": "2024-02-14",
+      "rate": "1.0000",
+      "typeId": null,
+      "typeName": null
+    },
+    "subtotalInTxnCurrency": "0.00",
+    "totalInTxnCurrency": "0.00",
+    "baseCurrency": "USD",
+    "lastPrintedDate": null,
+    "printedBy": {
+      "key": null,
+      "id": null
+    },
+    "isAdjustmentDocument": false,
+    "lines": [
+      {
+        "id": "3706",
+        "key": "3706",
+        "documentHeader": {
+          "documentNumber": "3903",
+          "key": "3903",
+          "id": "SYS-Warehouse Transfer In-WHXFER-000033-doc-In",
+          "documentType": "SYS-Warehouse Transfer In",
+          "href": "/objects/inventory-control/document::SYS-Warehouse%20Transfer%20In/3903"
+        },
+        "documentType": "SYS-Warehouse Transfer In",
+        "lineNumber": 0,
+        "dimensions": {
+          "item": {
+            "key": "907",
+            "id": "HAMMER16--16oz framing claw hammer",
+            "name": "16oz framing claw hammer",
+            "href": "/objects/inventory-control/item/907"
+          },
+          "warehouse": {
+            "id": "WareHouse10005",
+            "key": "8",
+            "href": "/objects/inventory-control/warehouse/8"
+          },
+          "location": {
+            "id": "1",
+            "key": "6",
+            "href": "/objects/company-config/location/6"
+          },
+          "department": {
+            "id": null,
+            "key": null
+          },
+          "project": {
+            "key": null,
+            "id": null
+          },
+          "task": {
+            "key": null,
+            "id": null
+          }
+        },
+        "item": {
+          "key": "907",
+          "id": "HAMMER16--16oz framing claw hammer",
+          "href": "/objects/inventory-control/item/907"
+        },
+        "unitOfMeasure": {
+          "id": "Each",
+          "key": "13",
+          "href": "/objects/inventory-control/unit-of-measure/13"
+        },
+        "memo": null,
+        "quantity": "25.0000000000",
+        "quantityConverted": "0.0000000000",
+        "cost": "0.0000000000",
+        "totalCost": "0",
+        "audit": {
+          "modifiedDateTime": "2024-02-14T21:43:07Z",
+          "createdDateTime": "2024-02-14T21:43:07Z",
+          "createdBy": "1",
+          "modifiedBy": "1"
+        },
+        "status": "active",
+        "costMethod": "standard",
+        "unitQuantity": "25.0000000000",
+        "multiplier": "1",
+        "unitCost": "0.0000000000",
+        "extendedCost": "0",
+        "sourceDocument": {
+          "key": "3902",
+          "id": "SYS-Warehouse Transfer Out-WHXFER-000033-doc-Out",
+          "documentType": "SYS-Warehouse Transfer Out",
+          "href": "/objects/inventory-control/document::SYS-Warehouse%20Transfer%20Out/3902"
+        },
+        "sourceDocumentLine": {
+          "id": "3705",
+          "key": "3705",
+          "documentType": "SYS-Warehouse Transfer In",
+          "href": "/objects/inventory-control/document-line::SYS-Warehouse%20Transfer%20In/3705"
+        },
+        "txnCurrency": "USD",
+        "baseCurrency": "USD",
+        "conversionType": "quantity",
+        "quantityRemaining": "25.0000000000",
+        "suppliesDetail": [],
+        "trackingDetail": [
+          {
+            "id": "3772",
+            "key": "3772",
+            "inventoryDocumentLine": {
+              "id": "3706",
+              "key": "3706",
+              "documentType": "SYS-Warehouse Transfer In",
+              "href": "/objects/inventory-control/document-line::SYS-Warehouse%20Transfer%20In/3706"
+            },
+            "item": {
+              "id": "HAMMER16",
+              "key": "907",
+              "href": "/objects/inventory-control/item/907"
+            },
+            "quantity": "25.0000000000",
+            "serialNumber": null,
+            "lotNumber": null,
+            "aisle": {
+              "key": null,
+              "id": null
+            },
+            "row": {
+              "key": null,
+              "id": null
+            },
+            "bin": {
+              "key": "8",
+              "id": "B#001",
+              "href": "/objects/inventory-control/bin/8"
+            },
+            "expirationDate": null,
+            "audit": {
+              "createdDateTime": "2024-02-14T21:43:07Z",
+              "modifiedDateTime": "2024-02-14T21:43:07Z",
+              "createdBy": "1",
+              "modifiedBy": "1"
+            },
+            "href": "/objects/inventory-control/document-line-detail/3772"
+          }
+        ],
+        "href": "/objects/inventory-control/document-line::SYS-Warehouse%20Transfer%20In/3706"
+      }
+    ],
+    "history": [
+      {
+        "id": "3123",
+        "key": "3123",
+        "convertedTo": {
+          "key": "3902",
+          "id": "SYS-Warehouse Transfer Out-WHXFER-000033-doc-Out",
+          "documentType": "SYS-Warehouse Transfer Out",
+          "href": "/objects/inventory-control/document::SYS-Warehouse%20Transfer%20Out/3902"
+        },
+        "convertedFrom": {
+          "id": null,
+          "documentType": null,
+          "key": null
+        },
+        "inventoryDocument": {
+          "key": "3902",
+          "id": "SYS-Warehouse Transfer Out-WHXFER-000033-doc-Out",
+          "documentType": "SYS-Warehouse Transfer Out",
+          "href": "/objects/inventory-control/document::SYS-Warehouse%20Transfer%20Out/3902"
+        },
+        "href": "/objects/inventory-control/document-history/3123"
+      },
+      {
+        "id": "3124",
+        "key": "3124",
+        "convertedTo": {
+          "key": "3903",
+          "id": "SYS-Warehouse Transfer In-WHXFER-000033-doc-In",
+          "documentType": "SYS-Warehouse Transfer In",
+          "href": "/objects/inventory-control/document::SYS-Warehouse%20Transfer%20In/3903"
+        },
+        "convertedFrom": {
+          "id": "SYS-Warehouse Transfer Out-WHXFER-000033-doc-Out",
+          "documentType": "SYS-Warehouse Transfer Out",
+          "key": "3902",
+          "href": "/objects/inventory-control/document::SYS-Warehouse%20Transfer%20Out/3902"
+        },
+        "inventoryDocument": {
+          "key": "3902",
+          "id": "SYS-Warehouse Transfer Out-WHXFER-000033-doc-Out",
+          "documentType": "SYS-Warehouse Transfer Out",
+          "href": "/objects/inventory-control/document::SYS-Warehouse%20Transfer%20Out/3902"
+        },
+        "href": "/objects/inventory-control/document-history/3124"
+      }
+    ],
+    "attachment": {
+      "id": null,
+      "key": null
+    },
+    "subtotals": [
+      {
+        "description": "SUBTOTAL",
+        "total": "0.00000000000000",
+        "txnTotal": "0.00000000000000"
+      },
+      {
+        "description": "TOTAL",
+        "total": "0.00000000000000",
+        "txnTotal": "0.00000000000000"
+      }
+    ],
+    "href": "/objects/inventory-control/document::SYS-Warehouse%20Transfer%20In/3903"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+**Response 200 — Get an inventory document that issues supplies:**
+```json
+{
+  "ia::result": {
+    "id": "2091",
+    "key": "2091",
+    "documentNumber": "SUP-ISSUE-0001",
+    "referenceNumber": "Issue supplies for requisition 2232",
+    "sourceDocument": {
+      "id": null,
+      "key": null
+    },
+    "state": "pending",
+    "transactionDate": "2025-12-12",
+    "audit": {
+      "createdDateTime": "2025-11-29T23:23:06Z",
+      "createdByUser": {
+        "key": "1",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1",
+      "modifiedDateTime": "2025-11-29T23:23:10Z"
+    },
+    "status": "active",
+    "documentType": "SYS-Supplies issue",
+    "txnDefinition": {
+      "documentType": "SYS-Supplies issue",
+      "id": "SYS-Supplies issue",
+      "key": "155",
+      "txnDefinitionTemplateClass": "ADJ",
+      "updatesInventory": "quantityAndValue",
+      "increaseOrDecreaseInventory": "decrease",
+      "href": "/objects/inventory-control/txn-definition::SYS-Supplies%20issue/155"
+    },
+    "warehouse": {
+      "defaultWarehouse": null
+    },
+    "memo": null,
+    "postingSummary": {
+      "id": "544",
+      "key": "544",
+      "href": "/objects/inventory-control/posting-summary/544"
+    },
+    "journalEntry": {
+      "id": "816",
+      "key": "816",
+      "href": "/objects/general-ledger/journal-entry/816"
+    },
+    "isPrinted": false,
+    "subTotal": "0.00",
+    "total": "0.00",
+    "txnCurrency": "USD",
+    "exchangeRate": {
+      "date": "2025-12-12",
+      "rate": "1.0000",
+      "typeId": null,
+      "typeName": null
+    },
+    "subtotalInTxnCurrency": "0.00",
+    "totalInTxnCurrency": "0.00",
+    "baseCurrency": "USD",
+    "lastPrintedDate": null,
+    "printedBy": {
+      "key": null,
+      "id": null
+    },
+    "isAdjustmentDocument": false,
+    "webURL": "https://intacct.com/acct/ur.phtml?.r=ijVqUVXUX3TzexR2EcQNU3U7RuBoTavvJ5Pvp9qZZG0",
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "attachment": {
+      "key": null,
+      "id": null
+    },
+    "lines": [
+      {
+        "id": "2561",
+        "key": "2561",
+        "documentHeader": {
+          "documentNumber": "2091",
+          "key": "2091",
+          "id": "SYS-Supplies issue-SUP-ISSUE-0001",
+          "documentType": "SYS-Supplies issue",
+          "href": "/objects/inventory-control/document::SYS-Supplies%20issue/2091"
+        },
+        "documentType": "SYS-Supplies issue",
+        "lineNumber": 0,
+        "dimensions": {
+          "item": {
+            "key": "409",
+            "id": "R225Supplies--R225Supplies",
+            "name": "R225Supplies",
+            "href": "/objects/inventory-control/item/409"
+          },
+          "warehouse": {
+            "id": "1",
+            "key": "1",
+            "href": "/objects/inventory-control/warehouse/1"
+          },
+          "location": {
+            "id": "1",
+            "key": "1",
+            "href": "/objects/company-config/location/1"
+          },
+          "department": {
+            "id": null,
+            "key": null
+          },
+          "project": {
+            "key": null,
+            "id": null
+          },
+          "task": {
+            "key": null,
+            "id": null
+          },
+          "customer": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "vendor": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "employee": {
+            "key": "24",
+            "id": "11--Nelone",
+            "name": "Nelone",
+            "href": "/objects/company-config/employee/24"
+          }
+        },
+        "lineDescription": "R225Supplies",
+        "unitOfMeasure": {
+          "id": "Each",
+          "key": "3",
+          "href": "/objects/inventory-control/unit-of-measure/3"
+        },
+        "memo": null,
+        "quantity": "3.0000000000",
+        "quantityConverted": "0.0000000000",
+        "cost": "147.1351681346",
+        "totalCost": "441.4100000000",
+        "audit": {
+          "modifiedDateTime": "2025-11-29T23:23:10Z",
+          "createdDateTime": "2025-11-29T23:23:07Z",
+          "createdByUser": {
+            "key": "1",
+            "href": "/objects/company-config/user/1"
+          },
+          "createdBy": "1",
+          "modifiedByUser": {
+            "key": "1",
+            "href": "/objects/company-config/user/1"
+          },
+          "modifiedBy": "1"
+        },
+        "status": "active",
+        "costMethod": "average",
+        "unitQuantity": "3.0000000000",
+        "unitCost": "147.1351681346",
+        "extendedCost": "441.4100000000",
+        "sourceDocument": {
+          "key": null,
+          "id": null,
+          "documentType": null
+        },
+        "sourceDocumentLine": {
+          "id": null,
+          "key": null,
+          "documentType": "SYS-Supplies issue"
+        },
+        "txnCurrency": "USD",
+        "baseCurrency": "USD",
+        "convertedPrice": "0.0000000000",
+        "conversionType": "quantity",
+        "quantityRemaining": "3.0000000000",
+        "trackingDetail": [],
+        "suppliesDetail": [
+          {
+            "id": "23",
+            "key": "23",
+            "inventoryDocumentLine": {
+              "id": "2561",
+              "key": "2561",
+              "href": "/objects/inventory-control/document-line/2561"
+            },
+            "state": "issue",
+            "suppliesRequisitionDocument": {
+              "id": "2560",
+              "key": "2560",
+              "href": "/objects/inventory-control/supplies-document/2560"
+            },
+            "quantity": "3.0000000000",
+            "date": "2025-11-29",
+            "audit": {
+              "createdDateTime": "2025-11-29T23:23:07Z",
+              "createdByUser": {
+                "key": "1",
+                "href": "/objects/company-config/user/1"
+              },
+              "createdBy": "1"
+            },
+            "href": "/objects/inventory-control/document-line-supplies-detail/23"
+          }
+        ],
+        "href": "/objects/inventory-control/document-line::SYS-Supplies%20issue/2561"
+      }
+    ],
+    "history": [
+      {
+        "id": "1755",
+        "key": "1755",
+        "convertedTo": {
+          "key": "2091",
+          "id": "SYS-Supplies issue-SUP-ISSUE-0001",
+          "documentType": "SYS-Supplies issue",
+          "href": "/objects/inventory-control/document::SYS-Supplies%20issue/2091"
+        },
+        "convertedFrom": {
+          "id": null,
+          "documentType": null,
+          "key": null
+        },
+        "inventoryDocument": {
+          "key": "2091",
+          "id": "SYS-Supplies issue-REST_REQ_1764457871899",
+          "documentType": "SYS-Supplies issue",
+          "href": "/objects/inventory-control/document::SYS-Supplies%20issue/2091"
+        },
+        "href": "/objects/inventory-control/document-history/1755"
+      }
+    ],
+    "subtotals": [
+      {
+        "description": "SUBTOTAL",
+        "total": "441.41000000000000",
+        "txnTotal": "0.00000000000000"
+      },
+      {
+        "description": "TOTAL",
+        "total": "441.41000000000000",
+        "txnTotal": "0.00000000000000"
+      }
+    ],
+    "href": "/objects/inventory-control/document::SYS-Supplies%20issue/2091"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/document::{documentName}
+_List named inventory documents_
+
+**Response 200 — List named inventory documents:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1132",
+      "id": "Inventory Receipt-ADJINC0010",
+      "href": "/objects/inventory-control/document::Inventory%20Receipt/1132"
+    },
+    {
+      "key": "1183",
+      "id": "Inventory Receipt-ADJINC0013",
+      "href": "/objects/inventory-control/document::Inventory%20Receipt/1183"
+    },
+    {
+      "key": "1203",
+      "id": "Inventory Receipt-ADJINC0014",
+      "href": "/objects/inventory-control/document::Inventory%20Receipt/1203"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/inventory-control/document::{documentName}
+_Create an inventory document_
+
+**Request example — Create an inventory document:**
+```json
+{
+  "state": "pending",
+  "transactionDate": "2024-02-14",
+  "referenceNumber": "HAMMER16 starting quantity",
+  "memo": "Hammers already on hand",
+  "baseCurrency": "USD",
+  "txnCurrency": "USD",
+  "lines": [
+    {
+      "unitOfMeasure": {
+        "id": "Each"
+      },
+      "unitQuantity": "100",
+      "unitCost": "10",
+      "dimensions": {
+        "item": {
+          "id": "HAMMER16"
+        },
+        "warehouse": {
+          "id": "WareHouse10004"
+        },
+        "location": {
+          "id": "1"
+        }
+      },
+      "trackingDetail": [
+        {
+          "quantity": "100",
+          "bin": {
+            "id": "B1004-001"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+**Request example — Create an inventory document to issue supplies:**
+```json
+{
+  "state": "pending",
+  "transactionDate": "2025-12-12",
+  "referenceNumber": "Issue supplies for requisition 2232",
+  "documentNumber": "SUP-ISSUE-0001",
+  "baseCurrency": "USD",
+  "txnCurrency": "USD",
+  "lines": [
+    {
+      "unitOfMeasure": {
+        "id": "Each"
+      },
+      "unitQuantity": "3",
+      "suppliesDetail": [
+        {
+          "state": "issue",
+          "quantity": "3",
+          "suppliesRequisitionDocument": {
+            "key": "2232"
+          }
+        }
+      ],
+      "dimensions": {
+        "item": {
+          "id": "R2232-Supplies-Monitor"
+        },
+        "warehouse": {
+          "id": "1"
+        },
+        "location": {
+          "id": "1"
+        },
+        "employee": {
+          "id": "11"
+        }
+      }
+    }
+  ]
+}
+```
+**Response 201 — Reference to new inventory document:**
+```json
+{
+  "ia::result": {
+    "key": "13977",
+    "id": "Beginning Balance-ADJINC0009",
+    "href": "/objects/inventory-control/document::Beginning%20Balance/13977"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/document::{documentName}/{key}
+_Get a named inventory document_
+
+**Response 200 — Get a named inventory document:**
+```json
+{
+  "ia::result": {
+    "key": "1172",
+    "documentNumber": "ADJINC0012",
+    "id": "Inventory Transfer In-ADJINC0012",
+    "sourceDocument": {
+      "id": null,
+      "key": null
+    },
+    "state": "pending",
+    "transactionDate": "2015-12-18",
+    "audit": {
+      "createdDateTime": null,
+      "createdBy": null,
+      "modifiedBy": null,
+      "modifiedDateTime": "2015-12-19T00:50:46Z"
+    },
+    "referenceNumber": null,
+    "documentType": "Inventory Transfer In",
+    "txnDefinition": {
+      "documentType": "Inventory Transfer In",
+      "id": "Inventory Transfer In",
+      "key": "174",
+      "txnDefinitionTemplateClass": "ORDER",
+      "updatesInventory": "no",
+      "increaseOrDecreaseInventory": "increase",
+      "href": "/objects/inventory-control/txn-definition::Inventory%20Transfer%20In/174"
+    },
+    "warehouse": {
+      "defaultWarehouse": null
+    },
+    "memo": null,
+    "postingSummary": {
+      "id": null,
+      "key": null
+    },
+    "journalEntry": {
+      "id": null,
+      "key": null
+    },
+    "isPrinted": false,
+    "subTotal": null,
+    "total": "-1980.00",
+    "txnCurrency": "USD",
+    "exchangeRate": {
+      "date": null,
+      "rate": "1.0000",
+      "typeId": null,
+      "typeName": null
+    },
+    "subtotalInTxnCurrency": null,
+    "totalInTxnCurrency": null,
+    "baseCurrency": "USD",
+    "lastPrintedDate": null,
+    "printedBy": {
+      "key": null,
+      "id": null
+    },
+    "isAdjustmentDocument": false,
+    "webURL": "https://intacct.com/acct/ur.phtml?.r=ijVqUVXUX3TzexR2EcQNU3U7RuBoTavvJ5Pvp9qZZG0",
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "attachment": {
+      "key": null,
+      "id": null
+    },
+    "lines": [
+      {
+        "id": "1969",
+        "key": "1969",
+        "documentHeader": {
+          "documentNumber": "1172",
+          "key": "1172",
+          "id": "Inventory Transfer In-ADJINC0012",
+          "documentType": "Inventory Transfer In",
+          "href": "/objects/inventory-control/document::Inventory%20Transfer%20In/1172"
+        },
+        "documentType": "Inventory Transfer In",
+        "lineNumber": 0,
+        "dimensions": {
+          "item": {
+            "key": "86",
+            "id": "RC-001--26\" monitor",
+            "name": "26\" monitor",
+            "href": "/objects/inventory-control/item/86"
+          },
+          "warehouse": {
+            "id": "Distribution",
+            "key": "2",
+            "href": "/objects/inventory-control/warehouse/2"
+          },
+          "location": {
+            "id": null,
+            "key": null
+          },
+          "department": {
+            "id": null,
+            "key": null
+          },
+          "project": {
+            "key": null,
+            "id": null
+          },
+          "task": {
+            "key": null,
+            "id": null
+          },
+          "class": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "customer": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "vendor": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "employee": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "contract": {
+            "key": null,
+            "id": null,
+            "name": null
+          }
+        },
+        "lineDescription": "Item for recurring txn",
+        "unitOfMeasure": {
+          "id": "Each",
+          "key": "13",
+          "href": "/objects/inventory-control/unit-of-measure/13"
+        },
+        "memo": null,
+        "quantity": "20.0000000000",
+        "quantityConverted": "0.0000000000",
+        "cost": "-99.0000000000",
+        "totalCost": "-1980.0000000000",
+        "audit": {
+          "modifiedDateTime": "2015-12-19T00:50:46Z",
+          "createdDateTime": null,
+          "createdBy": null,
+          "modifiedBy": null
+        },
+        "status": "active",
+        "costMethod": "standard",
+        "unitQuantity": "20.0000000000",
+        "unitCost": "-99.0000000000",
+        "extendedCost": "-1980.0000000000",
+        "sourceDocument": {
+          "key": null,
+          "id": null,
+          "documentType": null
+        },
+        "sourceDocumentLine": {
+          "id": null,
+          "key": null,
+          "documentType": "Inventory Transfer In"
+        },
+        "txnCurrency": "USD",
+        "baseCurrency": "USD",
+        "convertedPrice": "0.0000000000",
+        "conversionType": "quantity",
+        "quantityRemaining": "20.0000000000",
+        "trackingDetail": [],
+        "href": "/objects/inventory-control/document-line::Inventory%20Transfer%20In/1969"
+      }
+    ],
+    "history": [
+      {
+        "id": "1092",
+        "key": "1092",
+        "convertedTo": {
+          "key": "1172",
+          "id": "Inventory Transfer In-ADJINC0012",
+          "documentType": "Inventory Transfer In",
+          "href": "/objects/inventory-control/document::Inventory%20Transfer%20In/1172"
+        },
+        "convertedFrom": {
+          "id": null,
+          "documentType": null,
+          "key": null
+        },
+        "inventoryDocument": {
+          "key": "1172",
+          "id": "Inventory Transfer In-ADJINC0012",
+          "documentType": "Inventory Transfer In",
+          "href": "/objects/inventory-control/document::Inventory%20Transfer%20In/1172"
+        },
+        "href": "/objects/inventory-control/document-history/1092"
+      }
+    ],
+    "subtotals": [
+      {
+        "description": "SUBTOTAL",
+        "total": "-1980.00000000000000",
+        "txnTotal": "0.00000000000000"
+      },
+      {
+        "description": "TOTAL",
+        "total": "-1980.00000000000000",
+        "txnTotal": "0.00000000000000"
+      }
+    ],
+    "href": "/objects/inventory-control/document::Inventory%20Transfer%20In/1172"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/inventory-control/document::{documentName}/{key}
+_Update an inventory document_
+
+**Request example — Update an inventory document:**
+```json
+{
+  "referenceNumber": "INV-1002",
+  "lines": [
+    {
+      "key": "3698",
+      "unitQuantity": "3",
+      "trackingDetail": [
+        {
+          "key": "3766",
+          "quantity": "2"
+        },
+        {
+          "key": "3767",
+          "ia::operation": "delete"
+        },
+        {
+          "quantity": "1",
+          "lotNumber": "Lot#666"
+        }
+      ]
+    }
+  ]
+}
+```
+**Response 200 — Reference to updated inventory document:**
+```json
+{
+  "ia::result": {
+    "key": "3905",
+    "id": "Beginning Balance-ADJINC0020",
+    "href": "/objects/inventory-control/document::Beginning%20Balance/3905"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/inventory-control/document::{documentName}/{key}
+_Delete an inventory document_
+
+
+## GET /objects/inventory-control/item
+_List items_
+
+**Response 200 — List items:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "79",
+      "id": "FVP-020",
+      "href": "/objects/inventory-control/item/79"
+    },
+    {
+      "key": "73",
+      "id": "FVP-016",
+      "href": "/objects/inventory-control/item/73"
+    },
+    {
+      "key": "70",
+      "id": "FVP-014",
+      "href": "/objects/inventory-control/item/70"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## POST /objects/inventory-control/item
+_Create an item_
+
+**Request example — Create an item:**
+```json
+{
+  "id": "Dell_15_6_XPS_15_Multi_Touch",
+  "name": "Dell 15.6 XPS 15 Multi-Touch Laptop (Platinum Silver)",
+  "status": "active",
+  "description": "Dell 15.6 XPS 15 Multi-Touch Laptop (Platinum Silver)",
+  "costMethod": "standard",
+  "notes": "Dell 15.6 XPS 15 Multi-Touch Laptop (Platinum Silver)",
+  "itemType": "inventory",
+  "productLine": {
+    "id": "2"
+  },
+  "kitRevenuePosting": null,
+  "substituteItemId": "",
+  "inventory": {
+    "shippingWeight": 120,
+    "glGroup": {
+      "id": "Auto GL Group"
+    }
+  },
+  "sales": {
+    "isTaxable": true,
+    "basePrice": "1300",
+    "taxGroup": {
+      "id": "Goods Standard Rate"
+    },
+    "taxSolution": {
+      "id": "United Kingdom - VAT"
+    },
+    "isAvailableForDropShip": false,
+    "isAvailableForBuyToOrder": false,
+    "allowMultipleTaxGroups": false
+  },
+  "purchasing": {
+    "standardCost": "1200"
+  },
+  "unitOfMeasure": {
+    "id": "Count"
+  },
+  "precision": {
+    "inventoryPrecision": 10,
+    "purchasingPrecision": 10,
+    "salesPrecision": 10,
+    "upc": "23342"
+  },
+  "tracking": {
+    "enableSerialNo": true,
+    "serialMask": "",
+    "enableLotCategory": false,
+    "lotCategory": "",
+    "enableBins": false,
+    "enableExpiration": false
+  },
+  "replenishment": {
+    "enableReplenishment": true,
+    "replenishmentMethod": "reorderPoint",
+    "unitOfMeasureDefault": "Each",
+    "reorderPoint": 1,
+    "safetyStock": 1,
+    "reorderQuantity": 1,
+    "maximumOrderQuantity": 10
+  },
+  "measurements": {
+    "weightUnitOfMeasure": {
+      "id": "Grams"
+    },
+    "netWeight": 12,
+    "lengthWidthHeightUnitOfMeasure": {
+      "id": "Centimeters"
+    },
+    "length": 12.4554,
+    "width": 12,
+    "height": 12,
+    "thicknessUnitOfMeasure": {
+      "id": "Centimeters"
+    },
+    "thickness": 12,
+    "minimumThickness": 12,
+    "maximumThickness": 13,
+    "areaUnitOfMeasure": {
+      "id": "Square Inch"
+    },
+    "area": 12,
+    "volumeUnitOfMeasure": {
+      "id": "Cubic Centimeters"
+    },
+    "volume": 22,
+    "diameterUnitOfMeasure": {
+      "id": "Centimeters"
+    },
+    "innerDiameter": 12,
+    "outerDiameter": 12,
+    "durometerUnitOfMeasure": "22",
+    "densityUnitOfMeasure": "grams per cubic centimeter",
+    "density": 22
+  },
+  "itemDetails": {
+    "universalProductCode": 123456789123,
+    "internationalArticleNumber": 1234567891234,
+    "isSafetyItem": true,
+    "isRestrictedItem": false,
+    "isCompliantItem": false,
+    "condition": "Good",
+    "engineeringAlert": "Verification of Item",
+    "specification1": "Dell 15.6 XPS 15",
+    "isApprovedByEngineering": true,
+    "isApprovedByQualityControl": true,
+    "isApprovedBySales": true,
+    "primaryCountryOfOrigin": "USA"
+  },
+  "contractTerm": {
+    "periodsMeasuredIn": "weeks",
+    "numberOfPeriods": 99,
+    "isProratedPricingAllowed": false,
+    "defaultRenewalTemplate": {
+      "id": "SUBInvoiceSameAsOriginalPrcie"
+    }
+  },
+  "commercial": {
+    "brand": "Dell Inspiron",
+    "subBrand": "Dell 15 inch",
+    "category": "Dell 15.6 XPS 15",
+    "subCategory": "Dell 15.6 XPS 15",
+    "catalogReference": "Dell 15.6 XPS 15 Multi",
+    "color": "Platinum Silver",
+    "size1": "12",
+    "size2": "12",
+    "isGiftCard": true,
+    "isWebEnabled": true,
+    "webName": "Dell Inspiration 15 inch LED",
+    "webShortDiscription": "Dell Inspiration 15 inch LED",
+    "webLongDescription": "Dell 15.6 XPS 15 Multi-Touch Laptop (Platinum Silver)",
+    "defaultConversionType": "quantity"
+  },
+  "enableFulfillment": false,
+  "itemVendor": [
+    {
+      "vendor": {
+        "key": "12"
+      },
+      "stockNumber": "#5678901234",
+      "leadTime": 15,
+      "demandForecastDuringLeadTime": 5,
+      "economicalOrderQuantity": 10,
+      "vendorMinimumOrderQuantity": 10,
+      "isPreferredVendor": true
+    }
+  ],
+  "warehouseInfo": [
+    {
+      "warehouse": {
+        "key": "2"
+      },
+      "storageArea": "Bella",
+      "economicOrderQuantity": 10,
+      "reorderPoint": 1,
+      "reorderQuantity": 10,
+      "minOrderQuantity": 10,
+      "maxOrderQuantity": 100,
+      "maximumStock": 300,
+      "minimumStock": 50,
+      "safetyStock": 20,
+      "replenishmentMethod": "reorderPoint",
+      "enableReplenishment": false
+    }
+  ],
+  "landedCost": {
+    "enableLandedCost": true
+  },
+  "attachment": {
+    "id": "Supporting doc"
+  }
+}
+```
+**Response 201 — New item:**
+```json
+{
+  "ia::result": {
+    "key": "2458",
+    "id": "Dell_15_6_XPS_15_Multi_Touch",
+    "href": "/objects/inventory-control/item/104"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/item-cross-reference
+_List item cross references_
+
+**Response 200 — List item cross references:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "1",
+      "href": "/objects/inventory-control/item-cross-reference/1"
+    },
+    {
+      "key": "2",
+      "id": "2",
+      "href": "/objects/inventory-control/item-cross-reference/2"
+    },
+    {
+      "key": "3",
+      "id": "3",
+      "href": "/objects/inventory-control/item-cross-reference/3"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": 101,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/inventory-control/item-cross-reference
+_Create an item cross reference_
+
+**Request example — Create an item cross reference:**
+```json
+{
+  "item": {
+    "key": "649"
+  },
+  "alternateItem": {
+    "key": "64"
+  },
+  "unitOfMeasure": {
+    "key": "3"
+  },
+  "referenceType": "substitute"
+}
+```
+**Response 201 — New item cross reference:**
+```json
+{
+  "ia::result": {
+    "key": "6",
+    "id": "6",
+    "href": "/objects/inventory-control/item-cross-reference/6"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/item-cross-reference/{key}
+_Get an item cross reference_
+
+**Response 200 — Get an internal item cross reference:**
+```json
+{
+  "ia::result": {
+    "key": "6",
+    "id": "6",
+    "referenceType": "substitute",
+    "referenceTypeContext": "internal",
+    "item": {
+      "key": "649",
+      "id": "Logitech-MK830",
+      "name": "MK830 Keyboard and Mouse Combo",
+      "href": "/objects/inventory-control/item/649"
+    },
+    "alternateItem": {
+      "key": "64",
+      "id": "Logitech-MK825",
+      "name": "MK825 Keyboard and Mouse Combo",
+      "href": "/objects/inventory-control/item/64"
+    },
+    "vendor": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "customer": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "itemAliasId": null,
+    "itemAliasDescription": null,
+    "unitOfMeasure": {
+      "key": "3",
+      "id": "Each",
+      "href": "/objects/inventory-control/unit-of-measure/3"
+    },
+    "href": "/objects/inventory-control/item-cross-reference/6",
+    "audit": {
+      "createdDateTime": "2023-11-09T06:20:34Z",
+      "modifiedDateTime": "2023-11-09T07:02:22Z",
+      "createdBy": "1",
+      "modifiedBy": "22"
+    },
+    "ia::meta": {
+      "totalCount": 1,
+      "totalSuccess": 1,
+      "totalError": 0
+    }
+  }
+}
+```
+**Response 200 — Get an external item cross reference:**
+```json
+{
+  "ia::result": {
+    "key": "7",
+    "id": "7",
+    "referenceType": "customer",
+    "referenceTypeContext": "external",
+    "item": {
+      "key": "649",
+      "id": "Logitech-MK830",
+      "name": "MK830 Keyboard and Mouse Combo",
+      "href": "/objects/inventory-control/item/649"
+    },
+    "alternateItem": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "vendor": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "customer": {
+      "key": "20",
+      "id": "C00012",
+      "name": "Future Products Inc",
+      "href": "/objects/accounts-receivable/customer/20"
+    },
+    "itemAliasId": "Logitech-MK830",
+    "itemAliasDescription": "Logitech-MK800 series keyboard and mouse combo",
+    "unitOfMeasure": {
+      "key": "3",
+      "id": "Each",
+      "href": "/objects/inventory-control/unit-of-measure/3"
+    },
+    "href": "/objects/inventory-control/item-cross-reference/7",
+    "audit": {
+      "createdDateTime": "2023-11-09T06:20:34Z",
+      "modifiedDateTime": "2023-11-09T07:02:22Z",
+      "createdBy": "1",
+      "modifiedBy": "22"
+    },
+    "ia::meta": {
+      "totalCount": 1,
+      "totalSuccess": 1,
+      "totalError": 0
+    }
+  }
+}
+```
+
+## PATCH /objects/inventory-control/item-cross-reference/{key}
+_Update an item cross reference_
+
+**Request example — Update an item cross reference:**
+```json
+{
+  "alternateItem": {
+    "key": "10"
+  },
+  "unitOfMeasure": {
+    "key": "3"
+  }
+}
+```
+**Response 200 — Updated item cross reference:**
+```json
+{
+  "ia::result": {
+    "key": "6",
+    "id": "6",
+    "href": "/objects/inventory-control/item-cross-reference/6"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/inventory-control/item-cross-reference/{key}
+_Delete an item cross reference_
+
+
+## GET /objects/inventory-control/item-gl-group
+_List item GL groups_
+
+**Response 200 — List item GL groups:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "2",
+      "id": "OS GL Group",
+      "href": "/objects/inventory-control/item-gl-group/2"
+    },
+    {
+      "key": "3",
+      "id": "Auto GL Group",
+      "href": "/objects/inventory-control/item-gl-group/3"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": 101,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/inventory-control/item-gl-group
+_Create an item GL group_
+
+**Request example — Create an item GL group:**
+```json
+{
+  "id": "Stockable Kit",
+  "deferredRevenueGLAccount": {
+    "key": "411",
+    "id": "1501.04",
+    "name": "Expense Account"
+  },
+  "defaultRevenueRecognitionTemplate": {
+    "key": "1",
+    "id": "100"
+  }
+}
+```
+**Response 201 — New item GL group:**
+```json
+{
+  "ia::result": {
+    "key": "13",
+    "id": "Stockable Kit",
+    "href": "/objects/inventory-control/item-gl-group/13"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/item-gl-group/{key}
+_Get an item GL group_
+
+**Response 200 — Get an item GL group:**
+```json
+{
+  "key": "13",
+  "id": "Stockable Kit",
+  "deferredRevenueGLAccount": {
+    "key": "411",
+    "id": "1501.04",
+    "name": "Expense Account",
+    "href": "/objects/general-ledger/account/411"
+  },
+  "defaultRevenueRecognitionTemplate": {
+    "key": "1",
+    "id": "100",
+    "href": "/objects/accounts-receivable/revenue-recognition-template/1"
+  },
+  "isSystemGenerated": false,
+  "href": "/objects/inventory-control/item-gl-group/13",
+  "audit": {
+    "createdDateTime": "2022-04-20T16:20:00Z",
+    "modifiedDateTime": "2022-04-20T16:20:00Z",
+    "createdBy": "1",
+    "modifiedBy": "95"
+  }
+}
+```
+
+## PATCH /objects/inventory-control/item-gl-group/{key}
+_Update an item GL group_
+
+**Request example — Update an item GL group:**
+```json
+{
+  "id": "13",
+  "deferredRevenueGLAccount": {
+    "key": "411",
+    "id": "1501.04",
+    "name": "Expense Account"
+  }
+}
+```
+**Response 200 — Updated item GL group:**
+```json
+{
+  "ia::result": {
+    "key": "13",
+    "id": "Stockable Kit",
+    "href": "/objects/inventory-control/item-gl-group/13"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/inventory-control/item-gl-group/{key}
+_Delete an item GL group_
+
+
+## GET /objects/inventory-control/item-group
+_List item group objects_
+
+**Response 200 — List item groups:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "Top Level Items",
+      "href": "/objects/inventory-control/item-group/1"
+    },
+    {
+      "key": "5",
+      "id": "Items with Activity",
+      "href": "/objects/inventory-control/item-group/5"
+    },
+    {
+      "key": "6",
+      "id": "Costing Group",
+      "href": "/objects/inventory-control/item-group/6"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/inventory-control/item-group
+_Create an item group_
+
+**Request example — Create an item group:**
+```json
+{
+  "id": "InsuranceItemsGroup",
+  "name": "Insurance Items Group",
+  "description": "Insurance Items Group",
+  "groupType": "specific",
+  "createDimensionComponents": true,
+  "memberFilter": {
+    "object": "inventory-control/item",
+    "filters": [
+      {
+        "$eq": {
+          "measurements.area": 2
+        }
+      }
+    ],
+    "filterExpression": "and",
+    "orderBy": [
+      {
+        "id": "asc"
+      }
+    ]
+  },
+  "groupMembers": [
+    {
+      "id": "CP"
+    },
+    {
+      "id": "PP"
+    }
+  ]
+}
+```
+**Response 201 — Reference to new item group:**
+```json
+{
+  "ia::result": {
+    "key": "14",
+    "id": "InsuranceItemsGroup",
+    "href": "/objects/inventory-control/item-group/14"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/item-group/{key}
+_Get an item group_
+
+**Response 200 — Get an item group:**
+```json
+{
+  "ia::result": {
+    "key": "12",
+    "id": "BooksGroup",
+    "name": "BooksGroup",
+    "description": "Group for Books",
+    "groupType": "all",
+    "memberFilter": {
+      "object": "inventory-control/item",
+      "filterExpression": "and",
+      "filters": [
+        {
+          "$contains": {
+            "productLineId": "BK"
+          }
+        }
+      ],
+      "orderBy": [
+        {
+          "productLineId": "asc"
+        }
+      ]
+    },
+    "audit": {
+      "createdDateTime": "2023-12-12T23:33:05Z",
+      "modifiedDateTime": "2023-12-12T23:33:05Z",
+      "createdBy": "1",
+      "modifiedBy": "1"
+    },
+    "glAccountGroup": {
+      "id": "BooksGroup"
+    },
+    "groupMembers": [],
+    "href": "/objects/inventory-control/item-group/12"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/inventory-control/item-group/{key}
+_Update an item group_
+
+**Request example — Update a single value:**
+```json
+{
+  "description": "Group for Reference Books"
+}
+```
+**Response 200 — Reference to updated item group:**
+```json
+{
+  "ia::result": {
+    "key": "12",
+    "id": "BooksGroup",
+    "href": "/objects/inventory-control/item-group/12"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/inventory-control/item-group/{key}
+_Delete an item group_
+
+
+## GET /objects/inventory-control/item-landed-cost
+_List item landed costs_
+
+**Response 200 — List item landed costs:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "25",
+      "id": "25",
+      "href": "/objects/inventory-control/item-landed-cost/25"
+    },
+    {
+      "key": "26",
+      "id": "26",
+      "href": "/objects/inventory-control/item-landed-cost/26"
+    },
+    {
+      "key": "27",
+      "id": "27",
+      "href": "/objects/inventory-control/item-landed-cost/27"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/inventory-control/item-landed-cost/{key}
+_Get an item landed cost_
+
+**Response 200 — Get an item landed cost:**
+```json
+{
+  "ia::result": {
+    "key": "87",
+    "id": "87",
+    "item": {
+      "id": "Dell Touch Screen",
+      "key": "234",
+      "href": "/objects/inventory-control/item/234"
+    },
+    "distributionMethod": "weight",
+    "distributionMethodBaseUnit": "Ounce",
+    "landedCostValue": "24.000000000",
+    "active": true,
+    "href": "/objects/inventory-control/item-landed-cost/87"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/item-vendor
+_List item vendors_
+
+**Response 200 — List item vendors:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "5",
+      "id": "5",
+      "href": "/objects/inventory-control/item-vendor/5"
+    },
+    {
+      "key": "6",
+      "id": "6",
+      "href": "/objects/inventory-control/item-vendor/6"
+    },
+    {
+      "key": "7",
+      "id": "7",
+      "href": "/objects/inventory-control/item-vendor/7"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": 101,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/inventory-control/item-vendor/{key}
+_Get an item vendor_
+
+**Response 200 — Get an item vendor:**
+```json
+{
+  "ia::result": {
+    "key": "5",
+    "id": "5",
+    "item": {
+      "key": "13",
+      "id": "Phones",
+      "href": "/objects/inventory-control/item/13"
+    },
+    "vendor": {
+      "key": "38",
+      "id": "Office_Supplies",
+      "href": "/objects/accounts-payable/vendor/38"
+    },
+    "stockNumber": "#5678901234",
+    "leadTime": 15,
+    "demandForecastDuringLeadTime": 5,
+    "economicalOrderQuantity": 10,
+    "vendorMinimumOrderQuantity": 10,
+    "bestPrice": "100.0000000000",
+    "latestPrice": "110.0000000000",
+    "unitOfMeasure": {
+      "key": "38",
+      "id": "Each",
+      "href": "/objects/inventory-control/unit-of-measure/38"
+    },
+    "conversionFactor": "1",
+    "isPreferredVendor": false
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/item-warehouse-available-inventory
+_List item warehouse available inventories_
+
+**Response 200 — List item warehouse available inventory objects:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "46863",
+      "id": "46863",
+      "href": "/objects/inventory-control/item-warehouse-available-inventory/46863"
+    },
+    {
+      "key": "46864",
+      "id": "46864",
+      "href": "/objects/inventory-control/item-warehouse-available-inventory/46864"
+    },
+    {
+      "key": "46865",
+      "id": "46865",
+      "href": "/objects/inventory-control/item-warehouse-available-inventory/46865"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": 2,
+    "previous": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/item-warehouse-available-inventory/{key}
+_Get an item warehouse available inventory object_
+
+**Response 200 — Get an item warehouse available inventory object:**
+```json
+{
+  "ia::result": {
+    "key": "46865",
+    "id": "46865",
+    "item": "Dell_15_6_XPS_15_Multi_Touch",
+    "warehouse": "WH10001",
+    "bin": "Z4-A5-R3a-B10",
+    "aisle": "A5",
+    "row": "R3a",
+    "zone": "Z4",
+    "serialNumber": "33213",
+    "lotNumber": "Lot2",
+    "expirationDate": "2026-07-26",
+    "dateReceived": "2026-06-26",
+    "quantity": {
+      "quantityLeft": "5.0000000000",
+      "quantityAllocated": "1.0000000000",
+      "quantityReserved": "2.0000000000"
+    },
+    "itemDescription": "12th Gen Core\u00e2\u201e\u00a2 i3-1215U (10 MB cache, 6 cores, 8 threads, up to 4.40 GHz Turbo)",
+    "unitOfMeasure": "Each",
+    "warehouseName": "WH10001--US AZ Warehouse 10001",
+    "href": "/objects/inventory-control/item-warehouse-available-inventory/46865"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/item-warehouse-inventory
+_List item warehouse inventory information objects_
+
+**Response 200 — List item warehouse information objects:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "1",
+      "href": "/objects/inventory-control/item-warehouse-inventory/1"
+    },
+    {
+      "key": "2",
+      "id": "2",
+      "href": "/objects/inventory-control/item-warehouse-inventory/2"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## POST /objects/inventory-control/item-warehouse-inventory
+_Create an item warehouse inventory information object_
+
+**Request example — New item warehouse information object:**
+```json
+{
+  "id": "1",
+  "item": {
+    "key": "9",
+    "id": "Prnt_Paper"
+  },
+  "warehouse": {
+    "key": "1",
+    "id": "WH10001"
+  },
+  "storageArea": "bin",
+  "inventoryCycle": {
+    "key": "2",
+    "id": "Daily Cycle"
+  },
+  "economicOrderQuantity": 10,
+  "standardCost": "110",
+  "lastCost": "100",
+  "averageCost": "100",
+  "reorderMethod": "economicQuantity",
+  "reorderPoint": 121,
+  "reorderQuantity": 10,
+  "minOrderQuantity": 10,
+  "maxOrderQuantity": 100,
+  "maximumStock": 300,
+  "minimumStock": 50,
+  "lastSoldDate": "2022-04-08",
+  "lastReceivedDate": "2022-04-10",
+  "safetyStock": 20,
+  "replenishmentMethod": "reorderPoint",
+  "enableReplenishment": true
+}
+```
+**Response 201 — Create a new item warehouse information object:**
+```json
+{
+  "key": "1",
+  "id": "1",
+  "href": "/objects/inventory-control/item-warehouse-inventory/1"
+}
+```
+
+## GET /objects/inventory-control/item-warehouse-inventory/{key}
+_Get item warehouse inventory information_
+
+**Response 200 — Get warehouse inventory information:**
+```json
+{
+  "ia::result": {
+    "key": "1",
+    "id": "1",
+    "item": {
+      "key": "9",
+      "id": "Prnt_Paper",
+      "href": "/objects/inventory-control/item/9"
+    },
+    "warehouse": {
+      "key": "1",
+      "id": "WH10001",
+      "href": "/objects/inventory-control/warehouse/1"
+    },
+    "storageArea": "bin",
+    "inventoryCycle": {
+      "key": "2",
+      "id": "Daily Cycle",
+      "href": "/objects/inventory-control/cycle/2"
+    },
+    "economicOrderQuantity": 10,
+    "standardCost": "110",
+    "lastCost": "100",
+    "averageCost": "100",
+    "reorderMethod": "economicQuantity",
+    "reorderPoint": 121,
+    "reorderQuantity": 10,
+    "minOrderQuantity": 10,
+    "maxOrderQuantity": 100,
+    "maximumStock": 300,
+    "minimumStock": 50,
+    "lastSoldDate": "2022-04-08",
+    "lastReceivedDate": "2022-04-10",
+    "defaults": {
+      "bin": {
+        "key": "45",
+        "id": "45",
+        "href": "/objects/inventory-control/bin/45"
+      }
+    },
+    "warehouseCurrency": {
+      "key": "3",
+      "id": "LOC-USA-0778",
+      "currency": "USD",
+      "href": "/objects/location-entity/3"
+    },
+    "safetyStock": 20,
+    "replenishmentMethod": "reorderPoint",
+    "enableReplenishment": true,
+    "onOrder": 100,
+    "inTransit": 50,
+    "onHand": 200,
+    "onHold": 10,
+    "reserved": 0,
+    "allocated": 0,
+    "unCommitted": 0,
+    "href": "/objects/inventory-control/item-warehouse-inventory/1",
+    "audit": {
+      "createdDateTime": "2014-01-08T11:28:12Z",
+      "modifiedDateTime": "2014-01-08T11:28:12Z",
+      "createdBy": "1",
+      "modifiedBy": "95"
+    }
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## PATCH /objects/inventory-control/item-warehouse-inventory/{key}
+_Update item warehouse inventory information_
+
+**Request example — Update a single value:**
+```json
+{
+  "storageArea": "Bin 5"
+}
+```
+**Response 200 — Updated item warehouse information:**
+```json
+{
+  "ia::result": {
+    "key": "41",
+    "id": "41",
+    "href": "/objects/inventory-control/item-warehouse-inventory/41"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+**Response 200 — 200 response example:**
+```json
+{}
+```
+**Response 200 — 200 response example:**
+```json
+{}
+```
+
+## DELETE /objects/inventory-control/item-warehouse-inventory/{key}
+_Delete item warehouse inventory information_
+
+
+## GET /objects/inventory-control/item-warehouse-standard-cost
+_List item warehouse standard cost objects_
+
+**Response 200 — List item warehouse standard cost objects:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "21",
+      "id": "21",
+      "href": "/objects/inventory-control/item-warehouse-standard-cost/21"
+    },
+    {
+      "key": "24",
+      "id": "24",
+      "href": "/objects/inventory-control/item-warehouse-standard-cost/24"
+    },
+    {
+      "key": "27",
+      "id": "27",
+      "href": "/objects/inventory-control/item-warehouse-standard-cost/27"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## POST /objects/inventory-control/item-warehouse-standard-cost
+_Create an item warehouse standard cost object_
+
+**Request example — Create an item warehouse standard cost object:**
+```json
+{
+  "effectiveStartDate": "2026-01-23",
+  "standardCost": "21",
+  "itemWarehouse": {
+    "key": "13"
+  }
+}
+```
+**Response 201 — Reference to new item warehouse standard cost object:**
+```json
+{
+  "ia::result": {
+    "key": "12",
+    "id": "12",
+    "href": "/objects/inventory-control/item-warehouse-standard-cost/12"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/item-warehouse-standard-cost/{key}
+_Get an item warehouse standard cost object_
+
+**Response 200 — Get an item warehouse standard cost object:**
+```json
+{
+  "ia::result": {
+    "key": "12",
+    "id": "12",
+    "effectiveStartDate": "2026-01-23",
+    "standardCost": "122",
+    "itemWarehouse": {
+      "key": "34",
+      "id": "34",
+      "itemId": "LapTop Kit 1",
+      "warehouseId": "WS001",
+      "href": "/objects/inventory-control/item-warehouse-inventory/34"
+    },
+    "href": "/objects/inventory-control/item-warehouse-standard-cost/12",
+    "audit": {
+      "createdDateTime": "2025-12-07T21:30:03Z",
+      "modifiedDateTime": "2025-12-07T21:30:03Z",
+      "createdByUser": {
+        "key": "1",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "13"
+    }
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/inventory-control/item-warehouse-standard-cost/{key}
+_Update an item warehouse standard cost object_
+
+**Request example — Update an item warehouse standard cost object:**
+```json
+{
+  "standardCost": "125"
+}
+```
+**Response 200 — Reference to updated item warehouse standard cost object:**
+```json
+{
+  "ia::result": {
+    "key": "12",
+    "id": "12",
+    "href": "/objects/inventory-control/item-warehouse-standard-cost/12"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/inventory-control/item-warehouse-standard-cost/{key}
+_Delete an item warehouse standard cost object_
+
+
+## GET /objects/inventory-control/item-warehouse-vendor
+_List item warehouse vendors_
+
+**Response 200 — List item warehouse vendors:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "21",
+      "id": "21",
+      "href": "/objects/inventory-control/item-warehouse-vendor/21"
+    },
+    {
+      "key": "22",
+      "id": "22",
+      "href": "/objects/inventory-control/item-warehouse-vendor/22"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## POST /objects/inventory-control/item-warehouse-vendor
+_Create an item warehouse vendor_
+
+**Request example — Create an item warehouse vendor:**
+```json
+{
+  "itemWarehouse": {
+    "key": "12"
+  },
+  "vendor": {
+    "key": "122"
+  },
+  "stockNumber": "5678901234",
+  "unitOfMeasure": {
+    "key": "38"
+  },
+  "leadTime": 15,
+  "demandForecastDuringLeadTime": 5,
+  "economicalOrderQuantity": 10,
+  "vendorMinimumOrderQuantity": 10,
+  "isPreferredVendor": true
+}
+```
+**Response 201 — Reference to new item warehouse vendor:**
+```json
+{
+  "ia::result": {
+    "key": "66",
+    "id": "66",
+    "href": "/objects/inventory-control/item-warehouse-vendor/66"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/item-warehouse-vendor/{key}
+_Get an item warehouse vendor_
+
+**Response 200 — Get an item warehouse vendor:**
+```json
+{
+  "ia::result": {
+    "id": "66",
+    "key": "66",
+    "itemWarehouse": {
+      "id": "76",
+      "key": "76",
+      "href": "/objects/item-warehouse-inventory/76"
+    },
+    "vendor": {
+      "id": "vendorId-1702552731",
+      "key": "2387",
+      "href": "/objects/vendor/2387"
+    },
+    "stockNumber": "5678901234",
+    "leadTime": 15,
+    "demandForecastDuringLeadTime": 5,
+    "economicalOrderQuantity": 10,
+    "vendorMinimumOrderQuantity": 10,
+    "bestPrice": "112.2300000000",
+    "latestPrice": "112.2300000000",
+    "unitOfMeasure": {
+      "key": "38",
+      "id": "Each",
+      "href": "/objects/inventory-control/unit-of-measure/38"
+    },
+    "conversionFactor": "1",
+    "isPreferredVendor": true,
+    "href": "/objects/inventory-control/item-warehouse-vendor/66"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/inventory-control/item-warehouse-vendor/{key}
+_Update an item warehouse vendor_
+
+**Request example — Update an item warehouse vendor:**
+```json
+{
+  "stockNumber": "5678901234233",
+  "leadTime": 10,
+  "demandForecastDuringLeadTime": 3,
+  "economicalOrderQuantity": 20,
+  "vendorMinimumOrderQuantity": 20,
+  "isPreferredVendor": false
+}
+```
+**Response 200 — Reference to updated item warehouse vendor:**
+```json
+{
+  "ia::result": {
+    "key": "66",
+    "id": "66",
+    "href": "/objects/inventory-control/item-warehouse-vendor/66"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/inventory-control/item-warehouse-vendor/{key}
+_Delete an item warehouse vendor_
+
+
+## GET /objects/inventory-control/item/{key}
+_Get an item_
+
+**Response 200 — Get an item:**
+```json
+{
+  "ia::result": {
+    "key": "2458",
+    "id": "Dell_15_6_XPS_15_Multi_Touch_1",
+    "status": "active",
+    "isItemEnabledForMRR": false,
+    "name": "Dell 15.6 XPS 15 Multi-Touch Laptop (Platinum Silver)",
+    "description": "12th Gen Core\u00e2\u201e\u00a2 i3-1215U (10 MB cache, 6 cores, 8 threads, up to 4.40 GHz Turbo)",
+    "poDescription": "XPS 12th Gen Core\u00e2\u201e\u00a2 i3-1215U (10 MB cache, 6 cores, 8 threads, up to 4.40 GHz Turbo)",
+    "soDescription": "XPS 12th Gen Core\u00e2\u201e\u00a2 i3-1215U (10 MB cache, 6 cores, 8 threads, up to 4.40 GHz Turbo)",
+    "productLine": {
+      "id": "2",
+      "key": "2",
+      "href": "/objects/inventory-control/product-line/2"
+    },
+    "contractDefault": {
+      "billingTemplate": {
+        "key": "8",
+        "id": "100_Advance_One_time",
+        "href": "/objects/contracts/billing-template/8\""
+      },
+      "revRecTemplate1": {
+        "key": "6",
+        "id": "Daily_Rate_Auto",
+        "href": "/objects/contracts/revenue-template/6"
+      },
+      "revRecTemplate2": {
+        "key": "6",
+        "id": "Daily_Rate_Auto",
+        "href": "/objects/contracts/revenue-template/6"
+      },
+      "expenseTemplate1": {
+        "key": "1",
+        "id": "Exp_Daily_Auto",
+        "href": "/objects/contracts/expense-template/1"
+      },
+      "expenseTemplate2": {
+        "key": "1",
+        "id": "Exp_Daily_Auto",
+        "href": "/objects/contracts/expense-template/1"
+      },
+      "isDefaultBundle": false,
+      "contractFairValueCategory": {
+        "key": "6",
+        "id": "Miscellaneous on demand services",
+        "href": "/objects/contracts/mea-price-list-entry/6"
+      },
+      "defaultContractDeliveryStatus": "delivered",
+      "defaultContractDeferralStatus": "deferRevenueUntilItemIsDelivered"
+    },
+    "substituteItemId": "",
+    "inventory": {
+      "shippingWeight": 120,
+      "glGroup": {
+        "incomeGLAccount": "1300",
+        "expenseGLAccount": "1200",
+        "inventoryGLAccount": "1500",
+        "cogsGLAccount": "1200",
+        "arGLAccountNumber": "1400",
+        "apGLAccountNumber": "1100",
+        "deferredRevenueGLAccountNumber": "1250",
+        "defaultRevenueRecognitionTemplate": "MilestoneUserspecified",
+        "id": "Auto GL Group",
+        "key": "49",
+        "href": "/objects/inventory-control/item-gl-group/49"
+      },
+      "autoPrintLabel": false
+    },
+    "dateLastSold": "2023-12-15",
+    "dateLastReceived": "2023-12-16",
+    "isSuppliesItem": true,
+    "sales": {
+      "isTaxable": true,
+      "taxGroup": {
+        "id": "Goods Standard Rate",
+        "key": "6",
+        "href": "/objects/tax/item-tax-group/19"
+      },
+      "taxSolution": {
+        "id": "United Kingdom - VAT",
+        "key": "3",
+        "href": "/objects/tax/tax-solution/3"
+      },
+      "isAvailableForDropShip": false,
+      "isAvailableForBuyToOrder": false,
+      "basePrice": "1300",
+      "allowMultiPleTaxGroups": false
+    },
+    "costMethod": "standard",
+    "purchasing": {
+      "standardCost": "1200"
+    },
+    "unitOfMeasureGroup": {
+      "id": "Count",
+      "key": "1",
+      "href": "/objects/inventory-control/unit-of-measure-group/1"
+    },
+    "notes": "Dell 15.6 XPS 15 Multi-Touch Laptop (Platinum Silver)",
+    "precision": {
+      "inventoryPrecision": 10,
+      "purchasingPrecision": 10,
+      "salesPrecision": 10,
+      "upc": "2"
+    },
+    "itemType": "inventory",
+    "tracking": {
+      "enableSerialNo": true,
+      "serialMask": "",
+      "enableLotCategory": false,
+      "lotCategory": "",
+      "enableBins": false,
+      "enableExpiration": false
+    },
+    "kitRevenuePosting": null,
+    "kitRevenuePrinting": null,
+    "vsoeCategory": "productSpecified",
+    "vsoeDefaultDeliveryStatus": "delivered",
+    "vsoeDefaultDeferralStatus": "deferUntilItemIsDelivered",
+    "contractTerm": {
+      "isStartDateAndEndDateEnabled": false,
+      "periodsMeasuredIn": "weeks",
+      "numberOfPeriods": 99,
+      "isProratedPricingAllowed": false,
+      "defaultRenewalTemplate": {
+        "id": "SUBInvoiceSameAsOriginalPrcie",
+        "key": "18",
+        "href": "/objects/order-entry/renewal-template/18"
+      }
+    },
+    "landedCost": {
+      "enableLandedCost": true
+    },
+    "audit": {
+      "createdDateTime": "2023-12-15T10:53:10Z",
+      "modifiedDateTime": "2023-12-15T10:53:10Z",
+      "createdBy": "1",
+      "modifiedBy": "1"
+    },
+    "quantityOnOrder": "2",
+    "quantityOnHand": "2",
+    "quantityOnHold": "1",
+    "quantityAllocated": "0",
+    "quantityReserved": "0",
+    "quantityUncommitted": "0",
+    "quantityInTransit": "0",
+    "replenishment": {
+      "enableReplenishment": true,
+      "replenishmentMethod": "reorderPoint",
+      "unitOfMeasureDefault": "Each",
+      "reorderPoint": 1,
+      "safetyStock": 1,
+      "reorderQuantity": 1,
+      "maximumOrderQuantity": 10
+    },
+    "measurements": {
+      "weightUnitOfMeasure": {
+        "id": "Grams",
+        "key": "15",
+        "href": "/objects/inventory-control/unit-of-measure/15"
+      },
+      "netWeight": 500,
+      "lengthWidthHeightUnitOfMeasure": {
+        "id": "inch",
+        "key": "8",
+        "href": "/objects/inventory-control/unit-of-measure/8"
+      },
+      "length": 12.4554,
+      "width": 12,
+      "height": 12,
+      "thicknessUnitOfMeasure": {
+        "id": "inch",
+        "key": "8",
+        "href": "/objects/inventory-control/unit-of-measure/8"
+      },
+      "thickness": 2,
+      "minimumThickness": 1,
+      "maximumThickness": 3,
+      "areaUnitOfMeasure": {
+        "id": "Square Inch",
+        "key": "37",
+        "href": "/objects/inventory-control/unit-of-measure/37"
+      },
+      "area": 12,
+      "volumeUnitOfMeasure": {
+        "id": "Cubic Centimeters",
+        "key": "28",
+        "href": "/objects/inventory-control/unit-of-measure/28"
+      },
+      "volume": 22,
+      "diameterUnitOfMeasure": {
+        "id": "inch",
+        "key": "8",
+        "href": "/objects/inventory-control/unit-of-measure/8"
+      },
+      "innerDiameter": 15,
+      "outerDiameter": 16,
+      "durometerUnitOfMeasure": "22",
+      "densityUnitOfMeasure": "grams per cubic centimeter",
+      "density": 22
+    },
+    "itemDetails": {
+      "universalProductCode": 123456789123,
+      "internationalArticleNumber": 1234567891234,
+      "isSafetyItem": true,
+      "isRestrictedItem": false,
+      "isCompliantItem": false,
+      "condition": "Good",
+      "engineeringAlert": "Verification of Item",
+      "specification1": "Dell Inspiration 15 inch LED",
+      "specification2": "",
+      "specification3": "",
+      "isApprovedByEngineering": true,
+      "isApprovedByQualityControl": true,
+      "isApprovedBySales": true,
+      "primaryCountryOfOrigin": "USA"
+    },
+    "commercial": {
+      "brand": "Dell Inspiron",
+      "subBrand": "Dell 15 inch",
+      "category": "Dell 15.6 XPS 15",
+      "subCategory": "Dell 15.6 XPS 15",
+      "catalogReference": "Dell 15.6 XPS 15 Multi",
+      "color": "Silver",
+      "style": "15 inch multi touch",
+      "size1": "12",
+      "size2": "12",
+      "isGiftCard": false,
+      "isWebEnabled": true,
+      "webName": "Dell Inspiration 15 inch LED",
+      "webShortDiscription": "Dell Inspiration 15 inch LED",
+      "webLongDescription": "Dell Inspiration 15 inch LED"
+    },
+    "defaultConversionType": "quantity",
+    "enableFulfillment": false,
+    "isEnabledForContracts": false,
+    "entity": {
+      "key": "1",
+      "id": "1",
+      "name": "United States of America",
+      "href": "/objects/company-config/entity/1"
+    },
+    "itemVendor": [
+      {
+        "id": "84",
+        "key": "84",
+        "item": {
+          "id": "Dell_15_6_XPS_15_Multi_Touch_1",
+          "key": "2458",
+          "href": "/objects/inventory-control/item/2458"
+        },
+        "vendor": {
+          "id": "vendorId-1702543576--vendorId-1702543576",
+          "key": "2386",
+          "href": "/objects/accounts-payable/vendor/2386"
+        },
+        "stockNumber": "#5678901234",
+        "leadTime": 15,
+        "demandForecastDuringLeadTime": 5,
+        "economicalOrderQuantity": 10,
+        "vendorMinimumOrderQuantity": 10,
+        "bestPrice": "1000.0000000000",
+        "latestPrice": "1100.0000000000",
+        "unitOfMeasure": {
+          "id": "Each",
+          "key": "3",
+          "href": "/objects/inventory-control/unit-of-measure/3"
+        },
+        "conversionFactor": "1",
+        "isPreferredVendor": true,
+        "href": "/objects/inventory-control/item-vendor/84"
+      }
+    ],
+    "warehouseInfo": [
+      {
+        "id": "80",
+        "key": "80",
+        "item": {
+          "key": "2458",
+          "id": "Dell_15_6_XPS_15_Multi_Touch_1",
+          "href": "/objects/inventory-control/item/2458"
+        },
+        "warehouse": {
+          "key": "2",
+          "id": "WH02",
+          "href": "/objects/inventory-control/warehouse/2"
+        },
+        "storageArea": "Bella",
+        "inventoryCycle": {
+          "key": "",
+          "id": ""
+        },
+        "standardCost": "1200.00",
+        "lastCost": "1500.00",
+        "averageCost": "1450.00",
+        "reorderMethod": null,
+        "economicOrderQuantity": 10,
+        "reorderPoint": 1,
+        "reorderQuantity": 10,
+        "minOrderQuantity": 10,
+        "maxOrderQuantity": 100,
+        "maximumStock": 300,
+        "minimumStock": 50,
+        "lastSoldDate": "2024-12-01",
+        "lastReceivedDate": "2023-12-12",
+        "defaultBin": {
+          "id": "",
+          "key": ""
+        },
+        "onOrder": 2,
+        "inTransit": 0,
+        "onHand": 2,
+        "onHold": 1,
+        "reserved": 0,
+        "allocated": 0,
+        "unCommitted": 0,
+        "warehouseLocation": {
+          "key": "",
+          "currency": "",
+          "id": ""
+        },
+        "safetyStock": 20,
+        "replenishmentMethod": "reorderPoint",
+        "enableReplenishment": true,
+        "standardCostEntries": [],
+        "itemWarehouseVendor": [],
+        "href": "/objects/inventory-control/item-warehouse-inventory/80"
+      }
+    ],
+    "kitComponents": [],
+    "itemLandedCost": [
+      {
+        "id": "74",
+        "key": "74",
+        "item": {
+          "id": "Dell_15_6_XPS_15_Multi_Touch_1",
+          "key": "2458",
+          "href": "/objects/inventory-control/item/2458"
+        },
+        "distributionMethod": "count",
+        "distributionMethodBaseUnit": "Each",
+        "landedCostValue": "1.000000000",
+        "active": false,
+        "href": "/objects/inventory-control/item-landed-cost/74"
+      },
+      {
+        "id": "75",
+        "key": "75",
+        "item": {
+          "id": "Dell_15_6_XPS_15_Multi_Touch_1",
+          "key": "2458",
+          "href": "/objects/inventory-control/item/2458"
+        },
+        "distributionMethod": "volume",
+        "distributionMethodBaseUnit": "Teaspoon",
+        "landedCostValue": "",
+        "active": false,
+        "href": "/objects/inventory-control/item-landed-cost/75"
+      },
+      {
+        "id": "76",
+        "key": "76",
+        "item": {
+          "id": "Dell_15_6_XPS_15_Multi_Touch_1",
+          "key": "2458",
+          "href": "/objects/inventory-control/item/2458"
+        },
+        "distributionMethod": "weight",
+        "distributionMethodBaseUnit": "Ounce",
+        "landedCostValue": "",
+        "active": false,
+        "href": "/objects/inventory-control/item-landed-cost/76"
+      }
+    ],
+    "attachment": {
+      "key": "42",
+      "id": "Supporting doc",
+      "href": "/objects/company-config/attachment/42"
+    },
+    "href": "/objects/inventory-control/item/2458"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/inventory-control/item/{key}
+_Update an item_
+
+**Request example — Update an item:**
+```json
+{
+  "description": "12th Gen Core\u00e2\u201e\u00a2 i3-1215U (10 MB cache, 6 cores, 8 threads, up to 4.40 GHz Turbo)",
+  "itemLandedCost": [
+    {
+      "key": "74",
+      "distributionMethod": "count",
+      "landedCostValue": "1.000000000",
+      "active": true
+    }
+  ],
+  "attachment": {
+    "id": "Supporting doc"
+  }
+}
+```
+**Response 200 — Updated item:**
+```json
+{
+  "ia::result": {
+    "key": "2458",
+    "id": "Dell_15_6_XPS_15_Multi_Touch",
+    "href": "/objects/inventory-control/item/104"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/inventory-control/item/{key}
+_Delete an item_
+
+
+## GET /objects/inventory-control/kit-component
+_List kit components_
+
+**Response 200 — List kit components:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "1",
+      "href": "/object/kit-component/1"
+    },
+    {
+      "key": "2",
+      "id": "2",
+      "href": "/object/kit-component/2"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": 101,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/inventory-control/kit-component
+_Create a kit component_
+
+**Request example — Create a kit component:**
+```json
+{
+  "kit": {
+    "key": "1"
+  },
+  "component": {
+    "key": "2"
+  },
+  "revenuePercentage": 90,
+  "defaultDeliveryStatus": "undelivered",
+  "defaultDeferralStatus": "deferUntilItemIsDelivered",
+  "numberOfUnits": 1
+}
+```
+**Response 201 — Reference to new kit component:**
+```json
+{
+  "ia::result": {
+    "key": "1",
+    "id": "1",
+    "href": "/objects/inventory-control/kit-component/1"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/kit-component/{key}
+_Get a kit component_
+
+**Response 200 — Get a kit component:**
+```json
+{
+  "ia::result": {
+    "key": "42",
+    "id": "42",
+    "kit": {
+      "key": "193",
+      "id": "Kit_001",
+      "href": "/objects/inventory-control/item/193"
+    },
+    "component": {
+      "key": "174",
+      "id": "Print_Paper",
+      "name": "Paper for Printer",
+      "costMethod": "standard",
+      "itemType": "inventory",
+      "unitOfMeasure": "10 Pack",
+      "standardCost": "125.670000000",
+      "href": "/objects/inventory-control/item/174"
+    },
+    "numberOfUnits": 12,
+    "revenuePercentage": 50,
+    "defaultDeliveryStatus": "delivered",
+    "defaultDeferralStatus": "deferUntilItemIsDelivered",
+    "lineNumber": 1,
+    "href": "/objects/inventory-control/kit-component/42"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## PATCH /objects/inventory-control/kit-component/{key}
+_Update a kit component_
+
+**Request example — Update a kit component:**
+```json
+{
+  "component": {
+    "key": "10"
+  },
+  "numberOfUnits": 1
+}
+```
+**Response 200 — Reference to updated kit component:**
+```json
+{
+  "ia::result": {
+    "key": "1",
+    "id": "1",
+    "href": "/objects/inventory-control/kit-component/1"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/inventory-control/kit-component/{key}
+_Delete a kit component_
+
+
+## GET /objects/inventory-control/landed-cost-category
+_List landed cost categories_
+
+**Response 200 — List landed cost categories:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "LCC1",
+      "href": "/objects/inventory-control/landed-cost-category/1"
+    },
+    {
+      "key": "2",
+      "id": "LCC2",
+      "href": "/objects/inventory-control/landed-cost-category/2"
+    },
+    {
+      "key": "3",
+      "id": "Cat_1",
+      "href": "/objects/inventory-control/landed-cost-category/3"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/inventory-control/landed-cost-category
+_Create a landed cost category_
+
+**Request example — Create a landed cost category:**
+```json
+{
+  "id": "FRBYCOUNT",
+  "name": "Freight by count",
+  "status": "active",
+  "distributionMethod": "count"
+}
+```
+**Response 201 — Reference to new landed cost category:**
+```json
+{
+  "ia::result": {
+    "key": "101",
+    "id": "FRBYCOUNT",
+    "href": "/objects/inventory-control/landed-cost-category/101"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/landed-cost-category/{key}
+_Get a landed cost category_
+
+**Response 200 — Get a landed cost category:**
+```json
+{
+  "ia::result": {
+    "key": "101",
+    "id": "FRBYCOUNT",
+    "name": "Freight by count",
+    "status": "active",
+    "distributionMethod": "count",
+    "href": "/objects/inventory-control/landed-cost-category/101"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/inventory-control/landed-cost-category/{key}
+_Update a landed cost category_
+
+**Request example — Update a landed cost category:**
+```json
+{
+  "name": "Freight by count 01",
+  "status": "active"
+}
+```
+**Response 200 — Reference to updated landed cost category:**
+```json
+{
+  "ia::result": {
+    "key": "101",
+    "id": "FRBYCOUNT",
+    "href": "/objects/inventory-control/landed-cost-category/101"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/inventory-control/landed-cost-category/{key}
+_Delete a landed cost category_
+
+
+## GET /objects/inventory-control/lot-category
+_List lot categories_
+
+**Response 200 — List lot categories:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "2",
+      "id": "Medi-Lot",
+      "href": "/objects/inventory-control/lot-category/2"
+    },
+    {
+      "key": "3",
+      "id": "Chemical-Lot",
+      "href": "/objects/inventory-control/lot-category/3"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": 101,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/inventory-control/lot-category
+_Create a lot category_
+
+**Request example — Create a lot category:**
+```json
+{
+  "id": "Medi-Lot",
+  "name": "Medical Item Lot"
+}
+```
+**Response 201 — Reference to new lot category:**
+```json
+{
+  "ia::result": {
+    "key": "2",
+    "id": "Medi-Lot",
+    "href": "/objects/inventory-control/lot-category/2"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/lot-category/{key}
+_Get a lot category_
+
+**Response 200 — Get a lot category:**
+```json
+{
+  "ia::result": {
+    "key": "2",
+    "id": "Medi-Lot",
+    "name": "Medical Item Lot",
+    "href": "/objects/inventory-control/lot-category/2"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## PATCH /objects/inventory-control/lot-category/{key}
+_Update a lot category_
+
+**Request example — Update a lot category:**
+```json
+{
+  "name": "Medical Item Lot"
+}
+```
+**Response 200 — Reference to updated lot category:**
+```json
+{
+  "ia::result": {
+    "key": "2",
+    "id": "Medi-Lot",
+    "href": "/objects/inventory-control/lot-category/2"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/inventory-control/lot-category/{key}
+_Delete a lot category_
+
+
+## GET /objects/inventory-control/posting-summary
+_List posting summaries_
+
+**Response 200 — List posting summaries:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "13",
+      "id": "13",
+      "href": "/objects/inventory-control/posting-summary/13"
+    },
+    {
+      "key": "16",
+      "id": "16",
+      "href": "/objects/inventory-control/posting-summary/16"
+    },
+    {
+      "key": "17",
+      "id": "17",
+      "href": "/objects/inventory-control/posting-summary/17"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## GET /objects/inventory-control/posting-summary/{key}
+_Get a posting summary_
+
+**Response 200 — Get a posting summary:**
+```json
+{
+  "ia::result": {
+    "key": "617",
+    "journalEntry": {
+      "id": "1090",
+      "key": "1090",
+      "href": "/objects/general-ledger/journal-entry/1090"
+    },
+    "doctype": "SYS-Warehouse Transfer In",
+    "title": "SYS-Warehouse Transfer In: 2023/03/15 Batch",
+    "href": "/objects/inventory-control/posting-summary/617"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/price-list
+_List price lists_
+
+**Response 200 — List price lists:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "Base Price List",
+      "href": "/objects/inventory-control/price-list/1"
+    },
+    {
+      "key": "2",
+      "id": "Initial Purchase Cost",
+      "href": "/objects/inventory-control/price-list/2"
+    },
+    {
+      "key": "3",
+      "id": "Initial Sales Price",
+      "href": "/objects/inventory-control/price-list/3"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/inventory-control/price-list
+_Create a price list_
+
+**Request example — Create a price list:**
+```json
+{
+  "id": "Base Price List",
+  "startDate": "2026-01-01",
+  "endDate": "2027-01-01",
+  "appliesTo": "orderEntry",
+  "status": "active"
+}
+```
+**Response 201 — New price list:**
+```json
+{
+  "ia::result": {
+    "key": "1",
+    "id": "Base Price List",
+    "href": "/objects/inventory-control/price-list/1"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/price-list-entry
+_List price list entries_
+
+**Response 200 — List of price list entries:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "1",
+      "href": "/objects/inventory-control/price-list-entry/1"
+    },
+    {
+      "key": "2",
+      "id": "2",
+      "href": "/objects/inventory-control/price-list-entry/2"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "totalSuccess": 2,
+    "totalError": 0
+  }
+}
+```
+
+## POST /objects/inventory-control/price-list-entry
+_Create a price list entry_
+
+**Request example — Create a price list entry:**
+```json
+{
+  "startDate": "2025-07-01",
+  "endDate": "2025-09-31",
+  "minimumQuantity": "1",
+  "maximumQuantity": "9999999",
+  "value": "1.00000000",
+  "valueType": "actual",
+  "isFixedPrice": "true",
+  "status": "active",
+  "currency": "USD"
+}
+```
+**Response 201 — Reference to new price list entry:**
+```json
+{
+  "ia::result": {
+    "id": "421",
+    "key": "421",
+    "href": "/objects/inventory-control/price-list-entry/421"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/price-list-entry/{key}
+_Get a price list entry_
+
+**Response 200 — Get a price list entry:**
+```json
+{
+  "ia::result": {
+    "id": "451",
+    "key": "451",
+    "priceList": {
+      "id": "Base Price List",
+      "key": "1",
+      "href": "/objects/inventory-control/price-list/1"
+    },
+    "item": {
+      "key": "90",
+      "id": "Car_Bulbs",
+      "name": "Bulbs for Car",
+      "href": "/objects/inventory-control/item/90"
+    },
+    "productLine": {
+      "key": "19",
+      "id": "Accessories",
+      "href": "/objects/inventory-control/product-line/19",
+      "startDate": "2025-12-01",
+      "endDate": "2025-12-31",
+      "minimumQuantity": "1",
+      "maximumQuantity": "999999999",
+      "value": "10.00000000",
+      "valueType": "actual",
+      "isFixedPrice": "true",
+      "status": "active",
+      "currency": "USD"
+    },
+    "employee": {
+      "key": "25",
+      "id": "123",
+      "href": "/objects/company-config/employee/25"
+    },
+    "audit": {
+      "createdDateTime": "2025-12-12T04:46:56Z",
+      "modifiedDateTime": "2025-12-12T04:46:56Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "Admin",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "Admin"
+    },
+    "href": "/objects/inventory-control/price-list-entry/451",
+    "ia::meta": {
+      "totalCount": 1,
+      "totalSuccess": 1,
+      "totalError": 0
+    }
+  }
+}
+```
+
+## PATCH /objects/inventory-control/price-list-entry/{key}
+_Update a price list entry_
+
+**Request example — Updates a price list entry:**
+```json
+{
+  "startDate": "2025-02-01"
+}
+```
+**Response 200 — Reference to updated price list entry:**
+```json
+{
+  "ia::result": {
+    "id": "435",
+    "key": "435",
+    "href": "/objects/inventory-control/price-list-entry/435"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/inventory-control/price-list-entry/{key}
+_Delete a price list entry_
+
+
+## GET /objects/inventory-control/price-list/{key}
+_Get a price list_
+
+**Response 200 — Get a price list:**
+```json
+{
+  "ia::result": {
+    "key": "1",
+    "id": "Base Price List",
+    "href": "/objects/inventory-control/price-list/1",
+    "startDate": "2025-01-01",
+    "endDate": "2026-12-31",
+    "appliesTo": "orderEntry",
+    "status": "active"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## PATCH /objects/inventory-control/price-list/{key}
+_Update a price list_
+
+**Request example — Update a price list:**
+```json
+{
+  "startDate": "2025-02-01"
+}
+```
+**Response 200 — Updated price list:**
+```json
+{
+  "ia::result": {
+    "key": "1",
+    "id": "Base Price List",
+    "href": "/objects/inventory-control/price-list/1"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/inventory-control/price-list/{key}
+_Delete a price list_
+
+
+## GET /objects/inventory-control/product-line
+_List product lines_
+
+**Response 200 — List product lines:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "23",
+      "id": "Adapters",
+      "href": "/objects/inventory-control/product-line/23"
+    },
+    {
+      "key": "25",
+      "id": "Telephones",
+      "href": "/objects/inventory-control/product-line/25"
+    },
+    {
+      "key": "29",
+      "id": "Auto Product Line",
+      "href": "/objects/inventory-control/product-line/29"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## POST /objects/inventory-control/product-line
+_Create a product line_
+
+**Request example — Create a product line:**
+```json
+{
+  "id": "OCA",
+  "description": "Other Computer Accessories",
+  "parent": {
+    "id": "PCCS"
+  }
+}
+```
+**Response 201 — New product line:**
+```json
+{
+  "ia::result": {
+    "key": "26",
+    "id": "OCA",
+    "href": "/objects/inventory-control/product-line/26"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/product-line/{key}
+_Get a product line_
+
+**Response 200 — Get a product line:**
+```json
+{
+  "ia::result": {
+    "key": "25",
+    "id": "Telephones",
+    "description": "Telephones",
+    "parent": {
+      "id": "Adapters",
+      "key": "28",
+      "href": "/objects/inventory-control/product-line/28"
+    },
+    "status": "active",
+    "audit": {
+      "createdDateTime": "2017-04-27T17:29:36Z",
+      "modifiedDateTime": "2022-03-15T14:40:30Z",
+      "createdBy": "1",
+      "modifiedBy": "1"
+    },
+    "href": "/objects/inventory-control/product-line/25"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## PATCH /objects/inventory-control/product-line/{key}
+_Update a product line_
+
+**Request example — Update a single value:**
+```json
+{
+  "description": "Telephones for US markets"
+}
+```
+**Response 200 — Updated product line:**
+```json
+{
+  "ia::result": {
+    "key": "25",
+    "id": "Telephones",
+    "href": "/objects/inventory-control/product-line/25"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/inventory-control/product-line/{key}
+_Delete a Product line_
+
+
+## GET /objects/inventory-control/replenishment-forecast
+_List replenishment forecasts_
+
+**Response 200 — List replenishment forecasts:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "21",
+      "id": "21",
+      "href": "/objects/inventory-control/replenishment-forecast/21"
+    },
+    {
+      "key": "24",
+      "id": "24",
+      "href": "/objects/inventory-control/replenishment-forecast/24"
+    },
+    {
+      "key": "29",
+      "id": "29",
+      "href": "/objects/inventory-control/replenishment-forecast/29"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/inventory-control/replenishment-forecast
+_Create a replenishment forecast_
+
+**Request example — Create a replenishment forecast:**
+```json
+{
+  "item": {
+    "id": "B001"
+  },
+  "description": "Spring forecast for B001",
+  "lines": [
+    {
+      "effectiveDate": "2026-06-30",
+      "demandQuantity": "45"
+    },
+    {
+      "effectiveDate": "2026-07-25",
+      "demandQuantity": "453"
+    }
+  ]
+}
+```
+**Response 201 — Reference to new replenishment forecast:**
+```json
+{
+  "ia::result": {
+    "id": "3",
+    "key": "3",
+    "href": "/objects/inventory-control/replenishment-forecast/3"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/replenishment-forecast-line
+_List replenishment forecast lines_
+
+**Response 200 — List replenishment forecast lines:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "66",
+      "id": "66",
+      "href": "/objects/inventory-control/replenishment-forecast-line/66"
+    },
+    {
+      "key": "67",
+      "id": "67",
+      "href": "/objects/inventory-control/replenishment-forecast-line/67"
+    },
+    {
+      "key": "68",
+      "id": "68",
+      "href": "/objects/inventory-control/replenishment-forecast-line/68"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize'": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/inventory-control/replenishment-forecast-line/{key}
+_Get a replenishment forecast line_
+
+**Response 200 — Get a replenishment forecast line:**
+```json
+{
+  "ia::result": {
+    "id": "118",
+    "key": "118",
+    "item": {
+      "key": "34",
+      "id": "B001",
+      "name": "Monitor-HP",
+      "href": "/objects/inventory-control/item/34"
+    },
+    "warehouse": {
+      "key": "3",
+      "id": "WH10001",
+      "name": "US AZ Warehouse 10001",
+      "href": "/objects/inventory-control/warehouse/3"
+    },
+    "effectiveDate": "2026-06-30",
+    "demandQuantity": "45",
+    "audit": {
+      "createdDateTime": "2026-04-22T23:35:28Z",
+      "modifiedDateTime": "2026-04-23T17:15:31Z",
+      "createdBy": "1",
+      "modifiedBy": "1"
+    },
+    "replenishmentForecast": {
+      "id": "3",
+      "key": "3",
+      "name": "B001 forecast",
+      "href": "/objects/inventory-control/replenishment-forecast/3"
+    },
+    "href": "/objects/inventory-control/replenishment-forecast-line/118"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/inventory-control/replenishment-forecast-line/{key}
+_Delete a replenishment forecast line_
+
+
+## GET /objects/inventory-control/replenishment-forecast/{key}
+_Get a replenishment forecast_
+
+**Response 200 — Get a replenishment forecast:**
+```json
+{
+  "ia::result": {
+    "id": "47",
+    "key": "47",
+    "item": {
+      "key": "2496",
+      "id": "801-SK-1",
+      "name": "801-SK-1",
+      "href": "/objects/inventory-control/item/2496"
+    },
+    "description": "Replenishment forecast for 801-SK-1",
+    "audit": {
+      "createdDateTime": "2025-10-31T00:27:38Z",
+      "modifiedDateTime": "2026-04-17T22:19:40Z",
+      "createdBy": "1",
+      "modifiedBy": "1"
+    },
+    "forecastStatus": "active",
+    "replenishmentUnit": {
+      "key": "79",
+      "id": "Each",
+      "href": "/objects/inventory-control/unit-of-measure/79"
+    },
+    "lines": [
+      {
+        "id": "115",
+        "key": "115",
+        "item": {
+          "key": "2496",
+          "id": "801-SK-1",
+          "name": "801-SK-1",
+          "href": "/objects/inventory-control/item/2496"
+        },
+        "warehouse": {
+          "id": "WH10001",
+          "key": "3",
+          "name": "US AZ Warehouse 10001",
+          "href": "/objects/inventory-control/warehouse/3"
+        },
+        "effectiveDate": "2026-11-01",
+        "demandQuantity": "250",
+        "audit": {
+          "createdDateTime": "2026-04-17T22:19:41Z",
+          "modifiedDateTime": "2026-04-17T22:19:41Z",
+          "createdBy": "1",
+          "modifiedBy": "1"
+        },
+        "replenishmentForecast": {
+          "id": "47",
+          "key": "47",
+          "name": "Forecast for 801-SK-1",
+          "href": "/objects/inventory-control/replenishment-forecast/47"
+        },
+        "href": "/objects/inventory-control/replenishment-forecast-line/115"
+      }
+    ],
+    "href": "/objects/inventory-control/replenishment-forecast/47"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/inventory-control/replenishment-forecast/{key}
+_Update a replenishment forecast_
+
+**Request example — Update a replenishment forecast:**
+```json
+{
+  "description": "B001 's forecast"
+}
+```
+**Response 200 — Reference to updated replenishment forecast:**
+```json
+{
+  "ia::result": {
+    "id": "3",
+    "key": "3",
+    "href": "/objects/inventory-control/replenishment-forecast/3"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/inventory-control/replenishment-forecast/{key}
+_Delete a replenishment forecast_
+
+
+## GET /objects/inventory-control/replenishment-run
+_List replenishment runs_
+
+**Response 200 — List replenishment runs:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "1",
+      "href": "/objects/inventory-control/replenishment-run/1"
+    },
+    {
+      "key": "2",
+      "id": "2",
+      "href": "/objects/inventory-control/replenishment-run/2"
+    },
+    {
+      "key": "3",
+      "id": "3",
+      "href": "/objects/inventory-control/replenishment-run/3"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 10,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/inventory-control/replenishment-run-line
+_List replenishment run lines_
+
+**Response 200 — List replenishment run lines:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "1",
+      "href": "/objects/inventory-control/replenishment-run-line/1"
+    },
+    {
+      "key": "2",
+      "id": "2",
+      "href": "/objects/inventory-control/replenishment-run-line/2"
+    },
+    {
+      "key": "3",
+      "id": "3",
+      "href": "/objects/inventory-control/replenishment-run-line/3"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/inventory-control/replenishment-run-line/{key}
+_Get a replenishment run line_
+
+**Response 200 — Get a replenishment run line:**
+```json
+{
+  "ia::result": {
+    "id": "15",
+    "key": "15",
+    "replenishmentRun": {
+      "id": "10",
+      "key": "10",
+      "href": "/objects/inventory-control/replenishment-run/10"
+    },
+    "vendorIdAndName": "MARREL--Marrel Toys",
+    "purchaseOrder": {
+      "key": "9574",
+      "id": "Purchase Order-PO#0347#doc",
+      "href": "/objects/purchasing/document/9574"
+    },
+    "numberOfItems": 5,
+    "txnAmount": "4670.0000000000",
+    "txnAmountBase": "4670.0000000000",
+    "currency": "USD",
+    "poCreateState": "created",
+    "errorMessage": "",
+    "href": "/objects/inventory-control/replenishment-run-line/15"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/replenishment-run/{key}
+_Get a replenishment run_
+
+**Response 200 — Get a replenishment run:**
+```json
+{
+  "ia::result": {
+    "id": "10",
+    "key": "10",
+    "href": "/objects/inventory-control/replenishment-run/10",
+    "runDate": "2026-10-12",
+    "runByUser": {
+      "key": "1",
+      "id": "Admin",
+      "userName": "Mr. 2nd, 4th, 6th Level Approver",
+      "href": "/objects/company-config/user/1"
+    },
+    "txnDefinition": {
+      "key": "504",
+      "id": "Purchase Order",
+      "href": "/objects/purchasing/txn-definition/504"
+    },
+    "txnDate": "2026-10-12",
+    "runState": "partialSuccess",
+    "executionMode": "online",
+    "txnCount": 3,
+    "itemCount": 8,
+    "purchaseAmountBase": "6111.0000000000",
+    "audit": {
+      "createdDateTime": "2026-10-12T20:40:20Z",
+      "modifiedDateTime": "2026-10-12T20:40:20Z",
+      "createdBy": "1",
+      "modifiedBy": "1"
+    },
+    "lines": [
+      {
+        "id": "17",
+        "key": "17",
+        "replenishmentRun": {
+          "id": "10",
+          "key": "10",
+          "href": "/objects/inventory-control/replenishment-run/10"
+        },
+        "vendorIdAndName": "206--Orchard Supply Hardware",
+        "purchaseOrder": {
+          "key": "9576",
+          "id": "Purchase Order-PO#0348#doc",
+          "href": "/objects/purchasing/document/9576"
+        },
+        "numberOfItems": 1,
+        "txnAmount": "156.0000000000",
+        "txnAmountBase": "156.0000000000",
+        "currency": "USD",
+        "poCreateState": "created",
+        "errorMessage": "",
+        "href": "/objects/inventory-control/replenishment-run-line/17"
+      },
+      {
+        "id": "14",
+        "key": "14",
+        "replenishmentRun": {
+          "id'": "10",
+          "key": "10",
+          "href": "/objects/inventory-control/replenishment-run/10"
+        },
+        "vendorIdAndName": "WHSEVENDOR--WHSEVENDOR",
+        "purchaseOrder": {
+          "key": "9573",
+          "id": "Purchase Order-PO#0346#doc",
+          "href": "/objects/purchasing/document/9573"
+        },
+        "numberOfItems": 2,
+        "txnAmount": "1285.0000000000",
+        "txnAmountBase": "1285.0000000000",
+        "currency": "USD",
+        "poCreateState": "created",
+        "errorMessage": "",
+        "href": "/objects/inventory-control/replenishment-run-line/14"
+      },
+      {
+        "id": "15",
+        "key": "15",
+        "replenishmentRun": {
+          "id": "10",
+          "key": "10",
+          "href": "/objects/inventory-control/replenishment-run/10"
+        },
+        "vendorIdAndName": "MATTEL--Mattel Toys",
+        "purchaseOrder": {
+          "key": "9574",
+          "id": "Purchase Order-PO#0347#doc",
+          "href": "/objects/purchasing/document/9574"
+        },
+        "numberOfItems": 5,
+        "txnAmount": "4670.0000000000",
+        "txnAmountBase": "4670.0000000000",
+        "currency": "USD",
+        "poCreateState": "created",
+        "errorMessage": "",
+        "href": "/objects/inventory-control/replenishment-run-line/15"
+      }
+    ]
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/row
+_List rows_
+
+**Response 200 — List rows:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "354",
+      "id": "R1ADW",
+      "href": "/objects/inventory-control/row/354"
+    },
+    {
+      "key": "355",
+      "id": "R1BDW",
+      "href": "/objects/inventory-control/row/355"
+    },
+    {
+      "key": "356",
+      "id": "R2ADW",
+      "href": "/objects/inventory-control/row/356"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageRow": 100
+  }
+}
+```
+
+## POST /objects/inventory-control/row
+_Create a row_
+
+**Request example — Create a row:**
+```json
+{
+  "id": "R3ADW",
+  "description": "Row 3A Dishwashers"
+}
+```
+**Response 201 — Create a row:**
+```json
+{
+  "ia::result": {
+    "key": "543",
+    "id": "R3ADW",
+    "href": "/objects/inventory-control/row/543"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/row/{key}
+_Get a row_
+
+**Response 200 — Get a row:**
+```json
+{
+  "ia::result": {
+    "key": "354",
+    "id": "R3ADW",
+    "description": "Row 3 A Dishwashers",
+    "audit": {
+      "createdDateTime": "2021-05-07T01:15:23Z",
+      "modifiedDateTime": "2021-05-07T01:15:23Z",
+      "createdBy": "13",
+      "modifiedBy": "13"
+    },
+    "href": "/objects/inventory-control/row/354"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## PATCH /objects/inventory-control/row/{key}
+_Update a row_
+
+**Request example — Update a single value:**
+```json
+{
+  "description": "Row 3A1 Dishwashers"
+}
+```
+**Response 200 — Update a single value:**
+```json
+{
+  "ia::result": {
+    "key": "2",
+    "id": "R3ADW",
+    "href": "/objects/inventory-control/row/2"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/inventory-control/row/{key}
+_Delete a row_
+
+
+## GET /objects/inventory-control/serial-mask
+_List serial masks_
+
+**Response 200 — List serial masks:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "5",
+      "id": "AAAAAANNNN",
+      "href": "/objects/inventory-control/serial-mask/5"
+    },
+    {
+      "key": "6",
+      "id": "ANNNNN",
+      "href": "/objects/inventory-control/serial-mask/6"
+    },
+    {
+      "key": "7",
+      "id": "AANNNNNNNN",
+      "href": "/objects/inventory-control/serial-mask/7"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/inventory-control/serial-mask
+_Create a serial mask_
+
+**Request example — Create a serial mask:**
+```json
+{
+  "length": 11,
+  "id": "AAAANNNNNNN"
+}
+```
+**Response 201 — Reference to new serial mask:**
+```json
+{
+  "ia::result": {
+    "key": "24",
+    "id": "AAAANNNNNNN",
+    "href": "/objects/inventory-control/serial-mask/24"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/serial-mask/{key}
+_Get a serial mask_
+
+**Response 200 — Get a serial mask:**
+```json
+{
+  "ia::result": {
+    "key": "24",
+    "length": 11,
+    "id": "AAAANNNNNNN",
+    "href": "/objects/inventory-control/serial-mask/24"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/inventory-control/serial-mask/{key}
+_Update a serial mask_
+
+**Request example — Update a serial mask:**
+```json
+{
+  "length": 12
+}
+```
+**Response 200 — Reference to updated serial mask:**
+```json
+{
+  "ia::result": {
+    "key": "24",
+    "id": "AAAANNNNNNN",
+    "href": "/objects/inventory-control/serial-mask/24"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/inventory-control/serial-mask/{key}
+_Delete a serial mask_
+
+
+## GET /objects/inventory-control/stockable-kit-document
+_List stockable kit documents_
+
+**Response 200 — List stockable kit documents:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "118",
+      "id": "Disassemble Kits-SK-000311",
+      "href": "/objects/inventory-control/stockable-kit-document/118"
+    },
+    {
+      "key": "161",
+      "id": "Build Kits-SM002",
+      "href": "/objects/inventory-control/stockable-kit-document/161"
+    },
+    {
+      "key": "130",
+      "id": "Disassemble Kits-US1",
+      "href": "/objects/inventory-control/stockable-kit-document/130"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/inventory-control/stockable-kit-document
+_Create a stockable kit document_
+
+**Request example — Create a stockable kit document:**
+```json
+{
+  "txnDefinition": {
+    "id": "Build Kits"
+  },
+  "state": "pending",
+  "transactionDate": "2025-02-05",
+  "documentNumber": "SM001",
+  "referenceNumber": "REFF NUM",
+  "lines": [
+    {
+      "unitOfMeasure": {
+        "id": "Each"
+      },
+      "unitQuantity": "1",
+      "trackingDetail": [
+        {
+          "item": {
+            "id": "HAMMER16-KIT"
+          },
+          "quantity": "1",
+          "serialNumber": "L1232",
+          "lotNumber": "L33",
+          "expirationDate": "2025-12-31"
+        }
+      ],
+      "dimensions": {
+        "item": {
+          "id": "HAMMER16-KIT"
+        },
+        "warehouse": {
+          "id": "15"
+        },
+        "location": {
+          "id": "1"
+        }
+      }
+    }
+  ]
+}
+```
+**Response 201 — Reference to new stockable kit document:**
+```json
+{
+  "ia::result": {
+    "key": "159",
+    "id": "Build Kits-SM001",
+    "href": "/objects/inventory-control/stockable-kit-document/159"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/stockable-kit-document-line
+_List stockable kit document lines_
+
+**Response 200 — List stockable kit document lines:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "3517",
+      "id": "3517",
+      "href": "/objects/inventory-control/stockable-kit-document-line/3517"
+    },
+    {
+      "key": "3703",
+      "id": "3703",
+      "href": "/objects/inventory-control/stockable-kit-document-line/3703"
+    },
+    {
+      "key": "2751",
+      "id": "2751",
+      "href": "/objects/inventory-control/stockable-kit-document-line/2751"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/inventory-control/stockable-kit-document-line/{key}
+_Get a stockable kit document line_
+
+**Response 200 — Get a stockable kit document line:**
+```json
+{
+  "ia::result": {
+    "id": "146",
+    "key": "146",
+    "documentHeader": {
+      "documentNumber": "161",
+      "key": "161",
+      "id": "Build Kits-SM002",
+      "documentType": "Build Kits",
+      "href": "/objects/inventory-control/stockable-kit-document/161"
+    },
+    "documentType": "Build Kits",
+    "lineNumber": 0,
+    "dimensions": {
+      "item": {
+        "key": "304",
+        "id": "HAMMER17-KIT",
+        "name": "HAMMER17-KIT",
+        "href": "/objects/inventory-control/item/304"
+      },
+      "warehouse": {
+        "id": "WareHouse10004",
+        "key": "4",
+        "href": "/objects/inventory-control/warehouse/4"
+      },
+      "location": {
+        "id": "1",
+        "key": "6",
+        "href": "/objects/company-config/location/6"
+      },
+      "department": {
+        "id": null,
+        "key": null
+      },
+      "project": {
+        "key": null,
+        "id": null
+      },
+      "task": {
+        "key": null,
+        "id": null
+      },
+      "customer": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "vendor": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "employee": {
+        "key": null,
+        "id": null,
+        "name": null
+      },
+      "class": {
+        "key": null,
+        "id": null,
+        "name": null
+      }
+    },
+    "unitOfMeasure": {
+      "id": "Each",
+      "key": "3",
+      "href": "/objects/inventory-control/unit-of-measure/3"
+    },
+    "memo": "HAMMERS",
+    "lineDescription": "Hammers",
+    "quantity": "1.0000000000",
+    "quantityConverted": "0.0000000000",
+    "cost": "0.0000000000",
+    "audit": {
+      "modifiedDateTime": "2024-03-14T19:14:56Z",
+      "createdDateTime": "2024-03-14T19:14:21Z",
+      "createdByUser": {
+        "key": "1",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "status": "active",
+    "costMethod": "FIFO",
+    "unitQuantity": "1.0000000000",
+    "unitCost": "0.0000000000",
+    "extendedCost": "0.0000000000",
+    "sourceDocument": {
+      "key": null,
+      "id": null,
+      "documentType": null
+    },
+    "sourceDocumentLine": {
+      "id": null,
+      "key": null,
+      "documentType": "Build Kits"
+    },
+    "txnCurrency": "USD",
+    "baseCurrency": "USD",
+    "quantityRemaining": "1.0000000000",
+    "trackingDetail": [
+      {
+        "id": "128",
+        "key": "128",
+        "inventoryDocumentLine": {
+          "id": "146",
+          "key": "146",
+          "documentType": "Build Kits",
+          "href": "/objects/inventory-control/document-line/146"
+        },
+        "item": {
+          "key": "304",
+          "id": "HAMMER17-KIT",
+          "href": "/objects/inventory-control/item/304"
+        },
+        "componentItem": {
+          "id": null,
+          "key": null
+        },
+        "quantity": "1.0000000000",
+        "serialNumber": "S#SK-001",
+        "lotNumber": "L#001",
+        "aisle": {
+          "key": null,
+          "id": null
+        },
+        "row": {
+          "key": null,
+          "id": null
+        },
+        "bin": {
+          "key": "6",
+          "id": "B#01",
+          "href": "/objects/inventory-control/bin/6"
+        },
+        "expirationDate": "2025-12-31",
+        "audit": {
+          "createdDateTime": "2024-03-14T19:14:21Z",
+          "modifiedDateTime": "2024-03-14T19:14:56Z",
+          "createdByUser": {
+            "key": "1",
+            "href": "/objects/company-config/user/1"
+          },
+          "createdBy": "1",
+          "modifiedByUser": {
+            "key": "1",
+            "href": "/objects/company-config/user/1"
+          },
+          "modifiedBy": "1"
+        },
+        "href": "/objects/inventory-control/document-line-detail/128"
+      }
+    ],
+    "href": "/objects/inventory-control/stockable-kit-document-line/146"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/stockable-kit-document/{key}
+_Get a stockable kit document_
+
+**Response 200 — Get a stockable kit document:**
+```json
+{
+  "ia::result": {
+    "key": "119",
+    "documentNumber": "BldKit-000879-doc",
+    "id": "Build Kits-BldKit-000879-doc",
+    "sourceDocument": {
+      "id": null,
+      "key": null
+    },
+    "state": "pending",
+    "transactionDate": "2024-03-12",
+    "audit": {
+      "createdDateTime": "2024-03-12T20:21:07Z",
+      "createdByUser": {
+        "key": "1",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1",
+      "modifiedDateTime": "2024-03-12T20:21:27Z"
+    },
+    "referenceNumber": "ESC15738925-02-StockableKit",
+    "documentType": "Build Kits",
+    "txnDefinition": {
+      "documentType": "Build Kits",
+      "id": "Build Kits",
+      "key": "127",
+      "txnDefinitionTemplateClass": "INVOICE",
+      "updatesInventory": "quantityAndValue",
+      "increaseOrDecreaseInventory": "increase",
+      "href": "/objects/inventory-control/txn-definition::Build%20Kits/127"
+    },
+    "memo": null,
+    "lineDescription": "ESC15738925-02-StockableKit",
+    "postingSummary": {
+      "id": "29",
+      "key": "29",
+      "href": "/objects/inventory-control/posting-summary/29"
+    },
+    "journalEntry": {
+      "id": "1055",
+      "key": "1055",
+      "href": "/objects/inventory-control/journal-entry/1055"
+    },
+    "isPrinted": false,
+    "subTotal": "0.00",
+    "total": "0.00",
+    "txnCurrency": "USD",
+    "exchangeRate": {
+      "date": "2024-03-12",
+      "rate": "1.0000",
+      "typeId": null,
+      "typeName": null
+    },
+    "subtotalInTxnCurrency": "0.00",
+    "totalInTxnCurrency": "0.00",
+    "baseCurrency": "USD",
+    "lastPrintedDate": null,
+    "printedBy": {
+      "key": null,
+      "id": null
+    },
+    "buildState": "built",
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "lines": [
+      {
+        "id": "118",
+        "key": "118",
+        "documentHeader": {
+          "documentNumber": "119",
+          "key": "119",
+          "id": "Build Kits-BldKit-000879-doc",
+          "documentType": "Build Kits",
+          "href": "/objects/inventory-control/stockable-kit-document/119"
+        },
+        "documentType": "Build Kits",
+        "lineNumber": 0,
+        "dimensions": {
+          "item": {
+            "key": "307",
+            "id": "0713F-ALT--Finished Fields",
+            "name": "Finished Fields",
+            "href": "/objects/inventory-control/item/307"
+          },
+          "warehouse": {
+            "id": "BWH01",
+            "key": "10",
+            "href": "/objects/inventory-control/warehouse/10"
+          },
+          "location": {
+            "id": "Belize",
+            "key": "1020",
+            "href": "/objects/company-config/location/1020"
+          },
+          "department": {
+            "id": null,
+            "key": null
+          },
+          "project": {
+            "key": null,
+            "id": null
+          },
+          "task": {
+            "key": null,
+            "id": null
+          },
+          "customer": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "vendor": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "employee": {
+            "key": null,
+            "id": null,
+            "name": null
+          },
+          "class": {
+            "key": null,
+            "id": null,
+            "name": null
+          }
+        },
+        "unitOfMeasure": {
+          "id": "Each",
+          "key": "3",
+          "href": "/objects/inventory-control/unit-of-measure/3"
+        },
+        "memo": null,
+        "quantity": "10.0000000000",
+        "quantityConverted": "0.0000000000",
+        "cost": "0.0000000000",
+        "audit": {
+          "modifiedDateTime": "2024-03-12T20:21:28Z",
+          "createdDateTime": "2024-03-12T20:21:07Z",
+          "createdByUser": {
+            "key": "1",
+            "href": "/objects/company-config/user/1"
+          },
+          "createdBy": "1",
+          "modifiedByUser": {
+            "key": "1",
+            "href": "/objects/company-config/user/1"
+          },
+          "modifiedBy": "1"
+        },
+        "status": "active",
+        "costMethod": "FIFO",
+        "unitQuantity": "10.0000000000",
+        "unitCost": "0.0000000000",
+        "extendedCost": "0.0000000000",
+        "sourceDocument": {
+          "key": null,
+          "id": null,
+          "documentType": null
+        },
+        "sourceDocumentLine": {
+          "id": null,
+          "key": null,
+          "documentType": "Build Kits"
+        },
+        "txnCurrency": "USD",
+        "baseCurrency": "USD",
+        "quantityRemaining": "10.0000000000",
+        "trackingDetail": [
+          {
+            "item": {
+              "id": "HAMMER16-KIT",
+              "quantity": "1",
+              "serialNumber": "L1232",
+              "lotNumber": "L33",
+              "expirationDate": "2025-12-31"
+            }
+          }
+        ],
+        "href": "/objects/inventory-control/stockable-kit-document-line/118"
+      }
+    ],
+    "history": [
+      {
+        "id": "87",
+        "key": "87",
+        "convertedTo": {
+          "key": "119",
+          "id": "Build Kits-BldKit-000879-doc",
+          "documentType": "Build Kits",
+          "href": "/objects/inventory-control/document::Build%20Kits/119"
+        },
+        "convertedFrom": {
+          "id": null,
+          "documentType": null,
+          "key": null
+        },
+        "inventoryDocument": {
+          "key": "119",
+          "id": "Build Kits-BldKit-000879-doc",
+          "documentType": "Build Kits",
+          "href": "/objects/inventory-control/document::Build%20Kits/119"
+        },
+        "href": "/objects/inventory-control/document-history/87"
+      }
+    ],
+    "attachment": {
+      "id": null,
+      "key": null
+    },
+    "href": "/objects/inventory-control/stockable-kit-document/119"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/inventory-control/stockable-kit-document/{key}
+_Update a stockable kit document_
+
+**Request example — Update a stockable kit document:**
+```json
+{
+  "referenceNumber": "AddNewLine-02",
+  "lines": [
+    {
+      "unitOfMeasure": {
+        "id": "Each"
+      },
+      "unitQuantity": "1",
+      "trackingDetail": [
+        {
+          "item": {
+            "id": "HAMMER17-KIT"
+          },
+          "quantity": "1",
+          "serialNumber": "L2321",
+          "lotNumber": "L32",
+          "expirationDate": "2025-12-31"
+        }
+      ],
+      "dimensions": {
+        "item": {
+          "id": "HAMMER17-KIT"
+        },
+        "warehouse": {
+          "id": "BWH01"
+        },
+        "location": {
+          "id": "1"
+        }
+      }
+    }
+  ]
+}
+```
+**Response 200 — Reference to updated stockable kit document:**
+```json
+{
+  "ia::result": {
+    "key": "161",
+    "id": "Build Kits-SM002",
+    "href": "/objects/inventory-control/stockable-kit-document/161"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/inventory-control/stockable-kit-document/{key}
+_Delete a stockable kit document_
+
+
+## GET /objects/inventory-control/supplies-document
+_List supplies documents_
+
+**Response 200 — List supplies documents:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1586",
+      "id": "1586",
+      "href": "/objects/inventory-control/supplies-document/1586"
+    },
+    {
+      "key": "1587",
+      "id": "1587",
+      "href": "/objects/inventory-control/supplies-document/1587"
+    },
+    {
+      "key": "1588",
+      "id": "1588",
+      "href": "/objects/inventory-control/supplies-document/1588"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## GET /objects/inventory-control/supplies-document-detail
+_List supplies document details_
+
+**Response 200 — List supplies document details:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1586",
+      "id": "1586",
+      "href": "/objects/inventory-control/supplies-document-detail/1586"
+    },
+    {
+      "key": "1587",
+      "id": "1587",
+      "href": "/objects/inventory-control/supplies-document-detail/1587"
+    },
+    {
+      "key": "1588",
+      "id": "1588",
+      "href": "/objects/inventory-control/supplies-document-detail/1588"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## GET /objects/inventory-control/supplies-document-detail/{key}
+_Get a supplies document detail_
+
+**Response 200 — Get supplies document detail:**
+```json
+{
+  "ia::result": {
+    "key": "101",
+    "id": "101",
+    "state": "issue",
+    "quantity": "10.00",
+    "date": "2026-01-01",
+    "audit": {
+      "createdDateTime": "2025-12-20T00:22:23Z",
+      "createdByUser": {
+        "key": "1",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1"
+    },
+    "inventoryDocumentLine": {
+      "key": "23",
+      "id": "23",
+      "href": "/objects/inventory-control/document-line/23"
+    },
+    "suppliesRequisitionDocument": {
+      "key": "88",
+      "id": "88",
+      "href": "/objects/inventory-control/supplies-document/88"
+    }
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/supplies-document/{key}
+_Get a supplies document_
+
+**Response 200 — Get a supplies document:**
+```json
+{
+  "ia::result": {
+    "id": "1475",
+    "key": "1475",
+    "documentHeader": {
+      "key": "1093",
+      "id": "SYS-Supplies requisition-supplies_monitor",
+      "documentType": "SYS-Supplies requisition",
+      "href": "/objects/purchasing/document::SYS-Supplies%20requisition/1093"
+    },
+    "lineNumber": 1,
+    "dimensions": {
+      "item": {
+        "key": "405",
+        "id": "Monitor-23-inch-dell",
+        "name": "Monitor 23 inch dell",
+        "href": "/objects/inventory-control/item/405"
+      },
+      "warehouse": {
+        "id": "1",
+        "name": "US TX Warehouse 10004",
+        "key": "1",
+        "href": "/objects/inventory-control/warehouse/1"
+      },
+      "location": {
+        "id": "1",
+        "name": "United States of America",
+        "key": "1",
+        "href": "/objects/company-config/location/1"
+      },
+      "department": {
+        "id": "null,",
+        "name": "null,",
+        "key": null
+      },
+      "project": {
+        "key": "null,",
+        "id": "null,",
+        "name": null
+      },
+      "task": {
+        "key": "null,",
+        "id": "null,",
+        "name": null
+      },
+      "customer": {
+        "key": "null,",
+        "id": "null,",
+        "name": null
+      },
+      "vendor": {
+        "key": "47",
+        "id": "201",
+        "name": "PG & E",
+        "href": "/objects/accounts-payable/vendor/47"
+      },
+      "employee": {
+        "key": "1",
+        "id": "1",
+        "name": "Reser",
+        "href": "/objects/company-config/employee/1"
+      },
+      "class": {
+        "key": "null,",
+        "id": "null,",
+        "name": null
+      }
+    },
+    "unit": "Each",
+    "memo": "null,",
+    "quantityRequested": "3.0000000000",
+    "quantityConverted": "0.0000000000",
+    "retailPrice": "230.0000000000",
+    "price": "230.0000000000",
+    "requestDate": "2025-10-14",
+    "audit": {
+      "createdDateTime": "2025-10-14T00:00:00Z",
+      "modifiedDateTime": "2025-10-14T18:12:24Z",
+      "createdByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "id": "Admin",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "status": "active",
+    "costMethod": "average",
+    "unitQuantity": "3.0000000000",
+    "unitPrice": "230.0000000000",
+    "txnCurrency": "USD",
+    "baseCurrency": "USD",
+    "priceInTxnCurrency": "230.0000000000",
+    "enableTax": false,
+    "isBillable": true,
+    "isBilled": true,
+    "taxRate": "10.05",
+    "taxInBaseCurrency": "10.50",
+    "discount": "10.25",
+    "taxInTxnCurrency": "40.50",
+    "priceConverted": "200",
+    "conversionType": "quantity",
+    "quantityToleranceVariance": "10.00",
+    "priceToleranceVariance": "22.10",
+    "requestedDeliveryDate": "2026-04-04",
+    "doNotShipBeforeDate": "2026-02-04",
+    "doNotShipAfterDate": "2026-05-04",
+    "deliveryDueDate": "2026-04-04",
+    "orderConfirmationDate": "2026-01-04",
+    "cancelAfterDate": "2026-06-04",
+    "lineStatus": "needsAcknowledgement",
+    "deliverToContact": {
+      "key": "246",
+      "id": "AAA Rents",
+      "href": "/objects/company-config/contact/246"
+    },
+    "allocation": {
+      "id": null,
+      "key": null
+    },
+    "quantityRemaining": "3.0000000000",
+    "deliveryMethod": {
+      "key": "2",
+      "id": "Air",
+      "href": "/objects/accounts-receivable/shipping-method/2"
+    },
+    "source": "issued",
+    "sourcedQuantity": "3.0000000000",
+    "suppliesDetail": [
+      {
+        "id": "22",
+        "key": "22",
+        "inventoryDocumentLine": {
+          "id": "2558",
+          "key": "2558",
+          "href": "/objects/inventory-control/document-line/2558"
+        },
+        "state": "issue",
+        "suppliesRequisitionDocument": {
+          "id": "2557",
+          "key": "2557",
+          "href": "/objects/inventory-control/supplies-document/2557"
+        },
+        "quantity": "3.0000000000",
+        "date": "2025-12-29",
+        "audit": {
+          "createdDateTime": "2025-11-27T02:39:16Z",
+          "createdByUser": {
+            "key": "1",
+            "href": "/objects/company-config/user/1"
+          },
+          "createdBy": "1"
+        },
+        "href": "/objects/inventory-control/supplies-document-detail/22"
+      }
+    ],
+    "href": "/objects/inventory-control/supplies-document/1475"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/total
+_List inventory totals_
+
+**Response 200 — List inventory total objects:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "51",
+      "id": "ONORDER",
+      "href": "/objects/inventory-control/total/51"
+    },
+    {
+      "key": "52",
+      "id": "ONHAND",
+      "href": "/objects/inventory-control/total/52"
+    },
+    {
+      "key": "53",
+      "id": "ONHOLD",
+      "href": "/objects/inventory-control/total/53"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": 101,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/inventory-control/total
+_Create an inventory total_
+
+**Request example — Create an inventory total:**
+```json
+{
+  "id": "SHIPPED",
+  "status": "active"
+}
+```
+**Response 201 — Reference to new inventory total:**
+```json
+{
+  "ia::result": {
+    "key": "60",
+    "id": "SHIPPED",
+    "href": "/objects/inventory-control/total/60"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/total/{key}
+_Get an inventory total_
+
+**Response 200 — Get an inventory total:**
+```json
+{
+  "ia::result": {
+    "key": "60",
+    "id": "SHIPPED",
+    "status": "active",
+    "updateType": "accumulative",
+    "href": "/objects/inventory-control/total/60"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## PATCH /objects/inventory-control/total/{key}
+_Update an inventory total_
+
+**Request example — Update an inventory total:**
+```json
+{
+  "status": "inactive"
+}
+```
+**Response 200 — Reference to updated inventory total:**
+```json
+{
+  "ia::result": {
+    "key": "60",
+    "id": "SHIPPED",
+    "href": "/objects/inventory-control/total/1"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/inventory-control/total/{key}
+_Delete an inventory total_
+
+
+## GET /objects/inventory-control/txn-definition
+_List inventory transaction definitions_
+
+**Response 200 — List transaction definitions:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "715",
+      "id": "SYS-CC Adjustment Decrease",
+      "href": "/objects/inventory-control/txn-definition/715"
+    },
+    {
+      "key": "716",
+      "id": "SYS-CC Adjustment Increase",
+      "href": "/objects/inventory-control/txn-definition/716"
+    },
+    {
+      "key": "424",
+      "id": "SYS-LC Estimates Adj Incr",
+      "href": "/objects/inventory-control/txn-definition/424"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": 101,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/inventory-control/txn-definition
+_Create an inventory transaction definition_
+
+**Request example — Create an inventory transaction definition:**
+```json
+{
+  "id": "Adjustment Decrease",
+  "description": "Adjustment Decrease (Quantity - Value)",
+  "templateType": "adjustment",
+  "workflowCategory": "adjustment",
+  "enableUserOrGroupPermission": false,
+  "documentPermissions": {
+    "editPolicy": "all",
+    "deletePolicy": "all",
+    "createPolicy": "newDocumentOrConvert",
+    "multiEntityRuleForTxn": "topLevelOrEntity"
+  },
+  "txnNumbering": {
+    "numberingSequence": {
+      "key": "12"
+    },
+    "preserveSequenceNumbers": false,
+    "inheritSourceDocumentNumber": false
+  },
+  "inventoryControl": {
+    "enableWarnOnLowQty": true,
+    "warehouseSelectionMethod": "sortByID",
+    "defaultWarehouse": {
+      "key": "32"
+    }
+  },
+  "accounting": {
+    "txnPosting": "postToGeneralLedger",
+    "isSubTotalsEnabled": false
+  },
+  "conversionType": "closeTxn",
+  "pricingAndTerms": {
+    "initialPriceList": {
+      "key": "33"
+    },
+    "specialPriceList": {
+      "key": "34"
+    }
+  },
+  "userOverrides": {
+    "allowLocationOverride": true,
+    "allowDepartmentOverride": true
+  },
+  "print": {
+    "documentTemplate": "Adjustment_US_Template",
+    "defaultText": "Document template is not selected."
+  },
+  "status": "active",
+  "inventoryTotalDetail": [
+    {
+      "operation": "subtract",
+      "inventoryTotal": {
+        "id": "ONHAND"
+      },
+      "maintainType": "quantityAndValue"
+    }
+  ],
+  "inventoryAccountMapping": [
+    {
+      "txnType": "debit",
+      "glAccount": {
+        "key": "415"
+      },
+      "lineNumber": 0
+    },
+    {
+      "txnType": "credit",
+      "glAccount": {
+        "key": "85"
+      },
+      "lineNumber": 1
+    }
+  ],
+  "reportingCategory": "inventoryAdjustment"
+}
+```
+**Response 201 — Reference to new transaction definition:**
+```json
+{
+  "ia::result": {
+    "key": "833",
+    "href": "/objects/inventory-control/txn-definition/833"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/txn-definition-cogs-gl-detail
+_List inventory transaction definition COGS GL details_
+
+**Response 200 — List inventory transaction definition COGS GL details:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "15",
+      "id": "15",
+      "href": "/objects/inventory-control/txn-definition-cogs-gl-detail/15"
+    },
+    {
+      "key": "19",
+      "id": "19",
+      "href": "/objects/inventory-control/txn-definition-cogs-gl-detail/19"
+    },
+    {
+      "key": "3",
+      "id": "3",
+      "href": "/objects/inventory-control/txn-definition-cogs-gl-detail/3"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/inventory-control/txn-definition-cogs-gl-detail
+_Create an inventory transaction definition COGS GL detail_
+
+**Request example — Create an inventory transaction definition COGS GL detail:**
+```json
+{
+  "inventoryTxnDefinition": {
+    "key": "12"
+  },
+  "itemGLGroup": {
+    "key": "13"
+  },
+  "dimensions": {
+    "warehouse": {
+      "key": "21"
+    },
+    "department": {
+      "key": "28"
+    },
+    "location": {
+      "key": "22"
+    }
+  },
+  "txnType": "debit",
+  "glAccount": {
+    "key": "384"
+  },
+  "lineNumber": 0
+}
+```
+**Response 201 — New inventory transaction definition COGS GL detail:**
+```json
+{
+  "ia::result": {
+    "key": "208",
+    "id": "208",
+    "href": "/objects/inventory-control/txn-definition-cogs-gl-detail/208"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/txn-definition-cogs-gl-detail/{key}
+_Get an inventory transaction definition COGS GL detail_
+
+**Response 200 — Get an inventory transaction definition COGS GL detail:**
+```json
+{
+  "ia::result": {
+    "key": "208",
+    "id": "208",
+    "inventoryTxnDefinition": {
+      "key": "12",
+      "id": "Inventory Adjustment",
+      "href": "/objects/inventory-control/txn-definition/12"
+    },
+    "txnType": "debit",
+    "moduleType": "inventory",
+    "lineNumber": 0,
+    "glAccount": {
+      "key": "384",
+      "id": "1501.04",
+      "href": "/objects/general-ledger/account/384"
+    },
+    "itemGLGroup": {
+      "key": "13",
+      "id": "Inventory- Computers and parts",
+      "href": "/objects/inventory-control/item-gl-group/13"
+    },
+    "dimensions": {
+      "warehouse": {
+        "key": "21",
+        "id": "ARZ",
+        "href": "/objects/inventory-control/warehouse/21"
+      },
+      "department": {
+        "key": "28",
+        "id": "Finance",
+        "name": "Finance",
+        "href": "/objects/company-config/department/28"
+      },
+      "location": {
+        "key": "22",
+        "id": "CA",
+        "name": "California",
+        "href": "/objects/company-config/location/22"
+      }
+    },
+    "href": "/objects/inventory-control/txn-definition-cogs-gl-detail/208"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/inventory-control/txn-definition-cogs-gl-detail/{key}
+_Update an inventory transaction definition COGS GL detail_
+
+**Request example — Update an inventory txn definition subtotal COGS GL detail:**
+```json
+{
+  "glAccount": {
+    "key": "232"
+  }
+}
+```
+**Response 200 — Updated inventory transaction definition COGS GL detail:**
+```json
+{
+  "ia::result": {
+    "key": "208",
+    "id": "208",
+    "href": "/objects/inventory-control/txn-definition-cogs-gl-detail/208"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/inventory-control/txn-definition-cogs-gl-detail/{key}
+_Delete an inventory transaction definition COGS GL detail_
+
+
+## GET /objects/inventory-control/txn-definition-entity-detail
+_List inventory transaction definition entity details_
+
+**Response 200 — example-1:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "223",
+      "id": "223",
+      "href": "/object/inventory-txn-definition-entity-detail/223"
+    },
+    {
+      "key": "224",
+      "id": "224",
+      "href": "/object/inventory-txn-definition-entity-detail/224"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": 101,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/inventory-control/txn-definition-entity-detail
+_Create an inventory transaction definition entity detail_
+
+**Request example — Create an inventory transaction definition entity detail:**
+```json
+{
+  "inventoryTxnDefinition": {
+    "key": "172"
+  },
+  "entity": {
+    "key": "1"
+  },
+  "txnNumbering": {
+    "preserveSequenceNumbering": true,
+    "inheritSourceDocumentNumber": false,
+    "sequenceNumber": {
+      "key": "30"
+    }
+  },
+  "documentTemplate": {
+    "id": "Intacct Inventory Adjustment"
+  }
+}
+```
+**Response 201 — New inventory transaction definition entity detail:**
+```json
+{
+  "ia::result": {
+    "key": "225",
+    "id": "225",
+    "href": "/objects/inventory-control/txn-definition-entity-detail/225"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/txn-definition-entity-detail/{key}
+_Get an inventory transaction definition entity detail_
+
+**Response 200 — Get an inventory transaction definition entity detail:**
+```json
+{
+  "ia::result": {
+    "key": "225",
+    "id": "225",
+    "inventoryTxnDefinition": {
+      "key": "172",
+      "id": "Adjustment Decrease",
+      "href": "/objects/inventory-control/txn-definition/172"
+    },
+    "entity": {
+      "key": "1",
+      "id": "1-us",
+      "href": "/objects/company-config/entity/1"
+    },
+    "txnNumbering": {
+      "preserveSequenceNumbering": true,
+      "inheritSourceDocumentNumber": false,
+      "sequenceNumber": {
+        "key": "30",
+        "id": "Inventory_Adjustment",
+        "href": "/objects/company-config/document-sequence/30"
+      }
+    },
+    "documentTemplate": {
+      "key": "65",
+      "id": "Intacct Inventory Adjustment"
+    },
+    "href": "/objects/inventory-control/txn-definition-entity-detail/225"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## PATCH /objects/inventory-control/txn-definition-entity-detail/{key}
+_Update an inventory transaction definition entity detail_
+
+**Request example — Update an inventory transaction definition entity detail:**
+```json
+{
+  "inventoryTxnDefinition": {
+    "key": "172"
+  },
+  "txnNumbering": {
+    "preserveSequenceNumbering": false
+  }
+}
+```
+**Response 200 — Updated inventory transaction definition entity detail:**
+```json
+{
+  "ia::result": {
+    "key": "225",
+    "id": "225",
+    "href": "/objects/inventory-control/txn-definition-entity-detail/225"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/inventory-control/txn-definition-entity-detail/{key}
+_Delete an inventory transaction definition entity detail_
+
+
+## GET /objects/inventory-control/txn-definition-source
+_List inventory transaction definition sources_
+
+**Response 200 — List inventory transaction definition sources:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "208",
+      "id": "208",
+      "href": "/object/inventory-txn-definition-source/208"
+    },
+    {
+      "key": "209",
+      "id": "209",
+      "href": "/object/inventory-txn-definition-source/209"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": 101,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/inventory-control/txn-definition-source
+_Create an inventory transaction definition source_
+
+**Request example — Create an inventory transaction definition source:**
+```json
+{
+  "inventoryTxnDefinition": {
+    "key": "171"
+  },
+  "convertedFrom": {
+    "key": "172"
+  }
+}
+```
+**Response 201 — New inventory transaction definition source:**
+```json
+{
+  "ia::result": {
+    "key": "208",
+    "id": "208",
+    "href": "/objects/inventory-control/txn-definition-source/208"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/txn-definition-source/{key}
+_Get an inventory transaction definition source_
+
+**Response 200 — Get an inventory transaction definition source:**
+```json
+{
+  "ia::result": {
+    "key": "208",
+    "id": "208",
+    "inventoryTxnDefinition": {
+      "key": "173",
+      "id": "Adjustment Decrease",
+      "href": "/objects/inventory-control/txn-definition/172"
+    },
+    "convertedFrom": {
+      "key": "172",
+      "id": "Adjustment Increase",
+      "href": "/objects/inventory-control/txn-definition/173"
+    },
+    "href": "/objects/inventory-control/txn-definition-source/208"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## PATCH /objects/inventory-control/txn-definition-source/{key}
+_Update an inventory transaction definition source_
+
+**Request example — Update an inventory transaction definition source:**
+```json
+{
+  "inventoryTxnDefinition": {
+    "key": "173"
+  },
+  "convertedFrom": {
+    "key": "172"
+  }
+}
+```
+**Response 200 — Updated inventory transaction definition source:**
+```json
+{
+  "ia::result": {
+    "key": "208",
+    "id": "208",
+    "href": "/objects/inventory-control/txn-definition-source/208"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/inventory-control/txn-definition-source/{key}
+_Delete an inventory transaction definition source_
+
+
+## GET /objects/inventory-control/txn-definition-subtotal-detail
+_List inventory transaction definition subtotal details_
+
+**Response 200 — List of inventory txn definition subtotal details:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "15",
+      "id": "15",
+      "href": "/objects/inventory-control/txn-definition-subtotal-detail/15"
+    },
+    {
+      "key": "19",
+      "id": "19",
+      "href": "/objects/inventory-control/txn-definition-subtotal-detail/19"
+    },
+    {
+      "key": "3",
+      "id": "3",
+      "href": "/objects/inventory-control/txn-definition-subtotal-detail/3"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/inventory-control/txn-definition-subtotal-detail
+_Create a/an inventory transaction definition subtotal detail_
+
+**Request example — Creates a/an inventory transaction definition subtotal detail:**
+```json
+{
+  "inventoryTxnDefinition": {
+    "key": "64"
+  },
+  "subtotalType": "discount",
+  "lineNumber": 0,
+  "description": "Discount",
+  "valueType": "percent",
+  "txnType": "debit",
+  "subtotalValue": "10.10",
+  "appliedToLineNumber": 1,
+  "isTax": false,
+  "glAccount": {
+    "key": "10"
+  },
+  "offsetGLAccount": {
+    "key": "22"
+  },
+  "dimensions": {
+    "department": {
+      "key": "13"
+    },
+    "location": {
+      "key": "11"
+    }
+  }
+}
+```
+**Response 201 — example-1:**
+```json
+{
+  "ia::result": {
+    "key": "98",
+    "id": "98",
+    "href": "/objects/inventory-control/txn-definition-subtotal-detail/98"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/txn-definition-subtotal-detail/{key}
+_Get a/an inventory transaction definition subtotal detail_
+
+**Response 200 — Details of the inventory transaction definition total:**
+```json
+{
+  "ia::result": {
+    "key": "98",
+    "id": "98",
+    "inventoryTxnDefinition": {
+      "key": "64",
+      "id": "Inventory Adjustment",
+      "href": "/objects/inventory-control/txn-definition/64"
+    },
+    "subtotalType": "discount",
+    "lineNumber": 0,
+    "description": "Discount",
+    "valueType": "percent",
+    "subtotalValue": "10.10",
+    "txnType": "debit",
+    "appliedLineNumber": "1",
+    "isTax": false,
+    "glAccount": {
+      "key": "10",
+      "id": "1000",
+      "href": "/objects/general-ledger/account/3"
+    },
+    "offsetGLAccount": {
+      "key": "20",
+      "id": "1000.01",
+      "href": "/objects/general-ledger/account/160"
+    },
+    "dimensions": {
+      "department": {
+        "key": "13",
+        "id": "8",
+        "name": "Finance",
+        "href": "/objects/company-config/department/13"
+      },
+      "location": {
+        "key": "12",
+        "id": "CA",
+        "name": "California",
+        "href": "/objects/company-config/location/12"
+      }
+    },
+    "enableAvaTax": false,
+    "href": "/objects/inventory-control/txn-definition-subtotal-detail/98"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/inventory-control/txn-definition-subtotal-detail/{key}
+_Update a/an inventory transaction definition subtotal detail_
+
+**Request example — Updates a/an inventory txn definition subtotal detail:**
+```json
+{
+  "inventoryTxnDefinition": {
+    "key": "64"
+  },
+  "subtotalType": "discount",
+  "value": "11.00"
+}
+```
+**Response 200 — example-1:**
+```json
+{
+  "ia::result": {
+    "key": "98",
+    "id": "98",
+    "href": "/objects/inventory-control/txn-definition-subtotal-detail/98"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/inventory-control/txn-definition-subtotal-detail/{key}
+_Delete a/an inventory transaction definition subtotal detail_
+
+
+## GET /objects/inventory-control/txn-definition-total-detail
+_List inventory transaction definition total details._
+
+**Response 200 — example-1:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "208",
+      "id": "208",
+      "href": "/object/inventory-control/txn-definition-total-detail/208"
+    },
+    {
+      "key": "209",
+      "id": "209",
+      "href": "/object/inventory-control/txn-definition-total-detail/209"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": 101,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/inventory-control/txn-definition-total-detail
+_Create a/an inventory transaction definition total detail._
+
+**Request example — example-1:**
+```json
+{
+  "inventoryTotal": {
+    "key": "51"
+  },
+  "inventoryTxnDefinition": {
+    "key": "172"
+  },
+  "operation": "subtract",
+  "maintainType": "quantityAndValue"
+}
+```
+**Response 201 — example-1:**
+```json
+{
+  "ia::result": {
+    "key": "208",
+    "id": "208",
+    "href": "/objects/inventory-control/txn-definition-total-detail/208"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/txn-definition-total-detail/{key}
+_Get a/an inventory transaction definition total detail_
+
+**Response 200 — example-1:**
+```json
+{
+  "ia::result": {
+    "key": "208",
+    "id": "208",
+    "inventoryTxnDefinition": {
+      "key": "172",
+      "id": "Adjustment Decrease",
+      "href": "/objects/inventory-control/txn-definition/172"
+    },
+    "inventoryTotal": {
+      "key": "51",
+      "id": "ONHAND",
+      "href": "/objects/inventory-control/total/51"
+    },
+    "maintainType": "quantityAndValue",
+    "operation": "subtract",
+    "href": "/objects/inventory-control/txn-definition-total-detail/208"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## PATCH /objects/inventory-control/txn-definition-total-detail/{key}
+_Update a/an inventory transaction definition total detail._
+
+**Request example — example-1:**
+```json
+{
+  "inventoryTxnDefinition": {
+    "key": "172"
+  },
+  "inventoryTotal": {
+    "key": "51"
+  },
+  "maintainType": "quantity",
+  "operation": "subtract"
+}
+```
+**Response 200 — example-1:**
+```json
+{
+  "ia::result": {
+    "key": "208",
+    "id": "208",
+    "href": "/objects/inventory-control/txn-definition-total-detail/208"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/inventory-control/txn-definition-total-detail/{key}
+_Delete a/an inventory transaction definition total detail._
+
+
+## GET /objects/inventory-control/txn-definition/{key}
+_Get an inventory transaction definition_
+
+**Response 200 — Get a transaction definition:**
+```json
+{
+  "ia::result": {
+    "key": "834",
+    "id": "Adjustment Decrease-dd",
+    "description": "Adjustment Decrease (Quantity - Value)",
+    "templateType": "adjustment",
+    "workflowCategory": "adjustment",
+    "enableUserOrGroupPermission": false,
+    "documentPermissions": {
+      "editPolicy": "all",
+      "deletePolicy": "beforePrinting",
+      "createPolicy": "newDocumentOrConvert",
+      "multiEntityRuleForTxn": "topLevelOnly"
+    },
+    "txnNumbering": {
+      "enableSequenceNumbering": true,
+      "numberingSequence": {
+        "key": "12",
+        "id": "Adjustment Decrease",
+        "href": "/objects/company-config/document-sequence/12"
+      },
+      "preserveSequenceNumbers": false,
+      "inheritSourceDocumentNumber": false
+    },
+    "inventoryControl": {
+      "updatesInventory": "quantityAndValue",
+      "increaseOrDecreaseInventory": "decrease",
+      "updatesCost": false,
+      "enableWarnOnLowQty": true,
+      "warehouseSelectionMethod": "sortByID",
+      "defaultWarehouse": {
+        "key": "21",
+        "id": "ARZ",
+        "href": "/objects/inventory-control/warehouse/21"
+      }
+    },
+    "accounting": {
+      "txnPosting": "postToGeneralLedger",
+      "isSubTotalsEnabled": false
+    },
+    "conversionType": "closeTxn",
+    "pricingAndTerms": {
+      "initialPriceList": {
+        "id": "Base Price List",
+        "key": "33",
+        "href": "/objects/inventory-control/price-list/33"
+      },
+      "specialPriceList": {
+        "id": "Discounted Price",
+        "key": "34",
+        "href": "/objects/inventory-control/price-list/34"
+      }
+    },
+    "userOverrides": {
+      "allowLocationOverride": true,
+      "allowDepartmentOverride": true
+    },
+    "print": {
+      "documentTemplate": "Adjustment_US_Template",
+      "defaultText": "Document template is not selected."
+    },
+    "status": "active",
+    "audit": {
+      "createdDateTime": "2024-12-09T01:23:56Z",
+      "modifiedDateTime": "2024-12-09T02:09:37Z",
+      "createdByUser": {
+        "key": "1",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "reportingCategory": "inventoryAdjustment",
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "inventoryAccountMapping": [
+      {
+        "id": "1242",
+        "key": "1242",
+        "inventoryTxnDefinition": {
+          "key": "834",
+          "id": "Adjustment Decrease",
+          "href": "/objects/inventory-control/txn-definition/834"
+        },
+        "itemGLGroup": {
+          "key": "13",
+          "id": "Inventory- Computers and parts",
+          "href": "/objects/inventory-control/item-gl-group/13"
+        },
+        "dimensions": {
+          "warehouse": {
+            "key": "21",
+            "id": "ARZ",
+            "href": "/objects/inventory-control/warehouse/21"
+          },
+          "department": {
+            "key": "28",
+            "id": "Finance",
+            "name": "Finance",
+            "href": "/objects/company-config/department/28"
+          },
+          "location": {
+            "key": "22",
+            "id": "CA",
+            "name": "California",
+            "href": "/objects/company-config/location/22"
+          }
+        },
+        "isOffset": false,
+        "txnType": "debit",
+        "moduleType": "inventory",
+        "glAccount": {
+          "id": "5000.03",
+          "key": "415",
+          "href": "/objects/general-ledger/account/415"
+        },
+        "lineNumber": 0,
+        "href": "/objects/inventory-control/txn-definition-cogs-gl-detail/1242"
+      },
+      {
+        "id": "1243",
+        "key": "1243",
+        "inventoryTxnDefinition": {
+          "key": "834",
+          "id": "Adjustment Decrease",
+          "href": "/objects/inventory-control/txn-definition/834"
+        },
+        "itemGLGroup": {
+          "key": "13",
+          "id": "Inventory- Computers and parts",
+          "href": "/objects/inventory-control/item-gl-group/13"
+        },
+        "dimensions": {
+          "warehouse": {
+            "key": "21",
+            "id": "ARZ",
+            "href": "/objects/inventory-control/warehouse/21"
+          },
+          "department": {
+            "key": "28",
+            "id": "Finance",
+            "name": "Finance",
+            "href": "/objects/company-config/department/28"
+          },
+          "location": {
+            "key": "22",
+            "id": "CA",
+            "name": "California",
+            "href": "/objects/company-config/location/22"
+          }
+        },
+        "isOffset": false,
+        "txnType": "credit",
+        "moduleType": "inventory",
+        "glAccount": {
+          "id": "1400",
+          "key": "85",
+          "href": "/objects/general-ledger/account/85"
+        },
+        "lineNumber": 1,
+        "href": "/objects/inventory-control/txn-definition-cogs-gl-detail/1243"
+      }
+    ],
+    "inventoryTotalDetail": [
+      {
+        "id": "1094",
+        "key": "1094",
+        "inventoryTxnDefinition": {
+          "key": "834",
+          "id": "Adjustment Decrease",
+          "href": "/objects/inventory-control/txn-definition/834"
+        },
+        "maintainType": "quantityAndValue",
+        "inventoryTotal": {
+          "id": "ONHAND",
+          "key": "52",
+          "href": "/objects/inventory-control/total/52"
+        },
+        "operation": "subtract",
+        "href": "/objects/inventory-control/txn-definition-total-detail/1094"
+      }
+    ],
+    "subtotalDetail": [],
+    "sourceDocumentDetail": [],
+    "entitySettingDetail": [],
+    "href": "/objects/inventory-control/txn-definition/834"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/inventory-control/txn-definition/{key}
+_Update an inventory transaction definition_
+
+**Request example — Update a transaction definition:**
+```json
+{
+  "workflowCategory": "adjustment",
+  "documentPermissions": {
+    "editPolicy": "all",
+    "deletePolicy": "beforePrinting",
+    "createPolicy": "newDocumentOrConvert",
+    "multiEntityRuleForTxn": "topLevelOnly"
+  }
+}
+```
+**Response 200 — Reference to updated transaction definition:**
+```json
+{
+  "ia::result": {
+    "key": "833",
+    "href": "/objects/inventory-control/txn-definition/833"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/inventory-control/txn-definition/{key}
+_Delete an inventory transaction definition_
+
+
+## GET /objects/inventory-control/unit-of-measure
+_List unit of measure objects_
+
+**Response 200 — List units of measure:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "135",
+      "id": "GigaBytes",
+      "href": "/objects/inventory-control/unit-of-measure/135"
+    },
+    {
+      "key": "136",
+      "id": "KiloBytes",
+      "href": "/objects/inventory-control/unit-of-measure/136"
+    },
+    {
+      "key": "137",
+      "id": "MegaBytes",
+      "href": "/objects/inventory-control/unit-of-measure/137"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/inventory-control/unit-of-measure
+_Create a unit of measure_
+
+**Request example — Create a unit of measure:**
+```json
+{
+  "id": "GigaBytes",
+  "abbreviation": "GB",
+  "numberOfDecimalPlaces": 0,
+  "parent": {
+    "key": "17"
+  },
+  "conversionFactor": 1024
+}
+```
+**Response 201 — New unit of measure:**
+```json
+{
+  "ia::result": {
+    "key": "135",
+    "href": "/objects/unit-of-measure/135"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/unit-of-measure-group
+_List  all unit of measure groups_
+
+**Response 200 — List unit of measure groups:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "17",
+      "id": "Data storage",
+      "href": "/objects/inventory-control/unit-of-measure-group/17"
+    },
+    {
+      "key": "11",
+      "id": "Count",
+      "href": "/objects/inventory-control/unit-of-measure-group/11"
+    },
+    {
+      "key": "12",
+      "id": "Length",
+      "href": "/objects/inventory-control/unit-of-measure-group/12"
+    },
+    {
+      "key": "13",
+      "id": "Weight",
+      "href": "/objects/inventory-control/unit-of-measure-group/13"
+    },
+    {
+      "key": "14",
+      "id": "Volume",
+      "href": "/objects/inventory-control/unit-of-measure-group/14"
+    },
+    {
+      "key": "15",
+      "id": "Area",
+      "href": "/objects/inventory-control/unit-of-measure-group/15"
+    },
+    {
+      "key": "16",
+      "id": "Time",
+      "href": "/objects/inventory-control/unit-of-measure-group/16"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 7,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## POST /objects/inventory-control/unit-of-measure-group
+_Create a unit of measure group_
+
+**Request example — Create a unit of measure group:**
+```json
+{
+  "id": "Data storage",
+  "baseUnit": "Gigabytes",
+  "abbreviation": "GB",
+  "unitsOfMeasure": [
+    {
+      "id": "Terabytes",
+      "abbreviation": "TB",
+      "conversionFactor": 1000,
+      "numberOfDecimalPlaces": 2
+    },
+    {
+      "id": "Petabytes",
+      "abbreviation": "PB",
+      "conversionFactor": 100000,
+      "numberOfDecimalPlaces": 2
+    }
+  ]
+}
+```
+**Response 201 — New unit of measure group:**
+```json
+{
+  "ia::result": {
+    "key": "17",
+    "id": "Data storage",
+    "href": "/objects/inventory-control/unit-of-measure-group/17"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/unit-of-measure-group/{key}
+_Get a unit of measure group_
+
+**Response 200 — Get a unit of measure group:**
+```json
+{
+  "key": "11",
+  "id": "Count",
+  "baseUnit": "Each",
+  "abbreviation": null,
+  "isSystemGenerated": false,
+  "defaults": {
+    "inventory": {
+      "key": "13",
+      "id": "Each",
+      "href": "/objects/inventory-control/unit-of-measure/13"
+    },
+    "purchaseOrder": {
+      "key": "13",
+      "id": "Each",
+      "href": "/objects/inventory-control/unit-of-measure/13"
+    },
+    "orderEntry": {
+      "key": "13",
+      "id": "Each",
+      "href": "/objects/inventory-control/unit-of-measure/13"
+    }
+  },
+  "unitsOfMeasure": [
+    {
+      "key": "13",
+      "id": "Each",
+      "abbreviation": null,
+      "numberOfDecimalPlaces": null,
+      "isBase": true,
+      "parent": {
+        "key": "11",
+        "id": "Count",
+        "href": "/objects/inventory-control/unit-of-measure-group/11"
+      },
+      "conversionFactor": 1,
+      "href": "/objects/inventory-control/unit-of-measure/13"
+    },
+    {
+      "key": "14",
+      "id": "Pair",
+      "abbreviation": null,
+      "numberOfDecimalPlaces": null,
+      "isBase": false,
+      "parent": {
+        "key": "11",
+        "id": "Count",
+        "href": "/objects/inventory-control/unit-of-measure-group/11"
+      },
+      "conversionFactor": 2,
+      "href": "/objects/inventory-control/unit-of-measure/14"
+    },
+    {
+      "key": "15",
+      "id": "Dozen",
+      "abbreviation": null,
+      "numberOfDecimalPlaces": null,
+      "isBase": false,
+      "parent": {
+        "key": "11",
+        "id": "Count",
+        "href": "/objects/inventory-control/unit-of-measure-group/11"
+      },
+      "conversionFactor": 12,
+      "href": "/objects/inventory-control/unit-of-measure/15",
+      "audit": {
+        "createdDateTime": "2014-01-08T11:28:12Z",
+        "modifiedDateTime": "2014-01-08T11:28:12Z",
+        "createdBy": "1",
+        "modifiedBy": "95"
+      }
+    }
+  ],
+  "href": "/objects/inventory-control/unit-of-measure-group/11",
+  "audit": {
+    "createdDateTime": "2014-01-08T11:28:12Z",
+    "modifiedDateTime": "2014-01-08T11:28:12Z",
+    "createdBy": "1",
+    "modifiedBy": "95"
+  }
+}
+```
+
+## PATCH /objects/inventory-control/unit-of-measure-group/{key}
+_Update a unit of measure group_
+
+**Request example — Update a single value:**
+```json
+{
+  "defaults": {
+    "inventory": {
+      "key": "3"
+    }
+  }
+}
+```
+**Response 200 — Updated unit of measure group:**
+```json
+{
+  "ia::result": {
+    "key": "17",
+    "id": "Data Storage",
+    "href": "/objects/inventory-control/unit-of-measure-group/17"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/inventory-control/unit-of-measure-group/{key}
+_Delete a unit of measure group_
+
+
+## GET /objects/inventory-control/unit-of-measure/{key}
+_Get a unit of measure_
+
+**Response 200 — Get a unit of measure:**
+```json
+{
+  "ia::result": {
+    "key": "135",
+    "id": "GigaBytes",
+    "abbreviation": "GB",
+    "parent": {
+      "key": "17",
+      "id": "ComputerStorage",
+      "href": "/objects/inventory-control-unit-of-measure/17"
+    },
+    "conversionFactor": 1024,
+    "numberOfDecimalPlaces": 0,
+    "isBase": false,
+    "audit": {
+      "createdDateTime": "2021-09-15T16:46:11Z",
+      "modifiedDateTime": "2021-09-15T16:46:11Z",
+      "createdBy": "1",
+      "modifiedBy": "1"
+    },
+    "href": "/objects/inventory-control/unit-of-measure/135"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/inventory-control/unit-of-measure/{key}
+_Update a unit of measure_
+
+**Request example — Update a unit of measure:**
+```json
+{
+  "abbreviation": "GB"
+}
+```
+**Response 200 — Updated unit of measure:**
+```json
+{
+  "ia::result": {
+    "key": "135",
+    "href": "/objects/inventory-control/unit-of-measure/135"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/inventory-control/unit-of-measure/{key}
+_Delete a unit of measure_
+
+
+## GET /objects/inventory-control/valuation-maintenance
+_List valuation maintenance objects_
+
+**Response 200 — List valuation maintenance objects:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "9",
+      "id": "9",
+      "href": "/objects/inventory-control/valuation-maintenance/9"
+    },
+    {
+      "key": "11",
+      "id": "11",
+      "href": "/objects/inventory-control/valuation-maintenance/11"
+    },
+    {
+      "key": "12",
+      "id": "12",
+      "href": "/objects/inventory-control/valuation-maintenance/12"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 100,
+    "start": 1,
+    "pageSize": 3,
+    "next": 4,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/inventory-control/valuation-maintenance
+_Create a valuation maintenance object_
+
+**Request example — Create a new valuation maintenance object:**
+```json
+{
+  "description": "Scheduled valuation maintenance",
+  "name": "Run on 5/21/2026 22:35:00",
+  "emailAddress": "joe.james@mycompany.com",
+  "maintenanceSchedule": {
+    "weeklyRepeatDay": "sunday",
+    "repeatPeriod": "weekly",
+    "repeatInterval": 1,
+    "startDate": "2026-04-15",
+    "repeatEndType": "never"
+  },
+  "isScheduledOperation": true,
+  "filters": {
+    "costMethods": [
+      "Average,Standard,FIFO,LIFO"
+    ],
+    "fromItem": {
+      "id": "Car battery"
+    },
+    "toItem": {
+      "id": "Car tire"
+    },
+    "warehouse": {
+      "id": "CA warehouse"
+    },
+    "itemGroup": {
+      "id": "Automotive parts"
+    }
+  },
+  "maintenanceOptions": {
+    "asOfDate": "2026-01-01",
+    "action": "update",
+    "transactionsToReport": "all",
+    "costUpdatePeriods": "closed"
+  }
+}
+```
+**Response 201 — Reference to new valuation maintenance object:**
+```json
+{
+  "ia::result": {
+    "id": "406",
+    "key": "406",
+    "href": "/objects/inventory-control/valuation-maintenance/406"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/valuation-maintenance/{key}
+_Get a valuation maintenance object_
+
+**Response 200 — Get a valuation maintenance object:**
+```json
+{
+  "ia::result": {
+    "id": "406",
+    "key": "406",
+    "state": "Schedule",
+    "description": "Scheduled valuation maintenance",
+    "name": "Run on 2/21/2026 22:35:00 PM",
+    "emailAddress": "joe.james@mycompany.com",
+    "results": "Scheduled to run. Delete this to stop.",
+    "audit": {
+      "createdDateTime": "2026-06-03T19:04:43Z",
+      "modifiedDateTime": "2026-06-03T19:04:43Z",
+      "modifiedBy": "1",
+      "createdBy": "1"
+    },
+    "maintenanceSchedule": {
+      "repeatPeriod": "weekly",
+      "repeatInterval": 1,
+      "startDate": "2026-12-31",
+      "numberOfOccurrences": 1,
+      "weeklyRepeatDay": "sunday",
+      "repeatEndType": "never"
+    },
+    "isScheduledOperation": true,
+    "filters": {
+      "fromItem": {
+        "id": "Car battery",
+        "key": "933",
+        "href": "/objects/inventory-control/item/933"
+      },
+      "toItem": {
+        "id": "Car tire",
+        "key": "934",
+        "href": "/objects/inventory-control/item/934"
+      },
+      "warehouse": {
+        "id": "CA warehouse",
+        "key": "4",
+        "href": "/objects/inventory-control/warehouse/4"
+      },
+      "costMethods": [
+        "Average,Standard,FIFO,LIFO"
+      ],
+      "itemGroup": {
+        "id": "Automotive parts",
+        "key": "1",
+        "href": "/objects/inventory-control/item-group/1"
+      }
+    },
+    "maintenanceOptions": {
+      "asOfDate": "2026-01-01",
+      "action": "update",
+      "transactionsToReport": "all",
+      "costUpdatePeriods": "closed",
+      "updateGL": true
+    },
+    "href": "/objects/inventory-control/valuation-maintenance/406"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/inventory-control/valuation-maintenance/{key}
+_Delete a valuation maintenance object_
+
+
+## GET /objects/inventory-control/warehouse
+_List warehouses_
+
+**Response 200 — List warehouses:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "5",
+      "id": "103",
+      "href": "/objects/inventory-control/warehouse/5"
+    },
+    {
+      "key": "8",
+      "id": "101",
+      "href": "/objects/inventory-control/warehouse/8"
+    },
+    {
+      "key": "9",
+      "id": "100",
+      "href": "/objects/inventory-control/warehouse/9"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100
+  }
+}
+```
+
+## POST /objects/inventory-control/warehouse
+_Create a warehouse_
+
+**Request example — Create a warehouse:**
+```json
+{
+  "id": "childId2",
+  "name": "child2",
+  "location": {
+    "id": "1--Chicago"
+  },
+  "parent": {
+    "id": "101--Distribution Center"
+  },
+  "manager": {
+    "id": "1--Courtney, Bill"
+  },
+  "contacts": {
+    "primary": {
+      "id": "Sam Smith"
+    },
+    "shipTo": {
+      "id": "Bill North"
+    }
+  },
+  "status": "active",
+  "isReplenishmentEnabled": true
+}
+```
+**Response 201 — New warehouse:**
+```json
+{
+  "ia::result": {
+    "key": "12",
+    "id": "103",
+    "href": "/objects/inventory-control/warehouse/12"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/warehouse-group
+_List warehouse groups_
+
+**Response 200 — List warehouse groups:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "1",
+      "id": "Top Level warehouses",
+      "href": "/objects/inventory-control/warehouse-group/1"
+    },
+    {
+      "key": "5",
+      "id": "warehouses without Activity",
+      "href": "/objects/inventory-control/warehouse-group/5"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 2,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/inventory-control/warehouse-group
+_Create a warehouse group_
+
+**Request example — Create a warehouse group:**
+```json
+{
+  "id": "EastCoastWarehouses",
+  "name": "East Coast Warehouses",
+  "description": "Warehouses on east coast",
+  "groupType": "specific",
+  "createDimensionComponents": true,
+  "memberFilter": {
+    "object": "inventory-control/warehouse",
+    "filterExpression": "and",
+    "orderBy": [
+      {
+        "name": "asc"
+      }
+    ]
+  },
+  "groupMembers": [
+    {
+      "id": "MCOM"
+    },
+    {
+      "id": "WHSE2"
+    }
+  ]
+}
+```
+**Response 201 — Reference to new warehouse group:**
+```json
+{
+  "ia::result": {
+    "key": "4",
+    "id": "EastCoastWarehouses",
+    "href": "/objects/inventory-control/warehouse-group/4"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/warehouse-group/{key}
+_Get a warehouse group_
+
+**Response 200 — Get a warehouse group:**
+```json
+{
+  "ia::result": {
+    "key": "12",
+    "id": "BooksWarehouses",
+    "name": "Books Warehouses",
+    "description": "Warehouses store Books",
+    "groupType": "all",
+    "memberFilter": {
+      "object": "inventory-control/warehouse",
+      "filterExpression": "and",
+      "filters": [
+        {
+          "$eq": {
+            "status": "active"
+          }
+        }
+      ],
+      "orderBy": [
+        {
+          "id": "asc"
+        }
+      ]
+    },
+    "audit": {
+      "createdDateTime": "2026-12-12T23:33:05Z",
+      "modifiedDateTime": "2026-12-12T23:33:05Z",
+      "createdBy": "1",
+      "modifiedBy": "1"
+    },
+    "glAccountGroup": {
+      "id": "BooksWarehouses"
+    },
+    "groupMembers": [],
+    "href": "/objects/inventory-control/warehouse-group/12"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/inventory-control/warehouse-group/{key}
+_Update a warehouse group_
+
+**Request example — Update a warehouse group:**
+```json
+{
+  "description": "Warehouses store Books and notebooks"
+}
+```
+**Response 200 — Reference to updated warehouse group:**
+```json
+{
+  "ia::result": {
+    "key": "12",
+    "id": "BooksWarehouses",
+    "href": "/objects/inventory-control/warehouse-group/12"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/inventory-control/warehouse-group/{key}
+_Delete a warehouse group_
+
+
+## GET /objects/inventory-control/warehouse-transfer
+_List warehouse transfers_
+
+**Response 200 — List warehouse transfers:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "12",
+      "id": "IC:0358:doc",
+      "href": "/objects/inventory-control/warehouse-transfer/12"
+    },
+    {
+      "key": "13",
+      "id": "IC:0356:doc",
+      "href": "/objects/inventory-control/warehouse-transfer/13"
+    },
+    {
+      "key": "14",
+      "id": "IC:0359:doc",
+      "href": "/objects/inventory-control/warehouse-transfer/14"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## POST /objects/inventory-control/warehouse-transfer
+_Create a warehouse transfer_
+
+**Request example — Create a warehouse transfer:**
+```json
+{
+  "transactionDate": "2024-03-01",
+  "description": "transfer to 10001-F per SO-0009",
+  "referenceNumber": null,
+  "exchangeRate": {
+    "date": "null,",
+    "typeName": "Intacct Daily Rate",
+    "outCurrency": "USD",
+    "inCurrency": "USD"
+  },
+  "transferType": "immediate",
+  "action": "draft",
+  "lines": [
+    {
+      "transferDirection": "out",
+      "item": {
+        "key": "249"
+      },
+      "warehouse": {
+        "key": "1"
+      },
+      "memo": "transfer of 0 Lot",
+      "quantity": "1",
+      "unit": {
+        "id": "Each"
+      },
+      "trackingDetail": [
+        {
+          "item": {
+            "key": "249"
+          },
+          "quantity": "1",
+          "serialNumber": null,
+          "lotNumber": "LotABC",
+          "expirationDate": null
+        }
+      ],
+      "dimensions": {
+        "location": {
+          "key": "1"
+        },
+        "department": {
+          "key": "6"
+        },
+        "project": {
+          "key": "9"
+        },
+        "customer": {
+          "key": "2"
+        },
+        "vendor": {
+          "key": "47"
+        },
+        "employee": {
+          "key": "27"
+        },
+        "class": {
+          "key": "6"
+        }
+      }
+    },
+    {
+      "transferDirection": "in",
+      "item": {
+        "key": "249"
+      },
+      "quantity": "1",
+      "unit": {
+        "id": "Each"
+      },
+      "warehouse": {
+        "key": "50"
+      },
+      "trackingDetail": [
+        {
+          "item": {
+            "key": "249"
+          },
+          "quantity": "1",
+          "serialNumber": null,
+          "lotNumber": "LotABC",
+          "expirationDate": null
+        }
+      ],
+      "dimensions": {
+        "location": {
+          "key": "1"
+        },
+        "department": {
+          "key": "6"
+        },
+        "project": {
+          "key": "9"
+        },
+        "customer": {
+          "key": "2"
+        },
+        "vendor": {
+          "key": "47"
+        },
+        "employee": {
+          "key": "27"
+        },
+        "class": {
+          "key": "6"
+        }
+      }
+    }
+  ]
+}
+```
+**Response 201 — Reference to new warehouse transfer:**
+```json
+{
+  "ia::result": {
+    "key": "19",
+    "href": "/objects/inventory-control/warehouse-transfer/19"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## GET /objects/inventory-control/warehouse-transfer-line
+_List warehouse transfer lines_
+
+**Response 200 — List warehouse transfer lines:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "5",
+      "id": "5",
+      "href": "/objects/inventory-control/warehouse-transfer-line/5"
+    },
+    {
+      "key": "6",
+      "id": "6",
+      "href": "/objects/inventory-control/warehouse-transfer-line/6"
+    },
+    {
+      "key": "7",
+      "id": "7",
+      "href": "/objects/inventory-control/warehouse-transfer-line/7"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/inventory-control/warehouse-transfer-line/{key}
+_Get a warehouse transfer line_
+
+**Response 200 — Get a warehouse transfer line:**
+```json
+{
+  "id": "65",
+  "key": "65",
+  "lineNumber": "1",
+  "warehouseTransfer": {
+    "key": "19",
+    "id": "IC:0360:doc",
+    "href": "/objects/inventory-control/warehouse-transfer/19"
+  },
+  "inventoryDocument": {
+    "key": "350",
+    "id": "IC:0360:doc-Out",
+    "href": "/objects/inventory-control/document/350"
+  },
+  "inventoryDocumentLine": {
+    "id": "397",
+    "key": "397",
+    "href": "/objects/inventory-control/document-line/397"
+  },
+  "transferDirection": "out",
+  "item": {
+    "key": "249",
+    "id": "0 Lot",
+    "href": "/objects/inventory-control/item/249"
+  },
+  "warehouse": {
+    "key": "4",
+    "id": "WareHouse10004",
+    "name": "US TX Warehouse 10004",
+    "href": "/objects/inventory-control/warehouse/4"
+  },
+  "memo": "transfer of 0 Lot",
+  "quantity": "1.0000",
+  "unit": {
+    "key": "3",
+    "id": "Each",
+    "href": "/objects/inventory-control/unit-of-measure/3"
+  },
+  "cost": "0.0000000000",
+  "extendedCost": "0.00",
+  "standardCost": "0.0000000000",
+  "extendedStandardCost": "0.00",
+  "dimensions": {
+    "location": {
+      "key": "1",
+      "id": "1",
+      "href": "/objects/company-config/location/1"
+    },
+    "department": {
+      "key": "6",
+      "id": "6",
+      "href": "/objects/company-config/department/6"
+    },
+    "project": {
+      "key": "9",
+      "id": "9",
+      "href": "/objects/projects/project/9"
+    },
+    "customer": {
+      "key": "2",
+      "id": "2",
+      "href": "/objects/accounts-receivable/customer/2"
+    },
+    "vendor": {
+      "key": "47",
+      "id": "201",
+      "href": "/objects/accounts-payable/vendor/47"
+    },
+    "employee": {
+      "key": "27",
+      "id": "12",
+      "href": "/objects/company-config/employee/27"
+    },
+    "class": {
+      "key": "6",
+      "id": "4",
+      "href": "/objects/company-config/class/6"
+    }
+  },
+  "audit": {
+    "createdDateTime": "2024-03-13T01:11:36Z",
+    "modifiedDateTime": "2024-03-13T01:11:36Z",
+    "createdByUser": {
+      "key": "1",
+      "href": "/objects/company-config/user/1"
+    },
+    "createdBy": "1",
+    "modifiedByUser": {
+      "key": "1",
+      "href": "/objects/company-config/user/1"
+    },
+    "modifiedBy": "1"
+  },
+  "trackingDetail": [
+    {
+      "id": "260",
+      "key": "260",
+      "inventoryDocumentLine": {
+        "id": "397",
+        "key": "397",
+        "documentType": "SYS-Warehouse Transfer Out",
+        "href": "/objects/inventory-control/document-line::SYS-Warehouse%20Transfer%20Out/397"
+      },
+      "item": {
+        "id": "0 Lot",
+        "key": "249",
+        "href": "/objects/inventory-control/item/249"
+      },
+      "quantity": "1.0000000000",
+      "serialNumber": null,
+      "lotNumber": "LotABC",
+      "bin": {
+        "key": null,
+        "id": null
+      },
+      "expirationDate": null,
+      "audit": {
+        "createdDateTime": "2024-03-13T01:11:35Z",
+        "modifiedDateTime": "2024-03-13T01:11:35Z",
+        "createdByUser": {
+          "key": "1",
+          "href": "/objects/company-config/user/1"
+        },
+        "createdBy": "1",
+        "modifiedByUser": {
+          "key": "1",
+          "href": "/objects/company-config/user/1"
+        },
+        "modifiedBy": "1"
+      },
+      "href": "/objects/inventory-control/document-line-detail/260"
+    }
+  ],
+  "href": "/objects/inventory-control/warehouse-transfer-line/65"
+}
+```
+
+## GET /objects/inventory-control/warehouse-transfer/{key}
+_Get a warehouse transfer_
+
+**Response 200 — Get a warehouse transfer:**
+```json
+{
+  "ia::result": {
+    "key": "19",
+    "id": "IC:0360:doc",
+    "transactionDate": "2024-03-01",
+    "outDate": "2024-03-01",
+    "inDate": "2024-03-01",
+    "description": "transfer to 10001-F per SO-0009",
+    "referenceNumber": null,
+    "outDocument": {
+      "key": "350",
+      "id": "SYS-Warehouse Transfer Out-IC:0360:doc-Out",
+      "docid": "SYS-Warehouse Transfer Out-IC:0360:doc-Out",
+      "href": "/objects/inventory-control/document/350"
+    },
+    "inDocument": {
+      "key": "351",
+      "id": "SYS-Warehouse Transfer In-IC:0360:doc-In",
+      "href": "/objects/inventory-control/document/351"
+    },
+    "inTransitDocument": {
+      "key": null,
+      "id": null
+    },
+    "audit": {
+      "createdDateTime": "2024-03-13T01:11:36Z",
+      "modifiedDateTime": "2024-03-13T01:11:36Z",
+      "createdByUser": {
+        "key": "1",
+        "href": "/objects/company-config/user/1"
+      },
+      "createdBy": "1",
+      "modifiedByUser": {
+        "key": "1",
+        "href": "/objects/company-config/user/1"
+      },
+      "modifiedBy": "1"
+    },
+    "exchangeRate": {
+      "date": "2024-03-01",
+      "typeName": "Intacct Daily Rate",
+      "typeId": "-1",
+      "rate": "1.0000000000",
+      "outCurrency": "USD",
+      "inCurrency": "USD"
+    },
+    "transferState": "draft",
+    "transferType": "immediate",
+    "entity": {
+      "key": null,
+      "id": null,
+      "name": null
+    },
+    "lines": [
+      {
+        "id": "65",
+        "key": "65",
+        "lineNumber": "1",
+        "warehouseTransfer": {
+          "key": "19",
+          "id": "IC:0360:doc",
+          "href": "/objects/inventory-control/warehouse-transfer/19"
+        },
+        "inventoryDocument": {
+          "key": "350",
+          "id": "IC:0360:doc-Out",
+          "href": "/objects/inventory-control/document/350"
+        },
+        "inventoryDocumentLine": {
+          "id": "397",
+          "key": "397",
+          "href": "/objects/inventory-control/document-line/397"
+        },
+        "transferDirection": "out",
+        "item": {
+          "key": "249",
+          "id": "0 Lot",
+          "href": "/objects/inventory-control/item/249"
+        },
+        "warehouse": {
+          "key": "1",
+          "id": "1",
+          "name": "US TX Warehouse 10004",
+          "href": "/objects/inventory-control/warehouse/1"
+        },
+        "memo": "transfer of 0 Lot",
+        "quantity": "1.0000",
+        "unit": {
+          "key": "3",
+          "id": "Each",
+          "href": "/objects/inventory-control/unit-of-measure/3"
+        },
+        "cost": "0.0000000000",
+        "extendedCost": "0.00",
+        "standardCost": "0.0000000000",
+        "extendedStandardCost": "0.00",
+        "dimensions": {
+          "location": {
+            "key": "1",
+            "id": "1",
+            "href": "/objects/company-config/location/1"
+          },
+          "department": {
+            "key": "6",
+            "id": "6",
+            "href": "/objects/company-config/department/6"
+          },
+          "project": {
+            "key": "9",
+            "id": "9",
+            "href": "/objects/projects/project/9"
+          },
+          "customer": {
+            "key": "2",
+            "id": "2",
+            "href": "/objects/accounts-receivable/customer/2"
+          },
+          "vendor": {
+            "key": "47",
+            "id": "201",
+            "href": "/objects/accounts-payable/vendor/47"
+          },
+          "employee": {
+            "key": "27",
+            "id": "12",
+            "href": "/objects/company-config/employee/27"
+          },
+          "class": {
+            "key": "6",
+            "id": "4",
+            "href": "/objects/company-config/class/6"
+          }
+        },
+        "audit": {
+          "createdDateTime": "2024-03-13T01:11:36Z",
+          "modifiedDateTime": "2024-03-13T01:11:36Z",
+          "createdByUser": {
+            "key": "1",
+            "href": "/objects/company-config/user/1"
+          },
+          "createdBy": "1",
+          "modifiedByUser": {
+            "key": "1",
+            "href": "/objects/company-config/user/1"
+          },
+          "modifiedBy": "1"
+        },
+        "trackingDetail": [
+          {
+            "id": "260",
+            "key": "260",
+            "inventoryDocumentLine": {
+              "id": "397",
+              "key": "397",
+              "documentType": "SYS-Warehouse Transfer Out",
+              "href": "/objects/inventory-control/document-line::SYS-Warehouse%20Transfer%20Out/397"
+            },
+            "item": {
+              "id": "0 Lot",
+              "key": "249",
+              "href": "/objects/inventory-control/item/249"
+            },
+            "quantity": "1.0000000000",
+            "serialNumber": null,
+            "lotNumber": "LotABC",
+            "bin": {
+              "key": null,
+              "id": null
+            },
+            "expirationDate": null,
+            "audit": {
+              "createdDateTime": "2024-03-13T01:11:35Z",
+              "modifiedDateTime": "2024-03-13T01:11:35Z",
+              "createdByUser": {
+                "key": "1",
+                "href": "/objects/company-config/user/1"
+              },
+              "createdBy": "1",
+              "modifiedByUser": {
+                "key": "1",
+                "href": "/objects/company-config/user/1"
+              },
+              "modifiedBy": "1"
+            },
+            "href": "/objects/inventory-control/document-line-detail/260"
+          }
+        ],
+        "href": "/objects/inventory-control/warehouse-transfer-line/65"
+      },
+      {
+        "id": "66",
+        "key": "66",
+        "lineNumber": "1",
+        "warehouseTransfer": {
+          "key": "19",
+          "id": "IC:0360:doc",
+          "href": "/objects/inventory-control/warehouse-transfer/19"
+        },
+        "inventoryDocument": {
+          "key": "351",
+          "id": "IC:0360:doc-In",
+          "href": "/objects/inventory-control/document/351"
+        },
+        "inventoryDocumentLine": {
+          "id": "398",
+          "key": "398",
+          "href": "/objects/inventory-control/document-line/398"
+        },
+        "transferDirection": "in",
+        "item": {
+          "key": "249",
+          "id": "0 Lot",
+          "href": "/objects/inventory-control/item/249"
+        },
+        "warehouse": {
+          "key": "50",
+          "id": "10001-F",
+          "name": "Child of WH10001",
+          "href": "/objects/inventory-control/warehouse/50"
+        },
+        "quantity": "1.0000",
+        "unit": {
+          "key": "3",
+          "id": "Each",
+          "href": "/objects/inventory-control/unit-of-measure/3"
+        },
+        "cost": "0.0000000000",
+        "extendedCost": "0.00",
+        "standardCost": "0.0000000000",
+        "extendedStandardCost": "0.00",
+        "dimensions": {
+          "location": {
+            "key": "1",
+            "id": "1",
+            "href": "/objects/company-config/location/1"
+          },
+          "department": {
+            "key": "6",
+            "id": "6",
+            "href": "/objects/company-config/department/6"
+          },
+          "project": {
+            "key": "9",
+            "id": "9",
+            "href": "/objects/projects/project/9"
+          },
+          "customer": {
+            "key": "2",
+            "id": "2",
+            "href": "/objects/accounts-receivable/customer/2"
+          },
+          "vendor": {
+            "key": "47",
+            "id": "201",
+            "href": "/objects/accounts-payable/vendor/47"
+          },
+          "employee": {
+            "key": "27",
+            "id": "12",
+            "href": "/objects/company-config/employee/27"
+          },
+          "class": {
+            "key": "6",
+            "id": "4",
+            "href": "/objects/company-config/class/6"
+          }
+        },
+        "audit": {
+          "createdDateTime": "2024-03-13T01:11:36Z",
+          "modifiedDateTime": "2024-03-13T01:11:36Z",
+          "createdByUser": {
+            "key": "1",
+            "href": "/objects/company-config/user/1"
+          },
+          "createdBy": "1",
+          "modifiedByUser": {
+            "key": "1",
+            "href": "/objects/company-config/user/1"
+          },
+          "modifiedBy": "1"
+        },
+        "trackingDetail": [
+          {
+            "id": "261",
+            "key": "261",
+            "inventoryDocumentLine": {
+              "id": "398",
+              "key": "398",
+              "documentType": "SYS-Warehouse Transfer In",
+              "href": "/objects/inventory-control/document-line::SYS-Warehouse%20Transfer%20In/398"
+            },
+            "item": {
+              "id": "0 Lot",
+              "key": "249",
+              "href": "/objects/inventory-control/item/249"
+            },
+            "quantity": "1.0000000000",
+            "serialNumber": null,
+            "lotNumber": "LotABC",
+            "bin": {
+              "key": null,
+              "id": null
+            },
+            "expirationDate": null,
+            "audit": {
+              "createdDateTime": "2024-03-13T01:11:36Z",
+              "modifiedDateTime": "2024-03-13T01:11:36Z",
+              "createdByUser": {
+                "key": "1",
+                "href": "/objects/company-config/user/1"
+              },
+              "createdBy": "1",
+              "modifiedByUser": {
+                "key": "1",
+                "href": "/objects/company-config/user/1"
+              },
+              "modifiedBy": "1"
+            },
+            "href": "/objects/inventory-control/document-line-detail/261"
+          }
+        ],
+        "href": "/objects/inventory-control/warehouse-transfer-line/66"
+      }
+    ],
+    "href": "/objects/inventory-control/warehouse-transfer/19"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## PATCH /objects/inventory-control/warehouse-transfer/{key}
+_Update a warehouse transfer_
+
+**Request example — Update to transferIn state from transferOut state:**
+```json
+{
+  "action": "transferIn",
+  "lines": [
+    {
+      "key": "59",
+      "transferDirection": "out",
+      "item": {
+        "key": "249"
+      },
+      "warehouse": {
+        "key": "1"
+      },
+      "quantity": "1",
+      "unit": {
+        "id": "Each"
+      },
+      "trackingDetail": [
+        {
+          "item": {
+            "key": "249"
+          },
+          "quantity": "1",
+          "serialNumber": null,
+          "lotNumber": "LotABC",
+          "bin": {
+            "key": null
+          },
+          "expirationDate": null
+        }
+      ]
+    },
+    {
+      "key": "60",
+      "transferDirection": "in",
+      "item": {
+        "key": "249"
+      },
+      "quantity": "1",
+      "unit": {
+        "id": "Each"
+      },
+      "warehouse": {
+        "key": "50"
+      },
+      "trackingDetail": [
+        {
+          "item": {
+            "key": "249"
+          },
+          "quantity": "1",
+          "serialNumber": null,
+          "lotNumber": "LotABC",
+          "bin": {
+            "key": null
+          },
+          "expirationDate": null
+        }
+      ]
+    }
+  ]
+}
+```
+**Response 200 — Reference to updated warehouse transfer:**
+```json
+{
+  "ia::result": {
+    "key": "17",
+    "id": "IC:0358:doc",
+    "href": "/objects/inventory-control/warehouse-transfer/17"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## DELETE /objects/inventory-control/warehouse-transfer/{key}
+_Delete a warehouse transfer_
+
+
+## GET /objects/inventory-control/warehouse/{key}
+_Get a warehouse_
+
+**Response 200 — Get a warehouse:**
+```json
+{
+  "ia::result": {
+    "key": "3",
+    "name": "US NA Warehouse-1",
+    "id": "USNAWA1",
+    "parent": {
+      "id": "US NA--1",
+      "key": "22",
+      "href": "/objects/inventory-control/warehouse/22"
+    },
+    "location": {
+      "id": "North America--North America",
+      "key": "10",
+      "href": "/objects/company-config/location/10"
+    },
+    "manager": {
+      "id": "EM 1--Aman",
+      "key": "14",
+      "href": "/objects/company-config/employee/14"
+    },
+    "contacts": {
+      "primary": {
+        "id": "Sam Smith",
+        "key": "210",
+        "href": "/objects/company-config/contact/210"
+      },
+      "shipTo": {
+        "id": "Bill North",
+        "key": "229",
+        "href": "/objects/company-config/contact/229"
+      }
+    },
+    "status": "active",
+    "isReplenishmentEnabled": true,
+    "enableNegativeInv": false,
+    "href": "/objects/inventory-control/warehouse/15",
+    "audit": {
+      "createdDateTime": "2021-04-21T23:57:50Z",
+      "modifiedDateTime": "2021-04-21T23:59:40Z",
+      "createdBy": "1",
+      "modifiedBy": "1"
+    }
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## PATCH /objects/inventory-control/warehouse/{key}
+_Update a warehouse_
+
+**Request example — Update a single value:**
+```json
+{
+  "manager": {
+    "id": "2--Lapus, Alan"
+  }
+}
+```
+**Response 200 — Updated warehouse:**
+```json
+{
+  "ia::result": {
+    "key": "9",
+    "id": "US NA Warehouse-2",
+    "href": "/objects/inventory-control/warehouse/9"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/inventory-control/warehouse/{key}
+_Delete a warehouse_
+
+
+## GET /objects/inventory-control/zone
+_List zones_
+
+**Response 200 — List zones:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "546",
+      "id": "RZ1A",
+      "href": "/objects/inventory-control/zone/546"
+    },
+    {
+      "key": "547",
+      "id": "RZ2A",
+      "href": "/objects/inventory-control/zone/547"
+    },
+    {
+      "key": "548",
+      "id": "RZ3A",
+      "href": "/objects/inventory-control/zone/548"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": 2,
+    "previous": 1
+  }
+}
+```
+
+## POST /objects/inventory-control/zone
+_Create a zone_
+
+**Request example — Create a zone:**
+```json
+{
+  "id": "Z2",
+  "description": "Refrigeration zone 2"
+}
+```
+**Response 201 — New zone:**
+```json
+{
+  "ia::result": {
+    "key": "546",
+    "id": "RZ2",
+    "href": "/objects/inventory-control/zone/546"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## GET /objects/inventory-control/zone/{key}
+_Get a zone_
+
+**Response 200 — Get a zone:**
+```json
+{
+  "ia::result": {
+    "key": "564",
+    "id": "RZ2",
+    "description": "Refrigeration zone 2",
+    "audit": {
+      "createdDateTime": "2021-05-07T01:15:23Z",
+      "modifiedDateTime": "2021-05-07T01:15:23Z",
+      "createdBy": "13",
+      "modifiedBy": "13"
+    },
+    "href": "/objects/inventory-control/zone/564"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## PATCH /objects/inventory-control/zone/{key}
+_Update a zone_
+
+**Request example — Update a single value:**
+```json
+{
+  "description": "Refrigeration zone 2A"
+}
+```
+**Response 200 — Updated zone:**
+```json
+{
+  "ia::result": {
+    "key": "564",
+    "id": "RZ2",
+    "href": "/objects/inventory-control/zone/564"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## DELETE /objects/inventory-control/zone/{key}
+_Delete a zone_
+
+
+## GET /objects/tax/item-tax-group-item-map
+_List item tax group item maps_
+
+**Response 200 — List item tax group item maps:**
+```json
+{
+  "ia::result": [
+    {
+      "key": "8",
+      "id": "8",
+      "href": "/objects/tax/item-tax-group-item-map/8"
+    },
+    {
+      "key": "9",
+      "id": "9",
+      "href": "/objects/tax/item-tax-group-item-map/9"
+    },
+    {
+      "key": "10",
+      "id": "10",
+      "href": "/objects/tax/item-tax-group-item-map/10"
+    }
+  ],
+  "ia::meta": {
+    "totalCount": 3,
+    "start": 1,
+    "pageSize": 100,
+    "next": null,
+    "previous": null
+  }
+}
+```
+
+## GET /objects/tax/item-tax-group-item-map/{key}
+_Get a item tax group item map_
+
+**Response 200 — Get an item tax group item map:**
+```json
+{
+  "ia-result": {
+    "id": "2",
+    "key": "2",
+    "item": {
+      "id": "1",
+      "key": "1",
+      "href": "/objects/inventory-control/item/1"
+    },
+    "taxGroup": {
+      "id": "Goods Exempt Rate - CA",
+      "key": "61",
+      "href": "/objects/tax/item-tax-group/61"
+    },
+    "taxSolution": {
+      "id": "Canadian Sales Tax - SYS",
+      "key": "4",
+      "href": "/objects/tax/tax-solution/4"
+    },
+    "href": "/objects/tax/item-tax-group-item-map/2"
+  },
+  "ia::meta": {
+    "totalCount": 1
+  }
+}
+```
+
+## POST /services/reports/inventory-control/inventory-valuation
+_Run an inventory valuation report_
+
+**Request example — Run an inventory valuation report:**
+```json
+{
+  "title1": "Inventory valuation 2024",
+  "title2": "Items from A to Z",
+  "footerText": "2024 report",
+  "reportName": "Inventory valuation 2024 A - Z",
+  "outputType": "pdf",
+  "outputLocation": "intacct",
+  "parameters": {
+    "asOfDate": "2024-12-31",
+    "reportOn": "itemID",
+    "filters": {
+      "itemFilter": {
+        "fromItemId": "A",
+        "toItemId": "Z"
+      }
+    }
+  }
+}
+```
+**Response 200 — Inventory valuation report submission response:**
+```json
+{
+  "ia::result": {
+    "reportId": "108",
+    "status": "submitted",
+    "outputType": "pdf",
+    "outputLocation": "intacct",
+    "href": "/services/reports/status?reportId=108&outputType=pdf&outputLocation=intacct"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```
+
+## POST /services/reports/inventory-control/item-activity
+_Run an item activity report_
+
+**Request example — Run an item activity report:**
+```json
+{
+  "title1": "Item activity through 2024",
+  "title2": "All items",
+  "footerText": "2024 report",
+  "reportNamee": "Item activity 2024 all",
+  "outputType": "pdf",
+  "outputLocation": "intacct",
+  "parameters": {
+    "timePeriod": {
+      "periodToDate": {
+        "asOfDate": "2024-12-31",
+        "reportingPeriod": {
+          "id": "Inception to Date"
+        }
+      }
+    },
+    "reportOn": "itemID"
+  }
+}
+```
+**Response 200 — Item activity report submission response:**
+```json
+{
+  "ia::result": {
+    "reportId": "114",
+    "status": "submitted",
+    "outputType": "pdf",
+    "outputLocation": "intacct",
+    "href": "/services/reports/status?reportId=114&outputType=pdf&outputLocation=intacct"
+  },
+  "ia::meta": {
+    "totalCount": 1,
+    "totalSuccess": 1,
+    "totalError": 0
+  }
+}
+```

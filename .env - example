@@ -1,0 +1,27 @@
+# OAuth 2.0 Client Credentials
+# Obtained from the Sage Intacct developer portal.
+# The OAuth client must be associated with a Web Services user and authorized
+# under Company > Web Services Authorizations in Intacct before use.
+INTACCT_CLIENT_ID=client_id
+INTACCT_CLIENT_SECRET=secret
+INTACCT_REDIRECT_URI=netlify.com/drop
+INTACCT_USERNAME=your_username
+
+# Optional: override the default production endpoint
+INTACCT_BASE_URL=https://api.intacct.com/ia/api/v1
+
+# --- XML gateway fallback (OPTIONAL) -----------------------------------------
+# REST does not need these. They are ONLY required if you plan to use the
+# call_xml_gateway tool for the small set of operations REST cannot do
+# (legacy transaction functions, post/unpost, XML-only objects, etc.).
+#
+# The legacy XML gateway's outer firewall envelope still requires a registered
+# Web Services sender ID + password even when the inner authentication is a
+# REST-derived session ID. Obtain them from your Intacct administrator at
+# Company > Setup > Web Services Sender IDs.
+#
+INTACCT_SENDER_ID=your_sender_id
+INTACCT_SENDER_PASSWORD=your_sender_password
+#
+# Optional: override the XML gateway URL (defaults to production US).
+INTACCT_XML_GATEWAY_URL=https://api.intacct.com/ia/xml/xmlgw.phtml
