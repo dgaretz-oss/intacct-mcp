@@ -26,9 +26,9 @@ Before you start, make sure you have all of the following.
 ## Step 1 — Install the project
 
 
-In Windows PowerShell / bash:
+In Windows PowerShell / bash, clone this repo:
 
-```
+```bash
 git clone https://github.com/dgaretz-oss/intacct-mcp
 cd intacct-mcp
 uv sync
