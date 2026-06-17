@@ -29,7 +29,7 @@ Before you start, make sure you have all of the following.
 In Windows PowerShell / bash:
 
 ```
-git clone <this-repo-url>
+git clone https://github.com/dgaretz-oss/intacct-mcp
 cd intacct-mcp
 uv sync
 ```
