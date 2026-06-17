@@ -160,7 +160,7 @@ Replace the `--directory` value with the absolute path to the `intacct-mcp` fold
 
 ---
 
-## Step68 — Verify the connection
+## Step 7 — Verify the connection
 
 In Claude, ask:
 
